@@ -52,8 +52,8 @@ local function configure()
 
         local lspSagaDiagnostic = require("lspsaga.diagnostic")
         vim.keymap.set("n", "go", lspSagaDiagnostic.show_line_diagnostics, { buffer = buf, desc = "LSP Line Diagnostics" })
-        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { buffer = buf, desc = "LSP Previous Diagnostics" })
-        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { buffer = buf, desc = "LSP Next Diagnostics" })
+        vim.keymap.set("n", "[d", lspSagaDiagnostic.navigate("prev"), { buffer = buf, desc = "LSP Previous Diagnostics" })
+        vim.keymap.set("n", "]d", lspSagaDiagnostic.navigate("next"), { buffer = buf, desc = "LSP Next Diagnostics" })
 
         local lspsagaRename = require("lspsaga.rename")
         vim.keymap.set("n", "rn", lspsagaRename.rename, { buffer = buf, desc = "LSP Rename" })

@@ -7,15 +7,13 @@ local function configure()
             lsp_code_actions = { theme = "cursor" },
             lsp_range_code_actions = { theme = "cursor" },
             find_files = {
-                find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden" }
-            }
+                find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden" },
+            },
         },
         defaults = {
             mappings = {
-                i = {
-                    ["<esc>"] = actions.close
-                }
-            }
+                i = { ["<esc>"] = actions.close },
+            },
         },
         extensions = {
             fzf = {
@@ -28,6 +26,7 @@ local function configure()
     })
     telescope.load_extension("fzf")
     telescope.load_extension("ui-select")
+    telescope.load_extension("dap")
     telescope.load_extension("zoxide")
 
     require("telescope._extensions.zoxide.config").setup({

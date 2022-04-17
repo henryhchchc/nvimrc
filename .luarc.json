@@ -2,12 +2,5 @@
     "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
     "Lua.diagnostics.globals": [
         "vim"
-    ],
-    "Lua.runtime.version": "LuaJIT",
-    "Lua.runtime.path": [
-        "/opt/homebrew/share/nvim/runtime/lua/?.lua",
-        "/opt/homebrew/share/nvim/runtime/lua/?/?.lua",
-        "/opt/homebrew/Cellar/luajit-openresty/?/jit/?.lua",
-        "~/.local/share/nvim/?/init.lua"
     ]
 }

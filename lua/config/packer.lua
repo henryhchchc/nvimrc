@@ -95,6 +95,7 @@ local function packerStartup(use)
             { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
             { "jvgrootveld/telescope-zoxide" },
             { "nvim-telescope/telescope-ui-select.nvim" },
+            { "nvim-telescope/telescope-dap.nvim" },
         },
         config = require("config.plugins.telescope"),
     })
