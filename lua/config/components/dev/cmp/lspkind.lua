@@ -1,0 +1,28 @@
+local M = {}
+
+local sourceNames = {
+    buffer = "Buffer",
+    nvim_lsp = "LSP",
+    cmdline = "Command",
+    path = "Path",
+    fuzzy_path = "FZF",
+    cmdline_history = "History",
+    luasnip = "Snippet",
+}
+
+M.options = {
+    mode = "symbol",
+    maxwidth = 50,
+    ellipsis_char = "...",
+    before = function(entry, vim_item)
+        local sourceName = sourceNames[entry.source.name] or entry.source.name
+        if entry.source.name == "nvim_lsp" then
+            local client = entry.source.source.client or {}
+            sourceName = "LSP: " .. client.name
+        end
+        vim_item.menu = sourceName
+        return vim_item
+    end,
+}
+
+return M
