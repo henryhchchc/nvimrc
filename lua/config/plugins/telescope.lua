@@ -1,9 +1,21 @@
 local function configure()
     local telescope = require("telescope")
+    local actions = require("telescope.actions")
+
     telescope.setup({
         pickers = {
             lsp_code_actions = { theme = "cursor" },
             lsp_range_code_actions = { theme = "cursor" },
+            find_files = {
+                find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden" }
+            }
+        },
+        defaults = {
+            mappings = {
+                i = {
+                    ["<esc>"] = actions.close
+                }
+            }
         },
         extensions = {
             fzf = {
