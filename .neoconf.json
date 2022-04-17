@@ -1,0 +1,9 @@
+{
+  "neodev": {
+    "library": {
+      "plugins": true,
+      "runtime": true
+    },
+    "lspconfig": true
+  }
+}
