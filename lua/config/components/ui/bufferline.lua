@@ -1,4 +1,5 @@
-local function configure()
+local M = {}
+function M.configure()
     local nvimTreeOffset = {
         filetype = "NvimTree",
         text = "File Explorer",
@@ -32,4 +33,4 @@ local function configure()
     end
 end
 
-return configure
+return M

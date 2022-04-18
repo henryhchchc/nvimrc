@@ -1,4 +1,6 @@
-local function configure()
+local M = {}
+
+function M.configure()
     local luasnip = require("luasnip")
     local lspkind = require("lspkind")
     local lspkindOpts = {
@@ -73,4 +75,4 @@ local function configure()
     })
 end
 
-return configure
+return M

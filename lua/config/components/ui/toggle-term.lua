@@ -1,4 +1,6 @@
-local function configure()
+local M = {}
+
+function M.configure()
     require("toggleterm").setup({})
     local function set_terminal_keymaps()
         local opts = { noremap = true }
@@ -16,4 +18,4 @@ local function configure()
     vim.api.nvim_set_keymap("n", "<leader>tt", "<Cmd>ToggleTerm<CR>", { noremap = true, silent = true, desc = "Toggle Terminal" })
 end
 
-return configure
+return M

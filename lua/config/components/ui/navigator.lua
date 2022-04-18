@@ -1,4 +1,5 @@
-local function configure()
+local M = {}
+function M.configure()
     local navigator = require("Navigator")
     navigator.setup()
 
@@ -9,4 +10,4 @@ local function configure()
     vim.keymap.set("n", "<C-w><C-p>", navigator.previous, { desc = "Navigator Go Back" })
 end
 
-return configure
+return M

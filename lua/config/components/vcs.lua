@@ -1,4 +1,6 @@
-local function configure()
+local M = {}
+
+local function configureGitSigns()
     local gs = require("gitsigns")
     gs.setup({
         on_attach = function(bufnr)
@@ -18,4 +20,25 @@ local function configure()
     })
 end
 
-return configure
+local function configureNeogit()
+    local neogit = require("neogit")
+    neogit.setup({
+        kind = "vsplit",
+    })
+    vim.keymap.set("n", "<leader>ng", neogit.open, { desc = "Open Neogit" })
+end
+
+function M.packer(use)
+    use({
+        "TimUntersberger/neogit",
+        requires = "nvim-lua/plenary.nvim",
+        config = configureNeogit,
+    })
+
+    use({
+        "lewis6991/gitsigns.nvim",
+        config = configureGitSigns,
+    })
+end
+
+return M

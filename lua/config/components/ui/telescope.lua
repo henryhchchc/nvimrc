@@ -1,4 +1,6 @@
-local function configure()
+local M = {}
+
+function M.configure()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
 
@@ -42,4 +44,4 @@ local function configure()
     vim.keymap.set("n", "<leader>cd", telescope.extensions.zoxide.list, { desc = "Telescope Zoxide" })
 end
 
-return configure
+return M

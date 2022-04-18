@@ -1,4 +1,6 @@
-local function configure()
+local M = {}
+
+function M.configure()
     require("nvim-treesitter.configs").setup({
         ensure_installed = "all",
         ignore_install = { "phpdoc", "swift" },
@@ -38,4 +40,15 @@ local function configure()
     ]])
 end
 
-return configure
+function M.packer(use)
+    use({
+        "nvim-treesitter/nvim-treesitter",
+        requires = {
+            { "nvim-treesitter/nvim-treesitter-textobjects" },
+        },
+        run = ":TSUpdate",
+        config = M.configure,
+    })
+end
+
+return M

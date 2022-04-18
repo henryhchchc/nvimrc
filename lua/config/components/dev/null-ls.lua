@@ -1,4 +1,5 @@
-local function configure()
+local M = {}
+function M.configure()
     local nullLs = require("null-ls")
 
     nullLs.setup({
@@ -11,4 +12,4 @@ local function configure()
     })
 end
 
-return configure
+return M

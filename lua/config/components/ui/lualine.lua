@@ -1,4 +1,5 @@
-local function configure()
+local M = {}
+function M.configure()
     require("nvim-gps").setup()
     local gps = require("nvim-gps")
 
@@ -75,4 +76,4 @@ local function configure()
     })
 end
 
-return configure
+return M

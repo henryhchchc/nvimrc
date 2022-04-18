@@ -1,4 +1,5 @@
-local function configure()
+local M = {}
+function M.configure()
     require("lspsaga").setup({
         debug = false,
         use_saga_diagnostic_sign = true,
@@ -48,4 +49,4 @@ local function configure()
     })
 end
 
-return configure
+return M
