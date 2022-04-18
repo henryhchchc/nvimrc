@@ -63,8 +63,6 @@ local function setupEditingKepmaps(buf)
 end
 
 local function on_attach(client, buf)
-    require("aerial").on_attach(client, buf)
-
     setupHighlight(client)
 
     setupFormatting(client, buf)

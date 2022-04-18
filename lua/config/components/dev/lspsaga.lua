@@ -47,6 +47,16 @@ function M.configure()
         diagnostic_message_format = "%m %c",
         highlight_prefix = false,
     })
+
+    local lspSagaFileTypeGrp = vim.api.nvim_create_augroup("lspsaga_filetypes", {})
+    vim.api.nvim_create_autocmd({ "FileType", }, {
+        group = lspSagaFileTypeGrp,
+        pattern = "LspSagaHover",
+        callback = function()
+            local buf = vim.fn.bufnr()
+            vim.keymap.set("n", "<Esc>", "<Cmd>close!<CR>", { silent = true, buffer = buf })
+        end,
+    })
 end
 
 return M
