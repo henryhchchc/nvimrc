@@ -38,7 +38,6 @@ function M.configure()
     nullLs.configure()
     lspSaga.configure()
     cmp.configure()
-    require("rust-tools").setup()
 end
 
 return M

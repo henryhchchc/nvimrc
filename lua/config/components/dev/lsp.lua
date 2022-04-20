@@ -64,9 +64,7 @@ end
 
 local function on_attach(client, buf)
     setupHighlight(client)
-
     setupFormatting(client, buf)
-
     setupEditingKepmaps(buf)
 end
 
@@ -76,16 +74,15 @@ function M.configure()
 
     local serverOpts = {
         on_attach = on_attach,
-        flags = {
-            capabilities = lspCaps,
-        },
+        capabilities = lspCaps,
     }
 
     local lspConfig = require("lspconfig")
 
     require("clangd_extensions").setup({ server = serverOpts })
+    require("rust-tools").setup({ server = serverOpts })
 
-    local servers = { "rust_analyzer", "sourcekit", "sumneko_lua", "hls" }
+    local servers = { "sourcekit", "sumneko_lua", "hls" }
     for _, lsp in pairs(servers) do
         lspConfig[lsp].setup(serverOpts)
     end
