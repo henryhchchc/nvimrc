@@ -82,6 +82,15 @@ function M.configure()
     require("clangd_extensions").setup({ server = serverOpts })
     require("rust-tools").setup({ server = serverOpts })
 
+    lspConfig.texlab.setup(vim.tbl_deep_extend("force", serverOpts, {
+        settings = {
+            checktex = {
+                onEdit = true,
+                onOpenAndSave = true
+            }
+        }
+    }))
+
     local servers = { "sourcekit", "sumneko_lua", "hls" }
     for _, lsp in pairs(servers) do
         lspConfig[lsp].setup(serverOpts)
