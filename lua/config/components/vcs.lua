@@ -13,9 +13,7 @@ local function configureGitSigns()
             vim.keymap.set("n", "<leader>hb", function()
                 gs.blame_line({ full = true })
             end, { buffer = bufnr, desc = "Git Blame Line" })
-            vim.keymap.set("n", "<leader>tb", gs.toggle_current_line_blame, { buffer = bufnr, desc = "Git Toggle Current Line Blame" })
             vim.keymap.set("n", "<leader>hd", gs.diffthis, { buffer = bufnr, desc = "Git Diffthis" })
-            vim.keymap.set("n", "<leader>td", gs.toggle_deleted, { buffer = bufnr, desc = "Git Toggle Deleted" })
         end,
     })
 end

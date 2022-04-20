@@ -47,6 +47,8 @@ function M.configure()
     vim.keymap.set("n", "<leader>fd", telescope.builtin.diagnostics, { desc = "Telescope List Diagnostics" })
 
     vim.keymap.set("n", "<leader>cd", telescope.extensions.zoxide.list, { desc = "Telescope Zoxide" })
+
+    vim.keymap.set("n", "<leader>dt", telescope.extensions.dap.commands, { desc = "Telescope DAP Commands" })
 end
 
 return M

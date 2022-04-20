@@ -72,7 +72,7 @@ function M.configure()
             },
             lualine_z = { "location" },
         },
-        extensions = { "nvim-tree", "toggleterm", "aerial" },
+        extensions = { "nvim-tree", "toggleterm", "symbols-outline" },
     })
 end
 

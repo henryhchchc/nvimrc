@@ -1,32 +1,36 @@
+local dap = require("config.components.dev.dap")
+
 local M = {}
 
-local function setupHighlight(client)
+local function setupHighlight(client, bufnr)
     if client.resolved_capabilities.document_highlight then
         local lspHightlightGrp = vim.api.nvim_create_augroup("lsp_document_highlight", {})
         vim.api.nvim_create_autocmd("CursorHold", {
             group = lspHightlightGrp,
+            buffer = bufnr,
             callback = vim.lsp.buf.document_highlight,
         })
         vim.api.nvim_create_autocmd("CursorMoved", {
             group = lspHightlightGrp,
+            buffer = bufnr,
             callback = vim.lsp.buf.clear_references,
         })
     end
 end
 
-local function setupFormatting(client, buf)
+local function setupFormatting(client, bufnr)
     if client.resolved_capabilities.document_formatting then
-        vim.keymap.set("n", "<leader>fm", vim.lsp.buf.formatting, { buffer = buf, desc = "LSP Formatting" })
+        vim.keymap.set("n", "<leader>fm", vim.lsp.buf.formatting, { buffer = bufnr, desc = "LSP Formatting" })
         local lspFormatGrp = vim.api.nvim_create_augroup("lsp_auto_format", {})
         vim.api.nvim_create_autocmd("BufWritePre", {
             group = lspFormatGrp,
-            pattern = "<buffer>",
+            buffer = bufnr,
             callback = vim.lsp.buf.formatting_seq_sync,
         })
     end
 
     if client.resolved_capabilities.document_range_formatting then
-        vim.keymap.set("v", "<leader>fm", vim.lsp.buf.range_formatting, { buffer = buf, desc = "LSP Range Formatting" })
+        vim.keymap.set("v", "<leader>fm", vim.lsp.buf.range_formatting, { buffer = bufnr, desc = "LSP Range Formatting" })
     end
 end
 
@@ -60,10 +64,11 @@ local function setupEditingKepmaps(buf)
     vim.keymap.set("n", "rn", lspsagaRename.rename, { buffer = buf, desc = "LSP Rename" })
 end
 
-local function on_attach(client, buf)
-    setupHighlight(client)
-    setupFormatting(client, buf)
-    setupEditingKepmaps(buf)
+local function on_attach(client, bufnr)
+    setupHighlight(client, bufnr)
+    setupFormatting(client, bufnr)
+    setupEditingKepmaps(bufnr)
+    dap.on_attach(client, bufnr)
 end
 
 function M.configure()

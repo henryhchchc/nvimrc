@@ -2,6 +2,7 @@ local lsp = require("config.components.dev.lsp")
 local cmp = require("config.components.dev.cmp")
 local nullLs = require("config.components.dev.null-ls")
 local lspSaga = require("config.components.dev.lspsaga")
+local dap = require("config.components.dev.dap")
 
 local M = {}
 
@@ -12,7 +13,10 @@ function M.packer(use)
             { "p00f/clangd_extensions.nvim" },
         },
     })
-    use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+
+    use({ "mfussenegger/nvim-dap" })
+    use({ "rcarriga/nvim-dap-ui" })
+    use({ "theHamsta/nvim-dap-virtual-text" })
 
     use({ "tami5/lspsaga.nvim" })
     use({
@@ -38,6 +42,7 @@ function M.configure()
     nullLs.configure()
     lspSaga.configure()
     cmp.configure()
+    dap.configure()
 end
 
 return M
