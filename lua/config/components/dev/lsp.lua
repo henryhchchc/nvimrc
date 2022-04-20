@@ -5,12 +5,10 @@ local function setupHighlight(client)
         local lspHightlightGrp = vim.api.nvim_create_augroup("lsp_document_highlight", {})
         vim.api.nvim_create_autocmd("CursorHold", {
             group = lspHightlightGrp,
-            pattern = "<buffer>",
             callback = vim.lsp.buf.document_highlight,
         })
         vim.api.nvim_create_autocmd("CursorMoved", {
             group = lspHightlightGrp,
-            pattern = "<buffer>",
             callback = vim.lsp.buf.clear_references,
         })
     end
@@ -69,8 +67,8 @@ local function on_attach(client, buf)
 end
 
 function M.configure()
-    local lspCaps = vim.lsp.protocol.make_client_capabilities()
-    lspCaps = require("cmp_nvim_lsp").update_capabilities(lspCaps)
+    local initialCaps = vim.lsp.protocol.make_client_capabilities()
+    local lspCaps = require("cmp_nvim_lsp").update_capabilities(initialCaps)
 
     local serverOpts = {
         on_attach = on_attach,
