@@ -18,9 +18,11 @@ local function configureDapUI()
     end
     dap.listeners.before.event_terminated["dapui_config"] = function()
         dapui.close()
+        dap.repl.close()
     end
     dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close()
+        dap.repl.close()
     end
 end
 
