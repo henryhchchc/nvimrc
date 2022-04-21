@@ -25,9 +25,8 @@ function M.configure()
                 case_mode = "smart_case",
             },
             ["ui-select"] = {
-                require("telescope.themes").get_dropdown {
-                }
-            }
+                require("telescope.themes").get_dropdown({}),
+            },
         },
     })
     telescope.load_extension("fzf")

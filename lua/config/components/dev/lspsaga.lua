@@ -49,7 +49,7 @@ function M.configure()
     })
 
     local lspSagaFileTypeGrp = vim.api.nvim_create_augroup("lspsaga_filetypes", {})
-    vim.api.nvim_create_autocmd({ "FileType", }, {
+    vim.api.nvim_create_autocmd({ "FileType" }, {
         group = lspSagaFileTypeGrp,
         pattern = "LspSagaHover",
         callback = function()

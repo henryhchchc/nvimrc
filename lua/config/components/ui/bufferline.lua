@@ -8,13 +8,17 @@ function M.configure()
         padding = 1,
     }
     local bufferline = require("bufferline")
+    local bufDelete = require("bufdelete")
     bufferline.setup({
         options = {
             offsets = { nvimTreeOffset },
-            close_command = "Bdelete! %d",
-            right_mouse_command = "Bdelete! %d",
+            close_command = function(bufnr)
+                bufDelete.bufdelete(bufnr, true)
+            end,
+            right_mouse_command = "vertical sbuffer %d",
             left_mouse_command = "buffer %d",
         },
+        separator_style = "thick",
     })
     vim.keymap.set("n", "]b", function()
         bufferline.cycle(1)

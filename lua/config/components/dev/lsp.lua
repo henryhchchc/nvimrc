@@ -89,9 +89,9 @@ function M.configure()
         settings = {
             checktex = {
                 onEdit = true,
-                onOpenAndSave = true
-            }
-        }
+                onOpenAndSave = true,
+            },
+        },
     }))
 
     local servers = { "sourcekit", "sumneko_lua", "hls" }
