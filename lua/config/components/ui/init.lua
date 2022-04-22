@@ -12,7 +12,6 @@ local function configureColorScheme()
     vim.g.material_style = "darker"
     require("material").setup({
         contrast = {
-            floating_windows = true,
             popup_menu = true,
         },
         high_visibility = {

@@ -9,7 +9,7 @@ function M.configure()
             lsp_code_actions = { theme = "cursor" },
             lsp_range_code_actions = { theme = "cursor" },
             find_files = {
-                find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden" },
+                find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden", "--exclude", ".git/" },
             },
         },
         defaults = {
