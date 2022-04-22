@@ -11,9 +11,6 @@ local M = {}
 local function configureColorScheme()
     vim.g.material_style = "darker"
     require("material").setup({
-        contrast = {
-            popup_menu = true,
-        },
         high_visibility = {
             darker = true,
         },

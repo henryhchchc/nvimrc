@@ -26,18 +26,18 @@ M.nordColors = nordColors
 local colors = {
     bg        = "#1A1A1A",
     bg_alt    = "#212121",
-    fg        = "#B0BEC5",
-    text      = "#727272",
-    selection = "#404040",
-    contrast  = "#1A1A1A",
-    active    = "#323232",
-    border    = "#343434",
-    highlight = "#3F3F3F",
-    disabled  = nordColors.nord2,
+    fg        = nordColors.nord4,
+    text      = nordColors.nord4,
+    selection = nordColors.nord2,
+    contrast  = "#2F2F2F",
+    active    = nordColors.nord1,
+    border    = nordColors.nord3,
+    highlight = nordColors.nord0,
+    disabled  = nordColors.nord1,
     accent    = nordColors.nord7,
 
     white    = nordColors.nord6,
-    gray     = "#717CB4",
+    gray     = nordColors.nord1,
     black    = "#000000",
     red      = nordColors.nord11,
     green    = nordColors.nord14,
@@ -47,7 +47,7 @@ local colors = {
     cyan     = nordColors.nord8,
     purple   = nordColors.nord15,
     orange   = nordColors.nord12,
-    pink     = "#FF9CAC",
+    pink     = nordColors.nord15,
 }
 
 -- stylua: ignore
@@ -59,6 +59,7 @@ M.colorPalette = vim.tbl_deep_extend("force", colors, {
     float = colors.bg_alt,
     sidebar = colors.bg,
     bg_vsp = colors.border,
+    bg_cur = nordColors.nord0,
 
     line_numbers = nordColors.nord2,
 })
