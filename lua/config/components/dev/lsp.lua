@@ -94,6 +94,17 @@ function M.configure()
         },
     }))
 
+    local nullLs = require("null-ls")
+    nullLs.setup({
+        on_attach = on_attach,
+        log = { enable = false },
+        sources = {
+            -- nullLs.builtins.completion.spell,
+            nullLs.builtins.formatting.prettier,
+            nullLs.builtins.hover.dictionary,
+        },
+    })
+
     local servers = { "sourcekit", "sumneko_lua", "hls" }
     for _, lsp in pairs(servers) do
         lspConfig[lsp].setup(serverOpts)
