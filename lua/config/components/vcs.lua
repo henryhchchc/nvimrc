@@ -17,7 +17,6 @@ local function configureGitSigns()
             vim.keymap.set("n", "[h", gs.prev_hunk, { buffer = bufnr, desc = "Git Previous Hunk" })
             vim.keymap.set("n", "]h", gs.next_hunk, { buffer = bufnr, desc = "Git Next Hunk" })
         end,
-        word_diff = true,
     })
 end
 
