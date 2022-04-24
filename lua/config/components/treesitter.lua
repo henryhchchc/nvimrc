@@ -5,7 +5,7 @@ function M.configure()
         ensure_installed = "all",
         ignore_install = { "phpdoc", "swift" },
         highlight = {
-            enabled = true,
+            enable = true,
             additional_vim_regex_highlighting = false,
         },
         incremental_selection = {
