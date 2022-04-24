@@ -105,7 +105,7 @@ function M.configure()
         },
     })
 
-    local servers = { "sourcekit", "sumneko_lua", "hls" }
+    local servers = { "sourcekit", "sumneko_lua", "hls", "kotlin_language_server" }
     for _, lsp in pairs(servers) do
         lspConfig[lsp].setup(serverOpts)
     end
