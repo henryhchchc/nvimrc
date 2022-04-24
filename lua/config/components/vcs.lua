@@ -14,7 +14,10 @@ local function configureGitSigns()
                 gs.blame_line({ full = true })
             end, { buffer = bufnr, desc = "Git Blame Line" })
             vim.keymap.set("n", "<leader>hd", gs.diffthis, { buffer = bufnr, desc = "Git Diffthis" })
+            vim.keymap.set("n", "[h", gs.prev_hunk, { buffer = bufnr, desc = "Git Previous Hunk" })
+            vim.keymap.set("n", "]h", gs.next_hunk, { buffer = bufnr, desc = "Git Next Hunk" })
         end,
+        word_diff = true,
     })
 end
 
