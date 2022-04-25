@@ -37,11 +37,9 @@ function M.configure()
             },
         },
     })
-    vim.cmd([[
-        set foldmethod=expr
-        set foldexpr=nvim_treesitter#foldexpr()
-        set foldlevel=99
-    ]])
+    vim.wo.foldmethod = "expr"
+    vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+    vim.wo.foldlevel = 99
 end
 
 function M.packer(use)
@@ -51,7 +49,6 @@ function M.packer(use)
             { "nvim-treesitter/nvim-treesitter-textobjects" },
         },
         run = ":TSUpdate",
-        config = M.configure,
     })
 end
 

@@ -93,16 +93,25 @@ function M.packer(use)
         config = function()
             require("colorizer").setup({
                 css = {
-                    RGB      = true,
-                    RRGGBB   = true,
-                    names    = true,
+                    RGB = true,
+                    RRGGBB = true,
+                    names = true,
                     RRGGBBAA = true,
-                    rgb_fn   = true,
-                    hsl_fn   = true,
-                    css      = true,
-                    css_fn   = true,
-                }
+                    rgb_fn = true,
+                    hsl_fn = true,
+                    css = true,
+                    css_fn = true,
+                },
             })
+        end,
+    })
+    use({
+        "mfussenegger/nvim-treehopper",
+        config = function()
+            vim.keymap.set("o", "n", function()
+                require("tsht").nodes()
+            end, { desc = "Select Treesitter Node", remap = true })
+            vim.keymap.set("v", "n", ":lua require('tsht').nodes()<CR>", { desc = "Select Treesitter Node" })
         end,
     })
 end
