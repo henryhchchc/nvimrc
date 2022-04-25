@@ -91,7 +91,18 @@ function M.packer(use)
     use({
         "norcalli/nvim-colorizer.lua",
         config = function()
-            require("colorizer").setup()
+            require("colorizer").setup({
+                css = {
+                    RGB      = true,
+                    RRGGBB   = true,
+                    names    = true,
+                    RRGGBBAA = true,
+                    rgb_fn   = true,
+                    hsl_fn   = true,
+                    css      = true,
+                    css_fn   = true,
+                }
+            })
         end,
     })
 end
