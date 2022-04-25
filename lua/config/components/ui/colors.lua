@@ -24,8 +24,8 @@ M.nordColors = nordColors
 
 -- stylua: ignore
 local colors = {
-    bg        = "#1A1A1A",
-    bg_alt    = "#212121",
+    bg        = "#1E1E1E",
+    bg_alt    = "#252525",
     fg        = nordColors.nord4,
     text      = nordColors.nord4,
     selection = nordColors.nord1,
