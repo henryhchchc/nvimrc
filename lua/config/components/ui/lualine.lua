@@ -17,8 +17,8 @@ function M.configure()
     require("lualine").setup({
         options = {
             theme = "nord",
-            component_separators = "|",
-            section_separators = { left = "", right = "" },
+            component_separators = { left = "", right = "" },
+            section_separators = { left = "", right = "" },
             globalstatus = true,
         },
         sections = {
