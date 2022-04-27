@@ -28,7 +28,7 @@ function M.configure()
         bufferline.cycle(-1)
     end, { desc = "Go to Previous Buffer" })
 
-    vim.keymap.set("n", "<leader>bp", bufferline.pick_buffer, { desc = "Pick Buffer" })
+    vim.keymap.set("n", "<leader>bb", bufferline.pick_buffer, { desc = "Pick Buffer" })
 
     for i = 1, 9 do
         vim.keymap.set("n", "<leader>b" .. i, function()
