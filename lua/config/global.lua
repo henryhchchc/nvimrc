@@ -7,7 +7,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.cursorline = true
 vim.opt.title = true
-vim.opt.clipboard = "unnamed"
+vim.opt.clipboard:append("unnamed,unnamedplus")
 
 vim.opt.timeoutlen = 300
 vim.opt.updatetime = 100
