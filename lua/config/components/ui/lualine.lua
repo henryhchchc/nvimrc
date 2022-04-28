@@ -16,7 +16,7 @@ function M.configure()
 
     require("lualine").setup({
         options = {
-            theme = "nord",
+            theme = "nordfox",
             component_separators = { left = "", right = "" },
             section_separators = { left = "", right = "" },
             globalstatus = true,

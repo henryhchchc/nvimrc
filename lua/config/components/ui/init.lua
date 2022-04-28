@@ -5,24 +5,23 @@ local nvimTree = require("config.components.ui.nvimtree")
 local telescope = require("config.components.ui.telescope")
 local toggleTerm = require("config.components.ui.toggle-term")
 local navigator = require("config.components.ui.navigator")
+local notify = require("config.components.ui.notify")
 
 local M = {}
 
 local function configureColorScheme()
-    vim.g.material_style = "darker"
-    require("material").setup({
-        high_visibility = {
-            darker = true,
-        },
-        custom_colors = colors.colorPalette,
-        async_loading = true,
+    local nightFox = require("nightfox")
+    nightFox.setup({
+        palettes = {
+            nordfox = colors.nordFox
+        }
     })
-    vim.cmd("colorscheme material")
+    vim.cmd("colorscheme nordfox")
 end
 
 function M.packer(use)
     use({ "kyazdani42/nvim-web-devicons" })
-    use({ "marko-cerovac/material.nvim" })
+    use({ "EdenEast/nightfox.nvim" })
     use({
         "nvim-lualine/lualine.nvim",
         requires = {
@@ -48,10 +47,12 @@ function M.packer(use)
     use({ "numToStr/Navigator.nvim" })
     use({ "xiyaowong/which-key.nvim" })
     use({ "simrat39/symbols-outline.nvim" })
+    use({ "rcarriga/nvim-notify" })
 end
 
 function M.configure()
     configureColorScheme()
+    notify.configure()
     nvimTree.configure()
     bufferline.configure()
     lualine.configure()

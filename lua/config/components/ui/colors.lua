@@ -62,4 +62,12 @@ M.colorPalette = vim.tbl_deep_extend("force", colors, {
     line_numbers = nordColors.nord2,
 })
 
+-- stylua: ignore
+M.nordFox = {
+    bg0  = "#252525",
+    bg1  = "#1E1E1E",
+    bg3 = nordColors.nord0,
+    sel0 = "#323232",
+}
+
 return M

@@ -5,7 +5,6 @@ function M.configure()
         text = "File Explorer",
         text_align = "center",
         highlight = "Title",
-        padding = 1,
     }
     local bufferline = require("bufferline")
     local bufDelete = require("bufdelete")
@@ -17,8 +16,8 @@ function M.configure()
             end,
             right_mouse_command = "vertical sbuffer %d",
             left_mouse_command = "buffer %d",
+            separator_style = "thick",
         },
-        separator_style = "thick",
     })
     vim.keymap.set("n", "]b", function()
         bufferline.cycle(1)

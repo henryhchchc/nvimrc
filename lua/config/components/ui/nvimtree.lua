@@ -74,7 +74,7 @@ function M.configure()
                 resize_window = true,
                 window_picker = {
                     enable = true,
-                    chars = "1234567890",
+                    chars = "hjkl1234567890",
                     exclude = {
                         filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
                         buftype = { "nofile", "terminal", "help" },
