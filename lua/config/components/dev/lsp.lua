@@ -105,7 +105,13 @@ function M.configure()
         },
     })
 
-    local servers = { "sourcekit", "sumneko_lua", "jdtls", "hls", "kotlin_language_server" }
+    lspConfig.jdtls.setup(vim.tbl_deep_extend("force", serverOpts, {
+        root_dir = function()
+            return os.getenv("WORKSPACE")
+        end
+    }))
+
+    local servers = { "sourcekit", "sumneko_lua", "hls", "kotlin_language_server" }
     for _, lsp in pairs(servers) do
         lspConfig[lsp].setup(serverOpts)
     end
