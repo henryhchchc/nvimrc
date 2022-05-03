@@ -12,7 +12,7 @@ function M.configure()
     end
 
     vim.api.nvim_create_autocmd("TermOpen", {
-        pattern = "term://*toggleterm#*",
+        pattern = "term://*",
         callback = set_terminal_keymaps,
     })
     vim.api.nvim_set_keymap("n", "<leader>tt", "<Cmd>ToggleTerm<CR>", { noremap = true, silent = true, desc = "Toggle Terminal" })
