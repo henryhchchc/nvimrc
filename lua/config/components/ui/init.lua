@@ -45,7 +45,7 @@ function M.packer(use)
     })
     use({ "akinsho/toggleterm.nvim" })
     use({ "numToStr/Navigator.nvim" })
-    use({ "xiyaowong/which-key.nvim" })
+    use({ "folke/which-key.nvim" })
     use({ "simrat39/symbols-outline.nvim" })
     use({ "rcarriga/nvim-notify" })
 end
