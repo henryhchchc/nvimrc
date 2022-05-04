@@ -50,7 +50,8 @@ function M.configure()
         diagnostics = { enable = true },
         update_focused_file = { enable = true },
         system_open = { cmd = "open" },
-        filters = { custom = { ".git" } },
+        filters = { custom = { "^\\.git$" } },
+        git = { ignore = false },
         view = {
             width = 30,
             height = 30,
