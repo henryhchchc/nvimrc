@@ -71,6 +71,20 @@ local function on_attach(client, bufnr)
     dap.on_attach(client, bufnr)
 end
 
+local function loadProjectLocalConfig()
+    local projectLocalConfig = {}
+    local pwd = vim.fn.getcwd()
+    local configFunc = loadfile(pwd .. "/.nvim/lsp.lua")
+    if configFunc then
+        projectLocalConfig = configFunc()
+        if type(projectLocalConfig) ~= "table" then
+            vim.notify("Project local LSP config is invlid, check .nvim/lsp.lua", vim.log.levels.WARN)
+            projectLocalConfig = {}
+        end
+    end
+    return projectLocalConfig
+end
+
 function M.configure()
     local initialCaps = vim.lsp.protocol.make_client_capabilities()
     local lspCaps = require("cmp_nvim_lsp").update_capabilities(initialCaps)
@@ -82,6 +96,8 @@ function M.configure()
 
     local lspConfig = require("lspconfig")
 
+    local projectLocalConfig = loadProjectLocalConfig()
+
     require("clangd_extensions").setup({ server = serverOpts })
     require("rust-tools").setup({ server = serverOpts })
 
@@ -92,7 +108,7 @@ function M.configure()
                 onOpenAndSave = true,
             },
         },
-    }))
+    }, projectLocalConfig.texlab or {}))
 
     local nullLs = require("null-ls")
     nullLs.setup({
@@ -109,11 +125,11 @@ function M.configure()
         root_dir = function()
             return os.getenv("WORKSPACE") or vim.fn.getcwd()
         end
-    }))
+    }, projectLocalConfig.jdtls or {}))
 
     local servers = { "sourcekit", "sumneko_lua", "hls", "kotlin_language_server" }
     for _, lsp in pairs(servers) do
-        lspConfig[lsp].setup(serverOpts)
+        lspConfig[lsp].setup(vim.tbl_deep_extend("force", serverOpts, projectLocalConfig[lsp] or {}))
     end
 
     vim.diagnostic.config({
