@@ -4,7 +4,7 @@ function M.configure()
         filetype = "NvimTree",
         text = "File Explorer",
         text_align = "center",
-        highlight = "Title",
+        highlight = "Directory",
     }
     local bufferline = require("bufferline")
     local bufDelete = require("bufdelete")
@@ -16,7 +16,7 @@ function M.configure()
             end,
             right_mouse_command = "vertical sbuffer %d",
             left_mouse_command = "buffer %d",
-            separator_style = "thick",
+            separator_style = "slant",
         },
     })
     vim.keymap.set("n", "]b", function()
@@ -31,7 +31,7 @@ function M.configure()
 
     for i = 1, 9 do
         vim.keymap.set("n", "<leader>b" .. i, function()
-            bufferline.go_to_buffer(i)
+            bufferline.go_to_buffer(i, true)
         end, { desc = "Go to Buffer #" .. i })
     end
 end

@@ -26,7 +26,6 @@ function M.packer(use)
         "nvim-lualine/lualine.nvim",
         requires = {
             { "SmiteshP/nvim-gps" },
-            { "arkav/lualine-lsp-progress" },
         },
     })
     use({ "akinsho/bufferline.nvim" })
@@ -48,6 +47,7 @@ function M.packer(use)
     use({ "folke/which-key.nvim" })
     use({ "simrat39/symbols-outline.nvim" })
     use({ "rcarriga/nvim-notify" })
+    use({ "j-hui/fidget.nvim" })
 end
 
 function M.configure()
@@ -60,6 +60,7 @@ function M.configure()
     navigator.configure()
     telescope.configure()
     require("which-key").setup()
+    require("fidget").setup()
 end
 
 return M

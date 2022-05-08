@@ -50,12 +50,7 @@ function M.configure()
                     cond = gps.is_available,
                 },
             },
-            lualine_x = {
-                {
-                    "lsp_progress",
-                    colors = { use = true },
-                },
-            },
+            lualine_x = {},
             lualine_y = {
                 "encoding",
                 {
