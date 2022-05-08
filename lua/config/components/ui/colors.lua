@@ -23,50 +23,10 @@ local nordColors = {
 M.nordColors = nordColors
 
 -- stylua: ignore
-local colors = {
-    bg        = "#1E1E1E",
-    bg_alt    = "#252525",
-    fg        = nordColors.nord4,
-    text      = nordColors.nord4,
-    selection = nordColors.nord1,
-    contrast  = "#2F2F2F",
-    active    = nordColors.nord1,
-    border    = nordColors.nord3,
-    highlight = nordColors.nord3,
-    disabled  = nordColors.nord1,
-    accent    = nordColors.nord7,
-
-    white    = nordColors.nord6,
-    gray     = "#808080",
-    black    = "#000000",
-    red      = nordColors.nord11,
-    green    = nordColors.nord14,
-    yellow   = nordColors.nord13,
-    blue     = nordColors.nord9,
-    paleblue = nordColors.nord10,
-    cyan     = nordColors.nord8,
-    purple   = nordColors.nord15,
-    orange   = nordColors.nord12,
-    pink     = nordColors.nord15,
-}
-
--- stylua: ignore
-M.colorPalette = vim.tbl_deep_extend("force", colors, {
-    bg_nc        = colors.bg,
-    bg_sign      = colors.bg,
-    bg_num       = colors.bg,
-    sidebar      = colors.bg,
-    float        = colors.bg_alt,
-    bg_vsp       = colors.border,
-    bg_cur       = nordColors.nord0,
-    line_numbers = nordColors.nord2,
-})
-
--- stylua: ignore
 M.nordFox = {
     bg0  = "#252525",
     bg1  = "#1E1E1E",
-    bg3 = nordColors.nord0,
+    bg3  = nordColors.nord0,
     sel0 = "#323232",
 }
 

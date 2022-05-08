@@ -13,8 +13,8 @@ local function configureColorScheme()
     local nightFox = require("nightfox")
     nightFox.setup({
         palettes = {
-            nordfox = colors.nordFox
-        }
+            nordfox = colors.nordFox,
+        },
     })
     vim.cmd("colorscheme nordfox")
 end

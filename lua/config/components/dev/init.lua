@@ -35,12 +35,12 @@ function M.packer(use)
     use({ "simrat39/rust-tools.nvim" })
     use({ "jose-elias-alvarez/null-ls.nvim" })
     use({
-        'f3fora/nvim-texlabconfig',
+        "f3fora/nvim-texlabconfig",
         config = function()
-            require('texlabconfig').setup()
+            require("texlabconfig").setup()
         end,
-        ft = { 'tex', 'bib' },
-        cmd = { 'TexlabInverseSearch' },
+        ft = { "tex", "bib" },
+        cmd = { "TexlabInverseSearch" },
     })
 end
 

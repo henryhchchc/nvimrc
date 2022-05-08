@@ -24,7 +24,7 @@ local function configureNeogit()
     local neogit = require("neogit")
     neogit.setup({
         kind = "vsplit",
-        disable_builtin_notifications = true
+        disable_builtin_notifications = true,
     })
     vim.keymap.set("n", "<leader>ng", neogit.open, { desc = "Open Neogit" })
 end
