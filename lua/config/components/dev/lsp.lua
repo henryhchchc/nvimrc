@@ -113,7 +113,7 @@ function M.configure()
 
     local servers = {
         "hls",
-        "jstls",
+        "jdtls",
         "kotlin_language_server",
         "sumneko_lua",
         "sourcekit",
