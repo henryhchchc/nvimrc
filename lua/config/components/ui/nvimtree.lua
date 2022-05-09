@@ -24,8 +24,8 @@ function M.configure()
         },
         renderer = {
             icons = {
-                git_placement = "after"
-            }
+                git_placement = "after",
+            },
         },
         actions = {
             change_dir = {

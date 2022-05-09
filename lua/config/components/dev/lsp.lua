@@ -64,7 +64,7 @@ local function setupEditingKepmaps(buf)
     vim.keymap.set("n", "rn", lspsagaRename.rename, { buffer = buf, desc = "LSP Rename" })
 end
 
-local function on_attach(client, bufnr)
+local function onAttach(client, bufnr)
     setupHighlight(client, bufnr)
     setupFormatting(client, bufnr)
     setupEditingKepmaps(bufnr)
@@ -87,47 +87,38 @@ end
 
 function M.configure()
     local initialCaps = vim.lsp.protocol.make_client_capabilities()
-    local lspCaps = require("cmp_nvim_lsp").update_capabilities(initialCaps)
+    local clientCaps = require("cmp_nvim_lsp").update_capabilities(initialCaps)
 
     local serverOpts = {
-        on_attach = on_attach,
-        capabilities = lspCaps,
+        on_attach = onAttach,
+        capabilities = clientCaps,
     }
 
     local lspConfig = require("lspconfig")
 
     local projectLocalConfig = loadProjectLocalConfig()
 
-    require("clangd_extensions").setup({ server = serverOpts })
-    require("rust-tools").setup({ server = serverOpts })
-
-    lspConfig.texlab.setup(vim.tbl_deep_extend("force", serverOpts, {
-        settings = {
-            checktex = {
-                onEdit = true,
-                onOpenAndSave = true,
-            },
-        },
-    }, projectLocalConfig.texlab or {}))
+    require("clangd_extensions").setup({ server = vim.tbl_deep_extend("force", serverOpts, projectLocalConfig.clangd or {}) })
+    require("rust-tools").setup({ server = vim.tbl_deep_extend("force", serverOpts, projectLocalConfig.rust_analyzer or {}) })
 
     local nullLs = require("null-ls")
-    nullLs.setup({
-        on_attach = on_attach,
+    nullLs.setup(vim.tbl_deep_extend("force", serverOpts, {
         log = { enable = false },
         sources = {
             -- nullLs.builtins.completion.spell,
             nullLs.builtins.formatting.prettier,
             nullLs.builtins.hover.dictionary,
         },
-    })
+    }))
 
-    lspConfig.jdtls.setup(vim.tbl_deep_extend("force", serverOpts, {
-        root_dir = function()
-            return os.getenv("WORKSPACE") or vim.fn.getcwd()
-        end,
-    }, projectLocalConfig.jdtls or {}))
-
-    local servers = { "sourcekit", "sumneko_lua", "hls", "kotlin_language_server" }
+    local servers = {
+        "hls",
+        "jstls",
+        "kotlin_language_server",
+        "sumneko_lua",
+        "sourcekit",
+        "texlab",
+    }
     for _, lsp in pairs(servers) do
         lspConfig[lsp].setup(vim.tbl_deep_extend("force", serverOpts, projectLocalConfig[lsp] or {}))
     end
