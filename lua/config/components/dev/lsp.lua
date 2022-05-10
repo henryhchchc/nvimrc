@@ -39,6 +39,7 @@ local function setupEditingKepmaps(buf)
 
     local telescope = require("telescope.builtin")
     vim.keymap.set("n", "gd", telescope.lsp_definitions, { buffer = buf, desc = "LSP Definitions" })
+    vim.keymap.set("n", "gD", function() telescope.lsp_definitions({ jump_type = "vsplit" }) end, { buffer = buf, desc = "LSP Definitions (vsplit)" })
     vim.keymap.set("n", "gi", telescope.lsp_implementations, { buffer = buf, desc = "LSP Implementations" })
     vim.keymap.set("n", "gr", telescope.lsp_references, { buffer = buf, desc = "LSP References" })
     vim.keymap.set("n", "<leader>fsw", telescope.lsp_workspace_symbols, { buffer = buf, desc = "LSP Workspace Symbols" })
