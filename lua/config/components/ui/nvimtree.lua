@@ -21,7 +21,7 @@ function M.configure()
         update_cwd = true,
         disable_netrw = true,
         hijack_netrw = true,
-        hijack_unnamed_buffer_when_opening = true,
+        hijack_unnamed_buffer_when_opening = false,
         diagnostics = { enable = true },
         update_focused_file = { enable = true },
         system_open = { cmd = "open" },
@@ -32,6 +32,14 @@ function M.configure()
                 git_placement = "after",
             },
         },
+        view = {
+            preserve_window_proportions = true
+        },
+        actions = {
+            open_file = {
+                resize_window = true
+            }
+        }
     })
 
     vim.keymap.set("n", "<leader>e", nvimTree.focus, { desc = "Goto File Explorer" })
