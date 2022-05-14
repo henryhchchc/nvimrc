@@ -29,7 +29,7 @@ function M.configure()
         git = { ignore = false },
         renderer = {
             icons = {
-                git_placement = "after",
+                git_placement = "signcolumn",
             },
         },
         view = {
