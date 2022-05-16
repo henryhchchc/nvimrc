@@ -18,6 +18,8 @@ vim.g.did_load_filetypes = 0
 vim.g.mapleader = " "
 vim.opt.splitright = true
 
+vim.g.tex_flavor = "latex"
+
 -- Auto switch between relative line number and absolute line number
 local toggleCmdGroup = vim.api.nvim_create_augroup("numbertoggle", {})
 vim.api.nvim_create_autocmd({
