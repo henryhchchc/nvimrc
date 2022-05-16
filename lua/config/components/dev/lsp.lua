@@ -79,7 +79,7 @@ local function loadProjectLocalConfig()
     if configFunc then
         projectLocalConfig = configFunc()
         if type(projectLocalConfig) ~= "table" then
-            vim.notify("Project local LSP config is invlid, check .nvim/lsp.lua", vim.log.levels.WARN)
+            vim.notify("Project local LSP config is invalid, check .nvim/lsp.lua", vim.log.levels.WARN)
             projectLocalConfig = {}
         end
     end
@@ -106,11 +106,13 @@ function M.configure()
     nullLs.setup(vim.tbl_deep_extend("force", serverOpts, {
         log = { enable = false },
         sources = {
-            -- nullLs.builtins.completion.spell,
+            nullLs.builtins.code_actions.proselint,
+            nullLs.builtins.diagnostics.proselint,
+            nullLs.builtins.diagnostics.codespell,
             nullLs.builtins.formatting.prettier,
             nullLs.builtins.hover.dictionary,
         },
-    }))
+    }, projectLocalConfig["null-ls"] or {}))
 
     local servers = {
         "hls",
