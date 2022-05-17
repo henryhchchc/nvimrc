@@ -20,6 +20,12 @@ function M.configure()
         indent = {
             enable = true,
         },
+        refactor = {
+            highlight_definitions = {
+                enable = true,
+                clear_on_cursor_move = false,
+            },
+        },
         textobjects = {
             enable = true,
             select = {
@@ -47,6 +53,7 @@ function M.packer(use)
         "nvim-treesitter/nvim-treesitter",
         requires = {
             { "nvim-treesitter/nvim-treesitter-textobjects" },
+            { "nvim-treesitter/nvim-treesitter-refactor" },
         },
         run = ":TSUpdate",
     })

@@ -4,6 +4,7 @@ local M = {}
 
 local function setupHighlight(client, bufnr)
     if client.resolved_capabilities.document_highlight then
+        vim.cmd("TSBufDisable refactor.highlight_definitions")
         local lspHightlightGrp = vim.api.nvim_create_augroup("lsp_document_highlight", {})
         vim.api.nvim_create_autocmd("CursorHold", {
             group = lspHightlightGrp,
