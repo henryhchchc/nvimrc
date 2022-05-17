@@ -7,13 +7,13 @@ function M.configure()
     vim.g.nvim_tree_create_in_closed_folder = 1
     vim.g.nvim_tree_icons = {
         git = {
-            unstaged  = "",
-            staged    = "",
-            unmerged  = "",
-            renamed   = "➜",
+            unstaged = "",
+            staged = "",
+            unmerged = "",
+            renamed = "➜",
             untracked = "",
-            deleted   = "",
-            ignored   = ""
+            deleted = "",
+            ignored = "",
         },
     }
 
@@ -33,13 +33,13 @@ function M.configure()
             },
         },
         view = {
-            preserve_window_proportions = true
+            preserve_window_proportions = true,
         },
         actions = {
             open_file = {
-                resize_window = true
-            }
-        }
+                resize_window = true,
+            },
+        },
     })
 
     vim.keymap.set("n", "<leader>e", nvimTree.focus, { desc = "Goto File Explorer" })

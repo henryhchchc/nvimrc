@@ -39,7 +39,6 @@ function M.packer(use)
             { "jvgrootveld/telescope-zoxide" },
             { "nvim-telescope/telescope-ui-select.nvim" },
             { "nvim-telescope/telescope-dap.nvim" },
-            { "nvim-telescope/telescope-dap.nvim" },
         },
     })
     use({ "akinsho/toggleterm.nvim" })
