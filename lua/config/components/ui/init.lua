@@ -6,6 +6,7 @@ local telescope = require("config.components.ui.telescope")
 local toggleTerm = require("config.components.ui.toggle-term")
 local navigator = require("config.components.ui.navigator")
 local notify = require("config.components.ui.notify")
+local lspSaga = require("config.components.ui.lspsaga")
 
 local M = {}
 
@@ -58,6 +59,7 @@ function M.configure()
     toggleTerm.configure()
     navigator.configure()
     telescope.configure()
+    lspSaga.configure()
     require("which-key").setup()
     require("fidget").setup()
 end

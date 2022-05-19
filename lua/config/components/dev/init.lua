@@ -1,6 +1,5 @@
 local lsp = require("config.components.dev.lsp")
 local cmp = require("config.components.dev.cmp")
-local lspSaga = require("config.components.dev.lspsaga")
 local dap = require("config.components.dev.dap")
 
 local M = {}
@@ -46,7 +45,6 @@ end
 
 function M.configure()
     lsp.configure()
-    lspSaga.configure()
     cmp.configure()
     dap.configure()
 end

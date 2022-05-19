@@ -80,10 +80,14 @@ local function loadProjectLocalConfig()
     local pwd = vim.fn.getcwd()
     local configFunc = loadfile(pwd .. "/.nvim/lsp.lua")
     if configFunc then
-        projectLocalConfig = configFunc()
-        if type(projectLocalConfig) ~= "table" then
-            vim.notify("Project local LSP config is invalid, check .nvim/lsp.lua", vim.log.levels.WARN)
-            projectLocalConfig = {}
+        local succ, result = pcall(configFunc)
+        if not succ then
+            vim.notify("Error when executing .nvim/lsp.lua.", vim.log.levels.ERROR, { title = "LSP Config" })
+        elseif type(projectLocalConfig) ~= "table" then
+            vim.notify("Project local LSP config should return be a table.", vim.log.levels.ERROR, { title = "LSP Config" })
+        else
+            vim.notify("Project local LSP config loaded.", vim.log.levels.INFO, { title = "LSP Config" })
+            projectLocalConfig = result
         end
     end
     return projectLocalConfig
@@ -102,20 +106,24 @@ function M.configure()
 
     local projectLocalConfig = loadProjectLocalConfig()
 
-    require("clangd_extensions").setup({ server = vim.tbl_deep_extend("force", serverOpts, projectLocalConfig.clangd or {}) })
-    require("rust-tools").setup({ server = vim.tbl_deep_extend("force", serverOpts, projectLocalConfig.rust_analyzer or {}) })
+    local clangdConfig = vim.tbl_deep_extend("force", serverOpts, projectLocalConfig.clangd or {})
+    require("clangd_extensions").setup({ server = clangdConfig })
+
+    local rustAnalyzerConfig = vim.tbl_deep_extend("force", serverOpts, projectLocalConfig.rust_analyzer or {})
+    require("rust-tools").setup({ server = rustAnalyzerConfig })
 
     local nullLs = require("null-ls")
-    nullLs.setup(vim.tbl_deep_extend("force", serverOpts, {
+    local nullLSDefault = {
         log = { enable = false },
         sources = {
             nullLs.builtins.code_actions.proselint,
             nullLs.builtins.diagnostics.proselint,
-            nullLs.builtins.diagnostics.codespell,
             nullLs.builtins.formatting.prettier,
             nullLs.builtins.hover.dictionary,
         },
-    }, projectLocalConfig["null-ls"] or {}))
+    }
+    local nullLsConfig = vim.tbl_deep_extend("force", serverOpts, nullLSDefault, projectLocalConfig["null-ls"] or {})
+    nullLs.setup(nullLsConfig)
 
     local servers = {
         "hls",
@@ -126,7 +134,9 @@ function M.configure()
         "texlab",
     }
     for _, lsp in pairs(servers) do
-        lspConfig[lsp].setup(vim.tbl_deep_extend("force", serverOpts, projectLocalConfig[lsp] or {}))
+        local projectLocalConfigPreLsp = projectLocalConfig[lsp] or {}
+        local serverConfig = vim.tbl_deep_extend("force", serverOpts, projectLocalConfigPreLsp)
+        lspConfig[lsp].setup(serverConfig)
     end
 
     vim.diagnostic.config({
