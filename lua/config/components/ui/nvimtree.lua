@@ -3,21 +3,8 @@ local M = {}
 function M.configure()
     local nvimTree = require("nvim-tree")
 
-    vim.g.nvim_tree_group_empty = 1
-    vim.g.nvim_tree_create_in_closed_folder = 1
-    vim.g.nvim_tree_icons = {
-        git = {
-            unstaged = "",
-            staged = "",
-            unmerged = "",
-            renamed = "➜",
-            untracked = "",
-            deleted = "",
-            ignored = "",
-        },
-    }
-
     nvimTree.setup({
+        create_in_closed_folder = true,
         update_cwd = true,
         disable_netrw = true,
         hijack_netrw = true,
@@ -28,11 +15,15 @@ function M.configure()
         filters = { custom = { "^\\.git$", "^\\.DS_Store$" } },
         git = { ignore = false },
         renderer = {
+            group_empty = true,
+            root_folder_modifier = ":t",
             icons = {
-                git_placement = "signcolumn",
+                symlink_arrow = " -> ",
             },
         },
         view = {
+            hide_root_folder = true,
+            signcolumn = "auto",
             preserve_window_proportions = true,
         },
         actions = {

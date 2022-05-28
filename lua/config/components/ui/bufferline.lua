@@ -2,8 +2,10 @@ local M = {}
 function M.configure()
     local nvimTreeOffset = {
         filetype = "NvimTree",
-        text = "File Explorer",
-        text_align = "center",
+        text = function()
+            return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+        end,
+        text_align = "left",
         highlight = "Directory",
     }
     local bufferline = require("bufferline")
