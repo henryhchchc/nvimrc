@@ -117,7 +117,9 @@ function M.configure()
         log = { enable = false },
         sources = {
             nullLs.builtins.code_actions.proselint,
-            nullLs.builtins.diagnostics.proselint,
+            nullLs.builtins.diagnostics.vale.with({
+                filetypes = { "asciidoc", "c", "cpp", "html", "lua", "swift", "markdown", "text" },
+            }),
             nullLs.builtins.formatting.prettier,
             nullLs.builtins.hover.dictionary,
         },
