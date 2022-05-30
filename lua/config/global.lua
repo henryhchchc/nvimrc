@@ -20,6 +20,8 @@ vim.opt.splitright = true
 
 vim.g.tex_flavor = "latex"
 
+vim.opt.spelllang = { "en_us", "cjk" }
+
 -- Auto switch between relative line number and absolute line number
 local toggleCmdGroup = vim.api.nvim_create_augroup("numbertoggle", {})
 vim.api.nvim_create_autocmd({

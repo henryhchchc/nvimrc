@@ -8,6 +8,7 @@ function M.configure()
         pickers = {
             lsp_code_actions = { theme = "cursor" },
             lsp_range_code_actions = { theme = "cursor" },
+            spell_suggest = { theme = "cursor" },
             find_files = {
                 find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden", "--exclude", ".git/" },
             },
@@ -53,6 +54,8 @@ function M.configure()
     vim.keymap.set("n", "<leader>cd", telescope.extensions.zoxide.list, { desc = "Telescope Zoxide" })
 
     vim.keymap.set("n", "<leader>dt", telescope.extensions.dap.commands, { desc = "Telescope DAP Commands" })
+
+    vim.keymap.set("n", "z=", telescope.builtin.spell_suggest, { desc = "Telescope Spell Suggestions" })
 end
 
 return M
