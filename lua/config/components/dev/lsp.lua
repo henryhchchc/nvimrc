@@ -28,6 +28,7 @@ local function setupFormatting(client, bufnr)
         vim.keymap.set("n", "<leader>fm", vim.lsp.buf.formatting, { buffer = bufnr, desc = "LSP Formatting" })
         local lspFormatGrp = vim.api.nvim_create_augroup("lsp_auto_format", { clear = false })
         vim.api.nvim_buf_create_user_command(bufnr, "EnableAutoFormat", function(inv)
+            vim.api.nvim_clear_autocmds({ buffer = bufnr, group = "lsp_auto_format", })
             vim.api.nvim_create_autocmd("BufWritePre", {
                 group = lspFormatGrp,
                 buffer = bufnr,
@@ -35,10 +36,7 @@ local function setupFormatting(client, bufnr)
             })
         end, {})
         vim.api.nvim_buf_create_user_command(bufnr, "DisableAutoFormat", function(inv)
-            vim.api.nvim_clear_autocmds({
-                buffer = bufnr,
-                group = "lsp_auto_format",
-            })
+            vim.api.nvim_clear_autocmds({ buffer = bufnr, group = "lsp_auto_format", })
         end, {})
     end
 

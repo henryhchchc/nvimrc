@@ -14,6 +14,23 @@ function M.configure()
         end
     end
 
+    local fn_af = require('lualine.components.filename'):extend()
+    function fn_af:update_status()
+        local data = self.super.update_status(self)
+        if self.options.file_status then
+            local grp = vim.api.nvim_create_augroup("lsp_auto_format", { clear = false })
+            local cmd = vim.api.nvim_get_autocmds({
+                group = grp,
+            })
+            local bufnr = vim.api.nvim_get_current_buf()
+            local afEnabled = vim.tbl_filter(function(c) return c.buffer == bufnr end, cmd)[1]
+            if afEnabled then
+                data = data .. self.options.symbols.auto_format
+            end
+        end
+        return data
+    end
+
     require("lualine").setup({
         options = {
             theme = "nordfox",
@@ -35,14 +52,15 @@ function M.configure()
             },
             lualine_c = {
                 {
-                    "filename",
+                    fn_af,
                     file_status = true,
                     path = 0,
                     shorting_target = 40,
                     symbols = {
                         modified = " ●",
-                        readonly = " [R]",
-                        unnamed = "[No Name]",
+                        readonly = " ",
+                        unnamed = " [New File]",
+                        auto_format = " "
                     },
                 },
                 {
