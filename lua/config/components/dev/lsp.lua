@@ -5,8 +5,12 @@ local M = {}
 local function setupHighlight(client, bufnr)
     if client.resolved_capabilities.document_highlight then
         vim.cmd("TSBufDisable refactor.highlight_definitions")
-        local lspHightlightGrp = vim.api.nvim_create_augroup("lsp_document_highlight", {})
-        vim.api.nvim_create_autocmd("CursorHold", {
+        local lspHightlightGrp = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = false })
+        vim.api.nvim_clear_autocmds({
+            buffer = bufnr,
+            group = "lsp_document_highlight",
+        })
+        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHold" }, {
             group = lspHightlightGrp,
             buffer = bufnr,
             callback = vim.lsp.buf.document_highlight,
@@ -22,12 +26,20 @@ end
 local function setupFormatting(client, bufnr)
     if client.resolved_capabilities.document_formatting then
         vim.keymap.set("n", "<leader>fm", vim.lsp.buf.formatting, { buffer = bufnr, desc = "LSP Formatting" })
-        local lspFormatGrp = vim.api.nvim_create_augroup("lsp_auto_format", {})
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            group = lspFormatGrp,
-            buffer = bufnr,
-            callback = vim.lsp.buf.formatting_seq_sync,
-        })
+        local lspFormatGrp = vim.api.nvim_create_augroup("lsp_auto_format", { clear = false })
+        vim.api.nvim_buf_create_user_command(bufnr, "EnableAutoFormat", function(inv)
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = lspFormatGrp,
+                buffer = bufnr,
+                callback = vim.lsp.buf.formatting_seq_sync,
+            })
+        end, {})
+        vim.api.nvim_buf_create_user_command(bufnr, "DisableAutoFormat", function(inv)
+            vim.api.nvim_clear_autocmds({
+                buffer = bufnr,
+                group = "lsp_auto_format",
+            })
+        end, {})
     end
 
     if client.resolved_capabilities.document_range_formatting then
