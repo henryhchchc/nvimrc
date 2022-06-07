@@ -61,7 +61,11 @@ function M.configure()
     telescope.configure()
     lspSaga.configure()
     require("which-key").setup()
-    require("fidget").setup()
+    require("fidget").setup({
+        text = {
+            spinner = "dots"
+        }
+    })
 end
 
 return M
