@@ -144,6 +144,7 @@ function M.configure()
         "sumneko_lua",
         "sourcekit",
         "texlab",
+        "pyright",
     }
     for _, lsp in pairs(servers) do
         local projectLocalConfigPreLsp = projectLocalConfig[lsp] or {}
