@@ -49,7 +49,7 @@ M.pluginSpecs = {
             popup = { kind = "vsplit" },
         },
         keys = {
-            { "<leader>vv", vim.cmd.Neogit, desc = "Neogit" },
+            { "<leader>ghn", vim.cmd.Neogit, desc = "Neogit" },
         },
     },
 }
