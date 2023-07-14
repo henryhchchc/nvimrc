@@ -40,6 +40,11 @@ local neotreeOpts = {
     filesystem = {
         follow_current_file = true,
         use_libuv_file_watcher = true,
+        filtered_items = {
+            never_show = {
+                ".git",
+            },
+        },
     },
     window = {
         mappings = treeKeymaps,
