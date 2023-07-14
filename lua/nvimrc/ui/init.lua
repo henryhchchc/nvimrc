@@ -1,6 +1,5 @@
 local lualine = require("nvimrc.ui.lualine")
 local tabby = require("nvimrc.ui.tabby")
-local nvimTree = require("nvimrc.ui.nvimtree")
 local neotree = require("nvimrc.ui.neotree")
 local telescope = require("nvimrc.ui.telescope")
 local nordfox = require("nvimrc.ui.nordfox")
