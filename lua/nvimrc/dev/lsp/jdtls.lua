@@ -18,7 +18,13 @@ function M.configure()
         },
         init_options = {
             workspace = configDir,
+            extendedClientCapabilities = {
+                progressReportProvider = false,
+            },
         },
+        handlers = {
+            ["$/progress"] = require("noice.lsp.progress").progress
+        }
     }
     local finalConfig = vim.tbl_deep_extend("force", defaultOpts, extraJdtLsConfig)
 
