@@ -104,9 +104,12 @@ local function configure()
         extensions = {
             "man",
             "nvim-dap-ui",
-            "nvim-tree",
+            "neo-tree",
             "quickfix",
-            "symbols-outline",
+            "aerial",
+            "lazy",
+            "trouble",
+            "fugitive",
         },
     })
 end

@@ -1,6 +1,7 @@
 local lualine = require("config.components.ui.lualine")
 local tabby = require("config.components.ui.tabby")
 local nvimTree = require("config.components.ui.nvimtree")
+local neotree = require("config.components.ui.neotree")
 local telescope = require("config.components.ui.telescope")
 local nordfox = require("config.components.ui.nordfox")
 local noice = require("config.components.ui.noice")
@@ -15,7 +16,7 @@ local M = {}
 M.pluginSpecs = {
     noice.pluginSpec,
     tabby.pluginSpec,
-    nvimTree.pluginSpec,
+    neotree.pluginSpec,
     lualine.pluginSpec,
     nordfox.pluginSpec,
     telescope.pluginSpec,
