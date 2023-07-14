@@ -3,7 +3,6 @@ local cmp = require("nvimrc.dev.cmp")
 local dap = require("nvimrc.dev.dap")
 local nullLs = require("nvimrc.dev.nullls")
 
-local jdtls = require("nvimrc.dev.lsp.jdtls")
 local clangd = require("nvimrc.dev.lsp.clangd")
 local texlab = require("nvimrc.dev.lsp.texlab")
 local luadev = require("nvimrc.dev.lsp.luadev")
@@ -15,7 +14,6 @@ M.pluginSpecs = {
     cmp.pluginSpec,
     nullLs.pluginSpec,
     dap.pluginSpec,
-    jdtls.pluginSpec,
     clangd.pluginSpec,
     texlab.backwardSearchPluginSpec,
     luadev.pluginSpec,

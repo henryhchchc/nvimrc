@@ -4,6 +4,7 @@ local keymaps = require("nvimrc.dev.lsp.keymaps")
 -- local projectLocalSettings = require("nvimrc.dev.lsp.localsettings")
 local servers = require("nvimrc.dev.lsp.servers")
 local texlab = require("nvimrc.dev.lsp.texlab")
+local jdtls = require("nvimrc.dev.lsp.jdtls")
 local diagnostics = require("nvimrc.dev.lsp.diagnostic")
 
 M.servers = servers
@@ -24,6 +25,7 @@ end
 
 function M.configureServers()
     texlab.configure()
+    jdtls.configure()
     servers.setupDefaults({
         "bashls",
         "cssls",
@@ -45,11 +47,6 @@ function M.configure()
 
     require("neoconf").setup({})
     require("neodev").setup({})
-    local lspConfigGrp = vim.api.nvim_create_augroup("lsp-rc-reload", { clear = true })
-    vim.api.nvim_create_autocmd("DirChanged", {
-        group = lspConfigGrp,
-        callback = function() M.configureServers() end,
-    })
     M.configureServers()
 end
 
