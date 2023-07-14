@@ -1,10 +1,10 @@
 local M = {}
 
-local keymaps = require("config.components.dev.lsp.keymaps")
--- local projectLocalSettings = require("config.components.dev.lsp.localsettings")
-local servers = require("config.components.dev.lsp.servers")
-local texlab = require("config.components.dev.lsp.texlab")
-local diagnostics = require("config.components.dev.lsp.diagnostic")
+local keymaps = require("nvimrc.dev.lsp.keymaps")
+-- local projectLocalSettings = require("nvimrc.dev.lsp.localsettings")
+local servers = require("nvimrc.dev.lsp.servers")
+local texlab = require("nvimrc.dev.lsp.texlab")
+local diagnostics = require("nvimrc.dev.lsp.diagnostic")
 
 M.servers = servers
 

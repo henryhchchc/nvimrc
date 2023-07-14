@@ -1,7 +1,7 @@
 local M = {}
 
 local function configureTreeSitter()
-    local tsLanguages = require("config.components.tslanguages")
+    local tsLanguages = require("nvimrc.tslanguages")
     require("nvim-treesitter.configs").setup({
         ensure_installed = tsLanguages,
         ignore_install = {},

@@ -2,7 +2,7 @@ local M = {}
 
 local function configure()
     local lspkind = require("lspkind")
-    local lspKindOptions = require("config.components.dev.cmp.lspkind").options
+    local lspKindOptions = require("nvimrc.dev.cmp.lspkind").options
     local cmp = require("cmp")
 
     vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
@@ -25,7 +25,7 @@ local function configure()
             ghost_text = { hl_group = "CmpGhostText" },
         },
         preselect = cmp.PreselectMode.None,
-        mapping = require("config.components.dev.cmp.cmpkeymap"),
+        mapping = require("nvimrc.dev.cmp.cmpkeymap"),
         sources = {
             { name = "nvim_lsp" },
             { name = "buffer" },

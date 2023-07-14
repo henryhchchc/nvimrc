@@ -1,8 +1,8 @@
 vim.loader.enable()
 
-require("config.global")
+require("nvimrc.global")
 
-require("config.components.cddir").configure()
+require("nvimrc.cddir").configure()
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -18,10 +18,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local ts = require("config.components.treesitter")
-local dev = require("config.components.dev")
-local ui = require("config.components.ui")
-local vcs = require("config.components.vcs")
+local ts = require("nvimrc.treesitter")
+local dev = require("nvimrc.dev")
+local ui = require("nvimrc.ui")
+local vcs = require("nvimrc.vcs")
 
 local plugins = {}
 
@@ -37,5 +37,5 @@ require("lazy").setup(plugins, {
     },
 })
 
-require("config.components.keymap").configure()
-require("config.components.autocmds").configure()
+require("nvimrc.keymap").configure()
+require("nvimrc.autocmds").configure()

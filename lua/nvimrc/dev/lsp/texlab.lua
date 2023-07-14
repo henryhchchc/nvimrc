@@ -20,7 +20,7 @@ local texLabExtraConfig = {
 }
 
 function M.configure()
-    local defaultOpts = require("config.components.dev.lsp").makeDefaultOpts()
+    local defaultOpts = require("nvimrc.dev.lsp").makeDefaultOpts()
     -- local localConfig = vim.g.local_lsp_config.texlab or {}
     if vim.fn.has("macunix") then
         texLabExtraConfig.settings.texlab.build.forwardSearchAfter = true

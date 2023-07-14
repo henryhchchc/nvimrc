@@ -1,7 +1,7 @@
 local M = {}
 
 local function configure()
-    local defaultOpts = require("config.components.dev.lsp").makeDefaultOpts()
+    local defaultOpts = require("nvimrc.dev.lsp").makeDefaultOpts()
     local localConfig = vim.g.local_lsp_config.jdtls or {}
     local rootDir
     if localConfig.root_dir then

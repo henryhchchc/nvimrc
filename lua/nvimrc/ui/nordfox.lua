@@ -1,6 +1,6 @@
 local M = {}
 
-local nordColors = require("config.components.ui.nord").colors
+local nordColors = require("nvimrc.ui.nord").colors
 local terminal = {
     background = "#151515",
 }

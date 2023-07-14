@@ -1,7 +1,7 @@
 local M = {}
 
 local function configure()
-    local defaultOpts = require("config.components.dev.lsp").makeDefaultOpts()
+    local defaultOpts = require("nvimrc.dev.lsp").makeDefaultOpts()
     local clangdConfig = {
         capabilities = {
             offsetEncoding = "utf-8",

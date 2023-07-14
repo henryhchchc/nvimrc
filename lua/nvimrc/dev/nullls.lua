@@ -11,7 +11,7 @@ local function configure()
             nullLs.builtins.formatting.swiftformat,
             nullLs.builtins.hover.dictionary,
         },
-        on_attach = require("config.components.dev.lsp").lspAttach,
+        on_attach = require("nvimrc.dev.lsp").lspAttach,
     })
 end
 

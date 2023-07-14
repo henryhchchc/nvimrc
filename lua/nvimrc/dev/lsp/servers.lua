@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setupRustAnalyzer()
-    local defaultOpts = require("config.components.dev.lsp").makeDefaultOpts()
+    local defaultOpts = require("nvimrc.dev.lsp").makeDefaultOpts()
     local rustConfig = {
         server = defaultOpts,
         dap = {
@@ -17,7 +17,7 @@ end
 
 function M.setupDefaults(serversToConfigure)
     local lspConfig = require("lspconfig")
-    local defaultOpts = require("config.components.dev.lsp").makeDefaultOpts()
+    local defaultOpts = require("nvimrc.dev.lsp").makeDefaultOpts()
     for _, lsp in pairs(serversToConfigure) do
         lspConfig[lsp].setup(defaultOpts)
     end
