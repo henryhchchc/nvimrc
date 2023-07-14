@@ -2,13 +2,12 @@ local M = {}
 
 local function configure()
     local defaultOpts = require("config.components.dev.lsp").makeDefaultOpts()
-    local localConfig = vim.g.local_lsp_config.clangd or {}
     local clangdConfig = {
         capabilities = {
             offsetEncoding = "utf-8",
         },
     }
-    local finalConfig = vim.tbl_deep_extend("force", defaultOpts, clangdConfig, localConfig)
+    local finalConfig = vim.tbl_deep_extend("force", defaultOpts, clangdConfig)
     require("clangd_extensions").setup({ server = finalConfig })
 end
 

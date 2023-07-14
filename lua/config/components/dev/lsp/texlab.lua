@@ -21,7 +21,7 @@ local texLabExtraConfig = {
 
 function M.configure()
     local defaultOpts = require("config.components.dev.lsp").makeDefaultOpts()
-    local localConfig = vim.g.local_lsp_config.texlab or {}
+    -- local localConfig = vim.g.local_lsp_config.texlab or {}
     if vim.fn.has("macunix") then
         texLabExtraConfig.settings.texlab.build.forwardSearchAfter = true
         -- Use [Skim](https://skim-app.sourceforge.io) on macOS for forward search.
@@ -30,7 +30,7 @@ function M.configure()
             args = { "-b", "-g", "%l", "%p", "%f" },
         }
     end
-    local finalConfig = vim.tbl_deep_extend("force", defaultOpts, texLabExtraConfig, localConfig)
+    local finalConfig = vim.tbl_deep_extend("force", defaultOpts, texLabExtraConfig)
     local lspConfig = require("lspconfig")
     lspConfig.texlab.setup(finalConfig)
 end

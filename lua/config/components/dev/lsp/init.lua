@@ -1,7 +1,7 @@
 local M = {}
 
 local keymaps = require("config.components.dev.lsp.keymaps")
-local projectLocalSettings = require("config.components.dev.lsp.localsettings")
+-- local projectLocalSettings = require("config.components.dev.lsp.localsettings")
 local servers = require("config.components.dev.lsp.servers")
 local texlab = require("config.components.dev.lsp.texlab")
 local diagnostics = require("config.components.dev.lsp.diagnostic")
@@ -23,7 +23,6 @@ function M.makeDefaultOpts()
 end
 
 function M.configureServers()
-    vim.g.local_lsp_config = projectLocalSettings.loadProjectLocalConfig()
     texlab.configure()
     servers.setupDefaults({
         "bashls",
@@ -43,6 +42,9 @@ end
 
 function M.configure()
     diagnostics.configure()
+
+    require("neoconf").setup({})
+    require("neodev").setup({})
     local lspConfigGrp = vim.api.nvim_create_augroup("lsp-rc-reload", { clear = true })
     vim.api.nvim_create_autocmd("DirChanged", {
         group = lspConfigGrp,

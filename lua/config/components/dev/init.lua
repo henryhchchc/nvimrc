@@ -6,6 +6,7 @@ local nullLs = require("config.components.dev.nullls")
 local jdtls = require("config.components.dev.lsp.jdtls")
 local clangd = require("config.components.dev.lsp.clangd")
 local texlab = require("config.components.dev.lsp.texlab")
+local luadev = require("config.components.dev.lsp.luadev")
 
 local M = {}
 
@@ -17,6 +18,8 @@ M.pluginSpecs = {
     jdtls.pluginSpec,
     clangd.pluginSpec,
     texlab.backwardSearchPluginSpec,
+    luadev.pluginSpec,
+    { "folke/neoconf.nvim",    config = false,         cmd = "Neoconf",   dependencies = { "nvim-lspconfig" } },
     {
         "smjonas/inc-rename.nvim",
         config = function()
