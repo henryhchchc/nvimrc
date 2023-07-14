@@ -61,7 +61,7 @@ M.pluginSpecs = {
             { "JoosepAlviste/nvim-ts-context-commentstring" },
             { "nvim-treesitter/nvim-treesitter-textobjects" },
         },
-        build = vim.cmd.TSUpdate,
+        build = ":TSUpdate",
         config = configureTreeSitter,
         event = { "BufReadPost", "BufNewFile" },
     },
