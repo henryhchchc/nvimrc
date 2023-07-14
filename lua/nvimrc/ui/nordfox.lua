@@ -32,6 +32,10 @@ local nordFoxOptions = {
             SpellLocal = { style = "underline" },
             SpellRare = { style = "underline" },
             EndOfBuffer = { fg = nordColors.nord3 },
+            DiagnosticUnderlineError = { style = "underline" },
+            DiagnosticUnderlineWarn = { style = "underline" },
+            DiagnosticUnderlineInfo = { style = "underline" },
+            DiagnosticUnderlineHint = { style = "underline" },
         },
     },
 }
