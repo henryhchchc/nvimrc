@@ -1,0 +1,15 @@
+{
+    "lspconfig": {
+        "lua_ls": {
+            "Lua.runtime.version": "LuaJIT",
+            "Lua.workspace.checkThirdParty": false,
+            "Lua.format.defaultConfig": {
+                "indent_style": "space",
+                "indent_size": "4",
+                "column_width": "150",
+                "quote_style": "double",
+                "end_of_line": "lf"
+            }
+        }
+    }
+}
