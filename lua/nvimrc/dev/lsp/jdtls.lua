@@ -6,7 +6,7 @@ function M.configure()
     local lspUtil = require("lspconfig.util")
     local jdtlsCacheDir = lspUtil.path.join(vim.loop.os_homedir(), ".cache", "jdtls")
     local configDir = lspUtil.path.join(jdtlsCacheDir, "config")
-    local dataDir = lspUtil.path.join(jdtlsCacheDir, "project_data", vim.fn.sha256(vim.loop.cwd()))
+    local dataDir = lspUtil.path.join(jdtlsCacheDir, "project_data", vim.fn.sha256(vim.loop.cwd() or ""))
     local extraJdtLsConfig = {
         cmd = {
             "jdtls",
