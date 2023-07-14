@@ -1,6 +1,6 @@
 local M = {}
 
-local keymaps = {
+local treeKeymaps = {
     ["<space>"] = "none",
     ["<leader>rn"] = "rename",
     ["<2-LeftMouse>"] = "open",
@@ -19,6 +19,7 @@ local keymaps = {
             show_path = "relative",
         },
     },
+    ["H"] = "toggle_hidden",
     ["A"] = "add_directory",
     ["D"] = "delete",
     ["yy"] = "copy_to_clipboard",
@@ -34,12 +35,14 @@ local keymaps = {
 local neotreeOpts = {
     sources = { "filesystem", "buffers", "git_status", "document_symbols" },
     open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "Outline" },
+    use_popups_for_input = false,
+    use_default_mappings = false,
     filesystem = {
         follow_current_file = true,
         use_libuv_file_watcher = true,
     },
     window = {
-        mappings = keymaps,
+        mappings = treeKeymaps,
     },
     default_component_configs = {
         indent = {
@@ -57,6 +60,37 @@ local neotreeOpts = {
                 renamed = "󰁕",
                 unstaged = "󰄱",
             },
+        },
+    },
+    source_selector = {
+        winbar = false,
+        statusline = false,
+        show_scrolled_off_parent_node = false,
+        sources = {
+            { source = "filesystem", display_name = "File System" },
+            { source = "buffers", display_name = "Buffers" },
+            { source = "git_status", display_name = "Git Status" },
+            { source = "document_symbols", display_name = "Document Symbols" },
+        },
+    },
+    document_symbols = {
+        kinds = {
+            File = { icon = "󰈙", hl = "Tag" },
+            Namespace = { icon = "󰌗", hl = "Include" },
+            Package = { icon = "󰏖", hl = "Label" },
+            Class = { icon = "󰌗", hl = "Include" },
+            Property = { icon = "󰆧", hl = "@property" },
+            Enum = { icon = "󰒻", hl = "@number" },
+            Function = { icon = "󰊕", hl = "Function" },
+            String = { icon = "󰀬", hl = "String" },
+            Number = { icon = "󰎠", hl = "Number" },
+            Array = { icon = "󰅪", hl = "Type" },
+            Object = { icon = "󰅩", hl = "Type" },
+            Key = { icon = "󰌋", hl = "" },
+            Struct = { icon = "󰌗", hl = "Type" },
+            Operator = { icon = "󰆕", hl = "Operator" },
+            TypeParameter = { icon = "󰊄", hl = "Type" },
+            StaticMethod = { icon = "󰠄 ", hl = "Function" },
         },
     },
 }
