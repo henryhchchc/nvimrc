@@ -1,7 +1,5 @@
 local M = {}
 
-M.pluginSpec = { "folke/neodev.nvim", config = function()
-
-end, ft = "lua" }
+M.pluginSpec = { "folke/neodev.nvim", config = false }
 
 return M
