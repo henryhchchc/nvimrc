@@ -24,14 +24,14 @@ local function configure()
         experimental = {
             ghost_text = { hl_group = "CmpGhostText" },
         },
-        preselect = cmp.PreselectMode.None,
+        preselect = cmp.PreselectMode.Item,
         mapping = require("nvimrc.dev.cmp.cmpkeymap"),
         sources = {
-            { name = "nvim_lsp" },
-            { name = "buffer" },
-            { name = "luasnip" },
-            { name = "crates" },
-            { name = "copilot" }
+            { name = "nvim_lsp", group_index = 2 },
+            { name = "luasnip", group_index = 2 },
+            { name = "crates", group_index = 2 },
+            { name = "copilot", group_index = 2 },
+            { name = "buffer", group_index = 1 },
         },
     })
 
@@ -43,10 +43,10 @@ local function configure()
 
     cmp.setup.cmdline(":", {
         sources = {
-            { name = "cmdline" },
-            { name = "path" },
-            { name = "cmdline_history" },
-            { name = "fuzzy_path", option = { fd_timeout_msec = 1500 } },
+            { name = "cmdline", group_index = 2 },
+            { name = "path", group_index = 2 },
+            { name = "cmdline_history", group_index = 2 },
+            { name = "fuzzy_path", group_index = 1, option = { fd_timeout_msec = 1500 } },
         },
     })
     local cmp_autopairs = require("nvim-autopairs.completion.cmp")
@@ -79,9 +79,8 @@ M.pluginSpec = {
         },
         {
             "zbirenbaum/copilot-cmp",
-            config = true
-        }
-
+            config = true,
+        },
     },
     config = configure,
     event = { "InsertEnter", "CmdlineEnter" },
