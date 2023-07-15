@@ -1,7 +1,6 @@
 local M = {}
 
 local keymaps = require("nvimrc.dev.lsp.keymaps")
--- local projectLocalSettings = require("nvimrc.dev.lsp.localsettings")
 local servers = require("nvimrc.dev.lsp.servers")
 local texlab = require("nvimrc.dev.lsp.texlab")
 local jdtls = require("nvimrc.dev.lsp.jdtls")

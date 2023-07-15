@@ -18,7 +18,7 @@ M.pluginSpecs = {
     clangd.pluginSpec,
     texlab.backwardSearchPluginSpec,
     luadev.pluginSpec,
-    { "folke/neoconf.nvim", config = false, cmd = "Neoconf", dependencies = { "nvim-lspconfig" } },
+    { "folke/neoconf.nvim", cmd = "Neoconf", dependencies = { "nvim-lspconfig" } },
     {
         "smjonas/inc-rename.nvim",
         config = function()

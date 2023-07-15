@@ -1,6 +1,6 @@
 local M = {}
 
 --- @type LazyPluginSpec
-M.pluginSpec = { "folke/neodev.nvim", config = false }
+M.pluginSpec = { "folke/neodev.nvim" }
 
 return M
