@@ -15,6 +15,7 @@ local options = {
                 return not vim.api.nvim_win_get_config(win).focusable
             end,
         },
+        incremental = true,
     },
 }
 
