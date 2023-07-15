@@ -46,7 +46,7 @@ local function lspName()
     elseif lspCount == 1 then
         content = clients[1].name
     else
-        content = string.format("%s (%d more)", clients[1].name, lspCount - 1)
+        content = string.format("%s Language servers", lspCount)
     end
     return prefix .. content
 end

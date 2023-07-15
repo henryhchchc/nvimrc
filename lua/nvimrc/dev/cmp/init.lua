@@ -34,7 +34,7 @@ local function configure()
             { name = "buffer", group_index = 1 },
         },
         view = {
-            entries = { name = "custom", },
+            entries = { name = "custom" },
         },
     })
 
@@ -43,7 +43,7 @@ local function configure()
             { name = "buffer" },
         },
         view = {
-            entries = { name = "custom" }
+            entries = { name = "custom" },
         },
     })
 
