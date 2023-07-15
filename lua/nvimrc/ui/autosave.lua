@@ -7,6 +7,7 @@ local autoSaveOptions = {
     },
 }
 
+--- @type LazyPluginSpec
 M.pluginSpec = { "Pocco81/auto-save.nvim", opts = autoSaveOptions, event = "VeryLazy" }
 
 return M

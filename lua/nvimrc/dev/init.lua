@@ -9,6 +9,7 @@ local luadev = require("nvimrc.dev.lsp.luadev")
 
 local M = {}
 
+--- @type LazyPluginSpec[]
 M.pluginSpecs = {
     { "neovim/nvim-lspconfig", config = lsp.configure, event = "VeryLazy" },
     cmp.pluginSpec,

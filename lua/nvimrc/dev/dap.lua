@@ -76,6 +76,7 @@ local function configure()
     })
 end
 
+--- @type LazyPluginSpec
 M.pluginSpec = {
     "mfussenegger/nvim-dap",
     config = configure,

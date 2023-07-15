@@ -53,6 +53,7 @@ local function configure()
     cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
+--- @type LazyPluginSpec
 M.pluginSpec = {
     "hrsh7th/nvim-cmp",
     dependencies = {

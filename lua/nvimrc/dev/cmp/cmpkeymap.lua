@@ -40,6 +40,7 @@ end
 
 local cmp = require("cmp")
 
+--- @type table<string, cmp.MappingClass>
 return {
     ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
     ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),

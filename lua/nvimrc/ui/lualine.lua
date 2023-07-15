@@ -128,6 +128,7 @@ local function configCopilotStatus()
     })
 end
 
+--- @type LazyPluginSpec
 M.pluginSpec = {
     "nvim-lualine/lualine.nvim",
     dependencies = {

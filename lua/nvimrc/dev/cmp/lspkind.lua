@@ -1,5 +1,6 @@
 local M = {}
 
+--- @type table<string, string>
 local sourceNames = {
     buffer = "Buffer",
     nvim_lsp = "LSP",

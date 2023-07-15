@@ -12,6 +12,7 @@ local notify = require("nvimrc.ui.notify")
 
 local M = {}
 
+--- @type LazyPluginSpec[]
 M.pluginSpecs = {
     noice.pluginSpec,
     tabby.pluginSpec,

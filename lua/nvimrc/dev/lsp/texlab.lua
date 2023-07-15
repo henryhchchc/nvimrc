@@ -35,6 +35,7 @@ function M.configure()
     lspConfig.texlab.setup(finalConfig)
 end
 
+--- @type LazyPluginSpec
 M.backwardSearchPluginSpec = {
     "f3fora/nvim-texlabconfig",
     tag = "v0.1.0",

@@ -31,6 +31,7 @@ local function configureGitSigns()
     })
 end
 
+--- @type LazyPluginSpec[]
 M.pluginSpecs = {
     {
         "lewis6991/gitsigns.nvim",

@@ -92,6 +92,7 @@ local function configure()
     vim.keymap.set("n", "z=", telescope.builtin.spell_suggest, { desc = "Telescope Spell Suggestions" })
 end
 
+--- @type LazyPluginSpec
 M.pluginSpec = {
     "nvim-telescope/telescope.nvim",
     dependencies = {

@@ -110,6 +110,7 @@ local keymaps = {
     },
 }
 
+--- @type LazyPluginSpec
 M.pluginSpec = {
     "nvim-neo-tree/neo-tree.nvim",
     dependencies = {

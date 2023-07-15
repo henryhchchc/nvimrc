@@ -1,5 +1,6 @@
 local M = {}
 
+--- @type Flash.Config
 local options = {
     search = {
         exclude = {
@@ -17,6 +18,7 @@ local options = {
     },
 }
 
+--- @type LazyKeys[]
 local keymaps = {
     {
         "S",
@@ -44,6 +46,7 @@ local keymaps = {
     },
 }
 
+--- @type LazyPluginSpec
 M.pluginSpec = { "folke/flash.nvim", event = "VeryLazy", opts = options, keys = keymaps }
 
 return M

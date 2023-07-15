@@ -20,6 +20,7 @@ local function configureBlankline()
     })
 end
 
+--- @type LazyPluginSpec
 M.pluginSpec = {
     "lukas-reineke/indent-blankline.nvim",
     config = configureBlankline,

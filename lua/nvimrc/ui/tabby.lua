@@ -11,6 +11,7 @@ local tabbyHl = {
     current_tab = { fg = nordColors.nord0, bg = nordColors.nord7 },
 }
 
+--- @param tabbyLine TabbyLine
 local function tabbyLineConfig(tabbyLine)
     local cwdName = vim.fs.basename(vim.fn.getcwd())
     vim.opt.titlestring = cwdName .. " - NVIM"
@@ -66,6 +67,7 @@ end
 
 local function configure() require("tabby.tabline").set(tabbyLineConfig) end
 
+--- @type LazyPluginSpec
 M.pluginSpec = { "nanozuki/tabby.nvim", config = configure, event = "VeryLazy" }
 
 return M
