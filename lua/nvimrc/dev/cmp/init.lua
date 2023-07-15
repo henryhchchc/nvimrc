@@ -33,11 +33,17 @@ local function configure()
             { name = "copilot", group_index = 2 },
             { name = "buffer", group_index = 1 },
         },
+        view = {
+            entries = { name = "custom", },
+        },
     })
 
     cmp.setup.cmdline("/", {
         sources = {
             { name = "buffer" },
+        },
+        view = {
+            entries = { name = "custom" }
         },
     })
 
@@ -47,6 +53,9 @@ local function configure()
             { name = "path", group_index = 2 },
             { name = "cmdline_history", group_index = 2 },
             { name = "fuzzy_path", group_index = 1, option = { fd_timeout_msec = 1500 } },
+        },
+        view = {
+            entries = { name = "custom" },
         },
     })
     local cmp_autopairs = require("nvim-autopairs.completion.cmp")
