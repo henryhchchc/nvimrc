@@ -8,6 +8,7 @@ local sourceNames = {
     fuzzy_path = "FZF",
     cmdline_history = "History",
     luasnip = "Snippet",
+    copilot = "GitHub Copolot",
 }
 
 M.options = {
@@ -23,6 +24,9 @@ M.options = {
         vim_item.menu = sourceName
         return vim_item
     end,
+    symbol_map = {
+        Copilot = "",
+    },
 }
 
 return M

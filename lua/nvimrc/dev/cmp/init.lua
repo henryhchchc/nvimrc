@@ -31,6 +31,7 @@ local function configure()
             { name = "buffer" },
             { name = "luasnip" },
             { name = "crates" },
+            { name = "copilot" }
         },
     })
 
@@ -76,6 +77,11 @@ M.pluginSpec = {
             "tzachar/cmp-fuzzy-path",
             dependencies = { { "tzachar/fuzzy.nvim" } },
         },
+        {
+            "zbirenbaum/copilot-cmp",
+            config = true
+        }
+
     },
     config = configure,
     event = { "InsertEnter", "CmdlineEnter" },

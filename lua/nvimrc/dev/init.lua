@@ -51,6 +51,12 @@ M.pluginSpecs = {
         cmd = { "TroubleToggle", "Trouble" },
         config = true,
     },
+    {
+        "zbirenbaum/copilot.lua",
+        config = true,
+        cmd = "Copilot",
+        event = "InsertEnter"
+    }
 }
 
 return M
