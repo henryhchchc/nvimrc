@@ -19,7 +19,7 @@ M.options = {
         local sourceName = sourceNames[entry.source.name] or entry.source.name
         if entry.source.name == "nvim_lsp" then
             local client = entry.source.source.client or {}
-            sourceName = "LSP: " .. client.name
+            sourceName = string.format("LSP: %s", client.name)
         end
         vim_item.menu = sourceName
         return vim_item
