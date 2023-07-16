@@ -5,12 +5,8 @@ function M.configure()
 
     vim.diagnostic.config({
         virtual_text = {
-            prefix = " ■",
-            format = function(diag)
-                local source = diag.source
-                if source and source:find("%.$") then source = source:gsub("%.", "") end
-                return string.format("[%s] %s ", source, diag.message)
-            end,
+            prefix = "■",
+            source = "if_many",
             severity = { min = vim.diagnostic.severity.INFO },
         },
         signs = true,

@@ -12,12 +12,12 @@ local function lspAttach(client, bufnr) keymaps.setupEditingKepmaps(bufnr) end
 
 function M.makeDefaultOpts()
     local initialCaps = vim.lsp.protocol.make_client_capabilities()
-    local clientCaps = require("cmp_nvim_lsp").default_capabilities(initialCaps)
-    local attach = lspAttach
+    local cmpCaps = require("cmp_nvim_lsp").default_capabilities()
+    local capabilities = vim.tbl_deep_extend("force", initialCaps, cmpCaps)
     local lspFlags = {}
     return {
-        on_attach = attach,
-        capabilities = clientCaps,
+        on_attach = lspAttach,
+        capabilities = capabilities,
         flags = lspFlags,
     }
 end
