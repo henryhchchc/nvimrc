@@ -9,7 +9,7 @@ local sourceNames = {
     fuzzy_path = "FZF",
     cmdline_history = "History",
     luasnip = "Snippet",
-    copilot = "GitHub Copolot",
+    copilot = "GitHub Copilot",
 }
 
 M.options = {
