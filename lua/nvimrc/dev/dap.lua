@@ -1,6 +1,5 @@
 local M = {}
 
-
 --- @type LazyKeys[]
 local dapKepmaps = {
     {
@@ -65,7 +64,6 @@ local function configure()
     }
 end
 
-
 --- @type LazyPluginSpec
 local dapUi = {
     "rcarriga/nvim-dap-ui",
@@ -79,7 +77,7 @@ local dapUi = {
 M.pluginSpec = {
     "mfussenegger/nvim-dap",
     config = configure,
-    dependencies = { dapUi, { "theHamsta/nvim-dap-virtual-text", config = true }, },
+    dependencies = { dapUi, { "theHamsta/nvim-dap-virtual-text", config = true } },
     keys = dapKepmaps,
     event = "LspAttach",
 }

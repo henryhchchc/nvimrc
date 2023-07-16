@@ -24,7 +24,6 @@ local function highlightYanked()
     })
 end
 
-
 local closeWindowFts = {
     "help",
     "lspinfo",
