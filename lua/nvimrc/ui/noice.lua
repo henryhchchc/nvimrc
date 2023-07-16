@@ -1,6 +1,5 @@
 local M = {}
 
-
 --- @type NoiceConfig
 local options = {
     lsp = {
