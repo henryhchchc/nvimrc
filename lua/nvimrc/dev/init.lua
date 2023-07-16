@@ -50,6 +50,7 @@ M.pluginSpecs = {
         cmd = "Copilot",
         event = "InsertEnter",
     },
+    { "stevearc/overseer.nvim", config = true, event = "VeryLazy" },
 }
 
 return M
