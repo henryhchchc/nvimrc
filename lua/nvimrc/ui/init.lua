@@ -3,7 +3,6 @@ local M = {}
 --- @type LazyPluginSpec[]
 M.pluginSpecs = {
     require("nvimrc.ui.noice").pluginSpec,
-    require("nvimrc.ui.tabby").pluginSpec,
     require("nvimrc.ui.neotree").pluginSpec,
     require("nvimrc.ui.lualine").pluginSpec,
     require("nvimrc.ui.nordfox").pluginSpec,
@@ -15,6 +14,7 @@ M.pluginSpecs = {
     require("nvimrc.ui.notify").pluginSpec,
     require("nvimrc.ui.trouble").pluginSpec,
     { "mvllow/modes.nvim", config = true, event = "VeryLazy" },
+    require("nvimrc.ui.bufferline").pluginSpec,
     {
         "stevearc/dressing.nvim",
         opts = { input = { enabled = false } },
