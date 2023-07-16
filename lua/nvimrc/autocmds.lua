@@ -24,9 +24,31 @@ local function highlightYanked()
     })
 end
 
+
+local closeWindowFts = {
+    "help",
+    "lspinfo",
+    "man",
+    "notify",
+    "qf",
+}
+
+local function closeWindowShortcut()
+    local closeWindowGrp = vim.api.nvim_create_augroup("close_window", {})
+    vim.api.nvim_create_autocmd("FileType", {
+        group = closeWindowGrp,
+        pattern = closeWindowFts,
+        callback = function()
+            vim.keymap.set("n", "q", vim.cmd.bdelete, { desc = "Close window", buffer = true })
+            vim.keymap.set("n", "<C-c>", vim.cmd.bdelete, { desc = "Close window", buffer = true })
+        end,
+    })
+end
+
 function M.configure()
     autoLineNums()
     highlightYanked()
+    closeWindowShortcut()
 end
 
 return M
