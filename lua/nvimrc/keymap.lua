@@ -3,6 +3,8 @@ local M = {}
 function M.configure()
     vim.keymap.set({ "n", "v", "o" }, "<C-c>", "<esc>")
 
+    vim.keymap.set({ "n", "v", "i" }, "<C-s>", vim.cmd.write, { desc = "Save the file" })
+
     vim.keymap.set("n", "]t", vim.cmd.tabnext, { desc = "Switch to the next tabpage." })
     vim.keymap.set("n", "[t", vim.cmd.tabprev, { desc = "Switch to the previous tabpage." })
     vim.keymap.set("n", "<leader>tn", vim.cmd.tabnew, { desc = "Create a new tabpage." })

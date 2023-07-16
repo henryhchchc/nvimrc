@@ -10,7 +10,6 @@ M.pluginSpecs = {
     require("nvimrc.ui.flash").pluginSpec,
     require("nvimrc.ui.indent").pluginSpec,
     require("nvimrc.ui.colorizer").pluginSpec,
-    require("nvimrc.ui.autosave").pluginSpec,
     require("nvimrc.ui.notify").pluginSpec,
     require("nvimrc.ui.trouble").pluginSpec,
     require("nvimrc.ui.bufferline").pluginSpec,
