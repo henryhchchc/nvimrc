@@ -45,14 +45,6 @@ M.pluginSpecs = {
         },
     },
     {
-        "folke/trouble.nvim",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
-        cmd = { "TroubleToggle", "Trouble" },
-        config = true,
-    },
-    {
         "zbirenbaum/copilot.lua",
         config = true,
         cmd = "Copilot",

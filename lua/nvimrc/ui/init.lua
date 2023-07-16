@@ -25,6 +25,7 @@ M.pluginSpecs = {
     colorizer.pluginSpec,
     autosave.pluginSpec,
     notify.pluginSpec,
+    require("nvimrc.ui.trouble").pluginSpec,
     { "mvllow/modes.nvim", config = true, event = "VeryLazy" },
     {
         "stevearc/dressing.nvim",
@@ -82,9 +83,6 @@ M.pluginSpecs = {
         config = true,
         cmd = { "TodoTrouble", "TodoTelescope" },
         event = { "BufReadPost", "BufNewFile" },
-        keys = {
-            { "<leader>xx", vim.cmd.TroubleToggle, desc = "Workspace diagnostics" },
-        },
     },
     {
         "RRethy/vim-illuminate",
