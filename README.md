@@ -9,7 +9,6 @@ Let's assume that `pwd` is the directory where you clone this repository.
 mkdir -p ~/.config/nvim
 ln -sf "$(pwd)/init.lua" ~/.config/nvim/init.lua
 ln -sf "$(pwd)/lua" ~/.config/nvim/lua
-ln -sf "$(pwd)/ftplugin" ~/.config/nvim/ftplugin
 ```
 
 Start `nvim` and enjoy.
