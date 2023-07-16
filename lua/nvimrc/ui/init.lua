@@ -1,30 +1,18 @@
-local lualine = require("nvimrc.ui.lualine")
-local tabby = require("nvimrc.ui.tabby")
-local neotree = require("nvimrc.ui.neotree")
-local telescope = require("nvimrc.ui.telescope")
-local nordfox = require("nvimrc.ui.nordfox")
-local noice = require("nvimrc.ui.noice")
-local flash = require("nvimrc.ui.flash")
-local indent = require("nvimrc.ui.indent")
-local colorizer = require("nvimrc.ui.colorizer")
-local autosave = require("nvimrc.ui.autosave")
-local notify = require("nvimrc.ui.notify")
-
 local M = {}
 
 --- @type LazyPluginSpec[]
 M.pluginSpecs = {
-    noice.pluginSpec,
-    tabby.pluginSpec,
-    neotree.pluginSpec,
-    lualine.pluginSpec,
-    nordfox.pluginSpec,
-    telescope.pluginSpec,
-    flash.pluginSpec,
-    indent.pluginSpec,
-    colorizer.pluginSpec,
-    autosave.pluginSpec,
-    notify.pluginSpec,
+    require("nvimrc.ui.noice").pluginSpec,
+    require("nvimrc.ui.tabby").pluginSpec,
+    require("nvimrc.ui.neotree").pluginSpec,
+    require("nvimrc.ui.lualine").pluginSpec,
+    require("nvimrc.ui.nordfox").pluginSpec,
+    require("nvimrc.ui.telescope").pluginSpec,
+    require("nvimrc.ui.flash").pluginSpec,
+    require("nvimrc.ui.indent").pluginSpec,
+    require("nvimrc.ui.colorizer").pluginSpec,
+    require("nvimrc.ui.autosave").pluginSpec,
+    require("nvimrc.ui.notify").pluginSpec,
     require("nvimrc.ui.trouble").pluginSpec,
     { "mvllow/modes.nvim", config = true, event = "VeryLazy" },
     {
