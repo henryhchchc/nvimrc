@@ -20,10 +20,7 @@ vim.undofile = true
 vim.g.mapleader = " "
 vim.g.tex_flavor = "latex"
 
-vim.opt.pumblend = 10
-vim.opt.winblend = 10
 vim.opt.termguicolors = true
-vim.opt.showtabline = 2
 
 -- Disable netrw
 vim.g.loaded_netrw = 1

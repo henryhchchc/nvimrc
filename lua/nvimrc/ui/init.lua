@@ -5,7 +5,7 @@ M.pluginSpecs = {
     require("nvimrc.ui.noice").pluginSpec,
     require("nvimrc.ui.neotree").pluginSpec,
     require("nvimrc.ui.lualine").pluginSpec,
-    require("nvimrc.ui.nordfox").pluginSpec,
+    require("nvimrc.ui.catppuccin").pluginSpec,
     require("nvimrc.ui.telescope").pluginSpec,
     require("nvimrc.ui.flash").pluginSpec,
     require("nvimrc.ui.indent").pluginSpec,
@@ -13,7 +13,6 @@ M.pluginSpecs = {
     require("nvimrc.ui.autosave").pluginSpec,
     require("nvimrc.ui.notify").pluginSpec,
     require("nvimrc.ui.trouble").pluginSpec,
-    { "mvllow/modes.nvim", config = true, event = "VeryLazy" },
     require("nvimrc.ui.bufferline").pluginSpec,
     {
         "stevearc/dressing.nvim",
