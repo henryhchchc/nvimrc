@@ -60,7 +60,6 @@ M.pluginSpecs = {
         event = "VeryLazy",
     },
     { "nvim-tree/nvim-web-devicons" },
-    { "famiu/bufdelete.nvim", cmd = { "Bdelete" } },
     { "folke/which-key.nvim", config = true, event = "VeryLazy" },
     {
         "stevearc/aerial.nvim",

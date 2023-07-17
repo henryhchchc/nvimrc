@@ -7,22 +7,25 @@ local tsLanguages = require("nvimrc.tslanguages")
 local treeSitterOptions = {
     ensure_installed = tsLanguages,
     ignore_install = {},
+    --- @type TSModule
     highlight = {
         enable = true,
         additional_vim_regex_highlighting = false,
     },
+    --- @type TSModule
     incremental_selection = {
         enable = true,
         keymaps = {
             init_selection = "<C-space>",
             node_incremental = "<C-space>",
-            scope_incremental = false,
             node_decremental = "<bs>",
         },
     },
+    --- @type TSModule
     indent = {
         enable = true,
     },
+    --- @type TSModule
     textobjects = {
         enable = true,
         select = {
@@ -41,14 +44,17 @@ local treeSitterOptions = {
             },
         },
     },
-    playground = { enable = true },
+    --- @type TSModule
     query_linter = {
         enable = true,
         use_virtual_text = true,
         lint_events = { "BufWrite", "CursorHold" },
     },
+    --- @type TSModule
     autotag = { enable = true },
+    --- @type TSModule
     rainbow = { enable = true },
+    --- @type TSModule
     context_commentstring = { enable = true },
 }
 
@@ -68,15 +74,11 @@ M.pluginSpecs = {
         dependencies = {
             { "JoosepAlviste/nvim-ts-context-commentstring" },
             { "nvim-treesitter/nvim-treesitter-textobjects" },
+            { "windwp/nvim-ts-autotag" },
+            { "HiPhish/nvim-ts-rainbow2" },
         },
         build = ":TSUpdate",
         config = configureTreeSitter,
-        event = { "BufReadPost", "BufNewFile" },
-    },
-    { "windwp/nvim-ts-autotag", dependencies = { "nvim-treesitter/nvim-treesitter" }, event = "InsertEnter" },
-    {
-        "HiPhish/nvim-ts-rainbow2",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
         event = { "BufReadPost", "BufNewFile" },
     },
     {
