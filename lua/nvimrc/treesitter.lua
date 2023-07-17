@@ -54,9 +54,11 @@ local treeSitterOptions = {
 
 local function configureTreeSitter()
     require("nvim-treesitter.configs").setup(treeSitterOptions)
-    vim.opt.foldmethod = "expr"
-    vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-    vim.opt.foldlevel = 99
+    -- FIX: Disable treesitter folding for now
+    --      This is a bug in neovim stdlib
+    -- vim.opt.foldmethod = "expr"
+    -- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+    -- vim.opt.foldlevel = 99
 end
 
 --- @type LazyPluginSpec[]
