@@ -33,8 +33,14 @@ local function configure()
             { name = "copilot" },
             { name = "buffer" },
         },
+        matching = {
+            disallow_partial_fuzzy_matching = false,
+        },
         view = {
             entries = { name = "custom" },
+        },
+        window = {
+            completion = cmp.config.window.bordered()
         },
     })
 
@@ -56,9 +62,6 @@ local function configure()
         },
         view = {
             entries = { name = "custom" },
-        },
-        matching = {
-            disallow_partial_fuzzy_matching = false,
         },
     })
     local cmp_autopairs = require("nvim-autopairs.completion.cmp")
