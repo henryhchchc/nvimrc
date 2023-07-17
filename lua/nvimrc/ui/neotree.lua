@@ -39,7 +39,9 @@ local neotreeOpts = {
     use_default_mappings = false,
     filesystem = {
         group_empty_dirs = true,
-        follow_current_file = true,
+        follow_current_file = {
+            enabled = true
+        },
         use_libuv_file_watcher = true,
         filtered_items = {
             never_show = {
