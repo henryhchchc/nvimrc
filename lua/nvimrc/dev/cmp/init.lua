@@ -24,7 +24,7 @@ local function configure()
         experimental = {
             ghost_text = { hl_group = "CmpGhostText" },
         },
-        preselect = cmp.PreselectMode.Item,
+        preselect = cmp.PreselectMode.None,
         mapping = require("nvimrc.dev.cmp.cmpkeymap"),
         sources = {
             { name = "nvim_lsp" },

@@ -1,7 +1,10 @@
 local tabMapping = function(fallback)
+    local cmp = require("cmp")
     local luasnip = require("luasnip")
     if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
+    elseif cmp.visible() and cmp.get_active_entry() then
+        cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
     else
         fallback()
     end
@@ -16,15 +19,13 @@ local sTabMapping = function(fallback)
     end
 end
 
----@diagnostic disable-next-line: unused-local
 local crMapping = function(fallback)
     local cmp = require("cmp")
-    --- @type cmp.ConfirmOption
-    local opts = {
-        select = false,
-        behavior = cmp.ConfirmBehavior.Replace,
-    }
-    cmp.confirm(opts)
+    if cmp.visible() and cmp.get_selected_entry() ~= nil then
+        cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
+    else
+        fallback()
+    end
 end
 
 local cmp = require("cmp")
