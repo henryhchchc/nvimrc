@@ -78,16 +78,17 @@ local function configure()
     require("telescope._extensions.zoxide.config").setup({ prompt_title = "Zoxide List" })
 
     telescope.builtin = require("telescope.builtin")
-    vim.keymap.set("n", "<leader>tf", telescope.builtin.find_files, { desc = "Telescope Find Files" })
-    vim.keymap.set("n", "<leader>tg", telescope.builtin.live_grep, { desc = "Telescope Live grep" })
-    vim.keymap.set("n", "<leader>tb", telescope.builtin.buffers, { desc = "Telescope Find Buffer" })
-    vim.keymap.set("n", "<leader>th", telescope.builtin.help_tags, { desc = "Telescope Find Help" })
-    vim.keymap.set("n", "<leader>td", telescope.builtin.diagnostics, { desc = "Telescope List Diagnostics" })
-    vim.keymap.set("n", "<leader>tm", telescope.builtin.man_pages, { desc = "Telescope Find Man Pages" })
+    vim.keymap.set("n", "<leader>ff", telescope.builtin.find_files, { desc = "Telescope Find Files" })
+    vim.keymap.set("n", "<leader>fg", telescope.builtin.live_grep, { desc = "Telescope Live grep" })
+    vim.keymap.set("n", "<leader>fb", telescope.builtin.buffers, { desc = "Telescope Find Buffer" })
+    vim.keymap.set("n", "<leader>fh", telescope.builtin.help_tags, { desc = "Telescope Find Help" })
+    vim.keymap.set("n", "<leader>fd", telescope.builtin.diagnostics, { desc = "Telescope List Diagnostics" })
+    vim.keymap.set("n", "<leader>fm", telescope.builtin.man_pages, { desc = "Telescope Find Man Pages" })
+    vim.keymap.set("n", "<leader>gz", telescope.extensions.zoxide.list, { desc = "Telescope Zoxide" })
 
-    vim.keymap.set("n", "<leader>gs", telescope.builtin.git_status, { desc = "Telescope Git Status" })
+    vim.keymap.set("n", "<leader>ss", telescope.builtin.lsp_document_symbols, { desc = "Document Symbols" })
+    vim.keymap.set("n", "<leader>sS", telescope.builtin.lsp_document_symbols, { desc = "Workspace Symbols" })
 
-    vim.keymap.set("n", "<leader>cd", telescope.extensions.zoxide.list, { desc = "Telescope Zoxide" })
 
     vim.keymap.set("n", "z=", telescope.builtin.spell_suggest, { desc = "Telescope Spell Suggestions" })
 end
