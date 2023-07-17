@@ -40,7 +40,7 @@ local neotreeOpts = {
     filesystem = {
         group_empty_dirs = true,
         follow_current_file = {
-            enabled = true
+            enabled = true,
         },
         use_libuv_file_watcher = true,
         filtered_items = {

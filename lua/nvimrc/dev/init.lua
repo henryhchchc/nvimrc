@@ -1,23 +1,16 @@
 local lsp = require("nvimrc.dev.lsp")
-local cmp = require("nvimrc.dev.cmp")
-local dap = require("nvimrc.dev.dap")
-local nullLs = require("nvimrc.dev.nullls")
-
-local clangd = require("nvimrc.dev.lsp.clangd")
-local texlab = require("nvimrc.dev.lsp.texlab")
-local luadev = require("nvimrc.dev.lsp.luadev")
 
 local M = {}
 
 --- @type LazyPluginSpec[]
 M.pluginSpecs = {
     { "neovim/nvim-lspconfig", config = lsp.configure, event = "VeryLazy" },
-    cmp.pluginSpec,
-    nullLs.pluginSpec,
-    dap.pluginSpec,
-    clangd.pluginSpec,
-    texlab.backwardSearchPluginSpec,
-    luadev.pluginSpec,
+    require("nvimrc.dev.cmp").pluginSpec,
+    require("nvimrc.dev.nullls").pluginSpec,
+    require("nvimrc.dev.dap").pluginSpec,
+    require("nvimrc.dev.lsp.clangd").pluginSpec,
+    require("nvimrc.dev.lsp.texlab").backwardSearchPluginSpec,
+    require("nvimrc.dev.lsp.luadev").pluginSpec,
     require("nvimrc.dev.copilot").pluginSpec,
     { "folke/neoconf.nvim", cmd = "Neoconf", dependencies = { "nvim-lspconfig" } },
     {
@@ -44,12 +37,6 @@ M.pluginSpecs = {
             autocmd = { enabled = true },
             virtual_text = { enabled = true, text = "󰌶", hl_mode = "combine" },
         },
-    },
-    {
-        "zbirenbaum/copilot.lua",
-        config = true,
-        cmd = "Copilot",
-        event = "InsertEnter",
     },
     { "stevearc/overseer.nvim", config = true, event = "VeryLazy" },
 }
