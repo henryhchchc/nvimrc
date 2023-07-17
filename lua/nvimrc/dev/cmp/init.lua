@@ -27,11 +27,11 @@ local function configure()
         preselect = cmp.PreselectMode.Item,
         mapping = require("nvimrc.dev.cmp.cmpkeymap"),
         sources = {
-            { name = "nvim_lsp", group_index = 2 },
-            { name = "luasnip", group_index = 2 },
-            { name = "crates", group_index = 2 },
-            { name = "copilot", group_index = 2 },
-            { name = "buffer", group_index = 1 },
+            { name = "nvim_lsp" },
+            { name = "luasnip" },
+            { name = "crates" },
+            { name = "copilot" },
+            { name = "buffer" },
         },
         view = {
             entries = { name = "custom" },
@@ -56,6 +56,9 @@ local function configure()
         },
         view = {
             entries = { name = "custom" },
+        },
+        matching = {
+            disallow_partial_fuzzy_matching = false,
         },
     })
     local cmp_autopairs = require("nvim-autopairs.completion.cmp")
