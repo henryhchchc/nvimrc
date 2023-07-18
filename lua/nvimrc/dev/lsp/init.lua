@@ -34,6 +34,7 @@ function M.configureServers()
         "hls",
         "kotlin_language_server",
         "lua_ls",
+        "nil_ls",
         "sourcekit",
         "pyright",
         "taplo",
