@@ -40,7 +40,7 @@ local function configure()
             entries = { name = "custom" },
         },
         window = {
-            completion = cmp.config.window.bordered()
+            completion = cmp.config.window.bordered(),
         },
     })
 
