@@ -84,9 +84,13 @@ M.pluginSpec = {
             dependencies = {
                 {
                     "rafamadriz/friendly-snippets",
-                    config = function() require("luasnip.loaders.from_vscode").lazy_load() end,
                 },
             },
+            build = "make install_jsregexp",
+            config = function(_, opts)
+                require("luasnip").setup(opts)
+                require("luasnip.loaders.from_vscode").lazy_load()
+            end,
         },
         { "dmitmel/cmp-cmdline-history" },
         {
