@@ -38,7 +38,6 @@ M.pluginSpecs = {
             virtual_text = { enabled = true, text = "󰌶", hl_mode = "combine" },
         },
     },
-    { "stevearc/overseer.nvim", config = true, event = "VeryLazy" },
 }
 
 return M
