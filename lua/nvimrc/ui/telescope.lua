@@ -86,8 +86,8 @@ local function configure()
     vim.keymap.set("n", "<leader>fm", telescope.builtin.man_pages, { desc = "Telescope Find Man Pages" })
     vim.keymap.set("n", "<leader>gz", telescope.extensions.zoxide.list, { desc = "Telescope Zoxide" })
 
-    vim.keymap.set("n", "<leader>ss", telescope.builtin.lsp_document_symbols, { desc = "Document Symbols" })
-    vim.keymap.set("n", "<leader>sS", telescope.builtin.lsp_document_symbols, { desc = "Workspace Symbols" })
+    vim.keymap.set("n", "<leader>gS", telescope.builtin.lsp_document_symbols, { desc = "Document Symbols" })
+    vim.keymap.set("n", "<leader>gw", telescope.builtin.lsp_document_symbols, { desc = "Workspace Symbols" })
 
     vim.keymap.set("n", "z=", telescope.builtin.spell_suggest, { desc = "Telescope Spell Suggestions" })
 end

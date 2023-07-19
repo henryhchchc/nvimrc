@@ -74,6 +74,9 @@ M.pluginSpecs = {
         config = true,
         cmd = { "TodoTrouble", "TodoTelescope" },
         event = { "BufReadPost", "BufNewFile" },
+        keys = {
+            { "<leader>xt", function() vim.cmd.TodoTrouble() end, desc = "Todo list (Trouble)", }
+        }
     },
     {
         "RRethy/vim-illuminate",
