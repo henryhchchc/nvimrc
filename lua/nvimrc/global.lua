@@ -19,6 +19,7 @@ vim.opt.splitkeep = "screen"
 vim.opt.tabstop = 4
 vim.opt.timeoutlen = 300
 vim.opt.title = true
+vim.opt.titlestring = "%t - NVIM"
 vim.opt.undofile = true
 vim.opt.undolevels = 10000
 vim.opt.updatetime = 100
