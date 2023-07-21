@@ -1,59 +1,59 @@
 local M = {}
 
 local terminal = {
-    background = "#151515",
-    alt_background = "#1F1F1F",
+  background = "#151515",
+  alt_background = "#1F1F1F",
 }
 
 --- @type CatppuccinOptions
 local catppuccinOptions = {
-    transparent_background = true,
-    highlight_overrides = {
-        mocha = function(colors)
-            return {
-                NormalFloat = { bg = colors.base },
-                NotifyBackground = { bg = "#000000" },
-            }
-        end,
+  transparent_background = true,
+  highlight_overrides = {
+    mocha = function(colors)
+      return {
+        NormalFloat = { bg = colors.base },
+        NotifyBackground = { bg = "#000000" },
+      }
+    end,
+  },
+  color_overrides = {
+    mocha = {
+      base = terminal.alt_background,
     },
-    color_overrides = {
-        mocha = {
-            base = terminal.alt_background,
-        },
-    },
-    integrations = {
-        aerial = true,
-        bufferline = true,
-        cmp = true,
-        illuminate = true,
-        indent_blankline = { enabled = true },
-        lsp_trouble = true,
-        harpoon = true,
-        headlines = true,
-        native_lsp = { enabled = true },
-        navic = { enabled = true, custom_bg = "NONE" },
-        neogit = true,
-        neotree = true,
-        noice = true,
-        notify = true,
-        nvimtree = false,
-        overseer = true,
-        semantic_tokens = true,
-        telescope = true,
-        treesitter = true,
-        which_key = true,
-    },
+  },
+  integrations = {
+    aerial = true,
+    bufferline = true,
+    cmp = true,
+    illuminate = true,
+    indent_blankline = { enabled = true },
+    lsp_trouble = true,
+    harpoon = true,
+    headlines = true,
+    native_lsp = { enabled = true },
+    navic = { enabled = true, custom_bg = "NONE" },
+    neogit = true,
+    neotree = true,
+    noice = true,
+    notify = true,
+    nvimtree = false,
+    overseer = true,
+    semantic_tokens = true,
+    telescope = true,
+    treesitter = true,
+    which_key = true,
+  },
 }
 
 M.pluginSpec = {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-    lazy = false,
-    config = function()
-        require("catppuccin").setup(catppuccinOptions)
-        vim.cmd.colorscheme("catppuccin-mocha")
-    end,
+  "catppuccin/nvim",
+  name = "catppuccin",
+  priority = 1000,
+  lazy = false,
+  config = function()
+    require("catppuccin").setup(catppuccinOptions)
+    vim.cmd.colorscheme("catppuccin-mocha")
+  end,
 }
 
 return M
