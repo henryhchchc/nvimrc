@@ -1,5 +1,5 @@
 vim.opt.autowrite = true
-vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
+vim.opt.clipboard = { "unnamed", "unnamedplus" }
 vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.grepformat = "%f:%l:%c:%m"
