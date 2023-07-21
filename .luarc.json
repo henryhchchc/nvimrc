@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+  "runtime.version": "LuaJIT",
+  "format.defaultConfig": {
+    "align_continuous_assign_statement": "false",
+    "align_continuous_rect_table_field": "false",
+    "align_array_table": "false",
+    "indent_style": "space",
+    "indent_size": "4",
+    "column_width": "150",
+    "quote_style": "double",
+    "end_of_line": "lf"
+  },
+  "workspace.checkThirdParty": true,
+  "diagnostics.disable": ["missing-fields"]
+}
