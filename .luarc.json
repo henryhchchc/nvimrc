@@ -11,6 +11,6 @@
     "quote_style": "double",
     "end_of_line": "lf"
   },
-  "workspace.checkThirdParty": true,
+  "workspace.checkThirdParty": false,
   "diagnostics.disable": ["missing-fields"]
 }
