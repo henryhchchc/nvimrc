@@ -6,11 +6,13 @@
     "align_continuous_rect_table_field": "false",
     "align_array_table": "false",
     "indent_style": "space",
-    "indent_size": "4",
-    "column_width": "150",
+    "indent_size": "2",
+    "column_width": "120",
     "quote_style": "double",
     "end_of_line": "lf"
   },
   "workspace.checkThirdParty": false,
-  "diagnostics.disable": ["missing-fields"]
+  "diagnostics.disable": [
+    "missing-fields"
+  ]
 }

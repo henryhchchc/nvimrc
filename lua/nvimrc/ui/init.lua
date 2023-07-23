@@ -44,21 +44,7 @@ M.pluginSpecs = {
   },
   { "RRethy/nvim-align", cmd = "Align" },
   { "numToStr/Comment.nvim", config = true, event = "VeryLazy" },
-  {
-    "echasnovski/mini.surround",
-    opts = {
-      mappings = {
-        add = "<leader>sa",
-        delete = "<leader>sd",
-        find = "<leader>sf",
-        find_left = "<leader>sF",
-        highlight = "<leader>sh",
-        replace = "<leader>sr",
-        update_n_lines = "<leader>sn",
-      },
-    },
-    event = "VeryLazy",
-  },
+  { "kylechui/nvim-surround", config = true, event = { "BufReadPost", "BufNewFile" } },
   { "nvim-tree/nvim-web-devicons" },
   { "folke/which-key.nvim", config = true, event = "VeryLazy" },
   {
