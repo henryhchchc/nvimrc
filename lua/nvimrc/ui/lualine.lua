@@ -37,7 +37,7 @@ end
 
 local function lspName()
   local clients = vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() })
-  clients = vim.tbl_filter(function(it) return it.name ~= "null-ls" and it.name ~= "copilot" end, clients)
+  clients = vim.tbl_filter(function(it) return it.name ~= "efm" and it.name ~= "copilot" end, clients)
   local lspCount = vim.tbl_count(clients)
   local prefix = " "
   local content = "N/A"

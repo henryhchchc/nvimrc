@@ -6,7 +6,6 @@ local M = {}
 M.pluginSpecs = {
   { "neovim/nvim-lspconfig", config = lsp.configure, event = "VeryLazy" },
   require("nvimrc.dev.cmp").pluginSpec,
-  require("nvimrc.dev.nullls").pluginSpec,
   require("nvimrc.dev.dap").pluginSpec,
   require("nvimrc.dev.lsp.clangd").pluginSpec,
   require("nvimrc.dev.lsp.texlab").backwardSearchPluginSpec,

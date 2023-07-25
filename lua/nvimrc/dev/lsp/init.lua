@@ -48,6 +48,7 @@ function M.configure()
   require("neoconf").setup({})
   require("neodev").setup({})
   M.configureServers()
+  require("nvimrc.dev.lsp.efm").configure(M.makeDefaultOpts())
 end
 
 return M
