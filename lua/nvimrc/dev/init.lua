@@ -24,8 +24,8 @@ M.pluginSpecs = {
   { "simrat39/rust-tools.nvim", ft = { "rust" }, config = lsp.servers.setupRustAnalyzer },
   {
     "saecki/crates.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "jose-elias-alvarez/null-ls.nvim" },
-    opts = { null_ls = { enabled = true, name = "crates.nvim" } },
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = true,
     event = "BufRead Cargo.toml",
   },
   {
