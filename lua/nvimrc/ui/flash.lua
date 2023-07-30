@@ -17,6 +17,7 @@ local options = {
     },
     incremental = true,
   },
+  modes = { char = { enabled = false } },
 }
 
 --- @type LazyKeys[]

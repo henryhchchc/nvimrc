@@ -9,7 +9,7 @@ local efm_filetypes = {
   "graphql",
   "python",
   "yaml",
-  "json"
+  "json",
 }
 
 function M.configure(defaultOpts)
@@ -19,7 +19,7 @@ function M.configure(defaultOpts)
       documentFormatting = true,
       hover = true,
       codeAction = true,
-      completion = true
+      completion = true,
     },
     filetypes = efm_filetypes,
   }
