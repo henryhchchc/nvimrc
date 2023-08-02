@@ -13,6 +13,7 @@ local catppuccinOptions = {
       return {
         NormalFloat = { bg = colors.base },
         NotifyBackground = { bg = "#000000" },
+        CodeBlock = { bg = colors.base }
       }
     end,
   },
