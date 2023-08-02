@@ -16,7 +16,7 @@ function M.setupEditingKepmaps(buf)
   buf_map("n", "<leader>gl", vim.lsp.codelens.run, "LSP Run Codelens")
   buf_map("n", "K", vim.lsp.buf.hover, "LSP Hover Doc")
   buf_map({ "n", "v" }, "<leader>cf", function() vim.lsp.buf.format({ async = true }) end, "LSP Format")
-  buf_map("n", "<leader>rn", vim.lsp.buf.rename, "LSP Rename")
+  -- buf_map("n", "<leader>rn", vim.lsp.buf.rename, "LSP Rename")
   buf_map("v", "<leader>ca", vim.lsp.buf.code_action, "LSP Range Code Actions")
 end
 
