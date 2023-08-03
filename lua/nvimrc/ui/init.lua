@@ -13,12 +13,7 @@ M.pluginSpecs = {
   require("nvimrc.ui.notify").pluginSpec,
   require("nvimrc.ui.trouble").pluginSpec,
   require("nvimrc.ui.bufferline").pluginSpec,
-  {
-    "lukas-reineke/headlines.nvim",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    config = true,
-    ft = "markdown",
-  },
+  require("nvimrc.ui.headlines").pluginSpec,
   {
     "stevearc/dressing.nvim",
     opts = { input = { enabled = false } },

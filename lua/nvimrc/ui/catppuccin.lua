@@ -13,7 +13,15 @@ local catppuccinOptions = {
       return {
         NormalFloat = { bg = colors.base },
         NotifyBackground = { bg = "#000000" },
-        CodeBlock = { bg = colors.base }
+        -- Heaslines
+        marodkwnCodeBlock = { bg = colors.none },
+        CodeBlock = { link = "marodkwnCodeBlock" },
+        Headline1 = { bg = colors.none, style = { "bold", "underdouble" } },
+        Headline2 = { bg = colors.none, style = { "bold" } },
+        Headline3 = { bg = colors.none, style = { "italic" } },
+        Headline4 = { bg = colors.none },
+        Headline5 = { bg = colors.none },
+        Headline6 = { bg = colors.none },
       }
     end,
   },
