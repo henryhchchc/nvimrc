@@ -25,6 +25,19 @@ function M.configure()
   vim.keymap.set("n", "H", "^", { desc = "Start of line (non-blank)" })
   vim.keymap.set("n", "L", "$", { desc = "End of line" })
 
+  -- Open the file or link under the cursor
+  local function open_cfile()
+    local file_name = vim.fn.shellescape(vim.fn.expand("<cfile>"))
+    if os.getenv("SSH_CONNECTION") then
+      vim.notify("Cannot open file over SSH", vim.log.levels.ERROR)
+    elseif vim.fn.has("mac") == 1 then
+      vim.fn.jobstart("open " .. file_name, { detach = true })
+    elseif vim.fn.has("unix") == 1 then
+      vim.fn.jobstart("xdg-open " .. file_name, { detach = true })
+    end
+  end
+  vim.keymap.set("n", "gx", open_cfile, { desc = "Open the file or link under the cursor" })
+
   -- Terminal mode
   vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Normal Mode" })
 
