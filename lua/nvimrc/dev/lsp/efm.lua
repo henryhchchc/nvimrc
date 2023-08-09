@@ -3,8 +3,8 @@ local M = {}
 local efm_filetypes = {
   "css",
   "html",
+  "markdown",
   "javascript",
-  "typescript",
   "typescript",
   "graphql",
   "python",
