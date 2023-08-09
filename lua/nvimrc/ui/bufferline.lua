@@ -1,6 +1,7 @@
 local M = {}
 
 local function configure()
+  local groups = require("bufferline.groups")
   --- @type bufferline.UserConfig
   local bufferlineOpts = {
     options = {
@@ -17,6 +18,15 @@ local function configure()
           text_align = "center",
         },
       },
+      groups = {
+        items = {
+          groups.builtin.ungrouped,
+          {
+            name = " Terminals",
+            matcher = function(buf) return buf.buftype == "terminal" end,
+          }
+        }
+      }
     },
   }
   require("bufferline").setup(bufferlineOpts)
@@ -32,10 +42,10 @@ M.pluginSpec = {
   config = configure,
   event = "VeryLazy",
   keys = {
-    { "<leader>bp", function() vim.cmd.BufferLineTogglePin() end, desc = "Toggle pin" },
+    { "<leader>bp", function() vim.cmd.BufferLineTogglePin() end,             desc = "Toggle pin" },
     { "<leader>bP", function() vim.cmd.BufferLineGroupClose("ungrouped") end, desc = "Delete non-pinned buffers" },
-    { "[b", function() vim.cmd.BufferLineCyclePrev() end, desc = "Previous buffer" },
-    { "]b", function() vim.cmd.BufferLineCycleNext() end, desc = "Next buffer" },
+    { "[b",         function() vim.cmd.BufferLineCyclePrev() end,             desc = "Previous buffer" },
+    { "]b",         function() vim.cmd.BufferLineCycleNext() end,             desc = "Next buffer" },
   },
 }
 
