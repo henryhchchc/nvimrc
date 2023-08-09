@@ -14,6 +14,7 @@ M.pluginSpecs = {
   require("nvimrc.ui.trouble").pluginSpec,
   require("nvimrc.ui.bufferline").pluginSpec,
   require("nvimrc.ui.headlines").pluginSpec,
+  { "tiagovla/scope.nvim", config = true, event = "VeryLazy" },
   {
     "stevearc/dressing.nvim",
     opts = { input = { enabled = false } },
