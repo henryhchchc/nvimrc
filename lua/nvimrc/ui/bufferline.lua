@@ -12,9 +12,9 @@ local function configure()
       offsets = {
         {
           filetype = "neo-tree",
-          text = "Neo-tree",
+          text = "Neo Tree",
           highlight = "Title",
-          text_align = "left",
+          text_align = "center",
         },
       },
     },
@@ -34,6 +34,8 @@ M.pluginSpec = {
   keys = {
     { "<leader>bp", function() vim.cmd.BufferLineTogglePin() end, desc = "Toggle pin" },
     { "<leader>bP", function() vim.cmd.BufferLineGroupClose("ungrouped") end, desc = "Delete non-pinned buffers" },
+    { "[b", function() vim.cmd.BufferLineCyclePrev() end, desc = "Previous buffer" },
+    { "]b", function() vim.cmd.BufferLineCycleNext() end, desc = "Next buffer" },
   },
 }
 
