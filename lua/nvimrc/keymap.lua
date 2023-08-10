@@ -1,6 +1,8 @@
 local M = {}
 
 function M.configure()
+  local toggle = require("nvimrc.toggle").toggle
+
   vim.keymap.set({ "n", "v", "o" }, "<C-c>", "<esc>")
 
   vim.keymap.set({ "n", "v", "i" }, "<C-s>", vim.cmd.write, { desc = "Save the file" })
@@ -37,6 +39,17 @@ function M.configure()
     end
   end
   vim.keymap.set("n", "gx", open_cfile, { desc = "Open the file or link under the cursor" })
+
+
+  -- Undo breakpoints
+  local undo_breakpoint_chars = { ".", ",", "!", "?", ":", ";", "/" }
+  for _, char in ipairs(undo_breakpoint_chars) do
+    vim.keymap.set("i", char, char .. "<C-g>u")
+  end
+
+  -- Toggles
+  vim.keymap.set("n", "<leader>uw", function() toggle("wrap") end, { desc = "Toggle wrap" })
+  vim.keymap.set("n", "<leader>us", function() toggle("spell") end, { desc = "Toggle spell" })
 
   -- Terminal mode
   vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Normal Mode" })
