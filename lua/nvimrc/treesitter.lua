@@ -64,7 +64,7 @@ local function configureTreeSitter()
   --      This is a bug in neovim stdlib
   -- vim.opt.foldmethod = "expr"
   -- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-  -- vim.opt.foldlevel = 99
+  -- vim.opt.foldenable = false
 end
 
 --- @type LazyPluginSpec[]

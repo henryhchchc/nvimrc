@@ -68,6 +68,7 @@ local lualineOptions = {
       { "diagnostics", sources = { "nvim_diagnostic" } },
     },
     lualine_c = {
+      { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
       {
         "filename",
         file_status = true,
@@ -82,16 +83,16 @@ local lualineOptions = {
       },
       { "navic" },
     },
-    lualine_x = { "searchcount", "location" },
+    lualine_x = {},
     lualine_y = {
       "encoding",
+      "location",
+      "progress",
       {
         "fileformat",
         icons_enabled = true,
         symbols = { unix = "LF", dos = "CRLF", mac = "CR" },
       },
-      "filesize",
-      "filetype",
     },
     lualine_z = {
       {

@@ -1,12 +1,11 @@
 local M = {}
 
 function M.configure()
-  local toggle = require("nvimrc.toggle").toggle
+  local utils = require("nvimrc.utils")
 
   vim.keymap.set({ "n", "v", "o" }, "<C-c>", "<esc>")
 
-  vim.keymap.set({ "n", "v", "i" }, "<C-s>", vim.cmd.write, { desc = "Save the file" })
-
+  -- Tab pages
   vim.keymap.set("n", "]t", vim.cmd.tabnext, { desc = "Switch to the next tabpage." })
   vim.keymap.set("n", "[t", vim.cmd.tabprev, { desc = "Switch to the previous tabpage." })
   vim.keymap.set("n", "<leader>tn", vim.cmd.tabnew, { desc = "Create a new tabpage." })
@@ -22,8 +21,10 @@ function M.configure()
   -- Moving selection
   vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv", { desc = "Move Selection Down" })
   vim.keymap.set("v", "K", ":m '<-2<cr>gv=gv", { desc = "Move Selection Up" })
+
   vim.keymap.set("n", "<leader>gq", vim.cmd.copen, { desc = "Open Quickfix Window" })
   vim.keymap.set("n", "<leader>gl", vim.cmd.lopen, { desc = "Open Loclist Window" })
+
   vim.keymap.set("n", "H", "^", { desc = "Start of line (non-blank)" })
   vim.keymap.set("n", "L", "$", { desc = "End of line" })
 
@@ -40,7 +41,6 @@ function M.configure()
   end
   vim.keymap.set("n", "gx", open_cfile, { desc = "Open the file or link under the cursor" })
 
-
   -- Undo breakpoints
   local undo_breakpoint_chars = { ".", ",", "!", "?", ":", ";", "/" }
   for _, char in ipairs(undo_breakpoint_chars) do
@@ -48,11 +48,25 @@ function M.configure()
   end
 
   -- Toggles
-  vim.keymap.set("n", "<leader>uw", function() toggle("wrap") end, { desc = "Toggle wrap" })
-  vim.keymap.set("n", "<leader>us", function() toggle("spell") end, { desc = "Toggle spell" })
+  vim.keymap.set("n", "<leader>uw", function() utils.toggle("wrap") end, { desc = "Toggle wrap" })
+  vim.keymap.set("n", "<leader>us", function() utils.toggle("spell") end, { desc = "Toggle spell" })
+  local function toggle_conceal()
+    local current_concel = vim.opt.conceallevel:get()
+    local concel_value = current_concel > 0 and current_concel or 3
+    utils.toggle("conceallevel", false, { 0, concel_value })
+  end
+  vim.keymap.set("n", "<leader>uc", toggle_conceal, { desc = "Toggle conceal" })
+  vim.keymap.set("n", "<leader>ui", function() vim.lsp.inlay_hint(0, nil) end, { desc = "Toggle inlay hints" })
+
+  -- Clear search highlight with <esc>
+  vim.keymap.set("n", "<esc>", vim.cmd.nohlsearch, { desc = "Clear search highlight" })
 
   -- Terminal mode
-  vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Normal Mode" })
+  vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { desc = "Normal Mode" })
+
+  -- Better up/down movement in wrapped lines
+  vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+  vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
   -- Disable the arrow keys.
   -- Use the home row instead
@@ -68,7 +82,7 @@ function M.configure()
 
   -- Disable the annoying q mappings
   vim.keymap.set({ "n", "v", "o" }, "q:", "<Nop>")
-  vim.keymap.set({ "n", "v", "o" }, "Q", "q", { desc = "Recoed macro" })
+  vim.keymap.set({ "n", "v", "o" }, "Q", "q", { desc = "Record macro" })
   vim.keymap.set({ "n", "v", "o" }, "q", "<Nop>")
 end
 

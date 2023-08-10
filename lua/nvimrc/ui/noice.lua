@@ -13,6 +13,7 @@ local options = {
     bottom_search = true,
     command_palette = true,
     long_message_to_split = true,
+    inc_rename = true,
   },
   routes = {
     {
@@ -22,6 +23,16 @@ local options = {
           { find = "%d+L, %d+B" },
           { find = "; after #%d+" },
           { find = "; before #%d+" },
+        },
+      },
+      view = "mini",
+    },
+    {
+      filter = {
+        event = "msg_show",
+        any = {
+          { kind = "echo" },
+          { kind = "echomsg" },
         },
       },
       view = "mini",

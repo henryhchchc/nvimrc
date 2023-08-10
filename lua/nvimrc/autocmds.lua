@@ -1,53 +1,72 @@
 local M = {}
 
-local function autoLineNums()
-  local toggleCmdGroup = vim.api.nvim_create_augroup("number_toggle", {})
-  vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
-    group = toggleCmdGroup,
-    callback = function()
-      if vim.wo.number and vim.api.nvim_get_mode().mode ~= "i" then vim.wo.relativenumber = true end
-    end,
-  })
-  vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" }, {
-    group = toggleCmdGroup,
-    callback = function()
-      if vim.wo.number then vim.wo.relativenumber = false end
-    end,
-  })
-end
-
-local function highlightYanked()
-  local highlightYankedGrp = vim.api.nvim_create_augroup("highlight_yanked", {})
-  vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-    group = highlightYankedGrp,
-    callback = function() vim.highlight.on_yank() end,
-  })
-end
-
-local closeWindowFts = {
+local close_window_file_types = {
   "help",
   "lspinfo",
   "man",
   "notify",
   "qf",
+  "neotest-summary",
+  "neotest-output-panel",
 }
 
-local function closeWindowShortcut()
-  local closeWindowGrp = vim.api.nvim_create_augroup("close_window", {})
-  vim.api.nvim_create_autocmd("FileType", {
-    group = closeWindowGrp,
-    pattern = closeWindowFts,
-    callback = function()
-      vim.keymap.set("n", "q", vim.cmd.bdelete, { desc = "Close window", buffer = true })
-      vim.keymap.set("n", "<C-c>", vim.cmd.bdelete, { desc = "Close window", buffer = true })
-    end,
-  })
-end
+local function close_window_with_shortcut() end
+
+local wrap_spell_file_types = {
+  "gitcommit",
+  "markdown",
+}
 
 function M.configure()
-  autoLineNums()
-  highlightYanked()
-  closeWindowShortcut()
+  -- Auto switch between relative and absolute line numbers
+  local number_toggle = vim.api.nvim_create_augroup("number_toggle", {})
+  vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
+    group = number_toggle,
+    callback = function()
+      if vim.wo.number and vim.api.nvim_get_mode().mode ~= "i" then vim.wo.relativenumber = true end
+    end,
+  })
+  vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" }, {
+    group = number_toggle,
+    callback = function()
+      if vim.wo.number then vim.wo.relativenumber = false end
+    end,
+  })
+
+  -- Highlight yanked text
+  local highlight_yanked = vim.api.nvim_create_augroup("highlight_yanked", {})
+  vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+    group = highlight_yanked,
+    callback = function() vim.highlight.on_yank() end,
+  })
+
+  -- Close window with q and <C-c>
+  local close_window = vim.api.nvim_create_augroup("close_window", {})
+  vim.api.nvim_create_autocmd("FileType", {
+    group = close_window,
+    pattern = close_window_file_types,
+    callback = function(event)
+      vim.bo[event.buf].buflisted = false
+      vim.keymap.set("n", "q", vim.cmd.close, { desc = "Close window", buffer = event.buf })
+      vim.keymap.set("n", "<C-c>", vim.cmd.close, { desc = "Close window", buffer = event.buf })
+    end,
+  })
+
+  -- Enable wrap and spell for certain file types
+  vim.api.nvim_create_autocmd("FileType", {
+    group = vim.api.nvim_create_augroup("wrap_spell", {}),
+    pattern = wrap_spell_file_types,
+    callback = function()
+      vim.opt_local.wrap = true
+      vim.opt_local.spell = true
+    end,
+  })
+
+  -- Equalize window sizes when terminal is resized
+  vim.api.nvim_create_autocmd({ "VimResized" }, {
+    group = vim.api.nvim_create_augroup("resize_splits", {}),
+    callback = function() vim.cmd("tabdo wincmd =") end,
+  })
 end
 
 return M

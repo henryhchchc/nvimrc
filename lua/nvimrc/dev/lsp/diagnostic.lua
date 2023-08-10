@@ -5,7 +5,7 @@ function M.configure()
 
   vim.diagnostic.config({
     virtual_text = {
-      prefix = "■",
+      prefix = "●",
       source = "if_many",
       severity = { min = vim.diagnostic.severity.INFO },
     },

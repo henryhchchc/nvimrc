@@ -14,8 +14,8 @@ local catppuccinOptions = {
         NormalFloat = { bg = colors.base },
         NotifyBackground = { bg = "#000000" },
         -- Heaslines
-        marodkwnCodeBlock = { bg = colors.none },
-        CodeBlock = { link = "marodkwnCodeBlock" },
+        markdownCodeBlock = { bg = colors.none },
+        CodeBlock = { link = "markdownCodeBlock" },
         Headline1 = { bg = colors.none, style = { "bold", "underdouble" } },
         Headline2 = { bg = colors.none, style = { "bold" } },
         Headline3 = { bg = colors.none, style = { "italic" } },
