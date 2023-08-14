@@ -37,6 +37,7 @@ M.pluginSpec = {
   "akinsho/bufferline.nvim",
   dependencies = {
     { "echasnovski/mini.bufremove", config = true, event = "VeryLazy" },
+    { "tiagovla/scope.nvim", config = true, event = "VeryLazy" },
     { "catppuccin/nvim" },
   },
   config = configure,

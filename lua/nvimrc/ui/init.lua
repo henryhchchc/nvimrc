@@ -14,7 +14,16 @@ M.pluginSpecs = {
   require("nvimrc.ui.trouble").pluginSpec,
   require("nvimrc.ui.bufferline").pluginSpec,
   require("nvimrc.ui.headlines").pluginSpec,
-  { "tiagovla/scope.nvim", config = true, event = "VeryLazy" },
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp" } },
+    keys = {
+      { "<leader>qs", function() require("persistence").load() end, desc = "Restore Session" },
+      { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
+      { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
+    },
+  },
   {
     "stevearc/dressing.nvim",
     opts = { input = { enabled = false } },
