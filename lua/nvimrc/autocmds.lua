@@ -10,8 +10,6 @@ local close_window_file_types = {
   "neotest-output-panel",
 }
 
-local function close_window_with_shortcut() end
-
 local wrap_spell_file_types = {
   "gitcommit",
   "markdown",
