@@ -6,6 +6,7 @@ local close_window_file_types = {
   "man",
   "notify",
   "qf",
+  "neotest-output",
   "neotest-summary",
   "neotest-output-panel",
 }
@@ -13,6 +14,7 @@ local close_window_file_types = {
 local wrap_spell_file_types = {
   "gitcommit",
   "markdown",
+  "tex",
 }
 
 function M.configure()
