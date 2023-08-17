@@ -4,6 +4,7 @@ local function configure()
   local lspkind = require("lspkind")
   local lspKindOptions = require("nvimrc.dev.cmp.lspkind").options
   local cmp = require("cmp")
+  local keymap = require("nvimrc.dev.cmp.keymap")
 
   vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
 
@@ -25,7 +26,7 @@ local function configure()
       ghost_text = { hl_group = "CmpGhostText" },
     },
     preselect = cmp.PreselectMode.None,
-    mapping = require("nvimrc.dev.cmp.cmpkeymap"),
+    mapping = keymap.insert,
     sources = {
       { name = "nvim_lsp" },
       { name = "luasnip" },
@@ -60,9 +61,22 @@ local function configure()
       { name = "cmdline_history", group_index = 2 },
       { name = "fuzzy_path", group_index = 1, option = { fd_timeout_msec = 1500 } },
     },
+    preselect = cmp.PreselectMode.Item,
+    mapping = keymap.cmdline,
     view = {
       entries = { name = "custom" },
     },
+    enabled = function()
+      -- Set of commands where cmp will be disabled
+      local disabled = {
+        IncRename = true
+      }
+      -- Get first word of cmdline
+      local cmd = vim.fn.getcmdline():match("%S+")
+      -- Return true if cmd isn't disabled
+      -- else call/return cmp.close(), which returns false
+      return not disabled[cmd] or cmp.close()
+    end
   })
   local cmp_autopairs = require("nvim-autopairs.completion.cmp")
   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
