@@ -34,7 +34,14 @@ local treeKeymaps = {
 
 local neotreeOpts = {
   sources = { "filesystem", "buffers", "git_status", "document_symbols" },
-  open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "Outline" },
+  open_files_do_not_replace_types = {
+    "terminal",
+    "Trouble",
+    "qf",
+    "Outline",
+    "neotest-summary",
+    "neotest-output-panel",
+  },
   use_popups_for_input = false,
   use_default_mappings = false,
   filesystem = {

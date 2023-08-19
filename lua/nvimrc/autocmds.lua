@@ -3,6 +3,7 @@ local M = {}
 local close_window_file_types = {
   "help",
   "lspinfo",
+  "Trouble",
   "man",
   "notify",
   "qf",
