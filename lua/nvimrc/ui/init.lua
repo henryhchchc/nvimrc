@@ -13,7 +13,6 @@ M.pluginSpecs = {
   require("nvimrc.ui.notify").pluginSpec,
   require("nvimrc.ui.trouble").pluginSpec,
   require("nvimrc.ui.bufferline").pluginSpec,
-  require("nvimrc.ui.headlines").pluginSpec,
   {
     "folke/persistence.nvim",
     event = "BufReadPre",

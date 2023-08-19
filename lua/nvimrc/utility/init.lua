@@ -4,6 +4,7 @@ local M = {}
 M.pluginSpecs = {
   require("nvimrc.utility.gitsigns").pluginSpec,
   require("nvimrc.utility.neoorg").pluginSpec,
+  require("nvimrc.utility.headlines").pluginSpec,
   { "tpope/vim-fugitive", cmd = "Git" },
   {
     "NeogitOrg/neogit",

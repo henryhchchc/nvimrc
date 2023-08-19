@@ -31,7 +31,7 @@ vim.g.tex_flavor = "latex"
 
 vim.opt.termguicolors = true
 
-vim.opt.conceallevel = 3
+vim.opt.conceallevel = 2
 vim.opt.concealcursor = "nc"
 
 -- Disable netrw
