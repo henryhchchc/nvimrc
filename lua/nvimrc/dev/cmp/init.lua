@@ -69,14 +69,14 @@ local function configure()
     enabled = function()
       -- Set of commands where cmp will be disabled
       local disabled = {
-        IncRename = true
+        IncRename = true,
       }
       -- Get first word of cmdline
       local cmd = vim.fn.getcmdline():match("%S+")
       -- Return true if cmd isn't disabled
       -- else call/return cmp.close(), which returns false
       return not disabled[cmd] or cmp.close()
-    end
+    end,
   })
   local cmp_autopairs = require("nvim-autopairs.completion.cmp")
   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

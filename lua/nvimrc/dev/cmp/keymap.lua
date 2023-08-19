@@ -12,9 +12,7 @@ end
 
 local tap_mapping_cmdline = function(_fallback)
   local cmp = require("cmp")
-  if cmp.visible() then
-    cmp.select_next_item()
-  end
+  if cmp.visible() then cmp.select_next_item() end
 end
 
 local shift_tab_mapping = function(fallback)
