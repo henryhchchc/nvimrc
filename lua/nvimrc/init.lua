@@ -1,6 +1,6 @@
 vim.loader.enable()
 
-require("nvimrc.global")
+require("nvimrc.options")
 
 require("nvimrc.cddir").configure()
 
@@ -21,11 +21,12 @@ vim.opt.rtp:prepend(lazypath)
 local dev = require("nvimrc.dev")
 local ts = require("nvimrc.treesitter")
 local ui = require("nvimrc.ui")
-local vcs = require("nvimrc.vcs")
+local utility = require("nvimrc.utility")
 
+--- @type LazyPluginSpec[]
 local plugins = {}
 
-for _, component in ipairs({ ts, dev, ui, vcs }) do
+for _, component in ipairs({ ts, dev, ui, utility }) do
   for _, p in ipairs(component.pluginSpecs) do
     table.insert(plugins, p)
   end

@@ -31,28 +31,11 @@ local function configureGitSigns()
   })
 end
 
---- @type LazyPluginSpec[]
-M.pluginSpecs = {
-  {
-    "lewis6991/gitsigns.nvim",
-    config = configureGitSigns,
-    event = { "BufReadPre", "BufNewFile" },
-  },
-  { "tpope/vim-fugitive", cmd = "Git" },
-  {
-    "NeogitOrg/neogit",
-    cmd = "Neogit",
-    opts = {
-      disable_builtin_notifications = true,
-      disable_commit_confirmation = true,
-      commit_popup = { kind = "vsplit" },
-      preview_buffer = { kind = "vsplit" },
-      popup = { kind = "vsplit" },
-    },
-    keys = {
-      { "<leader>ghn", vim.cmd.Neogit, desc = "Neogit" },
-    },
-  },
+--- @type LazyPluginSpec
+M.pluginSpec = {
+  "lewis6991/gitsigns.nvim",
+  config = configureGitSigns,
+  event = { "BufReadPre", "BufNewFile" },
 }
 
 return M

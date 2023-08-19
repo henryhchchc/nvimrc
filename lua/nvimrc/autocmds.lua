@@ -11,10 +11,13 @@ local close_window_file_types = {
   "neotest-output-panel",
 }
 
-local wrap_spell_file_types = {
+local narual_lang_ft = {
   "gitcommit",
   "markdown",
+  "text",
   "tex",
+  "norg",
+  "org",
 }
 
 function M.configure()
@@ -55,7 +58,7 @@ function M.configure()
   -- Enable wrap and spell for certain file types
   vim.api.nvim_create_autocmd("FileType", {
     group = vim.api.nvim_create_augroup("wrap_spell", {}),
-    pattern = wrap_spell_file_types,
+    pattern = narual_lang_ft,
     callback = function()
       vim.opt_local.wrap = true
       vim.opt_local.spell = true
