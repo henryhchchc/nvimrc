@@ -100,7 +100,12 @@ local function configure()
         },
         { "navic" },
       },
-      lualine_x = {},
+      lualine_x = {
+        {
+          function() return "  " .. require("dap").status() end,
+          cond = function() return require("dap").status() ~= "" end,
+        },
+      },
       lualine_y = {
         "encoding",
         "location",
