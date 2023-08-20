@@ -51,71 +51,93 @@ local function lspName()
   return prefix .. content
 end
 
-local lualineOptions = {
-  options = {
-    theme = "auto",
-    component_separators = { left = "", right = "" },
-    section_separators = { left = "", right = "" },
-    globalstatus = true,
-  },
-  sections = {
-    lualine_a = {
-      { "mode", icons_enabled = true },
+local function configure()
+  local help_extension = require("lualine.extensions.man")
+  help_extension.filetypes = { "help" }
+  help_extension.sections.lualine_a = { function() return "Help" end }
+
+  local neo_test_extension = {
+    sections = {
+      lualine_a = { function() return "NeoTest" end },
+
+      lualine_c = {
+        { "filetype", icon_only = true,   separator = "", padding = { left = 1, right = 0 } },
+        { "filename", file_status = false },
+      },
     },
-    lualine_b = {
-      "branch",
-      { "diff", source = diff_source },
-      { "diagnostics", sources = { "nvim_diagnostic" } },
+    filetypes = { "neotest-output-panel", "neotest-output", "neotest-summary" }
+  }
+
+  local lualineOptions = {
+    options = {
+      theme = "auto",
+      component_separators = { left = "", right = "" },
+      section_separators = { left = "", right = "" },
+      globalstatus = true,
     },
-    lualine_c = {
-      { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-      {
-        "filename",
-        file_status = true,
-        path = 0,
-        shorting_target = 40,
-        symbols = {
-          modified = "•",
-          readonly = " [Read Only]",
-          unnamed = " [No Name]",
-          new = " [New File]",
+    sections = {
+      lualine_a = {
+        { "mode", icons_enabled = true },
+      },
+      lualine_b = {
+        "branch",
+        { "diff",        source = diff_source },
+        { "diagnostics", sources = { "nvim_diagnostic" } },
+      },
+      lualine_c = {
+        { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+        {
+          "filename",
+          file_status = true,
+          path = 0,
+          shorting_target = 40,
+          symbols = {
+            modified = "•",
+            readonly = " [Read Only]",
+            unnamed = " [No Name]",
+            new = " [New File]",
+          },
+        },
+        { "navic" },
+      },
+      lualine_x = {},
+      lualine_y = {
+        "encoding",
+        "location",
+        "progress",
+        {
+          "fileformat",
+          icons_enabled = true,
+          symbols = { unix = "LF", dos = "CRLF", mac = "CR" },
         },
       },
-      { "navic" },
-    },
-    lualine_x = {},
-    lualine_y = {
-      "encoding",
-      "location",
-      "progress",
-      {
-        "fileformat",
-        icons_enabled = true,
-        symbols = { unix = "LF", dos = "CRLF", mac = "CR" },
+      lualine_z = {
+        {
+          lspName,
+          on_click = function() vim.cmd.LspInfo() end,
+        },
+        {
+          function() return require("copilot_status").status_string() end,
+          cnd = function() return require("copilot_status").enabled() end,
+        },
       },
     },
-    lualine_z = {
-      {
-        lspName,
-        on_click = function() vim.cmd.LspInfo() end,
-      },
-      {
-        function() return require("copilot_status").status_string() end,
-        cnd = function() return require("copilot_status").enabled() end,
-      },
+    extensions = {
+      "man",
+      "nvim-dap-ui",
+      "neo-tree",
+      "quickfix",
+      "aerial",
+      "lazy",
+      "trouble",
+      "fugitive",
+      help_extension,
+      neo_test_extension
     },
-  },
-  extensions = {
-    "man",
-    "nvim-dap-ui",
-    "neo-tree",
-    "quickfix",
-    "aerial",
-    "lazy",
-    "trouble",
-    "fugitive",
-  },
-}
+  }
+  require("lualine").setup(lualineOptions)
+end
+
 
 local function configCopilotStatus()
   require("copilot_status").setup({
@@ -128,6 +150,7 @@ local function configCopilotStatus()
     },
   })
 end
+
 
 --- @type LazyPluginSpec
 M.pluginSpec = {
@@ -144,7 +167,7 @@ M.pluginSpec = {
       config = configCopilotStatus,
     },
   },
-  opts = lualineOptions,
+  config = configure,
   event = "VeryLazy",
 }
 
