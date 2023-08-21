@@ -4,7 +4,7 @@ local tab_mapping = function(fallback)
   if luasnip.expand_or_jumpable() then
     luasnip.expand_or_jump()
   elseif cmp.visible() and cmp.get_active_entry() then
-    cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+    cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = false })
   else
     fallback()
   end
@@ -27,7 +27,7 @@ end
 local return_mapping = function(fallback)
   local cmp = require("cmp")
   if cmp.visible() and cmp.get_selected_entry() ~= nil then
-    cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
+    cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
   else
     fallback()
   end
