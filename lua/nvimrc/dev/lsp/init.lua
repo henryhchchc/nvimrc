@@ -25,10 +25,22 @@ end
 function M.configureServers()
   texlab.configure()
   jdtls.configure()
+  servers.setupWithDefault("jsonls", {
+    json = {
+      schemas = require("schemastore").json.schemas(),
+      validate = { enable = true },
+    },
+  })
+  servers.setupWithDefault("yamlls", {
+    yaml = {
+      schemaStore = {
+        enable = true,
+      },
+    },
+  })
   servers.setupDefaults({
     "bashls",
     "cssls",
-    "jsonls",
     "html",
     "grammarly",
     "hls",
@@ -38,7 +50,6 @@ function M.configureServers()
     "sourcekit",
     "pyright",
     "taplo",
-    "yamlls",
   })
 end
 

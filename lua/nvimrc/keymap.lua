@@ -53,7 +53,7 @@ function M.configure()
   local function toggle_conceal()
     local current_concel = vim.opt.conceallevel:get()
     local concel_value = current_concel > 0 and current_concel or 3
-    return function () utils.toggle("conceallevel", false, { 0, concel_value }) end
+    return function() utils.toggle("conceallevel", false, { 0, concel_value }) end
   end
   vim.keymap.set("n", "<leader>uc", toggle_conceal(), { desc = "Toggle conceal" })
   vim.keymap.set("n", "<leader>ui", function() vim.lsp.inlay_hint(0, nil) end, { desc = "Toggle inlay hints" })

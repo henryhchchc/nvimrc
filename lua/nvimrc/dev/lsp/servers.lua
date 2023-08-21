@@ -15,11 +15,16 @@ function M.setupRustAnalyzer()
   require("rust-tools").setup(rustConfig)
 end
 
-function M.setupDefaults(serversToConfigure)
+function M.setupWithDefault(server, settings)
   local lspConfig = require("lspconfig")
-  local defaultOpts = require("nvimrc.dev.lsp").makeDefaultOpts()
+  local options = require("nvimrc.dev.lsp").makeDefaultOpts()
+  options.settings = settings or {}
+  lspConfig[server].setup(options)
+end
+
+function M.setupDefaults(serversToConfigure)
   for _, lsp in pairs(serversToConfigure) do
-    lspConfig[lsp].setup(defaultOpts)
+    M.setupWithDefault(lsp, {})
   end
 end
 

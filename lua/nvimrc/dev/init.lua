@@ -12,6 +12,7 @@ M.pluginSpecs = {
   require("nvimrc.dev.lsp.luadev").pluginSpec,
   require("nvimrc.dev.copilot").pluginSpec,
   require("nvimrc.dev.neotest").pluginSpec,
+  { "b0o/schemastore.nvim" },
   { "folke/neoconf.nvim", cmd = "Neoconf", dependencies = { "nvim-lspconfig" } },
   {
     "smjonas/inc-rename.nvim",
