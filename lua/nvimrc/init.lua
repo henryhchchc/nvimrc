@@ -1,8 +1,12 @@
 vim.loader.enable()
 
-require("nvimrc.options")
+if vim.fn.argc() > 0 then
+  local arg0 = vim.fn.argv(0)
+  local stat = vim.loop.fs_stat(arg0)
+  if stat ~= nil and stat.type == "directory" then vim.cmd.cd(arg0) end
+end
 
-require("nvimrc.cddir").configure()
+require("nvimrc.config.options")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -18,25 +22,17 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local dev = require("nvimrc.dev")
-local ts = require("nvimrc.treesitter")
-local ui = require("nvimrc.ui")
-local utility = require("nvimrc.utility")
-
---- @type LazyPluginSpec[]
-local plugins = {}
-
-for _, component in ipairs({ ts, dev, ui, utility }) do
-  for _, p in ipairs(component.pluginSpecs) do
-    table.insert(plugins, p)
-  end
-end
-
-require("lazy").setup(plugins, {
+require("lazy").setup({
+  spec = {
+    { import = "nvimrc.plugins" },
+    { import = "nvimrc.plugins.ui" },
+  },
+}, {
   defaults = {
     lazy = true,
   },
 })
 
-require("nvimrc.keymap").configure()
-require("nvimrc.autocmds").configure()
+require("nvimrc.config.keymap")
+require("nvimrc.config.autocmds")
+require("nvimrc.config.diagnostic")
