@@ -6,7 +6,7 @@ local function configure()
       adapter = {
         type = "executable",
         command = "lldb-vscode",
-        name = "rt_lldb",
+        name = "lldb",
       },
     },
   }

@@ -27,7 +27,6 @@ require("lazy").setup({
     { import = "nvimrc.plugins" },
     { import = "nvimrc.plugins.ui" },
   },
-}, {
   defaults = {
     lazy = true,
   },

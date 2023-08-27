@@ -36,30 +36,6 @@ local function configure()
     command = "lldb-vscode",
     name = "lldb",
   }
-  dap.adapters.rt_lldb = {
-    type = "executable",
-    command = "lldb-vscode",
-    name = "rt_lldb",
-  }
-
-  dap.configurations.scala = {
-    {
-      type = "scala",
-      request = "launch",
-      name = "[Scala] Run or Test Target",
-      metals = {
-        runType = "runOrTestFile",
-      },
-    },
-    {
-      type = "scala",
-      request = "launch",
-      name = "[Scala] Test Target",
-      metals = {
-        runType = "testTarget",
-      },
-    },
-  }
 end
 
 --- @type LazyPluginSpec[]
