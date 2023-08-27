@@ -1,5 +1,3 @@
-local M = {}
-
 local function configure()
   local lspkind = require("lspkind")
   local lspKindOptions = require("nvimrc.plugins.cmp.lspkind").options
@@ -56,8 +54,8 @@ local function configure()
 
   cmp.setup.cmdline(":", {
     sources = {
-      { name = "cmdline", group_index = 2 },
       { name = "path", group_index = 2 },
+      { name = "cmdline", group_index = 2 },
       { name = "cmdline_history", group_index = 2 },
       { name = "fuzzy_path", group_index = 1, option = { fd_timeout_msec = 1500 } },
     },
@@ -84,38 +82,36 @@ end
 
 --- @type LazyPluginSpec
 return {
-  "hrsh7th/nvim-cmp",
-  dependencies = {
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "onsails/lspkind-nvim" },
-    { "hrsh7th/cmp-cmdline" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-path" },
-    { "saadparwaiz1/cmp_luasnip" },
-    {
-      "L3MON4D3/LuaSnip",
-      opts = { delete_check_events = "TextChanged" },
-      dependencies = {
-        {
-          "rafamadriz/friendly-snippets",
-        },
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      { "hrsh7th/cmp-nvim-lsp" },
+      { "hrsh7th/cmp-cmdline" },
+      { "hrsh7th/cmp-buffer" },
+      { "hrsh7th/cmp-path" },
+      { "saadparwaiz1/cmp_luasnip" },
+      { "dmitmel/cmp-cmdline-history" },
+      {
+        "tzachar/cmp-fuzzy-path",
+        dependencies = { { "tzachar/fuzzy.nvim" } },
       },
-      build = "make install_jsregexp",
-      config = function(_, opts)
-        require("luasnip").setup(opts)
-        require("luasnip.loaders.from_vscode").lazy_load()
-      end,
+      {
+        "zbirenbaum/copilot-cmp",
+        config = true,
+      },
     },
-    { "dmitmel/cmp-cmdline-history" },
-    {
-      "tzachar/cmp-fuzzy-path",
-      dependencies = { { "tzachar/fuzzy.nvim" } },
-    },
-    {
-      "zbirenbaum/copilot-cmp",
-      config = true,
-    },
+    config = configure,
+    event = { "InsertEnter", "CmdlineEnter" },
   },
-  config = configure,
-  event = { "InsertEnter", "CmdlineEnter" },
+  { "onsails/lspkind-nvim" },
+  {
+    "L3MON4D3/LuaSnip",
+    opts = { delete_check_events = "TextChanged" },
+    dependencies = { "rafamadriz/friendly-snippets" },
+    build = "make install_jsregexp",
+    config = function(_, opts)
+      require("luasnip").setup(opts)
+      require("luasnip.loaders.from_vscode").lazy_load()
+    end,
+  },
 }
