@@ -37,7 +37,7 @@ local function configure()
   end
 end
 
---- @type LazyPluginSpec
+--- @type LazyPluginSpec[]
 return {
   { "neovim/nvim-lspconfig", config = configure, event = "VeryLazy" },
   {
@@ -61,4 +61,12 @@ return {
     event = "LspAttach",
   },
   { "b0o/schemastore.nvim" },
+  {
+    "stevearc/aerial.nvim",
+    opts = {
+      backends = { "lsp", "treesitter", "markdown", "man" },
+      min_width = 20,
+    },
+    cmd = { "AerialToggle", "AerialOpen", "AerialOpenAll" },
+  },
 }

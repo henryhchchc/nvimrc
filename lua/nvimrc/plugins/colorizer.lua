@@ -1,4 +1,4 @@
-local function configureColorizer()
+local function configure()
   require("colorizer").setup({
     css = {
       RGB = true,
@@ -15,7 +15,7 @@ end
 
 return {
   "norcalli/nvim-colorizer.lua",
-  config = configureColorizer,
+  config = configure,
   cmd = {
     "ColorizerAttachToBuffer",
     "ColorizerDetachFromBuffer",

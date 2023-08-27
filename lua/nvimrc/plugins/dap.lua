@@ -1,5 +1,5 @@
 --- @type LazyKeys[]
-local dapKepmaps = {
+local keymaps = {
   {
     "<leader>dB",
     function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
@@ -44,7 +44,7 @@ return {
     "mfussenegger/nvim-dap",
     config = configure,
     dependencies = {},
-    keys = dapKepmaps,
+    keys = keymaps,
     event = "LspAttach",
   },
   { "theHamsta/nvim-dap-virtual-text", config = true },
