@@ -2,6 +2,7 @@ vim.opt.autowrite = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cursorline = true
 vim.opt.expandtab = true
+vim.opt.formatoptions = "jcroqlnt"
 vim.opt.grepformat = "%f:%l:%c:%m"
 vim.opt.grepprg = "rg --vimgrep"
 vim.opt.ignorecase = true
@@ -12,6 +13,7 @@ vim.opt.listchars:append("tab:> ,trail:⋅,nbsp:⋅,multispace:⋅,conceal:?")
 vim.opt.mouse = "a"
 vim.opt.number = true
 vim.opt.shiftwidth = 2
+vim.opt.shiftround = true
 vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
 vim.opt.showmode = false
 vim.opt.signcolumn = "yes"
@@ -33,6 +35,7 @@ vim.opt.wrap = false
 
 vim.g.mapleader = " "
 vim.g.tex_flavor = "latex"
+vim.g.markdown_recommended_style = 0
 
 vim.opt.termguicolors = true
 

@@ -59,7 +59,7 @@ local function configure()
       lualine_a = { function() return "NeoTest" end },
 
       lualine_c = {
-        { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+        { "filetype", icon_only = true,   separator = "", padding = { left = 1, right = 0 } },
         { "filename", file_status = false },
       },
     },
@@ -79,7 +79,7 @@ local function configure()
       },
       lualine_b = {
         "branch",
-        { "diff", source = diff_source },
+        { "diff",        source = diff_source },
         { "diagnostics", sources = { "nvim_diagnostic" } },
       },
       lualine_c = {
@@ -99,6 +99,14 @@ local function configure()
         { "navic" },
       },
       lualine_x = {
+        {
+          function() return require("noice").api.status.command.get() end,
+          cond = function() return require("noice").api.status.command.has() end,
+        },
+        {
+          function() return require("noice").api.status.mode.get() end,
+          cond = function() return require("noice").api.status.mode.has() end,
+        },
         {
           function() return "  " .. require("dap").status() end,
           cond = function() return require("dap").status() ~= "" end,
