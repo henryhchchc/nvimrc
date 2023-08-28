@@ -29,6 +29,7 @@ local options = {
       filter = {
         event = "msg_show",
         any = {
+          {find = "[nvim-treesitter]"},
           { kind = "echo" },
           { kind = "echomsg" },
         },
