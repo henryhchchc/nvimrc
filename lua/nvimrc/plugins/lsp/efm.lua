@@ -5,7 +5,6 @@ local efm_filetypes = {
   "javascript",
   "typescript",
   "graphql",
-  "python",
   "yaml",
   "json",
 }
