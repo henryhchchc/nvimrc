@@ -29,7 +29,7 @@ local function configure()
     "lua_ls",
     "nil_ls",
     "sourcekit",
-    "pyright",
+    "pylsp",
     "taplo",
   }
   for _, server in ipairs(to_setup) do
