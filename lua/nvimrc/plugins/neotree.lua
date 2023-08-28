@@ -1,16 +1,5 @@
-local treeKeymaps = {
-  ["<space>"] = "none",
-  ["<leader>rn"] = "rename",
-  ["<2-LeftMouse>"] = "open",
-  ["<cr>"] = "open",
-  ["P"] = { "toggle_preview", config = { use_float = true } },
-  ["l"] = "focus_preview",
-  ["S"] = "open_split",
-  ["v"] = "open_vsplit",
-  ["t"] = "open_tabnew",
-  ["w"] = "open_with_window_picker",
-  ["C"] = "close_node",
-  ["z"] = "close_all_nodes",
+local tree_keymaps = {
+  ["rn"] = "rename",
   ["a"] = {
     "add",
     config = {
@@ -23,6 +12,20 @@ local treeKeymaps = {
   ["yy"] = "copy_to_clipboard",
   ["dd"] = "cut_to_clipboard",
   ["p"] = "paste_from_clipboard",
+}
+
+local common_keymaps = {
+  ["<space>"] = "toggle_node",
+  ["<2-LeftMouse>"] = "open",
+  ["<cr>"] = "open",
+  ["P"] = { "toggle_preview", config = { use_float = true } },
+  ["l"] = "focus_preview",
+  ["S"] = "open_split",
+  ["v"] = "open_vsplit",
+  ["t"] = "open_tabnew",
+  ["w"] = "open_with_window_picker",
+  ["C"] = "close_node",
+  ["z"] = "close_all_nodes",
   ["q"] = "close_window",
   ["R"] = "refresh",
   ["?"] = "show_help",
@@ -53,9 +56,12 @@ local neotreeOpts = {
         ".git",
       },
     },
+    window = {
+      mappings = tree_keymaps,
+    },
   },
   window = {
-    mappings = treeKeymaps,
+    mappings = common_keymaps,
   },
   default_component_configs = {
     indent = {
