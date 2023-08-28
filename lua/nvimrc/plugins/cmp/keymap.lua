@@ -3,6 +3,8 @@ local tab_mapping = function(fallback)
   local luasnip = require("luasnip")
   if luasnip.expand_or_jumpable() then
     luasnip.expand_or_jump()
+  elseif require("copilot.suggestion").is_visible() then
+    require("copilot.suggestion").accept()
   elseif cmp.visible() and cmp.get_active_entry() then
     cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = false })
   else
@@ -33,6 +35,25 @@ local return_mapping = function(fallback)
   end
 end
 
+
+local function copilot_suggest()
+  local cmp = require("cmp")
+  cmp.close()
+  vim.cmd.Copilot("suggestion")
+end
+
+local function copilot_next()
+  local cmp = require("cmp")
+  cmp.close()
+  require("copilot.suggestion").next()
+end
+
+local function copilot_prev()
+  local cmp = require("cmp")
+  cmp.close()
+  require("copilot.suggestion").next()
+end
+
 local M = {}
 
 local cmp = require("cmp")
@@ -48,6 +69,9 @@ M.insert = {
   ["<TAB>"] = cmp.mapping(tab_mapping, { "i", "c", "s" }),
   ["<S-TAB>"] = cmp.mapping(shift_tab_mapping, { "i", "c", "s" }),
   ["<CR>"] = cmp.mapping(return_mapping, { "i" }),
+  ["<C-n>"] = cmp.mapping(copilot_next, { "i" }),
+  ["<C-p>"] = cmp.mapping(copilot_prev, { "i" }),
+  ["<C-s>"] = cmp.mapping(copilot_suggest, { "i" }),
 }
 
 M.cmdline = {
