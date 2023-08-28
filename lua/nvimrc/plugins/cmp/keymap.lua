@@ -1,10 +1,10 @@
 local tab_mapping = function(fallback)
   local cmp = require("cmp")
   local luasnip = require("luasnip")
-  if luasnip.expand_or_jumpable() then
-    luasnip.expand_or_jump()
-  elseif require("copilot.suggestion").is_visible() then
+  if require("copilot.suggestion").is_visible() then
     require("copilot.suggestion").accept()
+  elseif luasnip.expand_or_jumpable() then
+    luasnip.expand_or_jump()
   elseif cmp.visible() and cmp.get_active_entry() then
     cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = false })
   else
