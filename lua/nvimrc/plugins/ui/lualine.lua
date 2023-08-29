@@ -111,6 +111,7 @@ local function configure()
           function() return "  " .. require("dap").status() end,
           cond = function() return require("dap").status() ~= "" end,
         },
+        require("action-hints").statusline
       },
       lualine_y = {
         "encoding",

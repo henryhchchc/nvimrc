@@ -26,10 +26,10 @@ vim.keymap.set("n", "H", "^", { desc = "Start of line (non-blank)" })
 vim.keymap.set("n", "L", "$", { desc = "End of line" })
 
 -- LSP
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Actions" })
+-- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Actions" })
 vim.keymap.set({ "n", "v" }, "<leader>cf", function() vim.lsp.buf.format({ async = true }) end, { desc = "LSP Format" })
 vim.keymap.set("n", "<leader>rN", vim.lsp.buf.rename, { desc = "LSP Rename" })
-vim.keymap.set("v", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Range Code Actions" })
+-- vim.keymap.set("v", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Range Code Actions" })
 
 -- Open the file or link under the cursor
 local function open_cfile()

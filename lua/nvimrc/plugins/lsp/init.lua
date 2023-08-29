@@ -60,6 +60,19 @@ return {
     end,
     event = "LspAttach",
   },
+  {
+    "aznhe21/actions-preview.nvim",
+    --- @type LazyKeys[]
+    keys = {
+      {
+        "<leader>ca",
+        function() require("actions-preview").code_actions() end,
+        desc = "LSP Code Actions",
+        mode = { "n", "v" },
+      }
+    },
+    event = "LspAttach"
+  },
   { "b0o/schemastore.nvim" },
   {
     "stevearc/aerial.nvim",
