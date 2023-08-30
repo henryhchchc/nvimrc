@@ -4,6 +4,7 @@ return {
   dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
   event = "VeryLazy",
   opts = {
+    restriction_mode = "hint",
     disable_mouse = false,
     disabled_filetypes = {
       "help",
