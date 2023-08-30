@@ -28,5 +28,5 @@ return {
     },
   },
   config = true,
-  event = { "BufNewFile", "BufReadPost" }
+  event = { "BufNewFile", "BufReadPost" },
 }

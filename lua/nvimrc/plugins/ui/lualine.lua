@@ -66,6 +66,11 @@ local function configure()
     filetypes = { "neotest-output-panel", "neotest-output", "neotest-summary" },
   }
 
+  local saga_outline = require("lualine.extensions.man")
+  saga_outline.filetypes = { "sagaoutline" }
+  saga_outline.sections.lualine_a = { function() return "LSP Outline" end }
+  saga_outline.sections.lualine_b = {}
+
   local lualineOptions = {
     options = {
       theme = "auto",
@@ -144,6 +149,7 @@ local function configure()
       "fugitive",
       help_extension,
       neo_test_extension,
+      saga_outline,
     },
   }
   require("lualine").setup(lualineOptions)

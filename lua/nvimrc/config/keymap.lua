@@ -8,8 +8,18 @@ vim.keymap.set("n", "[t", vim.cmd.tabprev, { desc = "Switch to the previous tabp
 vim.keymap.set("n", "<leader>tn", vim.cmd.tabnew, { desc = "Create a new tabpage." })
 vim.keymap.set("n", "<leader>tc", vim.cmd.tabclose, { desc = "Close the current tabpage." })
 
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to the previous diagnostics" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to the next diagnostics" })
+vim.keymap.set(
+  "n",
+  "[d",
+  function() vim.cmd.Lspsaga("diagnostic_jump_prev") end,
+  { desc = "Go to the previous diagnostics" }
+)
+vim.keymap.set(
+  "n",
+  "]d",
+  function() vim.cmd.Lspsaga("diagnostic_jump_next") end,
+  { desc = "Go to the next diagnostics" }
+)
 vim.keymap.set("n", "<leader>dq", vim.diagnostic.setqflist, { desc = "Send diagnostics to quickfix list" })
 
 vim.keymap.set("n", "]c", vim.cmd.cnext, { desc = "Go to the next quickfix location." })
@@ -27,6 +37,7 @@ vim.keymap.set("n", "L", "$", { desc = "End of line" })
 
 -- LSP
 -- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Actions" })
+vim.keymap.set({ "n", "v" }, "<leader>ca", function() vim.cmd.Lspsaga("code_action") end, { desc = "LSP Code Actions" })
 vim.keymap.set({ "n", "v" }, "<leader>cf", function() vim.lsp.buf.format({ async = true }) end, { desc = "LSP Format" })
 vim.keymap.set("n", "<leader>rN", vim.lsp.buf.rename, { desc = "LSP Rename" })
 -- vim.keymap.set("v", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Range Code Actions" })

@@ -53,10 +53,10 @@ local function configure()
 
   cmp.setup.cmdline(":", {
     sources = {
-      { name = "path",            group_index = 2 },
-      { name = "cmdline",         group_index = 2 },
+      { name = "path", group_index = 2 },
+      { name = "cmdline", group_index = 2 },
       { name = "cmdline_history", group_index = 2 },
-      { name = "fuzzy_path",      group_index = 1, option = { fd_timeout_msec = 1500 } },
+      { name = "fuzzy_path", group_index = 1, option = { fd_timeout_msec = 1500 } },
     },
     preselect = cmp.PreselectMode.Item,
     mapping = keymap.cmdline,
@@ -78,13 +78,9 @@ local function configure()
   local cmp_autopairs = require("nvim-autopairs.completion.cmp")
   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
-  cmp.event:on("menu_opened", function()
-    vim.b.copilot_suggestion_hidden = true
-  end)
+  cmp.event:on("menu_opened", function() vim.b.copilot_suggestion_hidden = true end)
 
-  cmp.event:on("menu_closed", function()
-    vim.b.copilot_suggestion_hidden = false
-  end)
+  cmp.event:on("menu_closed", function() vim.b.copilot_suggestion_hidden = false end)
 end
 
 --- @type LazyPluginSpec[]

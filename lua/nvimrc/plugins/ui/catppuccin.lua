@@ -25,7 +25,7 @@ local catppuccinOptions = {
   },
   color_overrides = {
     mocha = {
-      base = terminal.alt_background,
+      base = terminal.background,
     },
   },
   integrations = {
@@ -35,6 +35,7 @@ local catppuccinOptions = {
     illuminate = true,
     indent_blankline = { enabled = true },
     lsp_trouble = true,
+    lsp_saga = true,
     harpoon = true,
     headlines = true,
     native_lsp = { enabled = true },

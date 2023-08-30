@@ -16,6 +16,12 @@ return {
       "Outline",
       "neotest-summary",
       "neotest-output-panel",
-    }
+      "sagafinder",
+      "sagarename",
+      "sagacallhierarchy",
+      "sagaoutline",
+      "saga_codeaction",
+      "sagadiagnostic",
+    },
   },
 }

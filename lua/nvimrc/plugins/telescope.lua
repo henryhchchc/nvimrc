@@ -68,10 +68,10 @@ local function configure()
         case_mode = "smart_case",
       },
       ast_grep = {
-            command = { "sg", "--json=stream" },
-            grep_open_files = false,
-            lang = nil,
-        }
+        command = { "sg", "--json=stream" },
+        grep_open_files = false,
+        lang = nil,
+      },
     },
   })
   telescope.load_extension("fzf")
@@ -104,7 +104,7 @@ return {
     { "jvgrootveld/telescope-zoxide" },
     { "nvim-telescope/telescope-dap.nvim" },
     { "nvim-lua/plenary.nvim" },
-    { "Marskey/telescope-sg" }
+    { "Marskey/telescope-sg" },
   },
   config = configure,
   event = "VeryLazy",

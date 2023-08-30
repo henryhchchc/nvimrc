@@ -40,15 +40,6 @@ end
 --- @type LazyPluginSpec[]
 return {
   { "neovim/nvim-lspconfig", config = configure, event = "VeryLazy" },
-  {
-    "kosayoda/nvim-lightbulb",
-    event = "LspAttach",
-    opts = {
-      sign = { enabled = false },
-      autocmd = { enabled = true },
-      virtual_text = { enabled = true, text = "󰌶", hl_mode = "combine" },
-    },
-  },
   { "folke/neodev.nvim" },
   { "folke/neoconf.nvim", cmd = "Neoconf", dependencies = { "nvim-lspconfig" } },
   {
@@ -61,25 +52,23 @@ return {
     event = "LspAttach",
   },
   {
-    "aznhe21/actions-preview.nvim",
-    --- @type LazyKeys[]
-    keys = {
-      {
-        "<leader>ca",
-        function() require("actions-preview").code_actions() end,
-        desc = "LSP Code Actions",
-        mode = { "n", "v" },
-      }
+    "nvimdev/lspsaga.nvim",
+    config = true,
+    event = "LspAttach",
+    cmd = "Lspsaga",
+    opts = {
+      code_action = {
+        keys = {
+          quit = { "q", "<C-c>", "<esc>" },
+        },
+      },
+      lightbulb = {
+        sign = false,
+      },
+      ui = {
+        code_action = "󰌶",
+      },
     },
-    event = "LspAttach"
   },
   { "b0o/schemastore.nvim" },
-  {
-    "stevearc/aerial.nvim",
-    opts = {
-      backends = { "lsp", "treesitter", "markdown", "man" },
-      min_width = 20,
-    },
-    cmd = { "AerialToggle", "AerialOpen", "AerialOpenAll" },
-  },
 }

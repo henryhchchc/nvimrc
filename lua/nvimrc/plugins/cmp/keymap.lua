@@ -35,7 +35,6 @@ local return_mapping = function(fallback)
   end
 end
 
-
 local function copilot_suggest()
   local cmp = require("cmp")
   cmp.close()
