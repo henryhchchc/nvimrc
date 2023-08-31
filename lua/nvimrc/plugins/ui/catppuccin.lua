@@ -42,6 +42,7 @@ local catppuccinOptions = {
     lsp_saga = true,
     harpoon = true,
     headlines = true,
+    hop = true,
     native_lsp = { enabled = true },
     navic = { enabled = true, custom_bg = "NONE" },
     neogit = true,
