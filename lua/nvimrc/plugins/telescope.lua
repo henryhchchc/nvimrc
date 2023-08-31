@@ -13,23 +13,14 @@ local function configure()
     ["<C-u>"] = actions.preview_scrolling_up,
     ["<C-d>"] = actions.preview_scrolling_down,
     ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+    ["<C-w>"] = function() vim.cmd("normal! bcw") end,
   }
 
   telescope.setup({
     pickers = {
       spell_suggest = { theme = "cursor" },
       find_files = {
-        find_command = {
-          "fd",
-          "--type",
-          "f",
-          "--strip-cwd-prefix",
-          "--hidden",
-          "--exclude",
-          ".git/",
-          "--exclude",
-          ".git",
-        },
+        find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden", "--exclude", ".git/", "--exclude", ".git" },
       },
       help_tags = {
         mappings = { i = { ["<CR>"] = actions.select_vertical } },

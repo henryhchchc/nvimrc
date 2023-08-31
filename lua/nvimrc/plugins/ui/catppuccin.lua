@@ -11,7 +11,7 @@ local catppuccinOptions = {
       return {
         NormalFloat = { bg = colors.base },
         NotifyBackground = { bg = "#000000" },
-        -- Heaslines
+        -- Headlines
         markdownCodeBlock = { bg = colors.none },
         CodeBlock = { link = "markdownCodeBlock" },
         Headline1 = { bg = colors.none, style = { "bold", "underdouble" } },
@@ -20,6 +20,10 @@ local catppuccinOptions = {
         Headline4 = { bg = colors.none },
         Headline5 = { bg = colors.none },
         Headline6 = { bg = colors.none },
+        -- Telescope
+        TelescopePromptTitle = { bg = colors.flamingo, fg = colors.base, style = { "bold" } },
+        TelescopeResultsTitle = { bg = colors.lavender, fg = colors.base, style = { "bold" } },
+        TelescopePreviewTitle = { bg = colors.green, fg = colors.base, style = { "bold" } },
       }
     end,
   },
