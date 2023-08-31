@@ -1,23 +1,3 @@
-local function configNavic()
-  local navic = require("nvim-navic")
-  navic.setup({
-    highlight = true,
-    depth_limit = 5,
-  })
-
-  vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(args)
-      if args.data then
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        if client.server_capabilities.documentSymbolProvider then
-          local bufnr = args.buf
-          navic.attach(client, bufnr)
-        end
-      end
-    end,
-  })
-end
-
 local function diff_source()
   -- This is defined by gitsigns
   ---@diagnostic disable-next-line: undefined-field
@@ -85,7 +65,6 @@ local function configure()
       lualine_b = {
         "branch",
         { "diff", source = diff_source },
-        { "diagnostics", sources = { "nvim_diagnostic" } },
       },
       lualine_c = {
         { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
@@ -101,17 +80,9 @@ local function configure()
             new = " [New File]",
           },
         },
-        { "navic" },
+        { "diagnostics", sources = { "nvim_diagnostic" } },
       },
       lualine_x = {
-        {
-          function() return require("noice").api.status.command.get() end,
-          cond = function() return require("noice").api.status.command.has() end,
-        },
-        {
-          function() return require("noice").api.status.mode.get() end,
-          cond = function() return require("noice").api.status.mode.has() end,
-        },
         {
           function() return "  " .. require("dap").status() end,
           cond = function() return require("dap").status() ~= "" end,
