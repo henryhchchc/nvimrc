@@ -105,7 +105,7 @@ local function configure()
         },
         {
           function() return require("copilot_status").status_string() end,
-          cnd = function() return require("copilot_status").enabled() end,
+          cond = function() return require("copilot_status").enabled() end,
         },
       },
     },
