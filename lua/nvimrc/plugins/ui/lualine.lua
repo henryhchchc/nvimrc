@@ -130,10 +130,10 @@ local function configCopilotStatus()
   require("copilot_status").setup({
     icons = {
       idle = " ",
-      error = " ",
-      offline = " ",
+      error = " ",
+      offline = " ",
       warning = " ",
-      loading = " ",
+      loading = "󰦗 ",
     },
   })
 end
