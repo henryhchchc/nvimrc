@@ -74,6 +74,7 @@ local neotreeOpts = {
     icon = {
       folder_empty = "󰜌",
       folder_empty_open = "󰜌",
+      default = ""
     },
     git_status = {
       symbols = {
