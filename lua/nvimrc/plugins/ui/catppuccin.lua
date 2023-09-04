@@ -21,7 +21,7 @@ local catppuccinOptions = {
         Headline5 = { bg = colors.none },
         Headline6 = { bg = colors.none },
         -- Telescope
-        TelescopePromptTitle = { bg = colors.flamingo, fg = colors.base, style = { "bold" } },
+        TelescopePromptTitle = { bg = colors.blue, fg = colors.base, style = { "bold" } },
         TelescopeResultsTitle = { bg = colors.lavender, fg = colors.base, style = { "bold" } },
         TelescopePreviewTitle = { bg = colors.green, fg = colors.base, style = { "bold" } },
       }
