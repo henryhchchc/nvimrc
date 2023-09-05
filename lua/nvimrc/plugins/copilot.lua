@@ -8,9 +8,9 @@ return {
       keymap = {
         accept = false,
         accept_word = false,
-        accept_line = false,
-        next = false,
-        prev = false,
+        accept_line = "<C-f>",
+        next = "<C-n>",
+        prev = "<C-p>",
         dismiss = "<C-]>",
       },
     },
@@ -19,5 +19,5 @@ return {
     },
   },
   cmd = "Copilot",
-  event = "VeryLazy",
+  event = "InsertEnter",
 }

@@ -1,8 +1,9 @@
 local tab_mapping = function(fallback)
   local cmp = require("cmp")
   local luasnip = require("luasnip")
-  if require("copilot.suggestion").is_visible() then
-    require("copilot.suggestion").accept()
+  local copilot_suggestion = require("copilot.suggestion")
+  if copilot_suggestion.is_visible() then
+    copilot_suggestion.accept()
   elseif luasnip.expand_or_jumpable() then
     luasnip.expand_or_jump()
   elseif cmp.visible() and cmp.get_active_entry() then
@@ -12,7 +13,7 @@ local tab_mapping = function(fallback)
   end
 end
 
-local tap_mapping_cmdline = function(_fallback)
+local tap_mapping_cmdline = function(fallback)
   local cmp = require("cmp")
   if cmp.visible() then cmp.select_next_item() end
 end
@@ -37,20 +38,9 @@ end
 
 local function copilot_suggest()
   local cmp = require("cmp")
+  local copilot_suggestion = require("copilot.suggestion")
   cmp.close()
-  vim.cmd.Copilot("suggestion")
-end
-
-local function copilot_next()
-  local cmp = require("cmp")
-  cmp.close()
-  require("copilot.suggestion").next()
-end
-
-local function copilot_prev()
-  local cmp = require("cmp")
-  cmp.close()
-  require("copilot.suggestion").next()
+  copilot_suggestion.next()
 end
 
 local M = {}
@@ -68,8 +58,6 @@ M.insert = {
   ["<TAB>"] = cmp.mapping(tab_mapping, { "i", "c", "s" }),
   ["<S-TAB>"] = cmp.mapping(shift_tab_mapping, { "i", "c", "s" }),
   ["<CR>"] = cmp.mapping(return_mapping, { "i" }),
-  ["<C-n>"] = cmp.mapping(copilot_next, { "i" }),
-  ["<C-p>"] = cmp.mapping(copilot_prev, { "i" }),
   ["<C-s>"] = cmp.mapping(copilot_suggest, { "i" }),
 }
 
