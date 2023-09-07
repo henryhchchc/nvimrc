@@ -11,15 +11,6 @@ local catppuccinOptions = {
       return {
         NormalFloat = { bg = colors.base },
         NotifyBackground = { bg = "#000000" },
-        -- Headlines
-        markdownCodeBlock = { bg = colors.none },
-        CodeBlock = { link = "markdownCodeBlock" },
-        Headline1 = { bg = colors.none, style = { "bold", "underdouble" } },
-        Headline2 = { bg = colors.none, style = { "bold" } },
-        Headline3 = { bg = colors.none, style = { "italic" } },
-        Headline4 = { bg = colors.none },
-        Headline5 = { bg = colors.none },
-        Headline6 = { bg = colors.none },
         -- Telescope
         TelescopePromptTitle = { bg = colors.blue, fg = colors.base, style = { "bold" } },
         TelescopeResultsTitle = { bg = colors.lavender, fg = colors.base, style = { "bold" } },
@@ -41,8 +32,8 @@ local catppuccinOptions = {
     lsp_trouble = true,
     lsp_saga = true,
     harpoon = true,
-    headlines = true,
     hop = true,
+    markdown = true,
     native_lsp = { enabled = true },
     navic = { enabled = true, custom_bg = "NONE" },
     neogit = true,
