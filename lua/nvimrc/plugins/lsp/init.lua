@@ -31,6 +31,7 @@ local function configure()
     "sourcekit",
     "pylsp",
     "taplo",
+    "tsserver"
   }
   for _, server in ipairs(to_setup) do
     lsp.setup_with_default(server, {})
