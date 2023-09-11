@@ -47,6 +47,9 @@ return {
     "smjonas/inc-rename.nvim",
     config = function()
       require("inc_rename").setup()
+      vim.api.nvim_create_autocmd("CmdlineLeave", {
+        callback = function() vim.fn.histdel("cmd", "^IncRename ") end,
+      })
       local rename_func = function() return ":IncRename " .. vim.fn.expand("<cword>") end
       vim.keymap.set("n", "<leader>rn", rename_func, { expr = true, desc = "LSP Rename" })
     end,
