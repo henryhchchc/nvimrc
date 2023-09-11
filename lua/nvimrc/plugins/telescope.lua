@@ -20,7 +20,17 @@ local function configure()
     pickers = {
       spell_suggest = { theme = "cursor" },
       find_files = {
-        find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden", "--exclude", ".git/", "--exclude", ".git" },
+        find_command = {
+          "fd",
+          "--type",
+          "f",
+          "--strip-cwd-prefix",
+          "--hidden",
+          "--exclude",
+          ".git/",
+          "--exclude",
+          ".git",
+        },
       },
       help_tags = {
         mappings = { i = { ["<CR>"] = actions.select_vertical } },

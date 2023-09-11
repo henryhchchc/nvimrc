@@ -54,7 +54,7 @@ vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 
 vim.opt.guicursor = {
-  'n-v-c:block-Cursor',
-  'i-ci:ver25-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100',
-  'r:hor50-Cursor/lCursor-blinkwait100-blinkon100-blinkoff100'
+  "n-v-c:block-Cursor",
+  "i-ci:ver25-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100",
+  "r:hor50-Cursor/lCursor-blinkwait100-blinkon100-blinkoff100",
 }
