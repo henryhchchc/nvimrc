@@ -33,6 +33,8 @@ vim.keymap.set("n", "<leader>gl", vim.cmd.lopen, { desc = "Open Loclist Window" 
 vim.keymap.set("n", "H", "^", { desc = "Start of line (non-blank)" })
 vim.keymap.set("n", "L", "$", { desc = "End of line" })
 
+-- Cmd-S for save
+vim.keymap.set("", "<D-s>", vim.cmd.write, { desc = "Save" })
 -- LSP
 -- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Actions" })
 vim.keymap.set({ "n", "v" }, "<leader>ca", function() vim.cmd.Lspsaga("code_action") end, { desc = "LSP Code Actions" })
