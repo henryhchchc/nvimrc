@@ -9,8 +9,8 @@ local tree_keymaps = {
   ["H"] = "toggle_hidden",
   ["A"] = "add_directory",
   ["D"] = "delete",
-  ["yy"] = "copy_to_clipboard",
-  ["dd"] = "cut_to_clipboard",
+  ["y"] = "copy_to_clipboard",
+  ["d"] = "cut_to_clipboard",
   ["p"] = "paste_from_clipboard",
 }
 
@@ -31,6 +31,8 @@ local common_keymaps = {
   ["?"] = "show_help",
   ["<"] = "prev_source",
   [">"] = "next_source",
+  ["K"] = "show_file_details",
+  ["<esc>"] = "cancel",
 }
 
 local neotreeOpts = {
