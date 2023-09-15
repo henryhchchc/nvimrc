@@ -118,6 +118,7 @@ local function configure()
       "lazy",
       "trouble",
       "fugitive",
+      "toggleterm",
       help_extension,
       neo_test_extension,
       saga_outline,

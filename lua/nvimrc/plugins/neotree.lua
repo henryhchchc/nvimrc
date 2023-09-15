@@ -45,6 +45,7 @@ local neotreeOpts = {
     "neotest-summary",
     "neotest-output-panel",
     "sagaoutline",
+    "toggleterm"
   },
   use_popups_for_input = false,
   use_default_mappings = false,
