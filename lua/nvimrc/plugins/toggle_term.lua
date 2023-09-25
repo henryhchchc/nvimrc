@@ -23,5 +23,5 @@ return {
       function() vim.cmd.ToggleTerm({ args = { "direction=float" } }) end,
       desc = "Toggle terminal",
     },
-  }
+  },
 }

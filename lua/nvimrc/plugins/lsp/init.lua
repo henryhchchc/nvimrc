@@ -21,18 +21,25 @@ local function configure()
   })
   local to_setup = {
     "bashls",
+    "clangd",
     "cssls",
     "html",
     "grammarly",
     "hls",
     "kotlin_language_server",
     "lua_ls",
-    "nil_ls",
-    "sourcekit",
     "pylsp",
     "taplo",
     "tsserver",
   }
+  local conditional_add = {
+    ["nil"] = "nil_ls",
+    ["sourcekit-lsp"] = "sourcekit",
+  }
+  for exec, lsp_name in pairs(conditional_add) do
+    if vim.fn.executable(exec) == 1 then table.insert(to_setup, lsp_name) end
+  end
+
   for _, server in ipairs(to_setup) do
     lsp.setup_with_default(server, {})
   end
