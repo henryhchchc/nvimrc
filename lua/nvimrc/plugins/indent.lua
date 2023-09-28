@@ -1,26 +1,11 @@
-local function configureBlankline()
-  require("indent_blankline").setup({
-    space_char_blankline = " ",
-    show_current_context = true,
-    show_current_context_start = true,
-    use_treesitter = true,
-    filetype_exclude = {
-      "help",
-      "alpha",
-      "dashboard",
-      "NvimTree",
-      "Trouble",
-      "lazy",
-      "notify",
-      "toggleterm",
-      "lazyterm",
-    },
-  })
-end
+--- @type ibl.config.full
+local options = {
+}
 
 --- @type LazyPluginSpec
 return {
   "lukas-reineke/indent-blankline.nvim",
-  config = configureBlankline,
+  main = "ibl",
+  opts = options,
   event = { "BufReadPost", "BufNewFile" },
 }
