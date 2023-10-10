@@ -1,5 +1,3 @@
----@type string[]
-
 ---@type TSConfig
 local treeSitterOptions = {
   ensure_installed = require("nvimrc.plugins.ts.languages"),
