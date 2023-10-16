@@ -9,46 +9,59 @@ local function configure()
   vim.api.nvim_set_hl(0, "SymbolUsageImpl", { fg = hl("@keyword").fg, bg = hl("CursorLine").bg, italic = true })
 
   local function text_format(symbol)
-    local res = {}
+    if not symbol then return end
+    local result = {}
 
     local round_start = { "", "SymbolUsageRounding" }
     local round_end = { "", "SymbolUsageRounding" }
 
-    if symbol.references then
+    if symbol.references and symbol.references > 0 then
       local usage = symbol.references <= 1 and "usage" or "usages"
       local num = symbol.references == 0 and "no" or symbol.references
-      table.insert(res, round_start)
-      table.insert(res, { "󰌹 ", "SymbolUsageRef" })
-      table.insert(res, { ("%s %s"):format(num, usage), "SymbolUsageContent" })
-      table.insert(res, round_end)
+      table.insert(result, round_start)
+      table.insert(result, { "󰌹 ", "SymbolUsageRef" })
+      table.insert(result, { ("%s %s"):format(num, usage), "SymbolUsageContent" })
+      table.insert(result, round_end)
     end
 
-    if symbol.definition then
-      if #res > 0 then
-        table.insert(res, { " ", "NonText" })
+    if symbol.definition and symbol.definition > 0 then
+      if #result > 0 then
+        table.insert(result, { " ", "NonText" })
       end
-      table.insert(res, round_start)
-      table.insert(res, { "󰳽 ", "SymbolUsageDef" })
-      table.insert(res, { symbol.definition .. " defs", "SymbolUsageContent" })
-      table.insert(res, round_end)
+      table.insert(result, round_start)
+      table.insert(result, { "󰳽 ", "SymbolUsageDef" })
+      table.insert(result, { symbol.definition .. " defs", "SymbolUsageContent" })
+      table.insert(result, round_end)
     end
 
-    if symbol.implementation then
-      if #res > 0 then
-        table.insert(res, { " ", "NonText" })
+    if symbol.implementation and symbol.implementation > 0 then
+      if #result > 0 then
+        table.insert(result, { " ", "NonText" })
       end
-      table.insert(res, round_start)
-      table.insert(res, { "󰡱 ", "SymbolUsageImpl" })
-      table.insert(res, { symbol.implementation .. " impls", "SymbolUsageContent" })
-      table.insert(res, round_end)
+      table.insert(result, round_start)
+      table.insert(result, { "󰡱 ", "SymbolUsageImpl" })
+      table.insert(result, { symbol.implementation .. " impls", "SymbolUsageContent" })
+      table.insert(result, round_end)
     end
 
-    return res
+    return result
   end
 
+  local SymbolKind = vim.lsp.protocol.SymbolKind
+
   require("symbol-usage").setup({
+    kinds = {
+      SymbolKind.Function,
+      SymbolKind.Method,
+      SymbolKind.Constructor,
+      SymbolKind.Class,
+      SymbolKind.Struct,
+      SymbolKind.Field,
+    },
     text_format = text_format,
-    vt_position = "end_of_line"
+    vt_position = "end_of_line",
+    definition = { enabled = true },
+    implementation = { enabled = true }
   })
 end
 
