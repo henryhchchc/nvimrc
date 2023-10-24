@@ -14,6 +14,15 @@ local function on_attach(client, bufnr)
   vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "LSP Signagure Help", buffer = bufnr })
   vim.keymap.set("n", "<leader>gl", vim.lsp.codelens.run, { desc = "LSP Run Codelens", buffer = bufnr })
   vim.keymap.set("n", "K", function() vim.cmd.Lspsaga("hover_doc") end, { desc = "LSP Hover Doc", buffer = bufnr })
+
+  local codelen_group = vim.api.nvim_create_augroup("lsp_codelens", {})
+  vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+    buffer = bufnr,
+    group = codelen_group,
+    callback = function(event)
+      vim.lsp.codelens.refresh()
+    end
+  })
 end
 
 function M.lsp_default_opts()
