@@ -16,7 +16,7 @@ local extraJdtLsConfig = {
   init_options = {
     workspace = configDir,
     extendedClientCapabilities = {
-      progressReportProvider = false,
+      progressReportProvider = true,
     },
   },
   handlers = {

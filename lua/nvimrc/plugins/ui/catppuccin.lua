@@ -11,8 +11,6 @@ local catppuccinOptions = {
       return {
         NormalFloat = { bg = colors.base },
         NotifyBackground = { bg = "#000000" },
-        -- LSP
-        LspCodeLens = { fg = colors.peach, style = { "bold" } },
         -- Telescope
         TelescopePromptTitle = { bg = colors.blue, fg = colors.base, style = { "bold" } },
         TelescopeResultsTitle = { bg = colors.lavender, fg = colors.base, style = { "bold" } },
