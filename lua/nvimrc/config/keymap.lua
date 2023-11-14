@@ -1,5 +1,7 @@
 local utils = require("nvimrc.utils")
 
+vim.keymap.set("n", "<leader>l", vim.cmd.Lazy, { desc = "Lazy.nvim" })
+
 -- Tab pages
 vim.keymap.set("n", "]t", vim.cmd.tabnext, { desc = "Switch to the next tabpage." })
 vim.keymap.set("n", "[t", vim.cmd.tabprev, { desc = "Switch to the previous tabpage." })
