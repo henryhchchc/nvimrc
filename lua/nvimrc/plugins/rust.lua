@@ -17,7 +17,13 @@ return {
   { "simrat39/rust-tools.nvim", ft = { "rust" }, config = configure },
   {
     "saecki/crates.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = { "nvim-lua/plenary.nvim", "nvimtools/none-ls.nvim" },
+    opts = {
+      null_ls = {
+        enabled = true,
+        name = "crates.nvim",
+      }
+    },
     config = true,
     event = "BufRead Cargo.toml",
   },

@@ -13,9 +13,15 @@ local function diff_source()
   end
 end
 
+local language_server_ignore = {
+  ["efm"] = true,
+  ["null-ls"] = true,
+  ["copilot"] = true,
+}
+
 local function lspName()
   local clients = vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() })
-  clients = vim.tbl_filter(function(it) return it.name ~= "efm" and it.name ~= "copilot" end, clients)
+  clients = vim.tbl_filter(function(it) return language_server_ignore[it] end, clients)
   local lspCount = vim.tbl_count(clients)
   local prefix = " "
   local content = "N/A"
