@@ -56,3 +56,5 @@ vim.g.loaded_perl_provider = 0
 vim.opt.guicursor = {
   "i-ci:ver25-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100",
 }
+
+vim.g.skip_ts_context_commentstring_module = true

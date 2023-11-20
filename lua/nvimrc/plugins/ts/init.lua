@@ -49,8 +49,6 @@ local treeSitterOptions = {
   autotag = { enable = true },
   --- @type TSModule
   rainbow = { enable = true },
-  --- @type TSModule
-  context_commentstring = { enable = true },
 }
 
 local function configureTreeSitter()
