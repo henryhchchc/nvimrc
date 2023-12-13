@@ -74,7 +74,8 @@ return {
         },
       },
       lightbulb = {
-        sign = false,
+        sign = true,
+        virtual_text = false,
       },
       ui = {
         code_action = "󰌶",

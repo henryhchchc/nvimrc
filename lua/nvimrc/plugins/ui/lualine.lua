@@ -13,15 +13,13 @@ local function diff_source()
   end
 end
 
-local language_server_ignore = {
-  ["efm"] = true,
-  ["null-ls"] = true,
-  ["copilot"] = true,
-}
+local language_server_ignore = { "efm", "null-ls", "copilot" }
 
 local function lspName()
   local clients = vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() })
-  clients = vim.tbl_filter(function(it) return language_server_ignore[it] end, clients)
+  clients = vim.tbl_filter(function(it)
+    return not vim.tbl_contains(language_server_ignore, it.name)
+  end, clients)
   local lspCount = vim.tbl_count(clients)
   local prefix = " "
   local content = "N/A"
@@ -45,7 +43,7 @@ local function configure()
       lualine_a = { function() return "NeoTest" end },
 
       lualine_c = {
-        { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+        { "filetype", icon_only = true,   separator = "", padding = { left = 1, right = 0 } },
         { "filename", file_status = false },
       },
     },
@@ -73,7 +71,7 @@ local function configure()
         { "diff", source = diff_source },
       },
       lualine_c = {
-        { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+        { "filetype",    icon_only = true,               separator = "", padding = { left = 1, right = 0 } },
         {
           "filename",
           file_status = true,
