@@ -55,6 +55,7 @@ local function configureTreeSitter()
   require("nvim-treesitter.configs").setup(treeSitterOptions)
   -- FIX: Disable treesitter folding for now
   --      This is a bug in neovim stdlib
+  --      See https://github.com/neovim/neovim/issues/25608
   -- vim.opt.foldmethod = "expr"
   -- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
   -- vim.opt.foldenable = false

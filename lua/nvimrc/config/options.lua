@@ -10,7 +10,7 @@ vim.opt.inccommand = "nosplit"
 vim.opt.laststatus = 0
 vim.opt.list = true
 vim.opt.listchars:append("tab:> ,trail:⋅,nbsp:⋅,multispace:⋅,conceal:?")
-vim.opt.mouse = "a"
+vim.opt.mouse = "ar"
 vim.opt.number = true
 vim.opt.shiftwidth = 2
 vim.opt.shiftround = true
@@ -20,13 +20,14 @@ vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
 vim.opt.smartindent = true
 vim.opt.spelllang = { "en_us", "cjk" }
+vim.opt.spelloptions = { "camel" }
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.splitkeep = "screen"
 vim.opt.tabstop = 2
 vim.opt.timeoutlen = 300
 vim.opt.title = true
-vim.opt.titlestring = "%t - NVIM"
+vim.opt.titlestring = "%t - NeoVim"
 vim.opt.undofile = true
 vim.opt.undolevels = 10000
 vim.opt.updatetime = 100
@@ -54,7 +55,9 @@ vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 
 vim.opt.guicursor = {
-  "i-ci:ver25-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100",
+  "n-v-c-sm:block",
+  "i-c-ci-ve:ver25-Cursor/iCursor-blinkwait1000-blinkon100-blinkoff100",
+  "r-cr-o:hor20",
 }
 
 vim.g.skip_ts_context_commentstring_module = true
