@@ -13,7 +13,6 @@ local tab_mapping = function(fallback)
   end
 end
 
-
 local tap_mapping_cmdline = function(fallback)
   local cmp = require("cmp")
   if cmp.visible() then cmp.select_next_item() end
@@ -21,9 +20,7 @@ end
 
 local snip_jump = function(fallback)
   local luasnip = require("luasnip")
-  if luasnip.jumpable(1) then
-    luasnip.jump(1)
-  end
+  if luasnip.jumpable(1) then luasnip.jump(1) end
 end
 
 local shift_tab_mapping = function(fallback)

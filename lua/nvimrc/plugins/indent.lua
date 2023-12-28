@@ -1,6 +1,5 @@
 --- @type ibl.config.full
-local options = {
-}
+local options = {}
 
 --- @type LazyPluginSpec
 return {

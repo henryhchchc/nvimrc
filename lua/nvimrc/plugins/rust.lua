@@ -22,7 +22,7 @@ return {
       null_ls = {
         enabled = true,
         name = "crates.nvim",
-      }
+      },
     },
     config = true,
     event = "BufRead Cargo.toml",

@@ -4,8 +4,6 @@ return {
   main = "null-ls",
   opts = function(plugin)
     local builtins = require("null-ls.builtins")
-    return {
-
-    }
-  end
+    return {}
+  end,
 }
