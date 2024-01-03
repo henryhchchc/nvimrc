@@ -64,6 +64,7 @@ return {
   "scss",
   "sql",
   "swift",
+  "ssh_config",
   "todotxt",
   "toml",
   "tsv",
