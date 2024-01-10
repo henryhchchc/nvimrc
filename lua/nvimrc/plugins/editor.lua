@@ -20,6 +20,7 @@ return {
   },
   {
     "karb94/neoscroll.nvim",
+    enabled = false,
     event = "VeryLazy",
     opts = { easing_function = "cubic" },
   },
