@@ -64,23 +64,27 @@ return {
   },
   {
     "nvimdev/lspsaga.nvim",
-    config = true,
     event = "LspAttach",
     cmd = "Lspsaga",
-    opts = {
-      code_action = {
-        keys = {
-          quit = { "q", "<C-c>", "<esc>" },
+    dependencies = { "catppuccin/nvim" },
+    config = function()
+      local opts = {
+        code_action = {
+          keys = {
+            quit = { "q", "<C-c>", "<esc>" },
+          },
         },
-      },
-      lightbulb = {
-        sign = true,
-        virtual_text = false,
-      },
-      ui = {
-        code_action = "󰌶",
-      },
-    },
+        lightbulb = {
+          sign = true,
+          virtual_text = false,
+        },
+        ui = {
+          code_action = "󰌶",
+          kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
+        },
+      }
+      require("lspsaga").setup(opts)
+    end,
   },
   { "b0o/schemastore.nvim" },
 }

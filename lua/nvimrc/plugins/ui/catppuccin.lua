@@ -31,7 +31,6 @@ local catppuccinOptions = {
     indent_blankline = { enabled = true },
     lsp_trouble = true,
     lsp_saga = true,
-    harpoon = true,
     hop = true,
     markdown = true,
     native_lsp = { enabled = true },
