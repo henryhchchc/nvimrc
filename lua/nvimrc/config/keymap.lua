@@ -35,6 +35,8 @@ vim.keymap.set("n", "<leader>gl", vim.cmd.lopen, { desc = "Open Loclist Window" 
 vim.keymap.set("n", "H", "^", { desc = "Start of line (non-blank)" })
 vim.keymap.set("n", "L", "$", { desc = "End of line" })
 
+vim.keymap.set("n", "<leader><leader>", "<C-^>", { desc = "Alternate most recent buffers" })
+
 -- Cmd-S for save
 vim.keymap.set("", "<D-s>", vim.cmd.write, { desc = "Save" })
 -- LSP
