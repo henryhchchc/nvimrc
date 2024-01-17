@@ -6,7 +6,6 @@ return {
     opts = { check_ts = true },
     event = "InsertEnter",
   },
-  { "RRethy/nvim-align", cmd = "Align" },
   { "numToStr/Comment.nvim", config = true, event = "VeryLazy" },
   { "kylechui/nvim-surround", config = true, event = { "BufReadPost", "BufNewFile" } },
   {
@@ -17,11 +16,5 @@ return {
       })
     end,
     event = { "BufReadPost", "BufNewFile" },
-  },
-  {
-    "karb94/neoscroll.nvim",
-    enabled = false,
-    event = "VeryLazy",
-    opts = { easing_function = "cubic" },
   },
 }
