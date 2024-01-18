@@ -1,18 +1,3 @@
-local function configure()
-  --- @type neotest.Config
-  local options = {
-    adapters = {
-      require("neotest-rust"),
-    },
-    status = { virtual_text = true, signs = false },
-    output = { open_on_run = true },
-    quickfix = {
-      open = function () vim.cmd.Trouble("quickfix") end,
-    },
-  }
-  require("neotest").setup(options)
-end
-
 local key_maps = {
   { "<leader>tt", function () require("neotest").run.run(vim.fn.expand("%")) end, desc = "Run File" },
   { "<leader>tT", function () require("neotest").run.run(vim.loop.cwd()) end, desc = "Run All Test Files" },
@@ -37,6 +22,18 @@ return {
     -- Test runners
     "rouge8/neotest-rust",
   },
-  config = configure,
+  opts = function (self, opts)
+    --- @type neotest.Config
+    return {
+      adapters = {
+        require("neotest-rust"),
+      },
+      status = { virtual_text = true, signs = false },
+      output = { open_on_run = true },
+      quickfix = {
+        open = function () vim.cmd.Trouble("quickfix") end,
+      },
+    }
+  end,
   keys = key_maps,
 }

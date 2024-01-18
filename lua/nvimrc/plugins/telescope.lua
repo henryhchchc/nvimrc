@@ -16,21 +16,23 @@ local function configure()
     ["<C-w>"] = function () vim.cmd("normal! bcw") end,
   }
 
+  local find_files_command = {
+    "fd",
+    "--type",
+    "f",
+    "--strip-cwd-prefix",
+    "--hidden",
+    "--exclude",
+    ".git/",
+    "--exclude",
+    ".git",
+  }
+
   telescope.setup({
     pickers = {
       spell_suggest = { theme = "cursor" },
       find_files = {
-        find_command = {
-          "fd",
-          "--type",
-          "f",
-          "--strip-cwd-prefix",
-          "--hidden",
-          "--exclude",
-          ".git/",
-          "--exclude",
-          ".git",
-        },
+        find_command = find_files_command,
       },
       help_tags = {
         mappings = { i = { ["<CR>"] = actions.select_vertical } },

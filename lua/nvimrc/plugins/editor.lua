@@ -10,10 +10,11 @@ return {
   { "kylechui/nvim-surround", config = true, event = { "BufReadPost", "BufNewFile" } },
   {
     "RRethy/vim-illuminate",
-    config = function ()
-      require("illuminate").configure({
-        providers = { "lsp", "treesitter" },
-      })
+    opts = {
+      providers = { "lsp", "treesitter" },
+    },
+    config = function (self, opts)
+      require("illuminate").configure(opts)
     end,
     event = { "BufReadPost", "BufNewFile" },
   },

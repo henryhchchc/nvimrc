@@ -1,37 +1,40 @@
-local function configure_gitsigns()
+local function git_signs_on_attach(bufnr)
   local gs = require("gitsigns")
-  gs.setup({
-    signs = {
-      add = { text = "▎" },
-      change = { text = "▎" },
-      delete = { text = "" },
-      topdelete = { text = "" },
-      changedelete = { text = "▎" },
-      untracked = { text = "▎" },
-    },
-    numhl = true,
-    word_diff = false,
-    on_attach = function (bufnr)
-      local function bufnmap(key, func, desc) vim.keymap.set("n", key, func, { buffer = bufnr, desc = desc }) end
+  local function bufnmap(key, func, desc) vim.keymap.set("n", key, func, { buffer = bufnr, desc = desc }) end
 
-      bufnmap("<leader>ghs", gs.stage_hunk, "Git Stage Hunk")
-      bufnmap("<leader>ghr", gs.reset_hunk, "Git Reset Hunk")
-      bufnmap("<leader>ghS", gs.stage_buffer, "Git Stage Buffer")
-      bufnmap("<leader>ghu", gs.undo_stage_hunk, "Git Undo Stage Hunk")
-      bufnmap("<leader>ghR", gs.reset_buffer, "Git Reset Buffer")
-      bufnmap("<leader>ghP", gs.preview_hunk, "Git Preview Hunk")
-      bufnmap("<leader>ghd", gs.diffthis, "Git Diffthis")
-      bufnmap("[h", gs.prev_hunk, "Git Previous Hunk")
-      bufnmap("]h", gs.next_hunk, "Git Next Hunk")
-      bufnmap("<leader>ghp", gs.preview_hunk_inline, "Git Preview Hunk Inline")
-      bufnmap("<leader>ghb", function () gs.blame_line({ full = true }) end, "Git Blame Line")
-    end,
-  })
+  bufnmap("<leader>ghs", gs.stage_hunk, "Git Stage Hunk")
+  bufnmap("<leader>ghr", gs.reset_hunk, "Git Reset Hunk")
+  bufnmap("<leader>ghS", gs.stage_buffer, "Git Stage Buffer")
+  bufnmap("<leader>ghu", gs.undo_stage_hunk, "Git Undo Stage Hunk")
+  bufnmap("<leader>ghR", gs.reset_buffer, "Git Reset Buffer")
+  bufnmap("<leader>ghP", gs.preview_hunk, "Git Preview Hunk")
+  bufnmap("<leader>ghd", gs.diffthis, "Git Diffthis")
+  bufnmap("[h", gs.prev_hunk, "Git Previous Hunk")
+  bufnmap("]h", gs.next_hunk, "Git Next Hunk")
+  bufnmap("<leader>ghp", gs.preview_hunk_inline, "Git Preview Hunk Inline")
+  bufnmap("<leader>ghb", function () gs.blame_line({ full = true }) end, "Git Blame Line")
 end
+
 
 --- @type LazyPluginSpec[]
 return {
-  { "lewis6991/gitsigns.nvim", config = configure_gitsigns, event = { "BufReadPre", "BufNewFile" } },
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      signs = {
+        add = { text = "▎" },
+        change = { text = "▎" },
+        delete = { text = "" },
+        topdelete = { text = "" },
+        changedelete = { text = "▎" },
+        untracked = { text = "▎" },
+      },
+      numhl = true,
+      word_diff = false,
+      on_attach = git_signs_on_attach,
+    },
+    event = { "BufReadPre", "BufNewFile" }
+  },
   { "tpope/vim-fugitive", cmd = "Git" },
   {
     "NeogitOrg/neogit",
