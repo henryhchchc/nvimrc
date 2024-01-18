@@ -18,7 +18,7 @@ local options = {
   modes = { char = { enabled = false } },
 }
 
---- @type LazyKeys[]
+--- @type LazyKeysSpec[]
 local keymaps = {
   {
     "S",

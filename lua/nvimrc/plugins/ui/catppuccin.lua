@@ -4,7 +4,7 @@ local terminal = {
 }
 
 --- @type CatppuccinOptions
-local catppuccinOptions = {
+local catppuccin_opts = {
   transparent_background = true,
   highlight_overrides = {
     mocha = function (colors)
@@ -54,7 +54,7 @@ return {
   priority = 1000,
   lazy = false,
   config = function ()
-    require("catppuccin").setup(catppuccinOptions)
+    require("catppuccin").setup(catppuccin_opts)
     vim.cmd.colorscheme("catppuccin-mocha")
   end,
 }
