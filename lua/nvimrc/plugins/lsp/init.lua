@@ -5,7 +5,6 @@ local function configure()
   require("neodev").setup({})
   require("nvimrc.plugins.lsp.jdtls")
   require("nvimrc.plugins.lsp.texlab")
-  require("nvimrc.plugins.lsp.efm")
   lsp.setup_with_default("jsonls", {
     json = {
       schemas = require("schemastore").json.schemas(),
