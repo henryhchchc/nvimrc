@@ -51,6 +51,7 @@ local neotreeOpts = {
   use_default_mappings = false,
   filesystem = {
     group_empty_dirs = true,
+    scan_mode = "deep",
     follow_current_file = {
       enabled = true,
     },
