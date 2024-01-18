@@ -15,7 +15,7 @@ local function configure()
       format = lspkind.cmp_format(lspKindOptions),
     },
     snippet = {
-      expand = function(args)
+      expand = function (args)
         local luasnip = require("luasnip")
         luasnip.lsp_expand(args.body)
       end,
@@ -27,8 +27,8 @@ local function configure()
     mapping = keymap.insert,
     sources = {
       { name = "nvim_lsp" },
-      { name = "luasnip" },
       { name = "crates" },
+      { name = "luasnip" },
       { name = "buffer" },
     },
     matching = {
@@ -63,7 +63,7 @@ local function configure()
     view = {
       entries = { name = "custom" },
     },
-    enabled = function()
+    enabled = function ()
       -- Set of commands where cmp will be disabled
       local disabled = {
         IncRename = true,
@@ -79,9 +79,9 @@ local function configure()
   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
   ---@diagnostic disable-next-line: inject-field
-  cmp.event:on("menu_opened", function() vim.b.copilot_suggestion_hidden = true end)
+  cmp.event:on("menu_opened", function () vim.b.copilot_suggestion_hidden = true end)
   ---@diagnostic disable-next-line: inject-field
-  cmp.event:on("menu_closed", function() vim.b.copilot_suggestion_hidden = false end)
+  cmp.event:on("menu_closed", function () vim.b.copilot_suggestion_hidden = false end)
 end
 
 --- @type LazyPluginSpec[]
@@ -94,6 +94,7 @@ return {
       { "hrsh7th/cmp-buffer" },
       { "hrsh7th/cmp-path" },
       { "saadparwaiz1/cmp_luasnip" },
+      { "f3fora/cmp-spell" },
       { "dmitmel/cmp-cmdline-history" },
       {
         "tzachar/cmp-fuzzy-path",
@@ -109,7 +110,7 @@ return {
     opts = { delete_check_events = "TextChanged" },
     dependencies = { "rafamadriz/friendly-snippets" },
     build = "make install_jsregexp",
-    config = function(_, opts)
+    config = function (_, opts)
       require("luasnip").setup(opts)
       require("luasnip.loaders.from_vscode").lazy_load()
     end,

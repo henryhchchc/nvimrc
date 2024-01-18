@@ -8,7 +8,7 @@ return {
     "TermSelect",
   },
   opts = {
-    size = function(term)
+    size = function (term)
       if term.direction == "horizontal" then
         return 25
       elseif term.direction == "vertical" then
@@ -17,10 +17,10 @@ return {
     end,
   },
   keys = {
-    { "<leader><cr>", function() vim.cmd.ToggleTerm() end, desc = "Toggle terminal" },
+    { "<leader><cr>", function () vim.cmd.ToggleTerm() end, desc = "Toggle terminal" },
     {
       "<leader><A-cr>",
-      function() vim.cmd.ToggleTerm({ args = { "direction=float" } }) end,
+      function () vim.cmd.ToggleTerm({ args = { "direction=float" } }) end,
       desc = "Toggle terminal",
     },
   },

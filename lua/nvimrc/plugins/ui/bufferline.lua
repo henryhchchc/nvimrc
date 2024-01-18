@@ -6,8 +6,8 @@ local function configure()
       highlights = require("catppuccin.groups.integrations.bufferline").get(),
       diagnostics = "nvim_lsp",
       always_show_bufferline = false,
-      close_command = function(n) require("mini.bufremove").delete(n, false) end,
-      right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
+      close_command = function (n) require("mini.bufremove").delete(n, false) end,
+      right_mouse_command = function (n) require("mini.bufremove").delete(n, false) end,
       offsets = {
         {
           filetype = "neo-tree",
@@ -21,7 +21,7 @@ local function configure()
           groups.builtin.ungrouped,
           {
             name = " Terminals",
-            matcher = function(buf) return buf.buftype == "terminal" end,
+            matcher = function (buf) return buf.buftype == "terminal" end,
           },
         },
       },
@@ -41,9 +41,9 @@ return {
   config = configure,
   event = "VeryLazy",
   keys = {
-    { "<leader>bp", function() vim.cmd.BufferLineTogglePin() end, desc = "Toggle pin" },
-    { "<leader>bP", function() vim.cmd.BufferLineGroupClose("ungrouped") end, desc = "Delete non-pinned buffers" },
-    { "[b", function() vim.cmd.BufferLineCyclePrev() end, desc = "Previous buffer" },
-    { "]b", function() vim.cmd.BufferLineCycleNext() end, desc = "Next buffer" },
+    { "<leader>bp", function () vim.cmd.BufferLineTogglePin() end, desc = "Toggle pin" },
+    { "<leader>bP", function () vim.cmd.BufferLineGroupClose("ungrouped") end, desc = "Delete non-pinned buffers" },
+    { "[b", function () vim.cmd.BufferLineCyclePrev() end, desc = "Previous buffer" },
+    { "]b", function () vim.cmd.BufferLineCycleNext() end, desc = "Next buffer" },
   },
 }

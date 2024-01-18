@@ -17,9 +17,7 @@ local treeSitterOptions = {
     },
   },
   --- @type TSModule
-  indent = {
-    enable = true,
-  },
+  indent = { enable = true },
   --- @type TSModule
   textobjects = {
     enable = true,
@@ -78,7 +76,7 @@ return {
     opts = { max_join_length = 1024, use_default_keymaps = false },
     event = { "BufReadPost", "BufNewFile" },
     keys = {
-      { "<leader>j", function() require("treesj").toggle() end, desc = "Toggle node folding" },
+      { "<leader>j", function () require("treesj").toggle() end, desc = "Toggle node folding" },
     },
   },
 }

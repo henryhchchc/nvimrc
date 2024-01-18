@@ -52,12 +52,12 @@ return {
   { "folke/neoconf.nvim", cmd = "Neoconf", dependencies = { "nvim-lspconfig" } },
   {
     "smjonas/inc-rename.nvim",
-    config = function()
+    config = function ()
       require("inc_rename").setup()
       vim.api.nvim_create_autocmd("CmdlineLeave", {
-        callback = function() vim.fn.histdel("cmd", "^IncRename ") end,
+        callback = function () vim.fn.histdel("cmd", "^IncRename ") end,
       })
-      local rename_func = function() return ":IncRename " .. vim.fn.expand("<cword>") end
+      local rename_func = function () return ":IncRename " .. vim.fn.expand("<cword>") end
       vim.keymap.set("n", "<leader>rn", rename_func, { expr = true, desc = "LSP Rename" })
     end,
     event = "LspAttach",
@@ -67,7 +67,7 @@ return {
     event = "LspAttach",
     cmd = "Lspsaga",
     dependencies = { "catppuccin/nvim" },
-    config = function()
+    config = function ()
       local opts = {
         code_action = {
           keys = {

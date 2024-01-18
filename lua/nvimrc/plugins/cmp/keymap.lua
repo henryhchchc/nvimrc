@@ -1,4 +1,4 @@
-local tab_mapping = function(fallback)
+local function tab_mapping(fallback)
   local cmp = require("cmp")
   local luasnip = require("luasnip")
   local copilot_suggestion = require("copilot.suggestion")
@@ -13,17 +13,19 @@ local tab_mapping = function(fallback)
   end
 end
 
-local tap_mapping_cmdline = function(fallback)
+---@diagnostic disable-next-line: unused-local
+local function tap_mapping_cmdline(fallback)
   local cmp = require("cmp")
   if cmp.visible() then cmp.select_next_item() end
 end
 
-local snip_jump = function(fallback)
+---@diagnostic disable-next-line: unused-local
+local function snip_jump(fallback)
   local luasnip = require("luasnip")
   if luasnip.jumpable(1) then luasnip.jump(1) end
 end
 
-local shift_tab_mapping = function(fallback)
+local function shift_tab_mapping(fallback)
   local luasnip = require("luasnip")
   if luasnip.jumpable(-1) then
     luasnip.jump(-1)
@@ -32,7 +34,7 @@ local shift_tab_mapping = function(fallback)
   end
 end
 
-local return_mapping = function(fallback)
+local function return_mapping(fallback)
   local cmp = require("cmp")
   if cmp.visible() and cmp.get_selected_entry() ~= nil then
     cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
@@ -67,6 +69,7 @@ M.insert = {
   ["<C-s>"] = cmp.mapping(copilot_suggest, { "i" }),
 }
 
+--- @type table<string, cmp.MappingClass>
 M.cmdline = {
   ["<TAB>"] = cmp.mapping(tap_mapping_cmdline, { "i", "c", "s" }),
 }

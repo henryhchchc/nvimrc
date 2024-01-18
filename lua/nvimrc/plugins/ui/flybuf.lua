@@ -4,6 +4,6 @@ return {
   cmd = "FlyBuf",
   config = true,
   keys = {
-    { "<leader>fb", function() vim.cmd.FlyBuf() end, desc = "Switch buffer" },
+    { "<leader>fb", function () vim.cmd.FlyBuf() end, desc = "Switch buffer" },
   },
 }

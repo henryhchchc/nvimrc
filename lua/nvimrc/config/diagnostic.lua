@@ -13,7 +13,7 @@ vim.diagnostic.config({
   float = {
     border = "solid",
     severity_sort = true,
-    format = function(diag)
+    format = function (diag)
       local source = diag.source
       if source and source:find("%.$") then source = source:gsub("%.", "") end
       return string.format("%s [%s] %s", diagIcons[diag.severity], source, diag.message)

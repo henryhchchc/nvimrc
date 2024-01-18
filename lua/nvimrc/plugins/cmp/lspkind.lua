@@ -10,13 +10,14 @@ local sourceNames = {
   cmdline_history = "History",
   luasnip = "Snippet",
   copilot = "GitHub Copilot",
+  spell = "Spell",
 }
 
 M.options = {
   mode = "symbol",
   maxwidth = 50,
   ellipsis_char = "...",
-  before = function(entry, vim_item)
+  before = function (entry, vim_item)
     local sourceName = sourceNames[entry.source.name] or entry.source.name
     if entry.source.name == "nvim_lsp" then
       local client = entry.source.source.client or {}

@@ -17,7 +17,7 @@ local language_server_ignore = { "efm", "null-ls", "copilot" }
 
 local function lspName()
   local clients = vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() })
-  clients = vim.tbl_filter(function(it) return not vim.tbl_contains(language_server_ignore, it.name) end, clients)
+  clients = vim.tbl_filter(function (it) return not vim.tbl_contains(language_server_ignore, it.name) end, clients)
   local lspCount = vim.tbl_count(clients)
   local prefix = " "
   local content = "N/A"
@@ -34,11 +34,11 @@ end
 local function configure()
   local help_extension = require("lualine.extensions.man")
   help_extension.filetypes = { "help" }
-  help_extension.sections.lualine_a = { function() return "Help" end }
+  help_extension.sections.lualine_a = { function () return "Help" end }
 
   local neo_test_extension = {
     sections = {
-      lualine_a = { function() return "NeoTest" end },
+      lualine_a = { function () return "NeoTest" end },
 
       lualine_c = {
         { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
@@ -50,7 +50,7 @@ local function configure()
 
   local saga_outline = require("lualine.extensions.man")
   saga_outline.filetypes = { "sagaoutline" }
-  saga_outline.sections.lualine_a = { function() return "LSP Outline" end }
+  saga_outline.sections.lualine_a = { function () return "LSP Outline" end }
   saga_outline.sections.lualine_b = {}
 
   local lualineOptions = {
@@ -86,8 +86,8 @@ local function configure()
       },
       lualine_x = {
         {
-          function() return "  " .. require("dap").status() end,
-          cond = function() return require("dap").status() ~= "" end,
+          function () return "  " .. require("dap").status() end,
+          cond = function () return require("dap").status() ~= "" end,
         },
       },
       lualine_y = {
@@ -103,11 +103,11 @@ local function configure()
       lualine_z = {
         {
           lspName,
-          on_click = function() vim.cmd.LspInfo() end,
+          on_click = function () vim.cmd.LspInfo() end,
         },
         {
-          function() return require("copilot_status").status_string() end,
-          cond = function() return require("copilot_status").enabled() end,
+          function () return require("copilot_status").status_string() end,
+          cond = function () return require("copilot_status").enabled() end,
         },
       },
     },

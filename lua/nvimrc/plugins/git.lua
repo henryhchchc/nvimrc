@@ -11,7 +11,7 @@ local function configure_gitsigns()
     },
     numhl = true,
     word_diff = false,
-    on_attach = function(bufnr)
+    on_attach = function (bufnr)
       local function bufnmap(key, func, desc) vim.keymap.set("n", key, func, { buffer = bufnr, desc = desc }) end
 
       bufnmap("<leader>ghs", gs.stage_hunk, "Git Stage Hunk")
@@ -24,7 +24,7 @@ local function configure_gitsigns()
       bufnmap("[h", gs.prev_hunk, "Git Previous Hunk")
       bufnmap("]h", gs.next_hunk, "Git Next Hunk")
       bufnmap("<leader>ghp", gs.preview_hunk_inline, "Git Preview Hunk Inline")
-      bufnmap("<leader>ghb", function() gs.blame_line({ full = true }) end, "Git Blame Line")
+      bufnmap("<leader>ghb", function () gs.blame_line({ full = true }) end, "Git Blame Line")
     end,
   })
 end

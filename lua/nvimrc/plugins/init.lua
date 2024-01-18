@@ -7,7 +7,7 @@ return {
     keys = {
       {
         "<leader>gu",
-        function() require("undotree").toggle() end,
+        function () require("undotree").toggle() end,
         desc = "Toggle Undo Tree",
       },
     },
@@ -20,7 +20,7 @@ return {
     cmd = { "TodoTrouble", "TodoTelescope" },
     event = { "BufReadPost", "BufNewFile" },
     keys = {
-      { "<leader>xt", function() vim.cmd.TodoTrouble() end, desc = "Todo list (Trouble)" },
+      { "<leader>xt", function () vim.cmd.TodoTrouble() end, desc = "Todo list (Trouble)" },
     },
   },
   { "kevinhwang91/nvim-bqf", ft = "qf", opts = { auto_resize_height = true } },

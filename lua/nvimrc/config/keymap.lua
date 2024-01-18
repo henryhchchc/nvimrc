@@ -11,13 +11,13 @@ vim.keymap.set("n", "<leader>tc", vim.cmd.tabclose, { desc = "Close the current 
 vim.keymap.set(
   "n",
   "[d",
-  function() vim.cmd.Lspsaga("diagnostic_jump_prev") end,
+  function () vim.cmd.Lspsaga("diagnostic_jump_prev") end,
   { desc = "Go to the previous diagnostics" }
 )
 vim.keymap.set(
   "n",
   "]d",
-  function() vim.cmd.Lspsaga("diagnostic_jump_next") end,
+  function () vim.cmd.Lspsaga("diagnostic_jump_next") end,
   { desc = "Go to the next diagnostics" }
 )
 vim.keymap.set("n", "<leader>dq", vim.diagnostic.setqflist, { desc = "Send diagnostics to quickfix list" })
@@ -41,8 +41,8 @@ vim.keymap.set("n", "<leader><leader>", "<C-^>", { desc = "Alternate most recent
 vim.keymap.set("", "<D-s>", vim.cmd.write, { desc = "Save" })
 -- LSP
 -- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Actions" })
-vim.keymap.set({ "n", "v" }, "<leader>ca", function() vim.cmd.Lspsaga("code_action") end, { desc = "LSP Code Actions" })
-vim.keymap.set({ "n", "v" }, "<leader>cf", function() vim.lsp.buf.format({ async = true }) end, { desc = "LSP Format" })
+vim.keymap.set({ "n", "v" }, "<leader>ca", function () vim.cmd.Lspsaga("code_action") end, { desc = "LSP Code Actions" })
+vim.keymap.set({ "n", "v" }, "<leader>cf", function () vim.lsp.buf.format({ async = true }) end, { desc = "LSP Format" })
 vim.keymap.set("n", "<leader>rN", vim.lsp.buf.rename, { desc = "LSP Rename" })
 -- vim.keymap.set("v", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Range Code Actions" })
 
@@ -66,15 +66,15 @@ for _, char in ipairs(undo_breakpoint_chars) do
 end
 
 -- Toggles
-vim.keymap.set("n", "<leader>uw", function() utils.toggle("wrap") end, { desc = "Toggle wrap" })
-vim.keymap.set("n", "<leader>us", function() utils.toggle("spell") end, { desc = "Toggle spell" })
+vim.keymap.set("n", "<leader>uw", function () utils.toggle("wrap") end, { desc = "Toggle wrap" })
+vim.keymap.set("n", "<leader>us", function () utils.toggle("spell") end, { desc = "Toggle spell" })
 local function toggle_conceal()
   local current_concel = vim.opt.conceallevel:get()
   local concel_value = current_concel > 0 and current_concel or 3
-  return function() utils.toggle("conceallevel", false, { 0, concel_value }) end
+  return function () utils.toggle("conceallevel", false, { 0, concel_value }) end
 end
 vim.keymap.set("n", "<leader>uc", toggle_conceal(), { desc = "Toggle conceal" })
-vim.keymap.set("n", "<leader>ui", function() vim.lsp.inlay_hint(0, nil) end, { desc = "Toggle inlay hints" })
+vim.keymap.set("n", "<leader>ui", function () vim.lsp.inlay_hint(0, nil) end, { desc = "Toggle inlay hints" })
 local function toggle_diagnostics()
   if vim.diagnostic.is_disabled(0) then
     vim.diagnostic.enable(0)
