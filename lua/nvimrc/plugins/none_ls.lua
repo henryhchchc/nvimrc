@@ -2,8 +2,11 @@
 return {
   "nvimtools/none-ls.nvim",
   main = "null-ls",
-  opts = function (plugin)
+  opts = function (self, opts)
     local builtins = require("null-ls.builtins")
-    return {}
+    opts.sources = {
+      builtins.formatting.prettierd,
+    }
   end,
+  event = "VeryLazy",
 }
