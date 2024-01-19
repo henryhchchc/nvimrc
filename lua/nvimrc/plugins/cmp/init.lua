@@ -94,7 +94,6 @@ return {
       { "hrsh7th/cmp-buffer" },
       { "hrsh7th/cmp-path" },
       { "saadparwaiz1/cmp_luasnip" },
-      { "f3fora/cmp-spell" },
       { "dmitmel/cmp-cmdline-history" },
       {
         "tzachar/cmp-fuzzy-path",
