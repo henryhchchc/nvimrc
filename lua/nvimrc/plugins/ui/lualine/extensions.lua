@@ -16,6 +16,11 @@ M.copilot = {
   cond = function () return require("copilot_status").enabled() end,
 }
 
+M.autoformat = {
+  function () return "Auto Format" end,
+  cond = function () return vim.b.autoformat end,
+}
+
 M.lsp = require("nvimrc.plugins.ui.lualine.lsp_status")
 
 M.saga_outline = {

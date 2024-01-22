@@ -23,6 +23,22 @@ local function on_attach(client, bufnr)
       callback = function (event) vim.lsp.codelens.refresh() end,
     })
   end
+
+
+  if client.server_capabilities.documentFormattingProvider then
+    vim.b["autoformat"] = true
+  end
+
+  local auto_format_group = vim.api.nvim_create_augroup("lsp_auto_format", {})
+  vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    buffer = bufnr,
+    group = auto_format_group,
+    callback = function (event)
+      if vim.b.autoformat then
+        vim.lsp.buf.format({ async = false })
+      end
+    end,
+  })
 end
 
 function M.lsp_default_opts()

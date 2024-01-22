@@ -66,6 +66,7 @@ for _, char in ipairs(undo_breakpoint_chars) do
 end
 
 -- Toggles
+vim.keymap.set("n", "<leader>uf", function () utils.toggle_buf_var("autoformat") end, { desc = "Toggle autoformat" })
 vim.keymap.set("n", "<leader>uw", function () utils.toggle("wrap") end, { desc = "Toggle wrap" })
 vim.keymap.set("n", "<leader>us", function () utils.toggle("spell") end, { desc = "Toggle spell" })
 local function toggle_conceal()

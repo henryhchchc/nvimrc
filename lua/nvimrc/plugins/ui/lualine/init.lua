@@ -39,6 +39,7 @@ local function generate_options()
         },
         "location",
         "progress",
+        exts.autoformat,
       },
       lualine_y = {
         "filesize",
