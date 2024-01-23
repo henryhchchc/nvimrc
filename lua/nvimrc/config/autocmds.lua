@@ -68,3 +68,15 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
   group = vim.api.nvim_create_augroup("resize_splits", {}),
   callback = function () vim.cmd("tabdo wincmd =") end,
 })
+
+
+local auto_format_group = vim.api.nvim_create_augroup("lsp_auto_format", {})
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  group = auto_format_group,
+  ---@diagnostic disable-next-line: unused-local
+  callback = function (event)
+    if vim.b.autoformat then
+      vim.lsp.buf.format({ async = false })
+    end
+  end,
+})

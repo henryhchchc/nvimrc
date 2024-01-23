@@ -17,7 +17,7 @@ M.copilot = {
 }
 
 M.autoformat = {
-  function () return "Auto Format" end,
+  function () return "󰁨 " end,
   cond = function () return vim.b.autoformat end,
 }
 
@@ -37,14 +37,21 @@ M.help = {
     lualine_a = { function () return "Help" end },
     lualine_b = {
       { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-      {
-        "filename",
-        file_status = false,
-        path = 0,
-      },
+      { "filename", file_status = false, path = 0 },
     },
+    lualine_x = { "progress" },
+    lualine_z = { "filesize" },
   },
 }
 
+M.noice_mode = {
+  require("noice").api.status.mode.get,
+  cond = require("noice").api.status.mode.has,
+}
+
+M.noice_cmd = {
+  require("noice").api.status.command.get,
+  cond = require("noice").api.status.command.has,
+}
 
 return M

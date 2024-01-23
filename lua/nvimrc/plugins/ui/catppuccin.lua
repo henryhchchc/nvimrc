@@ -6,6 +6,8 @@ local terminal = {
 --- @type CatppuccinOptions
 local catppuccin_opts = {
   transparent_background = true,
+  term_colors = false,
+  show_end_of_buffer = true,
   highlight_overrides = {
     mocha = function (colors)
       return {
@@ -24,7 +26,6 @@ local catppuccin_opts = {
     },
   },
   integrations = {
-    aerial = true,
     bufferline = true,
     cmp = true,
     illuminate = true,
@@ -37,6 +38,7 @@ local catppuccin_opts = {
     navic = { enabled = true, custom_bg = "NONE" },
     neogit = true,
     neotree = true,
+    neotest = true,
     noice = true,
     notify = true,
     nvimtree = false,

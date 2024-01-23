@@ -1,17 +1,20 @@
 vim.opt.autowrite = true
 vim.opt.clipboard = "unnamedplus"
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.formatoptions = "jcroqlnt"
 vim.opt.grepformat = "%f:%l:%c:%m"
 vim.opt.grepprg = "rg --vimgrep"
 vim.opt.ignorecase = true
+vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
 vim.opt.inccommand = "nosplit"
 vim.opt.laststatus = 0
 vim.opt.list = true
 vim.opt.listchars:append("tab:> ,trail:⋅,nbsp:⋅,multispace:⋅,conceal:?")
 vim.opt.mouse = "ar"
 vim.opt.number = true
+vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
 vim.opt.shiftwidth = 2
 vim.opt.shiftround = true
 vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
@@ -27,11 +30,13 @@ vim.opt.splitkeep = "screen"
 vim.opt.tabstop = 2
 vim.opt.timeoutlen = 300
 vim.opt.title = true
-vim.opt.titlestring = "%t - NeoVim"
+vim.opt.titlestring = "%t - Neovim"
 vim.opt.undofile = true
 vim.opt.undolevels = 10000
 vim.opt.updatetime = 100
 vim.opt.wildmode = "longest:full,full"
+vim.opt.virtualedit = "block"
+vim.opt.winminwidth = 5
 vim.opt.wrap = false
 
 vim.g.mapleader = " "

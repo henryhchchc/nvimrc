@@ -10,7 +10,6 @@ local sourceNames = {
   cmdline_history = "History",
   luasnip = "Snippet",
   copilot = "GitHub Copilot",
-  spell = "Spell",
 }
 
 M.options = {

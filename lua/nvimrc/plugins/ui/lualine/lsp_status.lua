@@ -21,7 +21,7 @@ end
 
 local function has_lsp_attached()
   local clients = get_attached_lsps()
-  return vim.tbl_count(clients) > 0
+  return not vim.tbl_isempty(clients)
 end
 
 return {

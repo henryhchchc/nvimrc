@@ -22,6 +22,7 @@ local function configure()
     "bashls",
     "clangd",
     "cssls",
+    "dockerls",
     "html",
     "grammarly",
     "hls",

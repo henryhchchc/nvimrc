@@ -1,4 +1,4 @@
---- @type ibl.config.full
+--- @type ibl.config
 local options = {}
 
 --- @type LazyPluginSpec

@@ -1,5 +1,8 @@
 local M = {}
 
+
+local utils = require("nvimrc.utils")
+
 local function on_attach(client, bufnr)
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "LSP Declaration", buffer = bufnr })
   vim.keymap.set(
@@ -20,6 +23,7 @@ local function on_attach(client, bufnr)
     vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "InsertLeave" }, {
       buffer = bufnr,
       group = codelen_group,
+      ---@diagnostic disable-next-line: unused-local
       callback = function (event) vim.lsp.codelens.refresh() end,
     })
   end
@@ -27,18 +31,13 @@ local function on_attach(client, bufnr)
 
   if client.server_capabilities.documentFormattingProvider then
     vim.b["autoformat"] = true
+    vim.keymap.set("n", "<leader>uf", function () utils.toggle_buf_var("autoformat") end,
+      { desc = "Toggle autoformat", buffer = bufnr })
   end
 
-  local auto_format_group = vim.api.nvim_create_augroup("lsp_auto_format", {})
-  vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-    buffer = bufnr,
-    group = auto_format_group,
-    callback = function (event)
-      if vim.b.autoformat then
-        vim.lsp.buf.format({ async = false })
-      end
-    end,
-  })
+  vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
 end
 
 function M.lsp_default_opts()

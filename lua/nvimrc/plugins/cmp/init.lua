@@ -29,13 +29,14 @@ local function configure()
       { name = "nvim_lsp" },
       { name = "crates" },
       { name = "luasnip" },
-      { name = "buffer" },
+      { name = "buffer", max_item_count = 5 },
     },
     matching = {
       disallow_partial_fuzzy_matching = false,
     },
     view = {
-      entries = { name = "custom" },
+      entries = { name = "custom", selection_order = "near_cursor" },
+
     },
     window = {
       completion = cmp.config.window.bordered(),
@@ -47,7 +48,7 @@ local function configure()
       { name = "buffer" },
     },
     view = {
-      entries = { name = "custom" },
+      entries = { name = "custom", selection_order = "near_cursor" },
     },
   })
 
@@ -55,13 +56,13 @@ local function configure()
     sources = {
       { name = "path", group_index = 2 },
       { name = "cmdline", group_index = 2 },
-      { name = "cmdline_history", group_index = 2 },
+      { name = "cmdline_history", group_index = 2, max_item_count = 5 },
       { name = "fuzzy_path", group_index = 1, option = { fd_timeout_msec = 1500 } },
     },
     preselect = cmp.PreselectMode.Item,
     mapping = keymap.cmdline,
     view = {
-      entries = { name = "custom" },
+      entries = { name = "custom", selection_order = "near_cursor" },
     },
     enabled = function ()
       -- Set of commands where cmp will be disabled

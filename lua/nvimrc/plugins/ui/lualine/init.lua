@@ -8,7 +8,7 @@ local function generate_options()
 
   return {
     options = {
-      theme = "auto",
+      theme = "catppuccin",
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
       globalstatus = true,
@@ -21,11 +21,12 @@ local function generate_options()
         {
           "filename",
           file_status = true,
-          path = 0,
+          new_file_status = true,
+          path = 1,
           shorting_target = 40,
           symbols = {
             modified = "•",
-            readonly = " [Read Only]",
+            readonly = "",
             unnamed = " [No Name]",
             new = " [New File]",
           },
@@ -33,15 +34,17 @@ local function generate_options()
         { "diagnostics", sources = { "nvim_diagnostic" } },
       },
       lualine_x = {
+        exts.noice_cmd,
+        exts.noice_mode,
         {
           function () return "  " .. require("dap").status() end,
           cond = function () return require("dap").status() ~= "" end,
         },
-        "location",
-        "progress",
         exts.autoformat,
       },
       lualine_y = {
+        "location",
+        "progress",
         "filesize",
         "filetype",
         "encoding",

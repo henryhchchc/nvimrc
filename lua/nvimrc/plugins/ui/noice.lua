@@ -7,6 +7,7 @@ local options = {
       ["cmp.entry.get_documentation"] = true,
     },
   },
+  popupmenu = { enable = false },
   presets = {
     bottom_search = true,
     command_palette = true,
