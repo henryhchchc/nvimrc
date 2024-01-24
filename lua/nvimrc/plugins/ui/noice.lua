@@ -37,6 +37,16 @@ local options = {
       },
       view = "mini",
     },
+    {
+      filter = {
+        event = "lsp",
+        cond = function (message)
+          local client = vim.tbl_get(message.opts, "progress", "client")
+          return client == "null-ls"
+        end,
+      },
+      opts = { skip = true },
+    },
   },
   views = {
     vsplit = {
