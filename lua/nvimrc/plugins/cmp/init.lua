@@ -35,7 +35,7 @@ local function configure()
       disallow_partial_fuzzy_matching = false,
     },
     view = {
-      entries = { name = "custom", selection_order = "near_cursor" },
+      entries = { name = "custom" },
 
     },
     window = {
@@ -48,7 +48,7 @@ local function configure()
       { name = "buffer" },
     },
     view = {
-      entries = { name = "custom", selection_order = "near_cursor" },
+      entries = { name = "custom" },
     },
   })
 
@@ -62,7 +62,7 @@ local function configure()
     preselect = cmp.PreselectMode.Item,
     mapping = keymap.cmdline,
     view = {
-      entries = { name = "custom", selection_order = "near_cursor" },
+      entries = { name = "custom" },
     },
     enabled = function ()
       -- Set of commands where cmp will be disabled
