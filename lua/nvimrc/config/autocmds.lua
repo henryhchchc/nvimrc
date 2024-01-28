@@ -80,3 +80,14 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     end
   end,
 })
+
+-- Enable conceal for readonly buffers
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = vim.api.nvim_create_augroup("conceal_readonly", {}),
+  pattern = "*",
+  callback = function ()
+    if vim.bo.readonly then
+      vim.opt_local.conceallevel = 3
+    end
+  end,
+})

@@ -45,7 +45,6 @@ vim.g.markdown_recommended_style = 0
 
 vim.opt.termguicolors = true
 
-vim.opt.conceallevel = 3
 vim.opt.concealcursor = "nc"
 
 -- Disable netrw
