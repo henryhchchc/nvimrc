@@ -47,7 +47,7 @@ end
 
 --- @type LazyPluginSpec[]
 return {
-  { "neovim/nvim-lspconfig", config = configure, event = "VeryLazy" },
+  { "neovim/nvim-lspconfig", config = configure, lazy = false },
   { "folke/neodev.nvim" },
   { "folke/neoconf.nvim", cmd = "Neoconf", dependencies = { "nvim-lspconfig" } },
   {
