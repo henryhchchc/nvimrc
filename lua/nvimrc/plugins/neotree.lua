@@ -57,6 +57,7 @@ local neotreeOpts = {
     },
     use_libuv_file_watcher = true,
     filtered_items = {
+      hide_dotfiles = false,
       never_show = {
         ".git",
       },
