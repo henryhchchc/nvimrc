@@ -17,6 +17,11 @@ local catppuccin_opts = {
         TelescopePromptTitle = { bg = colors.blue, fg = colors.base, style = { "bold" } },
         TelescopeResultsTitle = { bg = colors.lavender, fg = colors.base, style = { "bold" } },
         TelescopePreviewTitle = { bg = colors.green, fg = colors.base, style = { "bold" } },
+
+        ["@comment.error"] = { fg = colors.red, bg = colors.none, style = { "bold" } },
+        ["@comment.warning"] = { fg = colors.yellow, bg = colors.none, style = { "bold" } },
+        ["@comment.todo"] = { fg = colors.peach, bg = colors.none, style = { "bold" } },
+        ["@comment.note"] = { fg = colors.blue, bg = colors.none, style = { "bold" } },
       }
     end,
   },
