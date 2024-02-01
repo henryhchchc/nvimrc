@@ -3,6 +3,7 @@ local terminal = {
   alt_background = "#1F1F1F",
 }
 
+--- @type CtpIntegrations
 local catppuccin_integrations = {
   bufferline = true,
   cmp = true,
@@ -23,6 +24,7 @@ local catppuccin_integrations = {
   semantic_tokens = true,
   telescope = true,
   treesitter = true,
+  treesitter_context = true,
   ts_rainbow2 = true,
   which_key = true,
 }

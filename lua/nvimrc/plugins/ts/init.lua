@@ -73,6 +73,10 @@ return {
     end,
   },
   {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = { "BufReadPost", "BufNewFile" },
+  },
+  {
     "Wansmer/treesj",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = { max_join_length = 1024, use_default_keymaps = false },
