@@ -13,6 +13,6 @@ return {
     },
   },
   { "nvim-tree/nvim-web-devicons" },
-  { "folke/which-key.nvim", config = true, event = "VeryLazy" },
+  { "folke/which-key.nvim", config = true, event = "VeryLazy", enabled = false },
   { "kevinhwang91/nvim-bqf", ft = "qf", opts = { auto_resize_height = true } },
 }
