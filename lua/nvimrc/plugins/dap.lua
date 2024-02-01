@@ -25,11 +25,6 @@ local keymaps = {
 local function configure()
   local dap = require("dap")
   local dapui = require("dapui")
-  --- @type dapui.Config
-  local dapui_optons = {
-
-  }
-  dapui.setup(dapui_optons)
 
   dap.listeners.after.event_initialized["dapui_config"] = function () dapui.open({}) end
   dap.listeners.before.event_terminated["dapui_config"] = function () dapui.close({}) end
@@ -47,6 +42,7 @@ end
 return {
   {
     "mfussenegger/nvim-dap",
+    name = "dap",
     config = configure,
     dependencies = {
       { "rcarriga/nvim-dap-ui" },
@@ -57,7 +53,8 @@ return {
   },
   {
     "rcarriga/nvim-dap-ui",
-    event = "LspAttach",
+    name = "dapui",
+    config = true,
     keys = {
       { "<leader>du", function () require("dapui").toggle({}) end, desc = "Dap UI" },
       { "<leader>de", function () require("dapui").eval() end, desc = "Eval", mode = { "n", "v" } },

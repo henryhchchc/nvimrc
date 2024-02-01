@@ -1,35 +1,3 @@
-local function configure()
-  local groups = require("bufferline.groups")
-  --- @type bufferline.UserConfig
-  local bufferlineOpts = {
-    options = {
-      highlights = require("catppuccin.groups.integrations.bufferline").get(),
-      diagnostics = "nvim_lsp",
-      always_show_bufferline = false,
-      close_command = function (n) require("mini.bufremove").delete(n, false) end,
-      right_mouse_command = function (n) require("mini.bufremove").delete(n, false) end,
-      offsets = {
-        {
-          filetype = "neo-tree",
-          text = "Neo Tree",
-          highlight = "Title",
-          text_align = "center",
-        },
-      },
-      groups = {
-        items = {
-          groups.builtin.ungrouped,
-          {
-            name = " Terminals",
-            matcher = function (buf) return buf.buftype == "terminal" end,
-          },
-        },
-      },
-    },
-  }
-  require("bufferline").setup(bufferlineOpts)
-end
-
 --- @type LazyPluginSpec
 return {
   "akinsho/bufferline.nvim",
@@ -38,7 +6,36 @@ return {
     { "tiagovla/scope.nvim", config = true, event = "VeryLazy" },
     { "catppuccin/nvim" },
   },
-  config = configure,
+  opts = function ()
+    local groups = require("bufferline.groups")
+    --- @type bufferline.UserConfig
+    return {
+      options = {
+        highlights = require("catppuccin.groups.integrations.bufferline").get(),
+        diagnostics = "nvim_lsp",
+        always_show_bufferline = false,
+        close_command = function (n) require("mini.bufremove").delete(n, false) end,
+        right_mouse_command = function (n) require("mini.bufremove").delete(n, false) end,
+        offsets = {
+          {
+            filetype = "neo-tree",
+            text = "Neo Tree",
+            highlight = "Title",
+            text_align = "center",
+          },
+        },
+        groups = {
+          items = {
+            groups.builtin.ungrouped,
+            {
+              name = " Terminals",
+              matcher = function (buf) return buf.buftype == "terminal" end,
+            },
+          },
+        },
+      },
+    }
+  end,
   event = "VeryLazy",
   keys = {
     { "<leader>bp", function () vim.cmd.BufferLineTogglePin() end, desc = "Toggle pin" },

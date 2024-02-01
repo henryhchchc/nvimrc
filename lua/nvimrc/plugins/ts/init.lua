@@ -1,5 +1,5 @@
 ---@type TSConfig
-local treeSitterOptions = {
+local treesitter_opts = {
   ensure_installed = require("nvimrc.plugins.ts.languages"),
   ignore_install = {},
   --- @type TSModule
@@ -49,12 +49,6 @@ local treeSitterOptions = {
   rainbow = { enable = true },
 }
 
-local function configureTreeSitter()
-  require("nvim-treesitter.configs").setup(treeSitterOptions)
-  vim.opt.foldmethod = "expr"
-  vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-  vim.opt.foldenable = false
-end
 
 --- @type LazyPluginSpec[]
 return {
@@ -67,8 +61,16 @@ return {
       { "HiPhish/nvim-ts-rainbow2" },
     },
     build = ":TSUpdate",
-    config = configureTreeSitter,
+    opts = treesitter_opts,
     event = { "BufReadPost", "BufNewFile" },
+    config = function (_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+    end,
+    init = function ()
+      vim.opt.foldmethod = "expr"
+      vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+      vim.opt.foldenable = false
+    end,
   },
   {
     "Wansmer/treesj",
