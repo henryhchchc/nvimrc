@@ -5,4 +5,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
   },
   ft = "pkl",
+  build = function ()
+    vim.cmd.TSInstall("pkl")
+  end,
 }

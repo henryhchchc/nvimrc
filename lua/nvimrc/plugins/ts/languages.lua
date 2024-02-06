@@ -49,7 +49,7 @@ return {
   "passwd",
   "pem",
   "perl",
-  "pkl",
+  -- "pkl",
   "printf",
   "properties",
   "proto",
