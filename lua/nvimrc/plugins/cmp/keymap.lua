@@ -19,10 +19,13 @@ local function tap_mapping_cmdline(fallback)
   if cmp.visible() then cmp.select_next_item() end
 end
 
----@diagnostic disable-next-line: unused-local
 local function snip_jump(fallback)
   local luasnip = require("luasnip")
-  if luasnip.jumpable(1) then luasnip.jump(1) end
+  if luasnip.jumpable(1) then
+    luasnip.jump(1)
+  else
+    fallback()
+  end
 end
 
 local function shift_tab_mapping(fallback)
