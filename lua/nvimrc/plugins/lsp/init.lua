@@ -82,6 +82,9 @@ return {
           code_action = "󰌶",
           kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
         },
+        diagnostic = {
+          extend_relatedInformation = true,
+        },
       }
       require("lspsaga").setup(opts)
     end,

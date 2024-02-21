@@ -10,7 +10,7 @@ local close_window_file_types = {
   "neotest-output-panel",
 }
 
-local narual_lang_ft = {
+local natual_lang_ft = {
   "gitcommit",
   "markdown",
   "text",
@@ -56,10 +56,13 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Enable wrap and spell for certain file types
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("wrap_spell", {}),
-  pattern = narual_lang_ft,
+  pattern = natual_lang_ft,
   callback = function ()
-    vim.opt_local.wrap = true
-    vim.opt_local.spell = true
+    -- TODO: Set it only when it is readonly.
+    if vim.bo.modifiable then
+      vim.opt_local.wrap = true
+      vim.opt_local.spell = true
+    end
   end,
 })
 
