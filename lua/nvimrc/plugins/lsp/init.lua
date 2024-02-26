@@ -24,7 +24,6 @@ local function configure()
     "cssls",
     "dockerls",
     "html",
-    "grammarly",
     "hls",
     "kotlin_language_server",
     "lua_ls",
