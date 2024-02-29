@@ -13,8 +13,7 @@ local function tab_mapping(fallback)
   end
 end
 
----@diagnostic disable-next-line: unused-local
-local function tap_mapping_cmdline(fallback)
+local function tap_mapping_cmdline(_fallback)
   local cmp = require("cmp")
   if cmp.visible() then cmp.select_next_item() end
 end

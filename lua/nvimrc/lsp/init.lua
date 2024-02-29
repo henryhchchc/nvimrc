@@ -3,7 +3,7 @@ local M = {}
 
 local utils = require("nvimrc.utils")
 
-local function on_attach(client, bufnr)
+function M.on_attach(client, bufnr)
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "LSP Declaration", buffer = bufnr })
   vim.keymap.set(
     "n",
@@ -23,8 +23,7 @@ local function on_attach(client, bufnr)
     vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "InsertLeave" }, {
       buffer = bufnr,
       group = codelen_group,
-      ---@diagnostic disable-next-line: unused-local
-      callback = function (event) vim.lsp.codelens.refresh() end,
+      callback = function (_event) vim.lsp.codelens.refresh() end,
     })
   end
 
@@ -45,7 +44,7 @@ function M.lsp_default_opts()
   local capabilities = require("cmp_nvim_lsp").default_capabilities(initial_caps)
   local lspFlags = {}
   return {
-    on_attach = on_attach,
+    on_attach = M.on_attach,
     capabilities = capabilities,
     flags = lspFlags,
   }

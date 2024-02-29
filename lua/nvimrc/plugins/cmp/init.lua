@@ -79,10 +79,14 @@ local function configure()
   local cmp_autopairs = require("nvim-autopairs.completion.cmp")
   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
-  ---@diagnostic disable-next-line: inject-field
-  cmp.event:on("menu_opened", function () vim.b.copilot_suggestion_hidden = true end)
-  ---@diagnostic disable-next-line: inject-field
-  cmp.event:on("menu_closed", function () vim.b.copilot_suggestion_hidden = false end)
+  cmp.event:on("menu_opened", function (_event)
+    local bufnr = vim.api.nvim_get_current_buf()
+    vim.b[bufnr].copilot_suggestion_hidden = true
+  end)
+  cmp.event:on("menu_closed", function (_event)
+    local bufnr = vim.api.nvim_get_current_buf()
+    vim.b[bufnr].copilot_suggestion_hidden = false
+  end)
 end
 
 --- @type LazyPluginSpec[]

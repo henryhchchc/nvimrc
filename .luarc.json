@@ -2,7 +2,6 @@
   "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
   "runtime.version": "LuaJIT",
   "workspace.checkThirdParty": false,
-  "diagnostics.disable": [
-    "missing-fields"
-  ]
+  "diagnostics.disable": ["missing-fields"],
+  "diagnostics.unusedLocalExclude": ["_*"]
 }
