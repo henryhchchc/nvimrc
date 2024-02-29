@@ -46,15 +46,58 @@ vim.keymap.set({ "n", "v" }, "<leader>cf", function () vim.lsp.buf.format({ asyn
 vim.keymap.set("n", "<leader>rN", vim.lsp.buf.rename, { desc = "LSP Rename" })
 -- vim.keymap.set("v", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Range Code Actions" })
 
+
+-- TODO: Replace it with buildtin base64 implementation on neovim 0.10
+local base64 = (function ()
+  local lshift = require("bit").lshift
+  local rshift = require("bit").rshift
+  local band = require("bit").band
+  local bor = require("bit").bor
+
+  local M = {}
+
+  ---@format disable
+  local base64 = { [0] = "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
+    "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
+    "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "/" }
+  ---@format enable
+
+  local mask = 0x3f -- 0b00111111
+
+  function M.enc(s)
+    local len = string.len(s)
+    local output = {}
+
+    for i = 1, len, 3 do
+      local byte1, byte2, byte3 = string.byte(s, i, i + 2)
+      local bits = bor(lshift(byte1, 16), lshift(byte2 or 0, 8), byte3 or 0)
+      table.insert(output, base64[rshift(bits, 18)])
+      table.insert(output, base64[band(rshift(bits, 12), mask)])
+      table.insert(output, base64[band(rshift(bits, 6), mask)])
+      table.insert(output, base64[band(bits, mask)])
+    end
+
+    for i = 0, 1 - ((len - 1) % 3) do
+      output[#output - i] = "="
+    end
+
+    return table.concat(output)
+  end
+
+  return M
+end)()
+
 -- Open the file or link under the cursor
 local function open_cfile()
-  local file_name = vim.fn.shellescape(vim.fn.expand("<cfile>"))
+  local file_name = vim.fn.expand("<cfile>")
   if os.getenv("SSH_CONNECTION") then
-    vim.notify("Cannot open file over SSH", vim.log.levels.ERROR)
+    vim.notify("Cannot open file over SSH.\nThe link is copied via OSC52.", vim.log.levels.INFO)
+    local osc52_seq = string.format("\x1b]52;c;%s\a", base64.enc(file_name))
+    vim.fn.chansend(vim.v.stderr, osc52_seq)
   elseif vim.fn.has("mac") == 1 then
-    vim.fn.jobstart("open " .. file_name, { detach = true })
+    vim.fn.jobstart("open " .. vim.fn.shellescape(file_name), { detach = true })
   elseif vim.fn.has("unix") == 1 then
-    vim.fn.jobstart("xdg-open " .. file_name, { detach = true })
+    vim.fn.jobstart("xdg-open " .. vim.fn.shellescape(file_name), { detach = true })
   end
 end
 vim.keymap.set("n", "gx", open_cfile, { desc = "Open the file or link under the cursor" })
