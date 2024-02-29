@@ -1,20 +1,25 @@
-local function configure()
+local function options()
   local defaultOpts = require("nvimrc.lsp").lsp_default_opts()
   local rustConfig = {
     server = defaultOpts,
     dap = {
       adapter = {
         type = "executable",
-        command = "lldb-vscode",
+        command = "lldb-dap",
         name = "lldb",
       },
     },
   }
-  require("rust-tools").setup(rustConfig)
+  return rustConfig
 end
 
 return {
-  { "simrat39/rust-tools.nvim", ft = { "rust" }, config = configure },
+  {
+    "mrcjkb/rustaceanvim",
+    ft = { "rust" },
+    opts = options,
+    config = function (_self, opts) vim.g.rustaceanvim = opts end,
+  },
   {
     "saecki/crates.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "nvimtools/none-ls.nvim" },
