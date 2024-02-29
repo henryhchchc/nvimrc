@@ -23,25 +23,25 @@ local keymaps = {
   {
     "S",
     mode = { "n", "o", "x" },
-    function () require("flash").treesitter() end,
+    function () package.loaded.flash.treesitter() end,
     desc = "Flash Treesitter",
   },
   {
     "r",
     mode = "o",
-    function () require("flash").remote() end,
+    function () package.loaded.flash.remote() end,
     desc = "Remote Flash",
   },
   {
     "R",
     mode = { "o", "x" },
-    function () require("flash").treesitter_search() end,
+    function () package.loaded.flash.treesitter_search() end,
     desc = "Flash Treesitter Search",
   },
   {
     "<c-s>",
     mode = { "c" },
-    function () require("flash").toggle() end,
+    function () package.loaded.flash.toggle() end,
     desc = "Toggle Flash Search",
   },
 }

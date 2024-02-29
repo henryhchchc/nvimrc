@@ -4,12 +4,12 @@ return {
   keys = {
     {
       "<leader>hw",
-      function () require("hop").hint_words() end,
+      function () package.loaded.hop.hint_words() end,
       desc = "Hop to word",
     },
     {
       "<leader>hp",
-      function () require("hop").hint_patterns() end,
+      function () package.loaded.hop.hint_patterns() end,
       desc = "Hop to pattern",
     },
   },

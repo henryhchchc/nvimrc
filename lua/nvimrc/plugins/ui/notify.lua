@@ -4,7 +4,7 @@ return {
   keys = {
     {
       "<leader>un",
-      function () require("notify").dismiss({ silent = true, pending = true }) end,
+      function () package.loaded.notify.dismiss({ silent = true, pending = true }) end,
       desc = "Dismiss all Notifications",
     },
   },

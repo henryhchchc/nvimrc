@@ -1,6 +1,6 @@
 local function tab_mapping(fallback)
-  local cmp = require("cmp")
-  local luasnip = require("luasnip")
+  local cmp = package.loaded.cmp
+  local luasnip = package.loaded.luasnip
   local copilot_suggestion = require("copilot.suggestion")
   if copilot_suggestion.is_visible() then
     copilot_suggestion.accept()
@@ -14,12 +14,12 @@ local function tab_mapping(fallback)
 end
 
 local function tap_mapping_cmdline(_fallback)
-  local cmp = require("cmp")
+  local cmp = package.loaded.cmp
   if cmp.visible() then cmp.select_next_item() end
 end
 
 local function snip_jump(fallback)
-  local luasnip = require("luasnip")
+  local luasnip = package.loaded.luasnip
   if luasnip.jumpable(1) then
     luasnip.jump(1)
   else
@@ -28,7 +28,7 @@ local function snip_jump(fallback)
 end
 
 local function shift_tab_mapping(fallback)
-  local luasnip = require("luasnip")
+  local luasnip = package.loaded.luasnip
   if luasnip.jumpable(-1) then
     luasnip.jump(-1)
   else
@@ -37,7 +37,7 @@ local function shift_tab_mapping(fallback)
 end
 
 local function return_mapping(fallback)
-  local cmp = require("cmp")
+  local cmp = package.loaded.cmp
   if cmp.visible() and cmp.get_selected_entry() ~= nil then
     cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
   else
@@ -46,7 +46,7 @@ local function return_mapping(fallback)
 end
 
 local function copilot_suggest()
-  local cmp = require("cmp")
+  local cmp = package.loaded.cmp
   local copilot_suggestion = require("copilot.suggestion")
   cmp.close()
   copilot_suggestion.next()
@@ -54,7 +54,7 @@ end
 
 local M = {}
 
-local cmp = require("cmp")
+local cmp = package.loaded.cmp
 
 --- @type table<string, cmp.MappingClass>
 M.insert = {

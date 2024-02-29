@@ -1,5 +1,5 @@
 local function git_signs_on_attach(bufnr)
-  local gs = require("gitsigns")
+  local gs = package.loaded.gitsigns
   local function bufnmap(key, func, desc) vim.keymap.set("n", key, func, { buffer = bufnr, desc = desc }) end
 
   bufnmap("<leader>ghs", gs.stage_hunk, "Git Stage Hunk")
@@ -33,7 +33,7 @@ return {
       word_diff = false,
       on_attach = git_signs_on_attach,
     },
-    event = { "BufReadPre", "BufNewFile" }
+    event = { "BufReadPre", "BufNewFile" },
   },
   { "tpope/vim-fugitive", cmd = "Git" },
   {
