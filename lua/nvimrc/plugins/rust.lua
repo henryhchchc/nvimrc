@@ -1,7 +1,6 @@
 local function options()
   local default_opts = require("nvimrc.lsp").lsp_default_opts()
   local rust_analyzer_config = {
-    checkOnSave = false,
   }
   local server_settings = vim.tbl_deep_extend("force", default_opts, {
     settings = {
