@@ -20,13 +20,14 @@ return {
     "nvim-treesitter/nvim-treesitter",
 
     -- Test runners
-    "rouge8/neotest-rust",
+    "mrcjkb/rustaceanvim", -- Rust
   },
-  opts = function (self, opts)
+  opts = function (_self, _opts)
+    local rustacean_test_runner = require("rustaceanvim.neotest")
     --- @type neotest.Config
     return {
       adapters = {
-        require("neotest-rust"),
+        rustacean_test_runner,
       },
       status = { virtual_text = true, signs = false },
       output = { open_on_run = true },

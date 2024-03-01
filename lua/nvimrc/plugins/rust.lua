@@ -1,13 +1,11 @@
 local function options()
   local defaultOpts = require("nvimrc.lsp").lsp_default_opts()
+  local executors = require("rustaceanvim.executors")
+  ---@type RustaceanConfig
   local rustConfig = {
     server = defaultOpts,
-    dap = {
-      adapter = {
-        type = "executable",
-        command = "lldb-dap",
-        name = "lldb",
-      },
+    tools = {
+      executor = executors.toggleterm,
     },
   }
   return rustConfig
