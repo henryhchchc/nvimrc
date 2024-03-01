@@ -11,11 +11,6 @@ M.neotest = {
   filetypes = { "neotest-output-panel", "neotest-output", "neotest-summary" },
 }
 
-M.copilot = {
-  function () return require("copilot_status").status_string() end,
-  cond = function () return require("copilot_status").enabled() end,
-}
-
 M.autoformat = {
   function () return "󰁨 " end,
   cond = function () return vim.b.autoformat end,
@@ -44,14 +39,27 @@ M.help = {
   },
 }
 
+---@type table<string, NoiceStatus>
+local noice_status = require("noice").api.status
+
 M.noice_mode = {
-  require("noice").api.status.mode.get,
-  cond = require("noice").api.status.mode.has,
+  noice_status.mode.get,
+  cond = noice_status.mode.has,
 }
 
 M.noice_cmd = {
-  require("noice").api.status.command.get,
-  cond = require("noice").api.status.command.has,
+  noice_status.command.get,
+  cond = noice_status.command.has,
+}
+
+M.noice_message = {
+  noice_status.message.get,
+  cond = noice_status.message.has,
+}
+
+M.noice_search = {
+  noice_status.search.get,
+  cond = noice_status.search.has,
 }
 
 return M

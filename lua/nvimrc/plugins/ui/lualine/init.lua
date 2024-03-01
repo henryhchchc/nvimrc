@@ -50,7 +50,7 @@ local function generate_options()
         "encoding",
         format,
       },
-      lualine_z = { exts.lsp, exts.copilot },
+      lualine_z = { exts.lsp, "copilot" },
     },
     extensions = {
       "man",
@@ -75,19 +75,8 @@ return {
   "nvim-lualine/lualine.nvim",
   dependencies = {
     {
-      "jonahgoldwastaken/copilot-status.nvim",
+      "AndreM222/copilot-lualine",
       dependencies = { "zbirenbaum/copilot.lua" },
-      main = "copilot_status",
-      event = "BufReadPost",
-      opts = {
-        icons = {
-          idle = " ",
-          error = " ",
-          offline = " ",
-          warning = " ",
-          loading = "󰦗 ",
-        },
-      },
     },
   },
   opts = generate_options,
