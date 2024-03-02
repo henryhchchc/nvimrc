@@ -29,6 +29,7 @@ local catppuccin_integrations = {
   which_key = true,
 }
 
+---@param colors CtpColors<string>
 local function mocha_overrides(colors)
   return {
     NormalFloat = { bg = colors.base },
@@ -42,6 +43,9 @@ local function mocha_overrides(colors)
     ["@comment.warning"] = { fg = colors.yellow, bg = colors.none, style = { "bold" } },
     ["@comment.todo"] = { fg = colors.peach, bg = colors.none, style = { "bold" } },
     ["@comment.note"] = { fg = colors.blue, bg = colors.none, style = { "bold" } },
+
+    TreesitterContextBottom = { sp = colors.lavender, style = { "underline" } },
+    TreesitterContextLineNumber = { fg = colors.surface1, bg = colors.mantle },
   }
 end
 
