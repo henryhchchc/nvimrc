@@ -58,9 +58,8 @@ vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("wrap_spell", {}),
   pattern = natual_lang_ft,
   callback = function ()
-    -- TODO: Set it only when it is readonly.
+    vim.opt_local.wrap = true
     if vim.bo.modifiable then
-      vim.opt_local.wrap = true
       vim.opt_local.spell = true
     end
   end,
