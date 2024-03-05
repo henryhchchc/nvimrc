@@ -75,6 +75,10 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = { "BufReadPost", "BufNewFile" },
+    ---@type TSContext.Config
+    opts = {
+      multiline_threshold = 5,
+    },
   },
   {
     "Wansmer/treesj",
