@@ -29,6 +29,7 @@ require("lazy").setup({
   },
   defaults = {
     lazy = true,
+    version = "*",
   },
   ui = {
     border = "single",
