@@ -39,9 +39,12 @@ return {
   {
     "NeogitOrg/neogit",
     cmd = "Neogit",
+    ---@type NeogitConfig
     opts = {
       disable_builtin_notifications = true,
       disable_commit_confirmation = true,
+      disable_line_numbers = false,
+      graph_style = "unicode",
       commit_popup = { kind = "vsplit" },
       preview_buffer = { kind = "vsplit" },
       popup = { kind = "vsplit" },
