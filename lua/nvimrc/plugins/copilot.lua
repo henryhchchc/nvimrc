@@ -4,10 +4,10 @@ return {
   opts = {
     suggestion = {
       enabled = true,
-      auto_trigger = true,
+      auto_trigger = false,
       keymap = {
         accept = false,
-        accept_word = false,
+        accept_word = "<C-l>",
         accept_line = "<C-f>",
         next = "<C-n>",
         prev = "<C-p>",
