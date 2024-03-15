@@ -1,16 +1,9 @@
 local function options()
-  local default_opts = require("nvimrc.lsp").lsp_default_opts()
-  local rust_analyzer_config = {
-  }
-  local server_settings = vim.tbl_deep_extend("force", default_opts, {
-    settings = {
-      ["rust-analyzer"] = rust_analyzer_config,
-    },
-  })
+  local lsp_default_opts = require("nvimrc.lsp").lsp_default_opts()
   local executors = require("rustaceanvim.executors")
   ---@type RustaceanConfig
   local rustConfig = {
-    server = server_settings,
+    server = lsp_default_opts,
     tools = {
       executor = executors.toggleterm,
     },
