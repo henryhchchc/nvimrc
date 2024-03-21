@@ -56,7 +56,7 @@ local M = {}
 
 local cmp = package.loaded.cmp
 
---- @type table<string, cmp.MappingClass>
+--- @type table<string, cmp.Mapping>
 M.insert = {
   ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
   ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
@@ -71,7 +71,7 @@ M.insert = {
   ["<C-s>"] = cmp.mapping(copilot_suggest, { "i" }),
 }
 
---- @type table<string, cmp.MappingClass>
+--- @type table<string, cmp.Mapping>
 M.cmdline = {
   ["<TAB>"] = cmp.mapping(tap_mapping_cmdline, { "i", "c", "s" }),
 }

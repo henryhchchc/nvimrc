@@ -89,4 +89,5 @@ return {
     end,
   },
   { "b0o/schemastore.nvim" },
+  { "artemave/workspace-diagnostics.nvim" },
 }

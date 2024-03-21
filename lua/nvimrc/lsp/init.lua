@@ -37,6 +37,8 @@ function M.on_attach(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
+
+  require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
 end
 
 function M.lsp_default_opts()

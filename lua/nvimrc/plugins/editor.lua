@@ -13,7 +13,7 @@ return {
     opts = {
       providers = { "lsp", "treesitter" },
     },
-    config = function (self, opts)
+    config = function (_self, opts)
       require("illuminate").configure(opts)
     end,
     event = { "BufReadPost", "BufNewFile" },
