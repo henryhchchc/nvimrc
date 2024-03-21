@@ -7,6 +7,7 @@ return {
     opts.sources = {
       builtins.formatting.prettierd,
       builtins.diagnostics.actionlint,
+      builtins.formatting.ktlint,
     }
   end,
   event = "VeryLazy",
