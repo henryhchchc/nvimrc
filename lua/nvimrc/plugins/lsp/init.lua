@@ -18,6 +18,13 @@ local function configure()
       },
     },
   })
+  lsp.setup_with_default("kotlin_language_server", {
+    kotlin = {
+      formatting = {
+        formatter = "none",
+      },
+    },
+  })
   local to_setup = {
     "bashls",
     "clangd",
@@ -25,7 +32,6 @@ local function configure()
     "dockerls",
     "html",
     "hls",
-    "kotlin_language_server",
     "lua_ls",
     "pylsp",
     "taplo",
