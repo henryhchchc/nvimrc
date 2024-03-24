@@ -1,6 +1,13 @@
+local function load_luasnip()
+  if not package.loaded.luasnip then
+    require("luasnip")
+  end
+  return package.loaded.luasnip
+end
+
 local function tab_mapping(fallback)
   local cmp = package.loaded.cmp
-  local luasnip = package.loaded.luasnip
+  local luasnip = load_luasnip()
   local copilot_suggestion = require("copilot.suggestion")
   if copilot_suggestion.is_visible() then
     copilot_suggestion.accept()
@@ -19,7 +26,7 @@ local function tap_mapping_cmdline(_fallback)
 end
 
 local function snip_jump(fallback)
-  local luasnip = package.loaded.luasnip
+  local luasnip = load_luasnip()
   if luasnip.jumpable(1) then
     luasnip.jump(1)
   else
@@ -28,7 +35,7 @@ local function snip_jump(fallback)
 end
 
 local function shift_tab_mapping(fallback)
-  local luasnip = package.loaded.luasnip
+  local luasnip = load_luasnip()
   if luasnip.jumpable(-1) then
     luasnip.jump(-1)
   else
@@ -55,6 +62,7 @@ end
 local M = {}
 
 local cmp = package.loaded.cmp
+
 
 --- @type table<string, cmp.Mapping>
 M.insert = {
