@@ -18,7 +18,7 @@ vim.opt.number = true
 vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
 vim.opt.shiftround = true
 vim.opt.shiftwidth = 2
-vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
+vim.opt.shortmess:append({ I = true, c = true, C = true })
 vim.opt.showmode = false
 vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true

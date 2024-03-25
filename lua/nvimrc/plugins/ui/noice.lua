@@ -19,20 +19,8 @@ local options = {
       filter = {
         event = "msg_show",
         any = {
-          { find = "%d+L, %d+B" },
-          { find = "; after #%d+" },
-          { find = "; before #%d+" },
-        },
-      },
-      view = "mini",
-    },
-    {
-      filter = {
-        event = "msg_show",
-        any = {
           { find = "[nvim-treesitter]" },
-          { kind = "echo" },
-          { kind = "echomsg" },
+          find = "written$",
         },
       },
       view = "mini",
