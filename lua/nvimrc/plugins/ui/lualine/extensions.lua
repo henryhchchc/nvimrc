@@ -62,4 +62,22 @@ M.noice_search = {
   cond = noice_status.search.has,
 }
 
+local wordcount_fts = {
+  "markdown",
+  "text",
+}
+
+M.word_count = {
+  function ()
+    if vim.fn.mode() == "v" or vim.fn.mode() == "V" or vim.fn.mode() == "" then
+      return string.format(" %d (sel)", vim.fn.wordcount().visual_words)
+    else
+      return string.format(" %d", vim.fn.wordcount().words)
+    end
+  end,
+  cond = function ()
+    return vim.tbl_contains(wordcount_fts, vim.bo.filetype)
+  end,
+}
+
 return M

@@ -20,7 +20,7 @@ local options = {
         event = "msg_show",
         any = {
           { find = "[nvim-treesitter]" },
-          find = "written$",
+          { find = "written$" },
         },
       },
       view = "mini",
@@ -55,3 +55,4 @@ return {
     "nvim-treesitter/nvim-treesitter",
   },
 }
+

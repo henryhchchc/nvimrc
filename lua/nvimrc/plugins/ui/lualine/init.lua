@@ -44,7 +44,7 @@ local function generate_options()
       },
       lualine_y = {
         "location",
-        "progress",
+        exts.word_count,
         "filesize",
         "filetype",
         "encoding",
