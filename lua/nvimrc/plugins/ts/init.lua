@@ -61,6 +61,7 @@ return {
       { "HiPhish/nvim-ts-rainbow2" },
     },
     build = ":TSUpdate",
+    version = false,
     opts = treesitter_opts,
     event = { "BufReadPost", "BufNewFile" },
     config = function (_, opts)
