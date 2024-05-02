@@ -122,7 +122,6 @@ return {
   "robot",
   "ron",
   "scfg",
-  "scheme",
   "slang",
   "slint",
   "smali",
