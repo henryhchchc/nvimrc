@@ -3,50 +3,39 @@ local lsp = require("nvimrc.lsp")
 local function configure()
   require("neoconf").setup({})
   require("neodev").setup({})
-  require("nvimrc.plugins.lsp.jdtls")
-  require("nvimrc.plugins.lsp.texlab")
-  lsp.setup_with_default("jsonls", {
-    json = {
-      schemas = require("schemastore").json.schemas(),
-      validate = { enable = true },
-    },
-  })
-  lsp.setup_with_default("yamlls", {
-    yaml = {
-      schemaStore = {
-        enable = true,
-      },
-    },
-  })
-  lsp.setup_with_default("kotlin_language_server", {
-    kotlin = {
-      formatting = {
-        formatter = "none",
-      },
-    },
-  })
+  require("nvimrc.plugins.lsp.jdtls").setup()
   local to_setup = {
-    "bashls",
-    "clangd",
-    "cssls",
-    "dockerls",
-    "html",
-    "hls",
-    "lua_ls",
-    "pylsp",
-    "taplo",
-    "tsserver",
+    bashls = {},
+    clangd = {},
+    cssls = {},
+    dockerls = {},
+    html = {},
+    hls = {},
+    jsonls = {
+      json = { schemas = require("schemastore").json.schemas(), validate = { enable = true } },
+    },
+    kotlin_language_server = {
+      kotlin = { formatting = { formatter = "none" } },
+    },
+    lua_ls = {},
+    pylsp = {},
+    taplo = {},
+    texlab = require("nvimrc.plugins.lsp.texlab"),
+    tsserver = {},
+    yamlls = { yaml = { schemaStore = { enable = true } } },
   }
   local conditional_add = {
-    ["nil"] = "nil_ls",
-    ["sourcekit-lsp"] = "sourcekit",
+    ["nil"] = { "nil_ls", {} },
+    ["sourcekit-lsp"] = { "sourcekit", {} },
   }
-  for exec, lsp_name in pairs(conditional_add) do
-    if vim.fn.executable(exec) == 1 then table.insert(to_setup, lsp_name) end
+  for exec, lsp_config in pairs(conditional_add) do
+    if vim.fn.executable(exec) == 1 then
+      to_setup[lsp_config[1]] = lsp_config[2]
+    end
   end
 
-  for _, server in ipairs(to_setup) do
-    lsp.setup_with_default(server, {})
+  for server, opts in pairs(to_setup) do
+    lsp.setup_with_default(server, opts)
   end
 end
 
@@ -57,14 +46,21 @@ return {
   { "folke/neoconf.nvim", cmd = "Neoconf", dependencies = { "nvim-lspconfig" } },
   {
     "smjonas/inc-rename.nvim",
-    config = function ()
-      require("inc_rename").setup()
-      vim.api.nvim_create_autocmd("CmdlineLeave", {
-        callback = function () vim.fn.histdel("cmd", "^IncRename ") end,
-      })
-      local rename_func = function () return ":IncRename " .. vim.fn.expand("<cword>") end
-      vim.keymap.set("n", "<leader>rn", rename_func, { expr = true, desc = "LSP Rename" })
-    end,
+    main = "inc_rename",
+    --- @type inc_rename.UserConfig
+    opts = {
+      post_hook = function ()
+        vim.fn.histdel("cmd", "^IncRename ")
+      end,
+    },
+    keys = {
+      {
+        "<leader>rn",
+        function () return ":IncRename " .. vim.fn.expand("<cword>") end,
+        expr = true,
+        desc = "LSP Rename",
+      },
+    },
     event = "LspAttach",
   },
   {
