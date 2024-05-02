@@ -26,10 +26,10 @@ local function configure()
   local dap = require("dap")
   local dapui = require("dapui")
 
-  dap.listeners.after.event_initialized["dapui_config"] = function () dapui.open({}) end
-  dap.listeners.before.event_terminated["dapui_config"] = function () dapui.close({}) end
-  dap.listeners.before.event_exited["dapui_config"] = function () dapui.close({}) end
-
+  dap.listeners.before.attach.dapui_config = function () dapui.open() end
+  dap.listeners.before.launch.dapui_config = function () dapui.open() end
+  dap.listeners.before.event_terminated.dapui_config = function () dapui.close() end
+  dap.listeners.before.event_exited.dapui_config = function () dapui.close() end
 
   dap.adapters.lldb = {
     type = "executable",
@@ -42,10 +42,9 @@ end
 return {
   {
     "mfussenegger/nvim-dap",
-    name = "dap",
+    main = "dap",
     config = configure,
     dependencies = {
-      { "rcarriga/nvim-dap-ui" },
       { "theHamsta/nvim-dap-virtual-text", config = true },
     },
     keys = keymaps,
@@ -53,8 +52,11 @@ return {
   },
   {
     "rcarriga/nvim-dap-ui",
-    dependencies = { "nvim-neotest/nvim-nio" },
-    name = "dapui",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio",
+    },
+    main = "dapui",
     config = true,
     keys = {
       { "<leader>du", function () package.loaded.dapui.toggle({}) end, desc = "Dap UI" },
