@@ -85,6 +85,7 @@ return {
         },
         diagnostic = {
           extend_relatedInformation = true,
+          quit_in_show = { "q", "<esc>", "<C-c>" },
         },
       }
       require("lspsaga").setup(opts)

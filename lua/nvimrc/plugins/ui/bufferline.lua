@@ -14,8 +14,8 @@ return {
         highlights = require("catppuccin.groups.integrations.bufferline").get(),
         diagnostics = "nvim_lsp",
         always_show_bufferline = false,
-        close_command = function (n) require("mini.bufremove").delete(n, false) end,
-        right_mouse_command = function (n) require("mini.bufremove").delete(n, false) end,
+        close_command = function (buf_id) require("mini.bufremove").delete(buf_id, false) end,
+        right_mouse_command = function (buf_id) require("mini.bufremove").delete(buf_id, false) end,
         offsets = {
           {
             filetype = "neo-tree",
