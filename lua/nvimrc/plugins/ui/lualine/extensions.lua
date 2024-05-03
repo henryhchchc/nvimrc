@@ -39,7 +39,12 @@ M.help = {
   },
 }
 
----@type table<string, NoiceStatus>
+-- HACK: The type annotation provided by Noice is incorrect
+--- @class NoiceStatus
+--- @field get fun():string
+--- @field has fun():boolean
+
+--- @type table<string, NoiceStatus>
 local noice_status = require("noice").api.status
 
 M.noice_mode = {

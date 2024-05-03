@@ -20,11 +20,14 @@ function M.on_attach(client, bufnr)
 
   if client.server_capabilities.codeLensProvider ~= nil then
     local codelen_group = vim.api.nvim_create_augroup("lsp_codelens", {})
-    vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "InsertLeave" }, {
-      buffer = bufnr,
-      group = codelen_group,
-      callback = function (_event) vim.lsp.codelens.refresh() end,
-    })
+    vim.api.nvim_create_autocmd(
+      { "BufEnter", "CursorHold", "TextChanged", "InsertLeave" },
+      {
+        buffer = bufnr,
+        group = codelen_group,
+        callback = function (_event) vim.lsp.codelens.refresh() end,
+      }
+    )
   end
 
 

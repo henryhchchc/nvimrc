@@ -29,7 +29,7 @@ local catppuccin_integrations = {
   which_key = true,
 }
 
----@param colors CtpColors<string>
+--- @param colors CtpColors<string>
 local function mocha_overrides(colors)
   return {
     NormalFloat = { bg = colors.base },

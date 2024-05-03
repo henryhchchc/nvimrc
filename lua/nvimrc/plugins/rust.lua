@@ -7,7 +7,7 @@ local function options()
     rustacean_cfg.create_client_capabilities()
   )
   local executors = require("rustaceanvim.executors")
-  ---@type RustaceanConfig
+  --- @type RustaceanConfig
   local rustConfig = {
     server = lsp_default_opts,
     tools = {

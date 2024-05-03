@@ -1,4 +1,4 @@
----@type TSConfig
+--- @type TSConfig
 local treesitter_opts = {
   ensure_installed = "all",
   ignore_install = require("nvimrc.plugins.ts.skip_languages"),
@@ -76,7 +76,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = { "BufReadPost", "BufNewFile" },
-    ---@type TSContext.Config
+    --- @type TSContext.Config
     opts = {
       multiline_threshold = 5,
     },
