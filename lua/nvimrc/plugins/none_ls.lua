@@ -1,6 +1,7 @@
 --- @type LazyPluginSpec
 return {
   "nvimtools/none-ls.nvim",
+  dependencies = { "nvim-lua/plenary.nvim" },
   main = "null-ls",
   opts = function (_self, opts)
     local builtins = require("null-ls.builtins")
