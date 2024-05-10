@@ -70,6 +70,7 @@ return {
     init = function ()
       vim.opt.foldmethod = "expr"
       vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+      vim.opt.fillchars = "fold: "
       vim.opt.foldlevel = 255
     end,
   },
