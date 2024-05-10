@@ -19,9 +19,10 @@ function M.on_attach(client, bufnr)
   vim.keymap.set("n", "K", function () vim.cmd.Lspsaga("hover_doc") end, { desc = "LSP Hover Doc", buffer = bufnr })
 
   if client.server_capabilities.codeLensProvider ~= nil then
-    local codelen_group = vim.api.nvim_create_augroup("lsp_codelens", {})
+    local group_name = string.format("lsp_codelens_%d", bufnr)
+    local codelen_group = vim.api.nvim_create_augroup(group_name, {})
     vim.api.nvim_create_autocmd(
-      { "BufEnter", "CursorHold", "TextChanged", "InsertLeave" },
+      { "BufEnter", "TextChanged", "InsertLeave", "LspTokenUpdate" },
       {
         buffer = bufnr,
         group = codelen_group,
@@ -29,7 +30,6 @@ function M.on_attach(client, bufnr)
       }
     )
   end
-
 
   if client.server_capabilities.documentFormattingProvider then
     vim.b["autoformat"] = true

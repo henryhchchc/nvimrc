@@ -35,6 +35,7 @@ local function mocha_overrides(colors)
   return {
     NormalFloat = { bg = colors.base },
     NotifyBackground = { bg = "#000000" },
+    LspCodeLens = { style = { "underline" } },
     -- Telescope
     TelescopePromptTitle = { bg = colors.blue, fg = colors.base, style = { "bold" } },
     TelescopeResultsTitle = { bg = colors.lavender, fg = colors.base, style = { "bold" } },
