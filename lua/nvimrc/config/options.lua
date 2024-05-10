@@ -1,5 +1,9 @@
 vim.opt.autowrite = true
-vim.opt.clipboard = "unnamedplus"
+
+if not vim.env.SSH_TTY then
+  vim.opt.clipboard = "unnamedplus"
+end
+
 vim.opt.colorcolumn = "+1"
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.concealcursor = "nc"
