@@ -48,11 +48,7 @@ return {
     "smjonas/inc-rename.nvim",
     main = "inc_rename",
     --- @type inc_rename.UserConfig
-    opts = {
-      post_hook = function ()
-        vim.fn.histdel("cmd", "^IncRename ")
-      end,
-    },
+    opts = { save_in_cmdline_history = false },
     keys = {
       {
         "<leader>rn",
