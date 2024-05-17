@@ -37,6 +37,8 @@ function M.on_attach(client, bufnr)
       { desc = "Toggle autoformat", buffer = bufnr })
   end
 
+  vim.lsp.inlay_hint.enable(true, {})
+
   vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")

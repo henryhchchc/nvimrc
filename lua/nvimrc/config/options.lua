@@ -1,5 +1,10 @@
 vim.opt.autowrite = true
-vim.opt.clipboard = "unnamedplus"
+
+-- Do not set it to `unnamedplus` in SSH so nvim will use OSC52
+if not vim.env.SSH_TTY then
+  vim.opt.clipboard = "unnamedplus"
+end
+
 vim.opt.colorcolumn = "+1"
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.concealcursor = "nc"
@@ -15,7 +20,16 @@ vim.opt.list = true
 vim.opt.listchars:append("tab:> ,trail:⋅,nbsp:⋅,multispace:⋅,conceal:?")
 vim.opt.mouse = "ar"
 vim.opt.number = true
-vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
+vim.opt.sessionoptions = {
+  "buffers",
+  "curdir",
+  "tabpages",
+  "winsize",
+  "help",
+  "globals",
+  "skiprtp",
+  "folds",
+}
 vim.opt.shiftround = true
 vim.opt.shiftwidth = 2
 vim.opt.shortmess:append({ I = true, c = true, C = true })

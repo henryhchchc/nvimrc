@@ -45,8 +45,6 @@ local treesitter_opts = {
   },
   --- @type TSModule
   autotag = { enable = true },
-  --- @type TSModule
-  rainbow = { enable = true },
 }
 
 
@@ -58,7 +56,6 @@ return {
       { "JoosepAlviste/nvim-ts-context-commentstring" },
       { "nvim-treesitter/nvim-treesitter-textobjects" },
       { "windwp/nvim-ts-autotag" },
-      { "HiPhish/nvim-ts-rainbow2" },
     },
     build = ":TSUpdate",
     version = false,
@@ -74,6 +71,7 @@ return {
       vim.opt.foldlevel = 255
     end,
   },
+  { "hiphish/rainbow-delimiters.nvim", config = true },
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = { "BufReadPost", "BufNewFile" },

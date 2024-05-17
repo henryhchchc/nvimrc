@@ -22,11 +22,11 @@ local catppuccin_integrations = {
   noice = true,
   notify = true,
   nvimtree = false,
+  rainbow_delimiters = true,
   semantic_tokens = true,
   telescope = { enabled = true },
   treesitter = true,
   treesitter_context = true,
-  ts_rainbow2 = true,
   which_key = true,
 }
 

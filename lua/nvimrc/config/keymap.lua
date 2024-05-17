@@ -8,18 +8,6 @@ vim.keymap.set("n", "[t", vim.cmd.tabprev, { desc = "Switch to the previous tabp
 vim.keymap.set("n", "<leader>tn", vim.cmd.tabnew, { desc = "Create a new tabpage." })
 vim.keymap.set("n", "<leader>tc", vim.cmd.tabclose, { desc = "Close the current tabpage." })
 
-vim.keymap.set(
-  "n",
-  "[d",
-  function () vim.cmd.Lspsaga("diagnostic_jump_prev") end,
-  { desc = "Go to the previous diagnostics" }
-)
-vim.keymap.set(
-  "n",
-  "]d",
-  function () vim.cmd.Lspsaga("diagnostic_jump_next") end,
-  { desc = "Go to the next diagnostics" }
-)
 vim.keymap.set("n", "<leader>dq", vim.diagnostic.setqflist, { desc = "Send diagnostics to quickfix list" })
 
 vim.keymap.set("n", "]c", vim.cmd.cnext, { desc = "Go to the next quickfix location." })
@@ -47,52 +35,13 @@ vim.keymap.set("n", "<leader>rN", vim.lsp.buf.rename, { desc = "LSP Rename" })
 -- vim.keymap.set("v", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Range Code Actions" })
 
 
--- TODO: Replace it with buildtin base64 implementation on neovim 0.10
-local base64 = (function ()
-  local lshift = require("bit").lshift
-  local rshift = require("bit").rshift
-  local band = require("bit").band
-  local bor = require("bit").bor
-
-  local M = {}
-
-  --- @format disable
-  local base64 = { [0] = "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
-    "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
-    "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "/" }
-  --- @format enable
-
-  local mask = 0x3f -- 0b00111111
-
-  function M.enc(s)
-    local len = string.len(s)
-    local output = {}
-
-    for i = 1, len, 3 do
-      local byte1, byte2, byte3 = string.byte(s, i, i + 2)
-      local bits = bor(lshift(byte1, 16), lshift(byte2 or 0, 8), byte3 or 0)
-      table.insert(output, base64[rshift(bits, 18)])
-      table.insert(output, base64[band(rshift(bits, 12), mask)])
-      table.insert(output, base64[band(rshift(bits, 6), mask)])
-      table.insert(output, base64[band(bits, mask)])
-    end
-
-    for i = 0, 1 - ((len - 1) % 3) do
-      output[#output - i] = "="
-    end
-
-    return table.concat(output)
-  end
-
-  return M
-end)()
 
 -- Open the file or link under the cursor
 local function open_cfile()
   local file_name = vim.fn.expand("<cfile>")
   if os.getenv("SSH_CONNECTION") then
     vim.notify("Cannot open file over SSH.\nThe link is copied via OSC52.", vim.log.levels.INFO)
-    local osc52_seq = string.format("\x1b]52;c;%s\a", base64.enc(file_name))
+    local osc52_seq = string.format("\x1b]52;c;%s\a", vim.base64.encode(file_name))
     vim.fn.chansend(vim.v.stderr, osc52_seq)
   elseif vim.fn.has("mac") == 1 then
     vim.fn.jobstart("open " .. vim.fn.shellescape(file_name), { detach = true })
@@ -119,11 +68,7 @@ end
 vim.keymap.set("n", "<leader>uc", toggle_conceal(), { desc = "Toggle conceal" })
 vim.keymap.set("n", "<leader>ui", function () vim.lsp.inlay_hint(0, nil) end, { desc = "Toggle inlay hints" })
 local function toggle_diagnostics()
-  if vim.diagnostic.is_disabled(0) then
-    vim.diagnostic.enable(0)
-  else
-    vim.diagnostic.disable(0)
-  end
+  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end
 vim.keymap.set("n", "<leader>ud", toggle_diagnostics, { desc = "Toggle diagnostics" })
 

@@ -1,7 +1,7 @@
 local language_server_ignore = { "null-ls", "copilot" }
 
 local function get_attached_lsps()
-  local clients = vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() })
+  local clients = vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() })
   clients = vim.tbl_filter(function (it) return not vim.tbl_contains(language_server_ignore, it.name) end, clients)
   return clients
 end
