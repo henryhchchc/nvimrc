@@ -39,14 +39,12 @@ vim.keymap.set("n", "<leader>rN", vim.lsp.buf.rename, { desc = "LSP Rename" })
 -- Open the file or link under the cursor
 local function open_cfile()
   local file_name = vim.fn.expand("<cfile>")
-  if os.getenv("SSH_CONNECTION") then
-    vim.notify("Cannot open file over SSH.\nThe link is copied via OSC52.", vim.log.levels.INFO)
+  if vim.env.SSH_TTY then
+    vim.notify("Cannot open file over SSH.\nThe link is copied via OSC 52.", vim.log.levels.INFO)
     local osc52_seq = string.format("\x1b]52;c;%s\a", vim.base64.encode(file_name))
     vim.fn.chansend(vim.v.stderr, osc52_seq)
-  elseif vim.fn.has("mac") == 1 then
-    vim.fn.jobstart("open " .. vim.fn.shellescape(file_name), { detach = true })
-  elseif vim.fn.has("unix") == 1 then
-    vim.fn.jobstart("xdg-open " .. vim.fn.shellescape(file_name), { detach = true })
+  else
+    vim.ui.open(file_name)
   end
 end
 vim.keymap.set("n", "gx", open_cfile, { desc = "Open the file or link under the cursor" })
