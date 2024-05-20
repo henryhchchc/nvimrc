@@ -48,8 +48,12 @@ function M.on_attach(client, bufnr)
 end
 
 function M.lsp_default_opts()
-  local initial_caps = vim.lsp.protocol.make_client_capabilities()
-  local capabilities = require("cmp_nvim_lsp").default_capabilities(initial_caps)
+  local capabilities = vim.tbl_deep_extend(
+    "force",
+    {},
+    vim.lsp.protocol.make_client_capabilities(),
+    require("cmp_nvim_lsp").default_capabilities()
+  )
   local lspFlags = {}
   return {
     on_attach = M.on_attach,
