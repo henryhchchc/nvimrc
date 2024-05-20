@@ -16,8 +16,7 @@ local function configure()
     },
     snippet = {
       expand = function (args)
-        local luasnip = require("luasnip")
-        luasnip.lsp_expand(args.body)
+        vim.snippet.expand(args.body)
       end,
     },
     experimental = {
@@ -28,7 +27,6 @@ local function configure()
     sources = {
       { name = "nvim_lsp" },
       { name = "crates" },
-      { name = "luasnip" },
       { name = "buffer", max_item_count = 5 },
     },
     matching = {
@@ -98,7 +96,6 @@ return {
       { "hrsh7th/cmp-cmdline" },
       { "hrsh7th/cmp-buffer" },
       { "hrsh7th/cmp-path" },
-      { "saadparwaiz1/cmp_luasnip" },
       { "dmitmel/cmp-cmdline-history" },
       {
         "tzachar/cmp-fuzzy-path",
@@ -109,14 +106,4 @@ return {
     event = { "InsertEnter", "CmdlineEnter" },
   },
   { "onsails/lspkind-nvim" },
-  {
-    "L3MON4D3/LuaSnip",
-    opts = { delete_check_events = "TextChanged" },
-    dependencies = { "rafamadriz/friendly-snippets" },
-    build = "make install_jsregexp",
-    config = function (_, opts)
-      require("luasnip").setup(opts)
-      require("luasnip.loaders.from_vscode").lazy_load()
-    end,
-  },
 }

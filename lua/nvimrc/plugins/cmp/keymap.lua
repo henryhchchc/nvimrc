@@ -1,18 +1,10 @@
-local function load_luasnip()
-  if not package.loaded.luasnip then
-    require("luasnip")
-  end
-  return package.loaded.luasnip
-end
-
 local function tab_mapping(fallback)
   local cmp = package.loaded.cmp
-  local luasnip = load_luasnip()
   local copilot_suggestion = require("copilot.suggestion")
   if copilot_suggestion.is_visible() then
     copilot_suggestion.accept()
-  elseif luasnip.expandable() then
-    luasnip.expand()
+  elseif vim.snippet.active({ direction = 1 }) then
+    vim.snippet.jump(1)
   elseif cmp.visible() and cmp.get_active_entry() then
     cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = false })
   else
@@ -25,19 +17,9 @@ local function tap_mapping_cmdline(_fallback)
   if cmp.visible() then cmp.select_next_item() end
 end
 
-local function snip_jump(fallback)
-  local luasnip = load_luasnip()
-  if luasnip.jumpable(1) then
-    luasnip.jump(1)
-  else
-    fallback()
-  end
-end
-
 local function shift_tab_mapping(fallback)
-  local luasnip = load_luasnip()
-  if luasnip.jumpable(-1) then
-    luasnip.jump(-1)
+  if vim.snippet.active({ direction = -1 }) then
+    vim.snippet.jump(-1)
   else
     fallback()
   end
@@ -63,7 +45,6 @@ local M = {}
 
 local cmp = package.loaded.cmp
 
-
 --- @type table<string, cmp.Mapping>
 M.insert = {
   ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
@@ -73,7 +54,6 @@ M.insert = {
   ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
   ["<C-c>"] = cmp.mapping(cmp.mapping.close(), { "i", "c" }),
   ["<TAB>"] = cmp.mapping(tab_mapping, { "i", "c", "s" }),
-  ["<TAB><TAB>"] = cmp.mapping(snip_jump, { "i", "c", "s" }),
   ["<S-TAB>"] = cmp.mapping(shift_tab_mapping, { "i", "c", "s" }),
   ["<CR>"] = cmp.mapping(return_mapping, { "i" }),
   ["<C-s>"] = cmp.mapping(copilot_suggest, { "i" }),
