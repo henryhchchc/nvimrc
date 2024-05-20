@@ -4,19 +4,40 @@ local M = {}
 local utils = require("nvimrc.utils")
 
 function M.on_attach(client, bufnr)
-  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "LSP Declaration", buffer = bufnr })
+  vim.keymap.set(
+    "n",
+    "gD",
+    function () vim.lsp.buf.declaration({ loclist = true }) end,
+    { desc = "LSP Declaration", buffer = bufnr }
+  )
   vim.keymap.set(
     "n",
     "gd",
-    function () vim.cmd.Lspsaga("goto_definition") end,
+    function () vim.lsp.buf.definition({ loclist = true }) end,
     { desc = "LSP Definitions", buffer = bufnr }
   )
-  vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { desc = "LSP Implementations", buffer = bufnr })
-  vim.keymap.set("n", "gr", function () vim.cmd.Lspsaga("finder") end, { desc = "LSP References", buffer = bufnr })
-  vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { desc = "LSP Signagure Help", buffer = bufnr })
-  vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "LSP Signagure Help", buffer = bufnr })
-  vim.keymap.set("n", "<leader>gl", vim.lsp.codelens.run, { desc = "LSP Run Codelens", buffer = bufnr })
-  vim.keymap.set("n", "K", function () vim.cmd.Lspsaga("hover_doc") end, { desc = "LSP Hover Doc", buffer = bufnr })
+  vim.keymap.set(
+    "n",
+    "gI",
+    function () vim.lsp.buf.implementation({ loclist = true }) end,
+    { desc = "LSP Implementations", buffer = bufnr }
+  )
+  vim.keymap.set(
+    "n",
+    "gr",
+    function ()
+      vim.lsp.buf.references({ includeDeclaration = false }, { loclist = true })
+    end,
+    { desc = "LSP References", buffer = bufnr }
+  )
+  -- vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { desc = "LSP Signagure Help", buffer = bufnr })
+  -- vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "LSP Signagure Help", buffer = bufnr })
+  vim.keymap.set(
+    "n",
+    "<leader>gl",
+    vim.lsp.codelens.run,
+    { desc = "LSP Run Codelens", buffer = bufnr }
+  )
 
   if client.server_capabilities.codeLensProvider ~= nil then
     local group_name = string.format("lsp_codelens_%d", bufnr)
@@ -39,14 +60,12 @@ function M.on_attach(client, bufnr)
   end
 
   vim.lsp.inlay_hint.enable(true, {})
-
-  vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
-  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-  vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
+  vim.bo[bufnr].formatexpr = "v:lua.vim.lsp.formatexpr(#{timeout_ms:250})"
 
   require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
 end
 
+--- @return vim.lsp.ClientConfig
 function M.lsp_default_opts()
   local capabilities = vim.tbl_deep_extend(
     "force",
@@ -54,12 +73,22 @@ function M.lsp_default_opts()
     vim.lsp.protocol.make_client_capabilities(),
     require("cmp_nvim_lsp").default_capabilities()
   )
+  --- @type table<string, function>
+  local handlers = {
+    [vim.lsp.protocol.Methods.textDocument_hover] = vim.lsp.with(
+      vim.lsp.handlers.hover,
+      { border = "rounded" }
+    ),
+  }
   local lspFlags = {}
-  return {
+  --- @type vim.lsp.ClientConfig
+  local client_config = {
     on_attach = M.on_attach,
     capabilities = capabilities,
     flags = lspFlags,
+    handlers = handlers,
   }
+  return client_config
 end
 
 function M.setup_with_default(server, settings)

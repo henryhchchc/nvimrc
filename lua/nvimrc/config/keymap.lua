@@ -31,9 +31,7 @@ vim.keymap.set("", "<D-s>", vim.cmd.write, { desc = "Save" })
 -- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Actions" })
 vim.keymap.set({ "n", "v" }, "g.", function () vim.cmd.Lspsaga("code_action") end, { desc = "LSP Code Actions" })
 vim.keymap.set({ "n", "v" }, "<leader>cf", function () vim.lsp.buf.format({ async = true }) end, { desc = "LSP Format" })
-vim.keymap.set("n", "<leader>rN", vim.lsp.buf.rename, { desc = "LSP Rename" })
--- vim.keymap.set("v", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Range Code Actions" })
-
+vim.keymap.set("n", "<leader>rN", vim.lsp.buf.renaNe, { desc = "LSP Rename" })
 
 
 -- Open the file or link under the cursor
@@ -99,8 +97,3 @@ vim.keymap.set({ "n", "i", "c", "v", "o" }, "<Up>", "<Nop>")
 vim.keymap.set({ "n", "i", "c", "v", "o" }, "<Down>", "<Nop>")
 vim.keymap.set({ "n", "i", "c", "v", "o" }, "<Left>", "<Nop>")
 vim.keymap.set({ "n", "i", "c", "v", "o" }, "<Right>", "<Nop>")
-
--- Disable the annoying q mappings
-vim.keymap.set({ "n", "v", "o" }, "q:", "<Nop>")
-vim.keymap.set({ "n", "v", "o" }, "Q", "q", { desc = "Record macro" })
-vim.keymap.set({ "n", "v", "o" }, "q", "<Nop>")
