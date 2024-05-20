@@ -1,38 +1,25 @@
 local diag_icons = {
-  [vim.diagnostic.severity.ERROR] = " ",
-  [vim.diagnostic.severity.WARN] = " ",
-  [vim.diagnostic.severity.INFO] = " ",
+  [vim.diagnostic.severity.ERROR] = "",
+  [vim.diagnostic.severity.WARN] = "",
+  [vim.diagnostic.severity.INFO] = "",
   [vim.diagnostic.severity.HINT] = "",
 }
 
-for severity, icon in pairs(diag_icons) do
-  local name = vim.diagnostic.severity[severity]:lower():gsub("^%l", string.upper)
-  name = "DiagnosticSign" .. name
-  vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
-end
-
-local function diag_prefix(diagnostic)
-  for severity, icon in pairs(diag_icons) do
-    if diagnostic.severity == severity then
-      return icon
-    end
-  end
-  return "●"
-end
-
+--- @type vim.diagnostic.SeverityFilter
+local warn_or_above = { min = vim.diagnostic.severity.WARN }
 
 vim.diagnostic.config({
   virtual_text = {
-    prefix = diag_prefix,
+    prefix = function (it) return diag_icons[it.severity] or "●" end,
     source = "if_many",
-    severity = { min = vim.diagnostic.severity.INFO },
+    severity = warn_or_above,
   },
-  signs = true,
-  underline = true,
+  signs = { text = diag_icons },
+  underline = { severity = warn_or_above },
   update_in_insert = false,
   severity_sort = true,
   float = {
-    border = "solid",
+    border = "rounded",
     severity_sort = true,
     format = function (diag)
       local source = diag.source
@@ -45,6 +32,6 @@ vim.diagnostic.config({
 vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
   group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
   callback = function ()
-    vim.cmd.Lspsaga("show_cursor_diagnostics", "++unfocus")
+    vim.diagnostic.open_float({ focus = false, scope = "cursor" })
   end,
 })
