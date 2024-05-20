@@ -1,8 +1,18 @@
 vim.opt.autowrite = true
 
--- Do not set it to `unnamedplus` in SSH so nvim will use OSC52
-if not vim.env.SSH_TTY then
-  vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = "unnamedplus"
+if vim.env.SSH_TTY and (not vim.env.TMUX) then
+  vim.g.clipboard = {
+    name = "OSC 52",
+    copy = {
+      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    paste = {
+      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+    },
+  }
 end
 
 vim.opt.colorcolumn = "+1"
