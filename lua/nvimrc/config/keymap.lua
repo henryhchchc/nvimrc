@@ -71,6 +71,12 @@ local function toggle_diagnostics()
   vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end
 vim.keymap.set("n", "<leader>ud", toggle_diagnostics, { desc = "Toggle diagnostics" })
+vim.keymap.set(
+  "n",
+  "<leader>uh",
+  function () vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}), {}) end,
+  { desc = "Toggle Inlay hints" }
+)
 
 -- Clear search highlight with <esc>
 vim.keymap.set("n", "<esc>", vim.cmd.nohlsearch, { desc = "Clear search highlight" })
