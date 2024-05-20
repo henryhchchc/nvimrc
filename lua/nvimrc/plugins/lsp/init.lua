@@ -43,7 +43,7 @@ end
 return {
   { "neovim/nvim-lspconfig", config = configure, lazy = false },
   { "folke/neodev.nvim" },
-  { "folke/neoconf.nvim", cmd = "Neoconf", dependencies = { "nvim-lspconfig" } },
+  { "folke/neoconf.nvim", version = false, cmd = "Neoconf", dependencies = { "nvim-lspconfig" } },
   {
     "smjonas/inc-rename.nvim",
     main = "inc_rename",
