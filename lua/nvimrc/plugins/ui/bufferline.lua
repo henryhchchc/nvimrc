@@ -1,8 +1,6 @@
 --- @type LazyPluginSpec
 return {
   "akinsho/bufferline.nvim",
-  -- FIXME: remove version constraint when the fix is released
-  version = false,
   dependencies = {
     { "echasnovski/mini.bufremove", config = true, event = "VeryLazy" },
     { "tiagovla/scope.nvim", config = true, event = "VeryLazy" },
