@@ -32,7 +32,7 @@ require("lazy").setup({
     version = "*",
   },
   ui = {
-    border = "single",
+    border = "rounded",
     title = " Lazy.nvim - Plugin Manager ",
   },
 })

@@ -9,25 +9,51 @@ local catppuccin_integrations = {
   cmp = true,
   dap = true,
   dap_ui = true,
-  illuminate = true,
-  indent_blankline = { enabled = true, colored_indent_levels = true },
-  lsp_trouble = true,
-  lsp_saga = true,
+  diffview = true,
+  gitsigns = true,
   hop = true,
+  illuminate = {
+    enabled = true,
+    lsp = false,
+  },
+  indent_blankline = {
+    enabled = true,
+    colored_indent_levels = true,
+  },
+  lsp_saga = true,
+  lsp_trouble = true,
   markdown = true,
-  native_lsp = { enabled = true },
+  native_lsp = {
+    enabled = true,
+    virtual_text = {
+      errors = { "italic" },
+      hints = { "italic" },
+      warnings = { "italic" },
+      information = { "italic" },
+      ok = { "italic" },
+    },
+    underlines = {
+      errors = { "underline" },
+      hints = { "underline" },
+      warnings = { "underline" },
+      information = { "underline" },
+      ok = { "underline" },
+    },
+    inlay_hints = {
+      background = true,
+    },
+  },
+  navic = { enabled = false, custom_bg = "NONE" },
   neogit = true,
-  neotree = true,
   neotest = true,
+  neotree = true,
   noice = true,
   notify = true,
-  nvimtree = false,
   rainbow_delimiters = true,
   semantic_tokens = true,
   telescope = { enabled = true },
   treesitter = true,
   treesitter_context = true,
-  which_key = true,
 }
 
 --- @param colors CtpColors<string>
@@ -64,15 +90,18 @@ local catppuccin_opts = {
       base = terminal.background,
     },
   },
+  default_integrations = false,
   integrations = catppuccin_integrations,
 }
 
 return {
   "catppuccin/nvim",
+  main = "catppuccin",
   name = "catppuccin",
   priority = 1000,
   lazy = false,
   opts = catppuccin_opts,
+  version = false,
   config = function (_, opts)
     require("catppuccin").setup(opts)
     vim.cmd.colorscheme("catppuccin-mocha")

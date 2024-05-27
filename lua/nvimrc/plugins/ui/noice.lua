@@ -6,6 +6,13 @@ local options = {
       ["vim.lsp.util.stylize_markdown"] = true,
       ["cmp.entry.get_documentation"] = true,
     },
+    documentation = {
+      opts = {
+        border = {
+          style = "rounded",
+        },
+      },
+    },
   },
   popupmenu = { enable = false },
   presets = {
@@ -55,4 +62,3 @@ return {
     "nvim-treesitter/nvim-treesitter",
   },
 }
-
