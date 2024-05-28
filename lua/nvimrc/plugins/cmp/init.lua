@@ -38,6 +38,7 @@ local function configure()
     },
     window = {
       completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
     },
   })
 
@@ -91,14 +92,16 @@ end
 return {
   {
     "hrsh7th/nvim-cmp",
+    version = false,
     dependencies = {
-      { "hrsh7th/cmp-nvim-lsp" },
-      { "hrsh7th/cmp-cmdline" },
-      { "hrsh7th/cmp-buffer" },
-      { "hrsh7th/cmp-path" },
-      { "dmitmel/cmp-cmdline-history" },
+      { "hrsh7th/cmp-nvim-lsp", version = false },
+      { "hrsh7th/cmp-cmdline", version = false },
+      { "hrsh7th/cmp-buffer", version = false },
+      { "hrsh7th/cmp-path", version = false },
+      { "dmitmel/cmp-cmdline-history", version = false },
       {
         "tzachar/cmp-fuzzy-path",
+        version = false,
         dependencies = { { "tzachar/fuzzy.nvim" } },
       },
     },
