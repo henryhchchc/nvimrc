@@ -29,12 +29,8 @@ local function configure()
       { name = "crates" },
       { name = "buffer", max_item_count = 5 },
     },
-    matching = {
-      disallow_partial_fuzzy_matching = false,
-    },
     view = {
       entries = { name = "custom" },
-
     },
     window = {
       completion = cmp.config.window.bordered(),
