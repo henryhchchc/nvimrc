@@ -25,6 +25,13 @@ vim.keymap.set("n", "L", "$", { desc = "End of line" })
 
 vim.keymap.set("n", "<leader><leader>", "<C-^>", { desc = "Alternate most recent buffers" })
 
+vim.keymap.set(
+  "n",
+  "ge",
+  function () vim.diagnostic.open_float({ focus = false, scope = "cursor" }) end,
+  { desc = "Show diagnostics" }
+)
+
 -- Cmd-S for save
 vim.keymap.set("", "<D-s>", vim.cmd.write, { desc = "Save" })
 -- LSP
