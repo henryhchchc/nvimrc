@@ -61,8 +61,6 @@ function M.on_attach(client, bufnr)
 
   vim.lsp.inlay_hint.enable(true, {})
   vim.bo[bufnr].formatexpr = "v:lua.vim.lsp.formatexpr(#{timeout_ms:250})"
-
-  require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
 end
 
 --- @return vim.lsp.ClientConfig

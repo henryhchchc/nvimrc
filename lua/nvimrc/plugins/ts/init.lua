@@ -71,7 +71,14 @@ return {
       vim.opt.foldlevel = 255
     end,
   },
-  { "hiphish/rainbow-delimiters.nvim", config = true },
+  {
+    "hiphish/rainbow-delimiters.nvim",
+    event = "BufEnter",
+    config = function ()
+      require("rainbow-delimiters")
+      require("rainbow-delimiters.setup").setup({})
+    end,
+  },
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = { "BufReadPost", "BufNewFile" },
