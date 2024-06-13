@@ -39,6 +39,7 @@ return {
   {
     "NeogitOrg/neogit",
     cmd = "Neogit",
+    version = false,
     --- @type NeogitConfig
     opts = {
       disable_builtin_notifications = true,
