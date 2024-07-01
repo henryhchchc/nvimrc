@@ -3,20 +3,15 @@ return {
   dependencies = {
     "nvim-tree/nvim-web-devicons",
   },
-  cmd = { "TroubleToggle", "Trouble" },
+  cmd = { "Trouble" },
   keys = {
     {
-      "<leader>xd",
-      function () vim.cmd.TroubleToggle("document_diagnostics") end,
-      desc = "Document Diagnostics (Trouble)",
-    },
-    {
       "<leader>xx",
-      function () vim.cmd.TroubleToggle("workspace_diagnostics") end,
-      desc = "Workspace Diagnostics (Trouble)",
+      function () vim.cmd.Trouble("diagnostics") end,
+      desc = "Diagnostics (Trouble)",
     },
-    { "<leader>xl", function () vim.cmd.TroubleToggle("loclist") end, desc = "Location List (Trouble)" },
-    { "<leader>xq", function () vim.cmd.TroubleToggle("quickfix") end, desc = "Quickfix List (Trouble)" },
+    { "<leader>xl", function () vim.cmd.Trouble("loclist") end, desc = "Location List (Trouble)" },
+    { "<leader>xq", function () vim.cmd.Trouble("quickfix") end, desc = "Quickfix List (Trouble)" },
   },
   config = true,
 }
