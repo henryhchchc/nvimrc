@@ -28,7 +28,8 @@ vim.keymap.set("n", "<leader><leader>", "<C-^>", { desc = "Alternate most recent
 vim.keymap.set(
   "n",
   "ge",
-  function () vim.diagnostic.open_float({ focus = false, scope = "cursor" }) end,
+  -- function () vim.diagnostic.open_float({ focus = false, scope = "cursor" }) end,
+  function () vim.cmd.Lspsaga("show_cursor_diagnostics", "++unfocus") end,
   { desc = "Show diagnostics" }
 )
 

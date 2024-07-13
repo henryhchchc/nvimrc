@@ -30,6 +30,7 @@ function M.on_attach(client, bufnr)
     end,
     { desc = "LSP References", buffer = bufnr }
   )
+  vim.keymap.set("n", "gf", function () vim.cmd.Lspsaga("finder") end, { desc = "LSP Finder", buffer = bufnr })
   -- vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { desc = "LSP Signagure Help", buffer = bufnr })
   -- vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "LSP Signagure Help", buffer = bufnr })
   vim.keymap.set(
