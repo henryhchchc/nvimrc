@@ -74,6 +74,7 @@ return {
   {
     "hiphish/rainbow-delimiters.nvim",
     event = "BufEnter",
+    version = false,
     config = function ()
       require("rainbow-delimiters")
       require("rainbow-delimiters.setup").setup({})
