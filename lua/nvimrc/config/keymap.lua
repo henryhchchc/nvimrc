@@ -82,6 +82,11 @@ vim.keymap.set(
   { desc = "Toggle Inlay hints" }
 )
 
+-- Diagnostics with Lspsaga
+vim.keymap.set("n", "]d", function () vim.cmd.Lspsaga("diagnostic_jump_next") end, { desc = "Jump to next diagnostic" })
+vim.keymap.set("n", "[d", function () vim.cmd.Lspsaga("diagnostic_jump_prev") end,
+  { desc = "Jump to previous diagnostic" })
+
 -- Clear search highlight with <esc>
 vim.keymap.set("n", "<esc>", vim.cmd.nohlsearch, { desc = "Clear search highlight" })
 

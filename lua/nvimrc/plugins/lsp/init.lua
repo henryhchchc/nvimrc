@@ -80,6 +80,7 @@ return {
           kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
         },
         diagnostic = {
+          show_code_action = true,
           extend_relatedInformation = true,
           quit_in_show = { "q", "<esc>", "<C-c>" },
         },

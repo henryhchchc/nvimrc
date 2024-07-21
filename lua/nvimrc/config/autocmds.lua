@@ -118,9 +118,9 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 })
 
 -- Show diagnostics on cursor holds
-vim.api.nvim_create_autocmd("CursorHold", {
-  group = vim.api.nvim_create_augroup("show_diagnostics", {}),
-  callback = function ()
-    vim.cmd.Lspsaga("show_cursor_diagnostics", "++unfocus")
-  end,
-})
+-- vim.api.nvim_create_autocmd("CursorHold", {
+--   group = vim.api.nvim_create_augroup("show_diagnostics", {}),
+--   callback = function ()
+--     vim.cmd.Lspsaga("show_cursor_diagnostics", "++unfocus")
+--   end,
+-- })
