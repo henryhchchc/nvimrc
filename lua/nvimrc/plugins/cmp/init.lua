@@ -94,6 +94,7 @@ return {
       { "hrsh7th/cmp-cmdline", version = false },
       { "hrsh7th/cmp-buffer", version = false },
       { "hrsh7th/cmp-path", version = false },
+      { "windwp/nvim-autopairs" },
       { "dmitmel/cmp-cmdline-history", version = false },
       {
         "tzachar/cmp-fuzzy-path",
