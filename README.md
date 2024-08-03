@@ -2,7 +2,7 @@
 
 ## Usage
 
-Symlink this repository to the Neovim configuration directory.
+Create a symbolic link in the Neovim configuration directory to this repository as follows.
 Let's assume that `pwd` is the directory where you clone this repository.
 
 ```bash
