@@ -16,6 +16,9 @@ M.options = {
   mode = "symbol",
   maxwidth = 50,
   ellipsis_char = "...",
+  ---@param entry cmp.Entry
+  ---@param vim_item vim.CompletedItem
+  ---@return vim.CompletedItem
   before = function (entry, vim_item)
     local sourceName = sourceNames[entry.source.name] or entry.source.name
     if entry.source.name == "nvim_lsp" then

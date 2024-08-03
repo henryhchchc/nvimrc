@@ -12,7 +12,7 @@ vim.diagnostic.config({
   virtual_text = {
     prefix = function (it) return diag_icons[it.severity] or "●" end,
     source = "if_many",
-    severity = warn_or_above,
+    severity = { min = vim.diagnostic.severity.ERROR },
   },
   signs = { text = diag_icons },
   underline = { severity = warn_or_above },
