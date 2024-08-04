@@ -9,11 +9,12 @@ local diag_icons = {
 local warn_or_above = { min = vim.diagnostic.severity.WARN }
 
 vim.diagnostic.config({
-  virtual_text = {
-    prefix = function (it) return diag_icons[it.severity] or "●" end,
-    source = "if_many",
-    severity = { min = vim.diagnostic.severity.ERROR },
-  },
+  virtual_text = false,
+  -- virtual_text = {
+  --   prefix = function (it) return diag_icons[it.severity] or "●" end,
+  --   source = "if_many",
+  --   severity = { min = vim.diagnostic.severity.ERROR },
+  -- },
   signs = { text = diag_icons },
   underline = { severity = warn_or_above },
   update_in_insert = false,
