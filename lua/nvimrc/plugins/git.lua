@@ -35,7 +35,6 @@ return {
     },
     event = { "BufReadPre", "BufNewFile" },
   },
-  { "tpope/vim-fugitive", cmd = "Git" },
   {
     "NeogitOrg/neogit",
     cmd = "Neogit",

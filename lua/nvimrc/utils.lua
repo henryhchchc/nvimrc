@@ -44,7 +44,6 @@ function M.toggle_buf_var(option, silent, values)
       vim.notify("Disabled " .. option, vim.log.levels.INFO, { title = "Option" })
     end
   end
-
 end
 
 return M
