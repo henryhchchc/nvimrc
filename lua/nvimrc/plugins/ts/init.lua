@@ -1,7 +1,6 @@
 --- @type TSConfig
 local treesitter_opts = {
-  ensure_installed = "all",
-  ignore_install = require("nvimrc.plugins.ts.skip_languages"),
+  ensure_installed = require("nvimrc.plugins.ts.install_langs"),
   --- @type TSModule
   highlight = {
     enable = true,
@@ -11,9 +10,9 @@ local treesitter_opts = {
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = "<C-space>",
-      node_incremental = "<C-space>",
-      node_decremental = "<bs>",
+      init_selection = "[x",
+      node_incremental = "[x",
+      node_decremental = "]x",
     },
   },
   --- @type TSModule
@@ -93,8 +92,6 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = { max_join_length = 1024, use_default_keymaps = false },
     event = { "BufReadPost", "BufNewFile" },
-    keys = {
-      { "<leader>j", function () package.loaded.treesj.toggle() end, desc = "Toggle node folding" },
-    },
+    keys = { { "<leader>j", function () package.loaded.treesj.toggle() end, desc = "Toggle node folding" } },
   },
 }

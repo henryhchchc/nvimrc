@@ -102,7 +102,7 @@ local function configure()
   end
   vim.keymap.set("n", "<leader>ff", find_files, { desc = "Telescope Find Files" })
   vim.keymap.set("n", "<leader>fg", telescope.builtin.live_grep, { desc = "Telescope Live grep" })
-  -- vim.keymap.set("n", "<leader>fb", telescope.builtin.buffers, { desc = "Telescope Find Buffer" })
+  vim.keymap.set("n", "<leader>fb", telescope.builtin.buffers, { desc = "Telescope Find Buffer" })
   vim.keymap.set("n", "<leader>fh", telescope.builtin.help_tags, { desc = "Telescope Find Help" })
   vim.keymap.set("n", "<leader>fd", telescope.builtin.diagnostics, { desc = "Telescope List Diagnostics" })
   vim.keymap.set("n", "<leader>fm", telescope.builtin.man_pages, { desc = "Telescope Find Man Pages" })

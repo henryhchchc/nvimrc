@@ -1,3 +1,4 @@
+--- @type LazyPluginSpec
 return {
   "folke/trouble.nvim",
   dependencies = {
@@ -14,4 +15,12 @@ return {
     { "<leader>xq", function () vim.cmd.Trouble("quickfix") end, desc = "Quickfix List (Trouble)" },
   },
   config = true,
+  --- @type trouble.Config
+  opts = {
+    auto_jump = true,
+    auto_close = true,
+    focus = true,
+    follow = false,
+    pinned = true,
+  },
 }
