@@ -90,9 +90,10 @@ function M.lsp_default_opts()
   return client_config
 end
 
-function M.setup_with_default(server, settings)
+function M.setup_with_default(server, settings, initialization_options)
   local lspConfig = require("lspconfig")
   local options = M.lsp_default_opts()
+  options.init_options = initialization_options or {}
   options.settings = settings or {}
   lspConfig[server].setup(options)
 end

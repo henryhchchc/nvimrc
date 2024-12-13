@@ -10,7 +10,7 @@ vim.keymap.set("n", "<leader>tc", vim.cmd.tabclose, { desc = "Close the current 
 vim.keymap.set("n", "<leader>dq", vim.diagnostic.setqflist, { desc = "Send diagnostics to quickfix list" })
 
 vim.keymap.set("n", "]c", vim.cmd.cnext, { desc = "Go to the next quickfix location." })
-vim.keymap.set("n", "[c", vim.cmd.cprev, { desc = "Go to the previous quickfix loaction." })
+vim.keymap.set("n", "[c", vim.cmd.cprev, { desc = "Go to the previous quickfix location." })
 
 -- Moving selection
 vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv", { desc = "Move Selection Down" })

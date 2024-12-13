@@ -37,6 +37,10 @@ local function configure()
   for server, opts in pairs(to_setup) do
     lsp.setup_with_default(server, opts)
   end
+
+  lsp.setup_with_default("typos_lsp", nil, {
+    diagnosticSeverity = "Hint",
+  })
 end
 
 --- @type LazyPluginSpec[]
