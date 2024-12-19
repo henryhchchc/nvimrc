@@ -17,6 +17,17 @@ return {
     panel = {
       enabled = true,
     },
+    filetypes = {
+      yaml = true,
+      markdown = true,
+      help = true,
+      gitcommit = true,
+      gitrebase = true,
+      hgcommit = true,
+      svn = true,
+      cvs = true,
+      ["."] = true,
+    },
   },
   cmd = "Copilot",
   event = "InsertEnter",
