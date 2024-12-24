@@ -1,6 +1,6 @@
 --- @type TSConfig
 local treesitter_opts = {
-  ensure_installed = require("nvimrc.plugins.ts.install_langs"),
+  ensure_installed = require("nvimrc.lazy_plugins.ts.install_langs"),
   --- @type TSModule
   highlight = {
     enable = true,

@@ -1,8 +1,8 @@
 local function configure()
   local lspkind = require("lspkind")
-  local lspKindOptions = require("nvimrc.plugins.cmp.lspkind").options
+  local lspKindOptions = require("nvimrc.lazy_plugins.cmp.lspkind").options
   local cmp = require("cmp")
-  local keymap = require("nvimrc.plugins.cmp.keymap")
+  local keymap = require("nvimrc.lazy_plugins.cmp.keymap")
 
   vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
 

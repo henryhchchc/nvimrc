@@ -3,7 +3,7 @@ local lsp = require("nvimrc.lsp")
 local function configure()
   require("neoconf").setup({})
   require("neodev").setup({})
-  require("nvimrc.plugins.lsp.jdtls").setup()
+  require("nvimrc.lazy_plugins.lsp.jdtls").setup()
   local to_setup = {
     bashls = {},
     clangd = {},
@@ -20,7 +20,7 @@ local function configure()
     lua_ls = {},
     pylsp = {},
     taplo = {},
-    texlab = require("nvimrc.plugins.lsp.texlab"),
+    texlab = require("nvimrc.lazy_plugins.lsp.texlab"),
     ts_ls = {},
     yamlls = { yaml = { schemaStore = { enable = true } } },
   }

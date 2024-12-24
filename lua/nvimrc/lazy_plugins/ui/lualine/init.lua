@@ -1,5 +1,5 @@
 local function generate_options()
-  local exts = require("nvimrc.plugins.ui.lualine.extensions")
+  local exts = require("nvimrc.lazy_plugins.ui.lualine.extensions")
   local format = {
     "fileformat",
     icons_enabled = true,

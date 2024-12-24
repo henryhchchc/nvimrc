@@ -16,7 +16,7 @@ M.autoformat = {
   cond = function () return vim.b.autoformat end,
 }
 
-M.lsp = require("nvimrc.plugins.ui.lualine.lsp_status")
+M.lsp = require("nvimrc.lazy_plugins.ui.lualine.lsp_status")
 
 M.saga_outline = {
   filetypes = { "sagaoutline" },
