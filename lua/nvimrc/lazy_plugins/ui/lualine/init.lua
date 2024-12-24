@@ -34,8 +34,6 @@ local function generate_options()
         { "diagnostics", sources = { "nvim_diagnostic" } },
       },
       lualine_x = {
-        exts.noice_cmd,
-        exts.noice_mode,
         {
           function () return "  " .. require("dap").status() end,
           cond = function () return require("dap").status() ~= "" end,

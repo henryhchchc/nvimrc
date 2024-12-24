@@ -18,25 +18,6 @@ local treesitter_opts = {
   --- @type TSModule
   indent = { enable = true },
   --- @type TSModule
-  textobjects = {
-    enable = true,
-    select = {
-      enable = true,
-      lookahead = true,
-      keymaps = {
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-        ["as"] = "@statement.outer",
-        ["ab"] = "@block.outer",
-        ["ib"] = "@block.inner",
-        ["aa"] = "@prarmeter.outer",
-        ["ia"] = "@prarmeter.inner",
-      },
-    },
-  },
-  --- @type TSModule
   query_linter = {
     enable = true,
     use_virtual_text = true,
@@ -53,7 +34,6 @@ return {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       { "JoosepAlviste/nvim-ts-context-commentstring" },
-      { "nvim-treesitter/nvim-treesitter-textobjects" },
       { "windwp/nvim-ts-autotag" },
     },
     build = ":TSUpdate",

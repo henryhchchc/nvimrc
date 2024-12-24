@@ -23,7 +23,7 @@ function M.setup()
       },
     },
     handlers = {
-      ["$/progress"] = require("noice.lsp.progress").progress,
+      -- ["$/progress"] = require("noice.lsp.progress").progress,
     },
   }
   local final_config = vim.tbl_deep_extend("force", default_opts, extra_jdtls_config)

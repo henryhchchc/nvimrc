@@ -81,10 +81,6 @@ local function configure()
     },
   })
   telescope.load_extension("fzf")
-  telescope.load_extension("zoxide")
-  telescope.load_extension("noice")
-
-  require("telescope._extensions.zoxide.config").setup({ prompt_title = "Zoxide List" })
 
   telescope.builtin = require("telescope.builtin")
 
@@ -105,7 +101,6 @@ local function configure()
   vim.keymap.set("n", "<leader>fh", telescope.builtin.help_tags, { desc = "Telescope Find Help" })
   vim.keymap.set("n", "<leader>fd", telescope.builtin.diagnostics, { desc = "Telescope List Diagnostics" })
   vim.keymap.set("n", "<leader>fm", telescope.builtin.man_pages, { desc = "Telescope Find Man Pages" })
-  vim.keymap.set("n", "<leader>gz", telescope.extensions.zoxide.list, { desc = "Telescope Zoxide" })
 
   vim.keymap.set("n", "<leader>gS", telescope.builtin.lsp_document_symbols, { desc = "Document Symbols" })
   vim.keymap.set("n", "<leader>gw", telescope.builtin.lsp_workspace_symbols, { desc = "Workspace Symbols" })
@@ -118,7 +113,6 @@ return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    { "jvgrootveld/telescope-zoxide" },
     { "nvim-telescope/telescope-dap.nvim" },
     { "nvim-lua/plenary.nvim" },
   },

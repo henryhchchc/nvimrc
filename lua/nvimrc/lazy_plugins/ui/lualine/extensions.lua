@@ -43,30 +43,6 @@ M.help = {
 --- @class NoiceStatus
 --- @field get fun():string
 --- @field has fun():boolean
-
---- @type table<string, NoiceStatus>
-local noice_status = require("noice").api.status
-
-M.noice_mode = {
-  noice_status.mode.get,
-  cond = noice_status.mode.has,
-}
-
-M.noice_cmd = {
-  noice_status.command.get,
-  cond = noice_status.command.has,
-}
-
-M.noice_message = {
-  noice_status.message.get,
-  cond = noice_status.message.has,
-}
-
-M.noice_search = {
-  noice_status.search.get,
-  cond = noice_status.search.has,
-}
-
 local wordcount_fts = {
   "markdown",
   "text",
