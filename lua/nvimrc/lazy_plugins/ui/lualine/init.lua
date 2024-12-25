@@ -34,10 +34,6 @@ local function generate_options()
         { "diagnostics", sources = { "nvim_diagnostic" } },
       },
       lualine_x = {
-        {
-          function () return "  " .. require("dap").status() end,
-          cond = function () return require("dap").status() ~= "" end,
-        },
         exts.autoformat,
       },
       lualine_y = {
@@ -52,10 +48,8 @@ local function generate_options()
     },
     extensions = {
       "man",
-      "nvim-dap-ui",
       "neo-tree",
       "quickfix",
-      "aerial",
       "lazy",
       "trouble",
       "fugitive",

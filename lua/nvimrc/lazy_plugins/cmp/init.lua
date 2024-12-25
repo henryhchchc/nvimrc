@@ -71,8 +71,6 @@ local function configure()
       return not disabled[cmd] or cmp.close()
     end,
   })
-  local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-  cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
   cmp.event:on("menu_opened", function (_event)
     local bufnr = vim.api.nvim_get_current_buf()
@@ -94,7 +92,6 @@ return {
       { "hrsh7th/cmp-cmdline", version = false },
       { "hrsh7th/cmp-buffer", version = false },
       { "hrsh7th/cmp-path", version = false },
-      { "windwp/nvim-autopairs" },
       { "dmitmel/cmp-cmdline-history", version = false },
       {
         "tzachar/cmp-fuzzy-path",
