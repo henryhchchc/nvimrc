@@ -7,6 +7,7 @@ local terminal = {
 local catppuccin_integrations = {
   bufferline = true,
   cmp = true,
+  fidget = true,
   gitsigns = true,
   indent_blankline = {
     enabled = true,
@@ -63,6 +64,8 @@ local function mocha_overrides(colors)
 
     TreesitterContextBottom = { sp = colors.lavender, style = { "underline" } },
     TreesitterContextLineNumber = { fg = colors.surface1, bg = colors.mantle },
+
+    FidgetTask = { bg = terminal.background },
   }
 end
 

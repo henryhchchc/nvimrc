@@ -1,7 +1,7 @@
 vim.opt.autowrite = true
 
 vim.opt.clipboard = "unnamedplus"
-local function paste()
+local function paste(regname)
   return {
     vim.fn.split(vim.fn.getreg(regname), "\n"),
     vim.fn.getregtype(regname),
@@ -65,7 +65,7 @@ vim.opt.spelloptions = { "camel" }
 vim.opt.splitbelow = true
 vim.opt.splitkeep = "screen"
 vim.opt.splitright = true
-vim.opt.tabstop = 2
+vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 vim.opt.timeoutlen = 500
 vim.opt.title = true
