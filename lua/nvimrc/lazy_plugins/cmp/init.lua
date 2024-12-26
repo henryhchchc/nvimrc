@@ -51,8 +51,6 @@ local function configure()
     sources = {
       { name = "path", group_index = 2 },
       { name = "cmdline", group_index = 2 },
-      { name = "cmdline_history", group_index = 2, max_item_count = 5 },
-      { name = "fuzzy_path", group_index = 1, option = { fd_timeout_msec = 1500 } },
     },
     preselect = cmp.PreselectMode.Item,
     mapping = keymap.cmdline,
@@ -92,12 +90,6 @@ return {
       { "hrsh7th/cmp-cmdline", version = false },
       { "hrsh7th/cmp-buffer", version = false },
       { "hrsh7th/cmp-path", version = false },
-      { "dmitmel/cmp-cmdline-history", version = false },
-      {
-        "tzachar/cmp-fuzzy-path",
-        version = false,
-        dependencies = { { "tzachar/fuzzy.nvim" } },
-      },
     },
     config = configure,
     event = { "InsertEnter", "CmdlineEnter" },
