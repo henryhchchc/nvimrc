@@ -51,7 +51,6 @@ local function generate_options()
       "neo-tree",
       "quickfix",
       "lazy",
-      "trouble",
       "fugitive",
       "toggleterm",
       exts.help,

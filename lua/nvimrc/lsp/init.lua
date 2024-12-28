@@ -7,32 +7,32 @@ function M.on_attach(client, bufnr)
   vim.keymap.set(
     "n",
     "gD",
-    function () vim.lsp.buf.declaration({ loclist = true }) end,
+    function () vim.lsp.buf.declaration() end,
     { desc = "LSP Declaration", buffer = bufnr }
   )
   vim.keymap.set(
     "n",
     "gd",
-    function () vim.lsp.buf.definition({ loclist = true }) end,
+    function () vim.lsp.buf.definition() end,
     { desc = "LSP Definitions", buffer = bufnr }
   )
   vim.keymap.set(
     "n",
     "gI",
-    function () vim.cmd.Trouble("lsp_implementations") end,
+    function () vim.lsp.buf.implementation() end,
     { desc = "LSP Implementations", buffer = bufnr }
   )
   vim.keymap.set(
     "n",
     "gr",
     function ()
-      vim.cmd.Trouble("lsp_references")
+      vim.lsp.buf.references()
     end,
     { desc = "LSP References", buffer = bufnr }
   )
   vim.keymap.set("n", "gf", function () vim.cmd.Lspsaga("finder") end, { desc = "LSP Finder", buffer = bufnr })
-  -- vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { desc = "LSP Signagure Help", buffer = bufnr })
-  -- vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "LSP Signagure Help", buffer = bufnr })
+  vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { desc = "LSP Signagure Help", buffer = bufnr })
+  vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "LSP Signagure Help", buffer = bufnr })
   vim.keymap.set(
     "n",
     "<leader>gl",
@@ -76,6 +76,10 @@ function M.lsp_default_opts()
   local handlers = {
     [vim.lsp.protocol.Methods.textDocument_hover] = vim.lsp.with(
       vim.lsp.handlers.hover,
+      { border = "rounded" }
+    ),
+    [vim.lsp.protocol.Methods.textDocument_signatureHelp] = vim.lsp.with(
+      vim.lsp.handlers.signature_help,
       { border = "rounded" }
     ),
   }
