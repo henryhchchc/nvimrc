@@ -29,6 +29,15 @@ local function configure()
     ".git",
   }
 
+  local find_files_theme = themes.get_dropdown({
+    previewer = false,
+    prompt_title = "Search Project Files",
+    layout_config = {
+      width = 0.75,
+      height = 0.8,
+    },
+  })
+
   telescope.setup({
     pickers = {
       spell_suggest = { theme = "cursor" },
@@ -87,7 +96,7 @@ local function configure()
   local function find_files()
     local theme = themes.get_dropdown({
       previewer = false,
-      title = "Search Project Files",
+      prompt_title = "Search Project Files",
       layout_config = {
         width = 0.75,
         height = 0.8,
