@@ -4,41 +4,15 @@ local M = {}
 local utils = require("nvimrc.utils")
 
 function M.on_attach(client, bufnr)
-  vim.keymap.set(
-    "n",
-    "gD",
-    function () vim.lsp.buf.declaration() end,
-    { desc = "LSP Declaration", buffer = bufnr }
-  )
-  vim.keymap.set(
-    "n",
-    "gd",
-    function () vim.lsp.buf.definition() end,
-    { desc = "LSP Definitions", buffer = bufnr }
-  )
-  vim.keymap.set(
-    "n",
-    "gI",
-    function () vim.lsp.buf.implementation() end,
-    { desc = "LSP Implementations", buffer = bufnr }
-  )
-  vim.keymap.set(
-    "n",
-    "gr",
-    function ()
-      vim.lsp.buf.references()
-    end,
-    { desc = "LSP References", buffer = bufnr }
-  )
+  vim.keymap.set("n", "rn", vim.lsp.buf.rename, { desc = "LSP Rename", buffer = bufnr })
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "LSP Declaration", buffer = bufnr })
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP Definitions", buffer = bufnr })
+  vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { desc = "LSP Implementations", buffer = bufnr })
+  vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "LSP References", buffer = bufnr })
   vim.keymap.set("n", "gf", function () vim.cmd.Lspsaga("finder") end, { desc = "LSP Finder", buffer = bufnr })
   vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { desc = "LSP Signagure Help", buffer = bufnr })
   vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "LSP Signagure Help", buffer = bufnr })
-  vim.keymap.set(
-    "n",
-    "<leader>gl",
-    vim.lsp.codelens.run,
-    { desc = "LSP Run Codelens", buffer = bufnr }
-  )
+  vim.keymap.set("n", "<leader>gl", vim.lsp.codelens.run, { desc = "LSP Run Codelens", buffer = bufnr })
 
   if client.server_capabilities.codeLensProvider ~= nil then
     local group_name = string.format("lsp_codelens_%d", bufnr)
@@ -60,6 +34,7 @@ function M.on_attach(client, bufnr)
       { desc = "Toggle autoformat", buffer = bufnr })
   end
 
+
   vim.lsp.inlay_hint.enable(true, {})
   vim.bo[bufnr].formatexpr = "v:lua.vim.lsp.formatexpr(#{timeout_ms:250})"
 end
@@ -74,14 +49,14 @@ function M.lsp_default_opts()
   )
   --- @type table<string, function>
   local handlers = {
-    [vim.lsp.protocol.Methods.textDocument_hover] = vim.lsp.with(
-      vim.lsp.handlers.hover,
-      { border = "rounded" }
-    ),
-    [vim.lsp.protocol.Methods.textDocument_signatureHelp] = vim.lsp.with(
-      vim.lsp.handlers.signature_help,
-      { border = "rounded" }
-    ),
+    -- [vim.lsp.protocol.Methods.textDocument_hover] = vim.lsp.with(
+    --   vim.lsp.handlers.hover,
+    --   { border = "rounded" }
+    -- ),
+    -- [vim.lsp.protocol.Methods.textDocument_signatureHelp] = vim.lsp.with(
+    --   vim.lsp.handlers.signature_help,
+    --   { border = "rounded" }
+    -- ),
   }
   local lspFlags = {}
   --- @type vim.lsp.ClientConfig

@@ -1,6 +1,7 @@
 local terminal = {
   background = "#151515",
   alt_background = "#1F1F1F",
+  float_background = "#2C2C2C",
 }
 
 --- @type CtpIntegrations
@@ -36,7 +37,6 @@ local catppuccin_integrations = {
     },
   },
   neogit = true,
-  neotest = true,
   neotree = true,
   rainbow_delimiters = true,
   semantic_tokens = true,
@@ -48,8 +48,9 @@ local catppuccin_integrations = {
 --- @param colors CtpColors<string>
 local function mocha_overrides(colors)
   return {
-    NormalFloat = { bg = colors.base },
-    NotifyBackground = { bg = "#000000" },
+    NormalFloat = { bg = terminal.float_background },
+    Pmenu = { bg = terminal.alt_background },
+    -- NotifyBackground = { bg = "#000000" },
     LspCodeLens = { style = { "underline" } },
     -- Telescope
     TelescopePromptTitle = { bg = colors.blue, fg = colors.base, style = { "bold" } },
@@ -63,8 +64,6 @@ local function mocha_overrides(colors)
 
     TreesitterContextBottom = { sp = colors.lavender, style = { "underline" } },
     TreesitterContextLineNumber = { fg = colors.surface1, bg = colors.mantle },
-
-    FidgetTask = { bg = terminal.background },
   }
 end
 

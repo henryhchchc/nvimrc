@@ -47,22 +47,7 @@ end
 return {
   { "neovim/nvim-lspconfig", version = false, config = configure, lazy = false },
   { "folke/neodev.nvim" },
-  { "folke/neoconf.nvim", version = false, cmd = "Neoconf", dependencies = { "nvim-lspconfig" } },
-  {
-    "smjonas/inc-rename.nvim",
-    main = "inc_rename",
-    --- @type inc_rename.UserConfig
-    opts = { save_in_cmdline_history = false },
-    keys = {
-      {
-        "<leader>rn",
-        function () return ":IncRename " .. vim.fn.expand("<cword>") end,
-        expr = true,
-        desc = "LSP Rename",
-      },
-    },
-    event = "LspAttach",
-  },
+  { "folke/neoconf.nvim", version = false, cmd = "Neoconf", dnpendencies = { "nvim-lspconfig" } },
   {
     "nvimdev/lspsaga.nvim",
     event = "LspAttach",
@@ -82,6 +67,7 @@ return {
         ui = {
           code_action = "󰌶",
           kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
+          border = "none",
         },
         diagnostic = {
           show_code_action = true,

@@ -32,10 +32,10 @@ local function configure()
     view = {
       entries = { name = "custom" },
     },
-    window = {
-      completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered(),
-    },
+    -- window = {
+    --   completion = cmp.config.window.bordered(),
+    --   documentation = cmp.config.window.bordered(),
+    -- },
   })
 
   cmp.setup.cmdline("/", {
@@ -49,8 +49,8 @@ local function configure()
 
   cmp.setup.cmdline(":", {
     sources = {
-      { name = "path", group_index = 2 },
-      { name = "cmdline", group_index = 2 },
+      { name = "path" },
+      { name = "cmdline" },
     },
     preselect = cmp.PreselectMode.Item,
     mapping = keymap.cmdline,
@@ -59,9 +59,7 @@ local function configure()
     },
     enabled = function ()
       -- Set of commands where cmp will be disabled
-      local disabled = {
-        IncRename = true,
-      }
+      local disabled = {}
       -- Get first word of cmdline
       local cmd = vim.fn.getcmdline():match("%S+")
       -- Return true if cmd isn't disabled

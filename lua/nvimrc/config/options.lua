@@ -43,6 +43,7 @@ vim.opt.list = true
 vim.opt.listchars:append("tab:> ,trail:⋅,nbsp:⋅,multispace:⋅,conceal:?")
 vim.opt.mouse = "ar"
 vim.opt.number = true
+vim.opt.pumblend = 5
 vim.opt.sessionoptions = {
   "buffers",
   "curdir",
@@ -75,6 +76,7 @@ vim.opt.undolevels = 10000
 vim.opt.updatetime = 100
 vim.opt.virtualedit = "block"
 vim.opt.wildmode = "longest:full,full"
+vim.opt.winblend = 5
 vim.opt.winminwidth = 5
 vim.opt.wrap = false
 

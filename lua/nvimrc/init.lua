@@ -31,10 +31,6 @@ require("lazy").setup({
     lazy = true,
     version = "*",
   },
-  ui = {
-    border = "rounded",
-    title = " Lazy.nvim - Plugin Manager ",
-  },
 })
 
 require("nvimrc.config.keymap")

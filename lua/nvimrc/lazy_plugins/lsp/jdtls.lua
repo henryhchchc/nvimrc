@@ -1,12 +1,44 @@
 local M = {}
 
+local utils = require("nvimrc.utils")
+
+local function jdtls_progress_report(_, result, ctx)
+  local info = { client_id = ctx.client_id }
+
+  local kind = "report"
+  if result.complete then
+    kind = "end"
+  elseif result.workDone == 0 then
+    kind = "begin"
+  elseif result.workDone > 0 and result.workDone < result.totalWork then
+    kind = "report"
+  else
+    kind = "end"
+  end
+
+  local percentage = 0
+  if result.totalWork > 0 and result.workDone >= 0 then
+    percentage = result.workDone / result.totalWork * 100
+  end
+
+  local msg = {
+    token = result.id,
+    value = {
+      kind = kind,
+      percentage = percentage,
+      title = result.subTask,
+      message = result.subTask,
+    },
+  }
+  vim.lsp.handlers[vim.lsp.protocol.Methods.dollar_progress](nil, msg, info)
+end
+
 function M.setup()
   local lsp_config = require("lspconfig")
   local default_opts = require("nvimrc.lsp").lsp_default_opts()
-  local lsp_utls = require("lspconfig.util")
-  local jdtls_cache_dir = lsp_utls.path.join(vim.loop.os_homedir(), ".cache", "jdtls")
-  local config_dir = lsp_utls.path.join(jdtls_cache_dir, "config")
-  local data_dir = lsp_utls.path.join(jdtls_cache_dir, "project_data", vim.fn.sha256(vim.loop.cwd() or ""))
+  local jdtls_cache_dir = utils.concat_paths(vim.loop.os_homedir(), ".cache", "jdtls")
+  local config_dir = utils.concat_paths(jdtls_cache_dir, "config")
+  local data_dir = utils.concat_paths(jdtls_cache_dir, "project_data", vim.fn.sha256(vim.loop.cwd() or ""))
   local extra_jdtls_config = {
     cmd = {
       "jdtls",
@@ -23,7 +55,7 @@ function M.setup()
       },
     },
     handlers = {
-      -- ["$/progress"] = require("noice.lsp.progress").progress,
+      ["language/progressReport"] = jdtls_progress_report,
     },
   }
   local final_config = vim.tbl_deep_extend("force", default_opts, extra_jdtls_config)
