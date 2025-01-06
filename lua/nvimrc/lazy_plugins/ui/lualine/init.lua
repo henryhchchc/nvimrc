@@ -53,6 +53,7 @@ local function generate_options()
       "lazy",
       "fugitive",
       "toggleterm",
+      "oil",
       exts.help,
       exts.neotest,
       exts.saga_outline,
