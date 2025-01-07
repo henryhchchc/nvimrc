@@ -55,7 +55,7 @@ local function generate_options()
       "toggleterm",
       "oil",
       exts.help,
-      exts.neotest,
+      -- exts.neotest,
       exts.saga_outline,
     },
   }

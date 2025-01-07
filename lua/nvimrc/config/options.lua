@@ -76,7 +76,7 @@ vim.opt.undolevels = 10000
 vim.opt.updatetime = 100
 vim.opt.virtualedit = "block"
 vim.opt.wildmode = "longest:full,full"
-vim.opt.winblend = 5
+vim.opt.winblend = 10
 vim.opt.winminwidth = 5
 vim.opt.wrap = false
 

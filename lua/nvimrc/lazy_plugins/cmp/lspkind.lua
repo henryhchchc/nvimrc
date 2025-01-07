@@ -2,14 +2,10 @@ local M = {}
 
 --- @type table<string, string>
 local sourceNames = {
-  buffer = "Buffer",
+  buffer = "Buf",
   nvim_lsp = "LSP",
-  cmdline = "Command",
+  cmdline = "Cmd",
   path = "Path",
-  fuzzy_path = "FZF",
-  cmdline_history = "History",
-  luasnip = "Snippet",
-  copilot = "GitHub Copilot",
 }
 
 M.options = {

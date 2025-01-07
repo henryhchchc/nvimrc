@@ -48,8 +48,8 @@ local catppuccin_integrations = {
 --- @param colors CtpColors<string>
 local function mocha_overrides(colors)
   return {
-    NormalFloat = { bg = terminal.float_background },
-    Pmenu = { bg = terminal.alt_background },
+    NormalFloat = { bg = colors.surface0 },
+    Pmenu = { link = "NormalFloat" },
     -- NotifyBackground = { bg = "#000000" },
     LspCodeLens = { style = { "underline" } },
     -- Telescope
