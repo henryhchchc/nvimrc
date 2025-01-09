@@ -37,6 +37,7 @@ local find_files_theme = themes.get_dropdown({
   },
 })
 
+
 telescope.setup({
   pickers = {
     spell_suggest = { theme = "cursor" },
@@ -54,6 +55,7 @@ telescope.setup({
     layout_config = {
       prompt_position = "top",
     },
+    winblend = 0,
     scroll_strategy = "limit",
     default_mappings = {
       i = vim.tbl_deep_extend("force", sharedMappings, {}),

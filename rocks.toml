@@ -1,3 +1,4 @@
+import = ["rocks-treesitter.toml"]
 # This is your rocks.nvim plugins declaration file.
 # Here is a small yet pretty detailed example on how to use it:
 #
@@ -24,6 +25,7 @@ auto_setup = true
 "lspsaga.nvim" = { git = "nvimdev/lspsaga.nvim" }
 "lualine.nvim" = "scm"
 "neotree" = { git = "nvim-neo-tree/neo-tree.nvim" }
+"none-ls.nvim" = "scm"
 "nui.nvim" = "0.3.0"
 "oil.nvim" = "2.14.0"
 "rainbow-delimiters.nvim" = "0.8.0"
@@ -44,12 +46,17 @@ nvim-cmp = "scm"
 nvim-lspconfig = "1.3.0"
 nvim-surround = "2.1.5"
 rustaceanvim = "5.22.0"
-tree-sitter-toml = "0.0.31"
-tree-sitter-rust = "0.0.38"
-tree-sitter-markdown_inline = "0.0.37"
-tree-sitter-markdown = "0.0.37"
+tree-sitter-css = "0.0.31"
+tree-sitter-gitignore = "0.0.29"
 tree-sitter-html = "0.0.33"
 tree-sitter-htmldjango = "0.0.29"
+tree-sitter-java = "0.0.37"
+tree-sitter-markdown = "0.0.37"
+tree-sitter-markdown_inline = "0.0.37"
+tree-sitter-robots = "0.0.29"
+tree-sitter-rust = "0.0.38"
+tree-sitter-toml = "0.0.31"
+tree-sitter-yaml = "0.0.30"
 
 # Plugin configurations
 
@@ -57,18 +64,18 @@ tree-sitter-htmldjango = "0.0.29"
 version = "3.1.1"
 
 [plugins."dressing.nvim".config]
-options = { input = { border = "none" } }
+input = { border = "none" }
 
 [plugins."tiny-inline-diagnostic.nvim"]
 git = "rachartier/tiny-inline-diagnostic.nvim"
 
 [plugins."tiny-inline-diagnostic.nvim".config]
-options = { show_source = true }
+show_source = true
 
 [plugins.neogit]
 version = "scm"
 
-[plugins.neogit.config.options]
+[plugins.neogit.config]
 disable_builtin_notifications = true
 disable_commit_confirmation = true
 disable_line_numbers = false
@@ -80,10 +87,18 @@ popup = { kind = "vsplit" }
 
 [plugins."crates.nvim"]
 git = "saecki/crates.nvim"
-[plugins."crates.nvim".config.options]
+[plugins."crates.nvim".config]
 null_ls = { enabled = true, name = "crates.nvim" }
 
 
 [plugins.nvim-treesitter-context]
 version = "scm"
-config.options.multiline_threshold = 5
+config.multiline_threshold = 5
+
+[treesitter]
+auto_highlight = "all"
+auto_install = "prompt"
+disable = ["neo-tree"]
+
+[treesitter.parser_map]
+PKGBUILD = "bash"
