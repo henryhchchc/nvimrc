@@ -45,6 +45,11 @@ nvim-lspconfig = "1.3.0"
 nvim-surround = "2.1.5"
 rustaceanvim = "5.22.0"
 tree-sitter-toml = "0.0.31"
+tree-sitter-rust = "0.0.38"
+tree-sitter-markdown_inline = "0.0.37"
+tree-sitter-markdown = "0.0.37"
+tree-sitter-html = "0.0.33"
+tree-sitter-htmldjango = "0.0.29"
 
 # Plugin configurations
 
