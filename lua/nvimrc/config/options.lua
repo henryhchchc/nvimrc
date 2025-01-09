@@ -14,16 +14,9 @@ if vim.env.SSH_TTY and (not vim.env.TMUX) then
       ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
       ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
     },
-    -- HACK: Disable paste for now since it's not working in WezTerm
-    --         nvim discussion: https://github.com/neovim/neovim/discussions/28010
-    --         WezTerm issue: https://github.com/wez/wezterm/issues/2050
-    -- paste = {
-    --   ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-    --   ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
-    -- },
     paste = {
-      ["+"] = paste,
-      ["*"] = paste,
+      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
     },
   }
 end
