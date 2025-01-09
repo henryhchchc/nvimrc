@@ -17,7 +17,8 @@ auto_setup = true
 # If the plugin name contains a dot then you must add quotes to the key name!
 [plugins]
 "catppuccin.nvim" = { git = "catppuccin/nvim" }
-"copilot.lua" = "scm"
+"copilot.lua" = { git = "zbirenbaum/copilot.lua" }
+"copilot-lualine" = { git = "AndreM222/copilot-lualine", config = false }
 "fidget.nvim" = "1.4.1"
 "gitsigns.nvim" = "scm"
 "indent-blankline.nvim" = "3.8.6"
@@ -57,6 +58,7 @@ tree-sitter-robots = "0.0.29"
 tree-sitter-rust = "0.0.38"
 tree-sitter-toml = "0.0.31"
 tree-sitter-yaml = "0.0.30"
+tree-sitter-json = "0.0.33"
 
 # Plugin configurations
 
