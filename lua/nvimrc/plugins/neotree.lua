@@ -35,7 +35,7 @@ local common_keymaps = {
   ["<esc>"] = "cancel",
 }
 
-local neotreeOpts = {
+local neotree_opts = {
   sources = { "filesystem", "buffers", "git_status", "document_symbols" },
   open_files_do_not_replace_types = {
     "terminal",
@@ -120,24 +120,9 @@ local neotreeOpts = {
   },
 }
 
-local keymaps = {
-  {
-    "<leader>e",
-    function () require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() }) end,
-    desc = "Explorer NeoTree (root dir)",
-    remap = true,
-  },
-}
 
---- @type LazyPluginSpec
-return {
-  "nvim-neo-tree/neo-tree.nvim",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons",
-    "MunifTanjim/nui.nvim",
-  },
-  cmd = "Neotree",
-  keys = keymaps,
-  opts = neotreeOpts,
-}
+require("neo-tree").setup(neotree_opts)
+
+vim.keymap.set("n", "<leader>e",
+  function () require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() }) end,
+  { desc = "Explorer NeoTree (root dir)" })

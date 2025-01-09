@@ -67,6 +67,11 @@ vim.opt.winblend = 10
 vim.opt.winminwidth = 5
 vim.opt.wrap = false
 
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.fillchars = "fold: "
+vim.opt.foldlevel = 255
+
 vim.g.mapleader = " "
 vim.g.markdown_recommended_style = 0
 vim.g.tex_flavor = "latex"

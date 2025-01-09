@@ -84,16 +84,5 @@ local catppuccin_opts = {
   integrations = catppuccin_integrations,
 }
 
-return {
-  "catppuccin/nvim",
-  main = "catppuccin",
-  name = "catppuccin",
-  priority = 1000,
-  lazy = false,
-  opts = catppuccin_opts,
-  version = false,
-  config = function (_, opts)
-    require("catppuccin").setup(opts)
-    vim.cmd.colorscheme("catppuccin-mocha")
-  end,
-}
+require("catppuccin").setup(catppuccin_opts)
+vim.cmd.colorscheme("catppuccin-mocha")

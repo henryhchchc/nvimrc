@@ -16,38 +16,16 @@ local function git_signs_on_attach(bufnr)
 end
 
 
---- @type LazyPluginSpec[]
-return {
-  {
-    "lewis6991/gitsigns.nvim",
-    opts = {
-      signs = {
-        add = { text = "▎" },
-        change = { text = "▎" },
-        delete = { text = "" },
-        topdelete = { text = "" },
-        changedelete = { text = "▎" },
-        untracked = { text = "▎" },
-      },
-      numhl = true,
-      word_diff = false,
-      on_attach = git_signs_on_attach,
-    },
-    event = { "BufReadPre", "BufNewFile" },
+require("gitsigns").setup({
+  signs = {
+    add = { text = "▎" },
+    change = { text = "▎" },
+    delete = { text = "" },
+    topdelete = { text = "" },
+    changedelete = { text = "▎" },
+    untracked = { text = "▎" },
   },
-  {
-    "NeogitOrg/neogit",
-    cmd = "Neogit",
-    version = false,
-    --- @type NeogitConfig
-    opts = {
-      disable_builtin_notifications = true,
-      disable_commit_confirmation = true,
-      disable_line_numbers = false,
-      graph_style = "unicode",
-      commit_popup = { kind = "vsplit" },
-      preview_buffer = { kind = "vsplit" },
-      popup = { kind = "vsplit" },
-    },
-  },
-}
+  numhl = true,
+  word_diff = false,
+  on_attach = git_signs_on_attach,
+})

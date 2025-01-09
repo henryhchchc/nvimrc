@@ -64,6 +64,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+
 -- Equalize window sizes when terminal is resized
 vim.api.nvim_create_autocmd({ "VimResized" }, {
   group = vim.api.nvim_create_augroup("resize_splits", {}),
