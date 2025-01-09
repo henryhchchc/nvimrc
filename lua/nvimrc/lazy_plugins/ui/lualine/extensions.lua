@@ -39,10 +39,6 @@ M.help = {
   },
 }
 
--- HACK: The type annotation provided by Noice is incorrect
---- @class NoiceStatus
---- @field get fun():string
---- @field has fun():boolean
 local wordcount_fts = {
   "markdown",
   "text",

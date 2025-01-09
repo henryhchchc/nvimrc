@@ -1,12 +1,6 @@
 vim.opt.autowrite = true
 
 vim.opt.clipboard = "unnamedplus"
-local function paste(regname)
-  return {
-    vim.fn.split(vim.fn.getreg(regname), "\n"),
-    vim.fn.getregtype(regname),
-  }
-end
 if vim.env.SSH_TTY and (not vim.env.TMUX) then
   vim.g.clipboard = {
     name = "OSC 52",

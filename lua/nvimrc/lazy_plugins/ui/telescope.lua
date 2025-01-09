@@ -94,15 +94,7 @@ local function configure()
   telescope.builtin = require("telescope.builtin")
 
   local function find_files()
-    local theme = themes.get_dropdown({
-      previewer = false,
-      prompt_title = "Search Project Files",
-      layout_config = {
-        width = 0.75,
-        height = 0.8,
-      },
-    })
-    telescope.builtin.find_files(theme)
+    telescope.builtin.find_files(find_files_theme)
   end
   vim.keymap.set("n", "<leader>ff", find_files, { desc = "Telescope Find Files" })
   vim.keymap.set("n", "<leader>fg", telescope.builtin.live_grep, { desc = "Telescope Live grep" })
