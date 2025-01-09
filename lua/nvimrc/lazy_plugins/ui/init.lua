@@ -2,8 +2,12 @@
 return {
   {
     "stevearc/dressing.nvim",
-    opts = { input = { enabled = false } },
     event = "VeryLazy",
+    opts = {
+      input = {
+        border = "none",
+      },
+    },
   },
   {
     "j-hui/fidget.nvim",
