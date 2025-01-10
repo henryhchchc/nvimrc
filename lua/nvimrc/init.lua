@@ -13,11 +13,12 @@ if vim.fn.executable("luarocks") ~= 1 then
   return
 end
 
+rocksrc.initialize()
+
 if not pcall(require, "rocks") then
   rocksrc.install_rocks_nvim()
 end
 
-rocksrc.initialize()
 
 require("nvimrc.config.options")
 require("nvimrc.config.theme")
