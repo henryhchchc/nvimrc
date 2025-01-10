@@ -1,6 +1,7 @@
 [plugins]
 tree-sitter-bash = "0.0.37"
 tree-sitter-css = "0.0.31"
+tree-sitter-diff = "0.0.32"
 tree-sitter-dockerfile = "0.0.29"
 tree-sitter-editorconfig = "0.0.46"
 tree-sitter-fish = "0.0.29"

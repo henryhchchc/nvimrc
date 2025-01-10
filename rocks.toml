@@ -1,10 +1,4 @@
 import = ["rocks-treesitter.toml"]
-# This is your rocks.nvim plugins declaration file.
-# Here is a small yet pretty detailed example on how to use it:
-#
-# [plugins]
-# nvim-treesitter = "semver_version"  # e.g. "1.0.0"
-
 # List of non-Neovim rocks.
 # This includes things like `toml` or other lua packages.
 [rocks]
@@ -34,7 +28,7 @@ auto_setup = false
 "oil.nvim" = { version = "2.14.0", config = true, cmd = "Oil" }
 "rainbow-delimiters.nvim" = { version = "0.8.0", config = true, event = "BufEnter" }
 "schemastore.nvim" = { version = "0.2.0" }
-"telescope.nvim" = { version = "scm" }
+"telescope.nvim" = { version = "scm", event = "UIEnter" }
 "which-key.nvim" = { version = "3.15.0", config = true, event = "UIEnter" }
 "lazydev.nvim" = { version = "1.9.0", config = true, ft = "lua" }
 
