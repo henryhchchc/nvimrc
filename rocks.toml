@@ -24,7 +24,7 @@ auto_setup = false
 "rocks-lazy.nvim" = "1.1.1"
 "rocks-treesitter.nvim" = "1.3.0"
 
-"fidget.nvim" = { version = "1.4.1", config = true }
+"fidget.nvim" = { version = "1.4.1" }
 "gitsigns.nvim" = { version = "scm", config = true, event = "BufRead" }
 "indent-blankline.nvim" = { version = "3.8.6", config = true, event = "BufEnter" }
 "lspkind.nvim" = { version = "scm" }
@@ -35,7 +35,6 @@ auto_setup = false
 "rainbow-delimiters.nvim" = { version = "0.8.0", config = true, event = "BufEnter" }
 "schemastore.nvim" = { version = "0.2.0" }
 "telescope.nvim" = { version = "scm" }
-"toggleterm.nvim" = { version = "2.13.1" }
 "which-key.nvim" = { version = "3.15.0", config = true, event = "UIEnter" }
 "lazydev.nvim" = { version = "1.9.0", config = true, ft = "lua" }
 
@@ -68,15 +67,26 @@ tree-sitter-json = "0.0.33"
 git = "catppuccin/nvim"
 rev = "v1.9.0"
 
+[plugins."toggleterm.nvim"]
+version = "2.13.1"
+keys = [
+  { lhs = "<leader><cr>", rhs = "<Cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
+  { lhs = "<leader><A-cr>", rhs = "<Cmd>ToggleTerm direction=float<cr>", desc = "Toggle terminal" },
+]
+
 # Copilot
 [plugins."copilot.lua"]
 git = "zbirenbaum/copilot.lua"
+branch = "master"
+event = "InsertEnter"
 
 [plugins."copilot-lualine"]
 git = "AndreM222/copilot-lualine"
+branch = "main"
 
 [plugins."lspsaga.nvim"]
 git = "nvimdev/lspsaga.nvim"
+branch = "main"
 
 [plugins.neotree]
 git = "nvim-neo-tree/neo-tree.nvim"
@@ -93,6 +103,7 @@ config = { input = { border = "none" } }
 [plugins."tiny-inline-diagnostic.nvim"]
 git = "rachartier/tiny-inline-diagnostic.nvim"
 event = "LspAttach"
+config = true
 
 [plugins.neogit]
 version = "scm"
@@ -110,8 +121,8 @@ popup = { kind = "vsplit" }
 [plugins."crates.nvim"]
 git = "saecki/crates.nvim"
 rev = "v0.5.2"
-event = "BufEnter Cargo.toml"
-
+event = "BufRead Cargo.toml"
+config = true
 
 [plugins.nvim-treesitter-context]
 version = "scm"

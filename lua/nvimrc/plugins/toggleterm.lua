@@ -7,8 +7,3 @@ require("toggleterm").setup({
     end
   end,
 })
-
-
-vim.keymap.set("n", "<leader><cr>", function () vim.cmd.ToggleTerm() end, { desc = "Toggle terminal" })
-vim.keymap.set("n", "<leader><A-cr>", function () vim.cmd.ToggleTerm({ args = { "direction=float" } }) end,
-  { desc = "Toggle terminal" })
