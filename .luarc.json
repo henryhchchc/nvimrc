@@ -9,8 +9,5 @@
     "_*"
   ],
   "codeLens.enable": true,
-  "hint.enable": true,
-  "diagnostics.globals": [
-    "vim"
-  ]
+  "hint.enable": true
 }

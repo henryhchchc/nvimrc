@@ -11,42 +11,45 @@ import = ["rocks-treesitter.toml"]
 
 [config]
 plugins_dir = "nvimrc/plugins/"
-auto_setup = true
+auto_setup = false
 
 # List of Neovim plugins to install alongside their versions.
 # If the plugin name contains a dot then you must add quotes to the key name!
 [plugins]
-"catppuccin.nvim" = { git = "catppuccin/nvim" }
-"copilot.lua" = { git = "zbirenbaum/copilot.lua" }
-"copilot-lualine" = { git = "AndreM222/copilot-lualine", config = false }
-"fidget.nvim" = "1.4.1"
-"gitsigns.nvim" = "scm"
-"indent-blankline.nvim" = "3.8.6"
-"lspkind.nvim" = "scm"
-"lspsaga.nvim" = { git = "nvimdev/lspsaga.nvim" }
-"lualine.nvim" = "scm"
-"neotree" = { git = "nvim-neo-tree/neo-tree.nvim" }
-"none-ls.nvim" = "scm"
-"nui.nvim" = "0.3.0"
-"oil.nvim" = "2.14.0"
-"rainbow-delimiters.nvim" = "0.8.0"
+
+# Core rocks plugins
+"rocks.nvim" = "2.43.0"
 "rocks-config.nvim" = "3.1.0"
 "rocks-git.nvim" = "2.5.2"
 "rocks-lazy.nvim" = "1.1.1"
 "rocks-treesitter.nvim" = "1.3.0"
-"rocks.nvim" = "2.43.0"
-"schemastore.nvim" = "0.2.0"
-"telescope.nvim" = "scm"
-"toggleterm.nvim" = "2.13.1"
-"which-key.nvim" = "3.15.0"
+
+"fidget.nvim" = { version = "1.4.1", config = true }
+"gitsigns.nvim" = { version = "scm", config = true, event = "BufRead" }
+"indent-blankline.nvim" = { version = "3.8.6", config = true, event = "BufEnter" }
+"lspkind.nvim" = { version = "scm" }
+"lualine.nvim" = { version = "scm", config = true, event = "UIEnter" }
+"none-ls.nvim" = { version = "scm", config = true }
+"nui.nvim" = "0.3.0"
+"oil.nvim" = { version = "2.14.0", config = true, cmd = "Oil" }
+"rainbow-delimiters.nvim" = { version = "0.8.0", config = true, event = "BufEnter" }
+"schemastore.nvim" = { version = "0.2.0" }
+"telescope.nvim" = { version = "scm" }
+"toggleterm.nvim" = { version = "2.13.1" }
+"which-key.nvim" = { version = "3.15.0", config = true, event = "UIEnter" }
+"lazydev.nvim" = { version = "1.9.0", config = true, ft = "lua" }
+
+# Auto completion
+nvim-cmp = { version = "scm" }
 cmp-buffer = "scm"
 cmp-cmdline = "scm"
 cmp-nvim-lsp = "scm"
 cmp-path = "scm"
-nvim-cmp = "scm"
-nvim-lspconfig = "1.3.0"
-nvim-surround = "2.1.5"
-rustaceanvim = "5.22.0"
+
+nvim-lspconfig = { version = "1.3.0" }
+nvim-surround = { version = "2.1.5", config = true, event = "InsertEnter" }
+rustaceanvim = { version = "5.22.0", config = true, ft = "rust" }
+
 tree-sitter-css = "0.0.31"
 tree-sitter-gitignore = "0.0.29"
 tree-sitter-html = "0.0.33"
@@ -60,22 +63,40 @@ tree-sitter-toml = "0.0.31"
 tree-sitter-yaml = "0.0.30"
 tree-sitter-json = "0.0.33"
 
-# Plugin configurations
+# Color themes
+[plugins."catppuccin.nvim"]
+git = "catppuccin/nvim"
+rev = "v1.9.0"
+
+# Copilot
+[plugins."copilot.lua"]
+git = "zbirenbaum/copilot.lua"
+
+[plugins."copilot-lualine"]
+git = "AndreM222/copilot-lualine"
+
+[plugins."lspsaga.nvim"]
+git = "nvimdev/lspsaga.nvim"
+
+[plugins.neotree]
+git = "nvim-neo-tree/neo-tree.nvim"
+rev = "3.27"
+cmd = "Neotree"
+keys = [
+  { lhs = "<leader>e", rhs = "<Cmd>Neotree toggle<cr>", desc = "Toggle file tree" },
+]
 
 [plugins."dressing.nvim"]
 version = "3.1.1"
-
-[plugins."dressing.nvim".config]
-input = { border = "none" }
+config = { input = { border = "none" } }
 
 [plugins."tiny-inline-diagnostic.nvim"]
 git = "rachartier/tiny-inline-diagnostic.nvim"
-
-[plugins."tiny-inline-diagnostic.nvim".config]
-show_source = true
+event = "LspAttach"
 
 [plugins.neogit]
 version = "scm"
+cmd = "Neogit"
 
 [plugins.neogit.config]
 disable_builtin_notifications = true
@@ -86,16 +107,21 @@ commit_popup = { kind = "vsplit" }
 preview_buffer = { kind = "vsplit" }
 popup = { kind = "vsplit" }
 
-
 [plugins."crates.nvim"]
 git = "saecki/crates.nvim"
-[plugins."crates.nvim".config]
-null_ls = { enabled = true, name = "crates.nvim" }
+rev = "v0.5.2"
+event = "BufEnter Cargo.toml"
 
 
 [plugins.nvim-treesitter-context]
 version = "scm"
+event = "BufEnter"
 config.multiline_threshold = 5
+
+[bundles.cmp]
+items = ["nvim-cmp", "cmp-buffer", "cmp-nvim-lsp", "cmp-path", "cmp-cmdline"]
+config = "nvimrc.bundles.cmp"
+event = "InsertEnter"
 
 [treesitter]
 auto_highlight = "all"
