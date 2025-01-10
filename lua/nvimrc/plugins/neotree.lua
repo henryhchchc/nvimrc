@@ -124,5 +124,5 @@ local neotree_opts = {
 require("neo-tree").setup(neotree_opts)
 
 vim.keymap.set("n", "<leader>e",
-  function () require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() }) end,
+  function () require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() }) end,
   { desc = "Explorer NeoTree (root dir)" })
