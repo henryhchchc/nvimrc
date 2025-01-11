@@ -63,19 +63,21 @@ event = "InsertEnter"
 
 [plugins."copilot-lualine"]
 git = "AndreM222/copilot-lualine"
+rev = "f40450c3e138766026327e7807877ea860618258"
 branch = "main"
 
 [plugins."lspsaga.nvim"]
 git = "nvimdev/lspsaga.nvim"
+rev = "5fce15331ac6c3a3ec3ac91ab0e85ed82f5cbba0"
 branch = "main"
 
 [plugins.neotree]
 git = "nvim-neo-tree/neo-tree.nvim"
-rev = "3.27"
 cmd = "Neotree"
 keys = [
   { lhs = "<leader>e", rhs = "<Cmd>Neotree toggle<cr>", desc = "Toggle file tree" },
 ]
+rev = "3.28"
 
 [plugins."dressing.nvim"]
 version = "3.1.1"
@@ -83,8 +85,6 @@ config = { input = { border = "none" } }
 
 [plugins."tiny-inline-diagnostic.nvim"]
 git = "rachartier/tiny-inline-diagnostic.nvim"
-event = "LspAttach"
-config = true
 
 [plugins.neogit]
 version = "scm"
