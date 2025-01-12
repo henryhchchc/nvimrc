@@ -55,7 +55,7 @@ telescope.setup({
     layout_config = {
       prompt_position = "top",
     },
-    winblend = 0,
+    winblend = 10,
     scroll_strategy = "limit",
     default_mappings = {
       i = vim.tbl_deep_extend("force", sharedMappings, {}),

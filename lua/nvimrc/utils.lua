@@ -1,16 +1,5 @@
 local M = {}
 
---- Concat path segments with slashes
---- @param ... string
---- @return string
-function M.concat_paths(...)
-  local function trim_tailing_slash(path)
-    return path:gsub("/$", "")
-  end
-  local segments = vim.tbl_map(trim_tailing_slash, { ... })
-  return table.concat(segments, "/")
-end
-
 --- @param option string
 --- @param silent false?
 --- @param values? {[1]:any, [2]:any}

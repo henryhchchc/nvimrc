@@ -36,9 +36,9 @@ end
 function M.setup()
   local lsp_config = require("lspconfig")
   local default_opts = require("nvimrc.lsp").lsp_default_opts()
-  local jdtls_cache_dir = utils.concat_paths(vim.uv.os_homedir(), ".cache", "jdtls")
-  local config_dir = utils.concat_paths(jdtls_cache_dir, "config")
-  local data_dir = utils.concat_paths(jdtls_cache_dir, "project_data", vim.fn.sha256(vim.uv.cwd() or ""))
+  local jdtls_cache_dir = vim.fs.joinpath(vim.uv.os_homedir(), ".cache", "jdtls")
+  local config_dir = vim.fs.joinpath(jdtls_cache_dir, "config")
+  local data_dir = vim.fs.joinpath(jdtls_cache_dir, "project_data", vim.fn.sha256(vim.uv.cwd() or ""))
   local extra_jdtls_config = {
     cmd = {
       "jdtls",
