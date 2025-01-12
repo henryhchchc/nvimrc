@@ -7,9 +7,11 @@ local to_setup = {
   dockerls = {},
   html = {},
   hls = {},
-  jsonls = {
-    json = { schemas = require("schemastore").json.schemas(), validate = { enable = true } },
-  },
+  jsonls = function ()
+    return {
+      json = { schemas = require("schemastore").json.schemas(), validate = { enable = true } },
+    }
+  end,
   kotlin_language_server = {
     kotlin = { formatting = { formatter = "none" } },
   },
@@ -31,7 +33,13 @@ for exec, lsp_config in pairs(conditional_add) do
 end
 
 for server, opts in pairs(to_setup) do
-  lsp.setup_with_default(server, opts)
+  local options = {}
+  if type(opts) == "table" then
+    options = opts
+  elseif type(opts) == "function" then
+    options = opts()
+  end
+  lsp.setup_with_default(server, options)
 end
 
 lsp.setup_with_default("typos_lsp", nil, {

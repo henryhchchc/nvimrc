@@ -49,6 +49,8 @@ local catppuccin_integrations = {
 local function mocha_overrides(colors)
   return {
     NormalFloat = { bg = colors.surface0 },
+    FloatBorder = { bg = colors.surface0 },
+    FloatTitle = { bg = colors.surface0 },
     Pmenu = { link = "NormalFloat" },
     -- NotifyBackground = { bg = "#000000" },
     LspCodeLens = { style = { "underline" } },
