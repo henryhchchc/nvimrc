@@ -18,12 +18,12 @@ auto_setup = false
 "rocks-lazy.nvim" = "1.1.1"
 "rocks-treesitter.nvim" = "1.3.0"
 
-"fidget.nvim" = { version = "1.4.1" }
+"fidget.nvim" = { version = "1.4.1", event = "UIEnter" }
 "gitsigns.nvim" = { version = "scm", config = true, event = "BufRead" }
 "indent-blankline.nvim" = { version = "3.8.6", config = true, event = "BufEnter" }
 "lspkind.nvim" = { version = "scm" }
 "lualine.nvim" = { version = "scm", config = true, event = "UIEnter" }
-"none-ls.nvim" = { version = "scm", config = true }
+"none-ls.nvim" = { version = "scm", config = true, event = "VimEnter" }
 "nui.nvim" = "0.3.0"
 "oil.nvim" = { version = "2.14.0", config = true, cmd = "Oil" }
 "rainbow-delimiters.nvim" = { version = "0.8.0", config = true, event = "BufEnter" }
@@ -39,8 +39,8 @@ cmp-cmdline = "scm"
 cmp-nvim-lsp = "scm"
 cmp-path = "scm"
 
-nvim-lspconfig = { version = "1.3.0" }
-nvim-surround = { version = "2.1.5", config = true, event = "InsertEnter" }
+nvim-lspconfig = { version = "1.3.0", event = "VimEnter" }
+nvim-surround = { version = "2.1.5", config = true, event = "BufEnter" }
 rustaceanvim = { version = "5.22.0", config = true, ft = "rust" }
 
 # Color themes
@@ -70,6 +70,7 @@ branch = "main"
 git = "nvimdev/lspsaga.nvim"
 rev = "5fce15331ac6c3a3ec3ac91ab0e85ed82f5cbba0"
 branch = "main"
+event = "LspAttach"
 
 [plugins.neotree]
 git = "nvim-neo-tree/neo-tree.nvim"
@@ -82,10 +83,12 @@ rev = "3.28"
 [plugins."dressing.nvim"]
 version = "3.1.1"
 config = { input = { border = "none" } }
+event = "UIEnter"
 
 [plugins."tiny-inline-diagnostic.nvim"]
 git = "rachartier/tiny-inline-diagnostic.nvim"
 config = true
+event = "LspAttach"
 
 [plugins.neogit]
 version = "scm"

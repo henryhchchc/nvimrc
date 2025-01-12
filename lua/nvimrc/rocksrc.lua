@@ -21,7 +21,7 @@ function M.install_rocks_nvim()
   end
 end
 
-function M.initialize()
+function M.configure()
   vim.g.rocks_nvim = rocks_config
   local luarocks_path = {
     vim.fs.joinpath(rocks_config.rocks_path, "share", "lua", "5.1", "?.lua"),

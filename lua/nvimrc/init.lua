@@ -7,15 +7,12 @@ if vim.fn.argc() > 0 then
 end
 
 local rocksrc = require("nvimrc.rocksrc")
-
-if vim.fn.executable("luarocks") ~= 1 then
-  vim.notify("Luarocks not found. Please install luarocks and restart nvim.")
-  return
-end
-
-rocksrc.initialize()
-
+rocksrc.configure()
 if not pcall(require, "rocks") then
+  if vim.fn.executable("luarocks") ~= 1 then
+    vim.notify("Luarocks not found. Please install luarocks and restart nvim.")
+    return
+  end
   rocksrc.install_rocks_nvim()
 end
 
