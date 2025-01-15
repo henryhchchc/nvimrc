@@ -20,7 +20,7 @@ auto_setup = false
 
 "fidget.nvim" = { version = "1.4.1", event = "UIEnter" }
 "gitsigns.nvim" = { version = "scm", config = true, event = "BufRead" }
-"indent-blankline.nvim" = { version = "3.8.6", config = true, event = "BufEnter" }
+"indent-blankline.nvim" = { version = "3.8.7", config = true, event = "BufEnter" }
 "lspkind.nvim" = { version = "scm" }
 "lualine.nvim" = { version = "scm", config = true, event = "UIEnter" }
 "none-ls.nvim" = { version = "scm", config = true, event = "VimEnter" }
