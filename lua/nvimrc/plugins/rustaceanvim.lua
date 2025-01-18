@@ -6,6 +6,25 @@ lsp_server_opts.capabilities = vim.tbl_deep_extend(
   rustacean_cfg.create_client_capabilities()
 )
 
+local default_on_attach = lsp_server_opts.on_attach
+
+local function lsp_on_attach(client, bufnr)
+  default_on_attach(client, bufnr)
+
+  local function rustLsp(args)
+    return function ()
+      vim.cmd.RustLsp(args)
+    end
+  end
+
+  vim.keymap.set("n", "g.", rustLsp("codeAction"), { desc = "LSP Code Actions", buffer = bufnr })
+  vim.keymap.set("n", "gX", rustLsp("openDocs"), { desc = "Open docs.rs", buffer = bufnr })
+  vim.keymap.set("n", "K", rustLsp({ "hover", "actions" }), { desc = "LSP Hover", buffer = bufnr })
+  vim.keymap.set("n", "J", rustLsp("joinLines"), { desc = "Rust Join Lines", buffer = bufnr })
+end
+
+lsp_server_opts.on_attach = lsp_on_attach
+
 lsp_server_opts.settings = {
   init_options = {
     check = {
