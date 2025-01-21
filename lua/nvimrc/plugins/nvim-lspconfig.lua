@@ -25,6 +25,7 @@ local to_setup = {
 local conditional_add = {
   ["nil"] = { "nil_ls", {} },
   ["sourcekit-lsp"] = { "sourcekit", {} },
+  ["zls"] = { "zls", {} },
 }
 for exec, lsp_config in pairs(conditional_add) do
   if vim.fn.executable(exec) == 1 then
