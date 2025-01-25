@@ -39,9 +39,9 @@ cmp-cmdline = "scm"
 cmp-nvim-lsp = "scm"
 cmp-path = "scm"
 
-nvim-lspconfig = { version = "1.3.0", event = "VimEnter" }
+nvim-lspconfig = { version = "1.4.0", event = "VimEnter" }
 nvim-surround = { version = "2.1.5", config = true, event = "BufEnter" }
-rustaceanvim = { version = "5.22.0", config = true, ft = "rust" }
+rustaceanvim = { version = "5.23.1", config = true, ft = "rust" }
 
 # Color themes
 [plugins."catppuccin.nvim"]
@@ -78,7 +78,7 @@ cmd = "Neotree"
 keys = [
   { lhs = "<leader>e", rhs = "<Cmd>Neotree toggle<cr>", desc = "Toggle file tree" },
 ]
-rev = "3.28"
+rev = "3.29"
 
 [plugins."dressing.nvim"]
 version = "3.1.1"
@@ -87,8 +87,6 @@ event = "UIEnter"
 
 [plugins."tiny-inline-diagnostic.nvim"]
 git = "rachartier/tiny-inline-diagnostic.nvim"
-config = true
-event = "LspAttach"
 
 [plugins.neogit]
 version = "scm"
