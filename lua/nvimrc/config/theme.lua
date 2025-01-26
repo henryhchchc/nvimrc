@@ -14,7 +14,6 @@ local catppuccin_integrations = {
     enabled = true,
     colored_indent_levels = true,
   },
-  lsp_saga = true,
   markdown = true,
   native_lsp = {
     enabled = true,

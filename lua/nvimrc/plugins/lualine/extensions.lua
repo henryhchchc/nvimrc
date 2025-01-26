@@ -18,14 +18,6 @@ M.autoformat = {
 
 M.lsp = require("nvimrc.plugins.lualine.lsp_status")
 
-M.saga_outline = {
-  filetypes = { "sagaoutline" },
-  sections = {
-    lualine_a = { function () return "LSP Symbols" end },
-    lualine_b = {},
-  },
-}
-
 M.help = {
   filetypes = { "help" },
   sections = {

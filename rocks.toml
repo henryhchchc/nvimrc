@@ -66,12 +66,6 @@ git = "AndreM222/copilot-lualine"
 rev = "f40450c3e138766026327e7807877ea860618258"
 branch = "main"
 
-[plugins."lspsaga.nvim"]
-git = "nvimdev/lspsaga.nvim"
-rev = "5fce15331ac6c3a3ec3ac91ab0e85ed82f5cbba0"
-branch = "main"
-event = "UIEnter"
-
 [plugins.neotree]
 git = "nvim-neo-tree/neo-tree.nvim"
 cmd = "Neotree"

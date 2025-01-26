@@ -55,7 +55,6 @@ local lualine_options = {
     "oil",
     exts.help,
     -- exts.neotest,
-    exts.saga_outline,
   },
 }
 

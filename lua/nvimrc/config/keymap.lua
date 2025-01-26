@@ -24,19 +24,11 @@ vim.keymap.set("n", "L", "$", { desc = "End of line" })
 
 vim.keymap.set("n", "<leader><leader>", "<C-^>", { desc = "Alternate most recent buffers" })
 
-vim.keymap.set(
-  "n",
-  "ge",
-  -- function () vim.diagnostic.open_float({ focus = false, scope = "cursor" }) end,
-  function () vim.cmd.Lspsaga("show_cursor_diagnostics", "++unfocus") end,
-  { desc = "Show diagnostics" }
-)
 
 -- Cmd-S for save
 vim.keymap.set("", "<D-s>", vim.cmd.write, { desc = "Save" })
 -- LSP
--- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Actions" })
-vim.keymap.set({ "n", "v" }, "g.", function () vim.cmd.Lspsaga("code_action") end, { desc = "LSP Code Actions" })
+vim.keymap.set({ "n", "v" }, "g.", function () vim.lsp.buf.code_action() end, { desc = "LSP Code Actions" })
 vim.keymap.set({ "n", "v" }, "<leader>lf", function () vim.lsp.buf.format({ async = true }) end, { desc = "LSP Format" })
 vim.keymap.set("n", "<leader>rN", vim.lsp.buf.rename, { desc = "LSP Rename" })
 
@@ -81,9 +73,8 @@ vim.keymap.set(
   { desc = "Toggle Inlay hints" }
 )
 
--- Diagnostics with Lspsaga
-vim.keymap.set("n", "]d", function () vim.cmd.Lspsaga("diagnostic_jump_next") end, { desc = "Jump to next diagnostic" })
-vim.keymap.set("n", "[d", function () vim.cmd.Lspsaga("diagnostic_jump_prev") end,
+vim.keymap.set("n", "]d", function () vim.diagnostic.goto_next() end, { desc = "Jump to next diagnostic" })
+vim.keymap.set("n", "[d", function () vim.diagnostic.goto_prev() end,
   { desc = "Jump to previous diagnostic" })
 
 -- Clear search highlight with <esc>
