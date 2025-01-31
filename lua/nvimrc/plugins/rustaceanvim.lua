@@ -25,16 +25,14 @@ end
 
 lsp_server_opts.on_attach = lsp_on_attach
 
-lsp_server_opts.settings = {
-  init_options = {
-    check = {
-      command = "clippy",
-      extraArgs = { "--no-deps" },
-    },
-    diagnostics = {
-      experimental = {
-        enabled = true,
-      },
+lsp_server_opts.init_options = {
+  check = {
+    command = "clippy",
+    extraArgs = { "--no-deps" },
+  },
+  diagnostics = {
+    experimental = {
+      enabled = true,
     },
   },
 }
