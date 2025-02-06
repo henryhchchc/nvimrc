@@ -81,6 +81,8 @@ event = "UIEnter"
 
 [plugins."tiny-inline-diagnostic.nvim"]
 git = "rachartier/tiny-inline-diagnostic.nvim"
+config = true
+event = "BufEnter"
 
 [plugins.neogit]
 version = "scm"
