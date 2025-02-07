@@ -69,11 +69,18 @@ function M.lsp_default_opts()
 end
 
 function M.setup_with_default(server, settings, initialization_options)
-  local lspConfig = require("lspconfig")
+  local lsp_config = require("lspconfig")[server]
+  if lsp_config == nil then
+    vim.notify(string.format("LSP server %s not found", server), vim.log.levels.ERROR)
+    return
+  end
+  if not lsp_config.cmd then
+    return
+  end
   local options = M.lsp_default_opts()
   options.init_options = initialization_options or {}
   options.settings = settings or {}
-  lspConfig[server].setup(options)
+  lsp_config.setup(options)
 end
 
 return M
