@@ -68,13 +68,29 @@ function M.lsp_default_opts()
   return client_config
 end
 
-function M.setup_with_default(server, settings, initialization_options)
-  local lsp_config = require("lspconfig")[server]
-  if lsp_config == nil then
-    vim.notify(string.format("LSP server %s not found", server), vim.log.levels.ERROR)
-    return
+--- Checks if the LSP server is installed for a LSP config
+---@param lsp_config any The LSP config
+---@return boolean|nil # `true` if the server is installed, `false` if not, `nil` if the cmd is not an executable
+local function is_lsp_server_installed(lsp_config)
+  assert(lsp_config, "lsp_config is required")
+  if lsp_config.config_def
+      and lsp_config.config_def.default_config
+      and lsp_config.config_def.default_config.cmd then
+    local cmd = lsp_config.config_def.default_config.cmd
+    if type(cmd) == "table" then
+      local exec = cmd[1]
+      return vim.fn.executable(exec) == 1
+    end
   end
-  if not lsp_config.cmd then
+  return nil
+end
+
+function M.setup(server, settings, initialization_options)
+  local lsp_config = require("lspconfig")[server]
+  if not lsp_config then
+    vim.notify(string.format("Configuration for LSP server %s not found", server), vim.log.levels.ERROR)
+    return
+  elseif is_lsp_server_installed(lsp_config) == false then
     return
   end
   local options = M.lsp_default_opts()

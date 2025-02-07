@@ -17,8 +17,8 @@ local setup_with_defaults = {
   "zls",
 }
 
-for _, server in pairs(setup_with_defaults) do
-  lsp.setup(server)
+for _, server in ipairs(setup_with_defaults) do
+  lsp.setup(server, nil, nil)
 end
 
 lsp.setup("texlab", require("nvimrc.lsp.texlab"))
