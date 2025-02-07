@@ -9,7 +9,9 @@ lsp_server_opts.capabilities = vim.tbl_deep_extend(
 local default_on_attach = lsp_server_opts.on_attach
 
 local function lsp_on_attach(client, bufnr)
-  default_on_attach(client, bufnr)
+  if default_on_attach then
+    default_on_attach(client, bufnr)
+  end
 
   local function rustLsp(args)
     return function ()
