@@ -15,10 +15,10 @@ auto_setup = false
 "rocks.nvim" = "2.43.0"
 "rocks-config.nvim" = "3.1.0"
 "rocks-git.nvim" = "2.5.2"
-"rocks-lazy.nvim" = "1.1.1"
+"rocks-lazy.nvim" = "1.1.2"
 "rocks-treesitter.nvim" = "1.3.0"
 
-"fidget.nvim" = { version = "1.4.1", event = "UIEnter" }
+"fidget.nvim" = { version = "1.6.0", event = "UIEnter" }
 "gitsigns.nvim" = { version = "scm", config = true, event = "BufRead" }
 "indent-blankline.nvim" = { version = "3.8.7", config = true, event = "BufEnter" }
 "lspkind.nvim" = { version = "scm" }
@@ -29,7 +29,7 @@ auto_setup = false
 "rainbow-delimiters.nvim" = { version = "0.8.0", config = true, event = "BufEnter" }
 "schemastore.nvim" = { version = "0.2.0" }
 "telescope.nvim" = { version = "scm", event = "UIEnter" }
-"which-key.nvim" = { version = "3.15.0", config = true, event = "UIEnter" }
+"which-key.nvim" = { version = "3.16.0", config = true, event = "UIEnter" }
 "lazydev.nvim" = { version = "1.9.0", config = true, ft = "lua" }
 
 # Auto completion
@@ -39,9 +39,9 @@ cmp-cmdline = "scm"
 cmp-nvim-lsp = "scm"
 cmp-path = "scm"
 
-nvim-lspconfig = { version = "1.4.0", event = "VimEnter" }
+nvim-lspconfig = { version = "1.6.0", event = "VimEnter" }
 nvim-surround = { version = "2.1.5", config = true, event = "BufEnter" }
-rustaceanvim = { version = "5.23.1", config = true, ft = "rust" }
+rustaceanvim = { version = "5.24.4", config = true, ft = "rust" }
 
 # Color themes
 [plugins."catppuccin.nvim"]
