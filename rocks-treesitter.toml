@@ -1,8 +1,8 @@
 [plugins]
 tree-sitter-bash = "0.0.40"
-tree-sitter-c = "0.0.39"
+tree-sitter-c = "0.0.40"
 tree-sitter-cmake = "0.0.31"
-tree-sitter-cpp = "0.0.40"
+tree-sitter-cpp = "0.0.41"
 tree-sitter-css = "0.0.36"
 tree-sitter-diff = "0.0.32"
 tree-sitter-dockerfile = "0.0.30"
