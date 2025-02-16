@@ -40,11 +40,8 @@ end
 
 --- @return vim.lsp.ClientConfig
 function M.lsp_default_opts()
-  local capabilities = vim.tbl_deep_extend(
-    "force",
-    {},
-    vim.lsp.protocol.make_client_capabilities(),
-    require("cmp_nvim_lsp").default_capabilities()
+  local capabilities = require("blink.cmp").get_lsp_capabilities(
+    vim.lsp.protocol.make_client_capabilities()
   )
   --- @type table<string, function>
   local handlers = {

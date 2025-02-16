@@ -7,7 +7,7 @@ local terminal = {
 --- @type CtpIntegrations
 local catppuccin_integrations = {
   bufferline = true,
-  cmp = true,
+  blink_cmp = true,
   fidget = true,
   gitsigns = true,
   indent_blankline = {
@@ -43,6 +43,7 @@ local catppuccin_integrations = {
   treesitter = true,
   treesitter_context = true,
 }
+
 
 --- @param colors CtpColors<string>
 local function mocha_overrides(colors)

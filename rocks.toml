@@ -25,19 +25,12 @@ auto_setup = false
 "lualine.nvim" = { version = "scm", config = true, event = "UIEnter" }
 "none-ls.nvim" = { version = "scm", config = true, event = "VimEnter" }
 "nui.nvim" = "0.3.0"
-"oil.nvim" = { version = "2.14.0", config = true, cmd = "Oil" }
+"oil.nvim" = { version = "2.15.0", config = true, cmd = "Oil" }
 "rainbow-delimiters.nvim" = { version = "0.8.0", config = true, event = "BufEnter" }
 "schemastore.nvim" = { version = "0.2.0" }
 "telescope.nvim" = { version = "scm", event = "UIEnter" }
 "which-key.nvim" = { version = "3.16.0", config = true, event = "UIEnter" }
 "lazydev.nvim" = { version = "1.9.0", config = true, ft = "lua" }
-
-# Auto completion
-nvim-cmp = { version = "scm" }
-cmp-buffer = "scm"
-cmp-cmdline = "scm"
-cmp-nvim-lsp = "scm"
-cmp-path = "scm"
 
 nvim-lspconfig = { version = "1.6.0", event = "VimEnter" }
 nvim-surround = { version = "2.1.5", config = true, event = "BufEnter" }
@@ -46,7 +39,7 @@ rustaceanvim = { version = "5.24.4", config = true, ft = "rust" }
 # Color themes
 [plugins."catppuccin.nvim"]
 git = "catppuccin/nvim"
-rev = "v1.9.0"
+branch = "main"
 
 [plugins."toggleterm.nvim"]
 version = "2.13.1"
@@ -108,10 +101,9 @@ version = "scm"
 event = "BufEnter"
 config.multiline_threshold = 5
 
-[bundles.cmp]
-items = ["nvim-cmp", "cmp-buffer", "cmp-nvim-lsp", "cmp-path", "cmp-cmdline"]
-config = "nvimrc.bundles.cmp"
-event = "InsertEnter"
+[plugins."blink.cmp"]
+git = "saghen/blink.cmp"
+branch = "main"
 
 [treesitter]
 auto_highlight = "all"
