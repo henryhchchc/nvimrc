@@ -103,6 +103,7 @@ config.multiline_threshold = 5
 
 [plugins."blink.cmp"]
 git = "saghen/blink.cmp"
+rev = "v0.12.4"
 branch = "main"
 
 [treesitter]

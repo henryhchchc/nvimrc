@@ -4,7 +4,6 @@ local config = {
     list = {
       selection = {
         preselect = function (ctx) return ctx.mode ~= "cmdline" end,
-        auto_insert = function (ctx) return ctx.mode ~= "cmdline" end,
       },
     },
     documentation = {
@@ -31,6 +30,19 @@ local config = {
     ["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
     ["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
 
+  },
+  cmdline = {
+    keymap = {
+      preset = "none",
+
+      ["<C-c>"] = { "hide", "fallback" },
+      ["<CR>"] = { "accept_and_enter", "fallback" },
+
+      ["<C-k>"] = { "select_prev", "fallback" },
+      ["<C-j>"] = { "select_next", "fallback" },
+      ["<Tab>"] = { "select_next", "fallback" },
+      ["<S-Tab>"] = { "select_prev", "fallback" },
+    },
   },
 }
 
