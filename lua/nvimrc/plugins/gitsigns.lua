@@ -25,6 +25,7 @@ require("gitsigns").setup({
     changedelete = { text = "▎" },
     untracked = { text = "▎" },
   },
+  current_line_blame = true,
   numhl = true,
   word_diff = false,
   on_attach = git_signs_on_attach,
