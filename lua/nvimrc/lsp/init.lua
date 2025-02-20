@@ -40,6 +40,7 @@ end
 
 --- @return vim.lsp.ClientConfig
 function M.lsp_default_opts()
+  vim.cmd.packadd("blink.cmp")
   local capabilities = require("blink.cmp").get_lsp_capabilities(
     vim.lsp.protocol.make_client_capabilities()
   )

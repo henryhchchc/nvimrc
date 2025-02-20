@@ -21,7 +21,6 @@ auto_setup = false
 "fidget.nvim" = { version = "1.6.0", event = "UIEnter" }
 "gitsigns.nvim" = { version = "scm", config = true, event = "BufRead" }
 "indent-blankline.nvim" = { version = "3.8.7", config = true, event = "BufEnter" }
-"lspkind.nvim" = { version = "scm" }
 "lualine.nvim" = { version = "scm", config = true, event = "UIEnter" }
 "none-ls.nvim" = { version = "scm", config = true, event = "VimEnter" }
 "nui.nvim" = "0.3.0"
@@ -105,6 +104,7 @@ config.multiline_threshold = 5
 git = "saghen/blink.cmp"
 rev = "v0.12.4"
 branch = "main"
+event = ["InsertEnter", "CmdlineEnter"]
 
 [treesitter]
 auto_highlight = "all"
