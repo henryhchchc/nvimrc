@@ -35,6 +35,7 @@ local catppuccin_integrations = {
       background = true,
     },
   },
+  nvim_surround = true,
   neogit = true,
   neotree = true,
   rainbow_delimiters = true,
