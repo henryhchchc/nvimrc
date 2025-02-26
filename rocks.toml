@@ -28,12 +28,12 @@ auto_setup = false
 "rainbow-delimiters.nvim" = { version = "0.8.0", config = true, event = "BufEnter" }
 "schemastore.nvim" = { version = "0.2.0" }
 "telescope.nvim" = { version = "scm", event = "UIEnter" }
-"which-key.nvim" = { version = "3.16.0", config = true, event = "UIEnter" }
+"which-key.nvim" = { version = "3.17.0", config = true, event = "UIEnter" }
 "lazydev.nvim" = { version = "1.9.0", config = true, ft = "lua" }
 
-nvim-lspconfig = { version = "1.6.0", event = "VimEnter" }
+nvim-lspconfig = { version = "1.7.0", event = "VimEnter" }
 nvim-surround = { version = "2.1.5", config = true, event = "BufEnter" }
-rustaceanvim = { version = "5.24.4", config = true, ft = "rust" }
+rustaceanvim = { version = "5.25.0", config = true, ft = "rust" }
 
 # Color themes
 [plugins."catppuccin.nvim"]
@@ -48,15 +48,13 @@ keys = [
   { lhs = "<leader><A-cr>", rhs = "<Cmd>ToggleTerm direction=float<cr>", desc = "Toggle terminal" },
 ]
 
-# Copilot
 [plugins."copilot.lua"]
 git = "zbirenbaum/copilot.lua"
 branch = "master"
-event = "InsertEnter"
 
 [plugins."copilot-lualine"]
 git = "AndreM222/copilot-lualine"
-rev = "f40450c3e138766026327e7807877ea860618258"
+rev = "dc4b8ed0f75bc2557b3158c526624bf04ad233ea"
 branch = "main"
 
 [plugins.neotree]
