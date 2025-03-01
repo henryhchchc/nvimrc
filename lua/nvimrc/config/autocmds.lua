@@ -37,7 +37,7 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave"
 local highlight_yanked = vim.api.nvim_create_augroup("highlight_yanked", {})
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   group = highlight_yanked,
-  callback = function () vim.highlight.on_yank() end,
+  callback = function () vim.highlight.on_yank({ timeout = 200 }) end,
 })
 
 -- Close window with q and <C-c>

@@ -54,7 +54,7 @@ local function mocha_overrides(colors)
     FloatTitle = { bg = colors.blue, fg = colors.base, style = { "bold" } },
     Pmenu = { link = "NormalFloat" },
     -- NotifyBackground = { bg = "#000000" },
-    LspCodeLens = { style = { "underline" } },
+    LspCodeLens = { style = { "italic", "underline" } },
     -- Telescope
     TelescopeNormal = { link = "NormalFloat" },
     TelescopePromptTitle = { link = "FloatTitle" },
