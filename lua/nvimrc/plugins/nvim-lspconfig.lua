@@ -16,6 +16,12 @@ local setup_with_defaults = {
   "ts_ls",
   "zls",
 }
+local lspconfig = require "lspconfig"
+lspconfig.util.on_setup = lspconfig.util.add_hook_before(lspconfig.util.on_setup, function (config)
+  if config.name == "sourcekit" then
+    config.filetypes = { "swift", "objc", "objcpp" }
+  end
+end)
 
 for _, server in ipairs(setup_with_defaults) do
   lsp.setup(server, nil, nil)
@@ -39,5 +45,6 @@ lsp.setup("kotlin_language_server", {
 lsp.setup("jsonls", {
   json = { schemas = require("schemastore").json.schemas(), validate = { enable = true } },
 })
+
 
 require("nvimrc.lsp.jdtls").setup()
