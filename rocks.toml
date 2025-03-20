@@ -39,7 +39,7 @@ rustaceanvim = { version = "5.25.0", config = true, ft = "rust" }
 [plugins."catppuccin.nvim"]
 git = "catppuccin/nvim"
 branch = "main"
-rev = "4bb938bbba41d306db18bf0eb0633a5f28fd7ba0"
+rev = "5b5e3aef9ad7af84f463d17b5479f06b87d5c429"
 
 [plugins."toggleterm.nvim"]
 version = "2.13.1"
@@ -98,7 +98,7 @@ config.multiline_threshold = 5
 
 [plugins."blink.cmp"]
 git = "saghen/blink.cmp"
-rev = "v0.13.1"
+rev = "v0.14.0"
 branch = "main"
 event = ["InsertEnter", "CmdlineEnter"]
 

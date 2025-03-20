@@ -1,10 +1,5 @@
 ---@type blink.cmp.Config
 local config = {
-  enabled = function ()
-    return not vim.tbl_contains({}, vim.bo.filetype)
-        and vim.bo.buftype ~= "prompt"
-        and vim.b.completion ~= false
-  end,
   completion = {
     list = {
       selection = {
