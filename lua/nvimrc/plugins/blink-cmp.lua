@@ -32,16 +32,15 @@ local config = {
 
   },
   cmdline = {
+    completion = { ghost_text = { enabled = true } },
     keymap = {
-      preset = "none",
+      preset = "cmdline",
 
       ["<C-c>"] = { "hide", "fallback" },
       ["<CR>"] = { "accept_and_enter", "fallback" },
 
       ["<C-k>"] = { "select_prev", "fallback" },
       ["<C-j>"] = { "select_next", "fallback" },
-      ["<Tab>"] = { "select_next", "fallback" },
-      ["<S-Tab>"] = { "select_prev", "fallback" },
     },
   },
 }
