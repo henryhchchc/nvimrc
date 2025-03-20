@@ -20,20 +20,20 @@ auto_setup = false
 
 "fidget.nvim" = { version = "1.6.0", event = "UIEnter" }
 "gitsigns.nvim" = { version = "scm", config = true, event = "BufRead" }
-"indent-blankline.nvim" = { version = "3.8.7", config = true, event = "BufEnter" }
+"indent-blankline.nvim" = { version = "3.9.0", config = true, event = "BufEnter" }
 "lualine.nvim" = { version = "scm", config = true, event = "UIEnter" }
 "none-ls.nvim" = { version = "scm", config = true, event = "VimEnter" }
 "nui.nvim" = "0.3.0"
 "oil.nvim" = { version = "2.15.0", config = true, cmd = "Oil" }
-"rainbow-delimiters.nvim" = { version = "0.8.0", config = true, event = "BufEnter" }
+"rainbow-delimiters.nvim" = { version = "0.9.0", config = true, event = "BufEnter" }
 "schemastore.nvim" = { version = "0.2.0" }
 "telescope.nvim" = { version = "scm", event = "UIEnter" }
 "which-key.nvim" = { version = "3.17.0", config = true, event = "UIEnter" }
 "lazydev.nvim" = { version = "1.9.0", config = true, ft = "lua" }
 
 nvim-lspconfig = { version = "1.7.0" }
-nvim-surround = { version = "2.1.5", config = true, event = "BufEnter" }
-rustaceanvim = { version = "5.25.0", config = true, ft = "rust" }
+nvim-surround = { version = "3.0.2", config = true, event = "BufEnter" }
+rustaceanvim = { version = "5.25.1", config = true, ft = "rust" }
 
 # Color themes
 [plugins."catppuccin.nvim"]
