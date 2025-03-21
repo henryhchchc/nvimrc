@@ -5,6 +5,7 @@ local setup_with_defaults = {
   "clangd",
   "cssls",
   "dockerls",
+  "gopls",
   "html",
   "hls",
   "lua_ls",
