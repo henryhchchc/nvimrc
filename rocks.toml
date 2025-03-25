@@ -22,7 +22,7 @@ auto_setup = false
 "gitsigns.nvim" = { version = "scm", config = true, event = "BufRead" }
 "indent-blankline.nvim" = { version = "3.9.0", config = true, event = "BufEnter" }
 "lualine.nvim" = { version = "scm", config = true, event = "UIEnter" }
-"none-ls.nvim" = { version = "scm", config = true, event = "VimEnter" }
+"none-ls.nvim" = { version = "scm", event = "VimEnter" }
 "nui.nvim" = "0.3.0"
 "oil.nvim" = { version = "2.15.0", config = true, cmd = "Oil" }
 "rainbow-delimiters.nvim" = { version = "0.9.0", config = true, event = "BufEnter" }
