@@ -25,14 +25,14 @@ auto_setup = false
 "none-ls.nvim" = { version = "scm", event = "VimEnter" }
 "nui.nvim" = "0.3.0"
 "oil.nvim" = { version = "2.15.0", config = true, cmd = "Oil" }
-"rainbow-delimiters.nvim" = { version = "0.9.0", config = true, event = "BufEnter" }
+"rainbow-delimiters.nvim" = { version = "0.9.1", config = true, event = "BufEnter" }
 "schemastore.nvim" = { version = "0.2.0" }
 "telescope.nvim" = { version = "scm", event = "UIEnter" }
 "which-key.nvim" = { version = "3.17.0", config = true, event = "UIEnter" }
 "lazydev.nvim" = { version = "1.9.0", config = true, ft = "lua" }
 
 nvim-lspconfig = { version = "1.7.0" }
-nvim-surround = { version = "3.0.2", config = true, event = "BufEnter" }
+nvim-surround = { version = "3.1.0", config = true, event = "BufEnter" }
 rustaceanvim = { version = "5.25.1", config = true, ft = "rust" }
 
 # Color themes
@@ -98,7 +98,7 @@ config.multiline_threshold = 5
 
 [plugins."blink.cmp"]
 git = "saghen/blink.cmp"
-rev = "v0.14.0"
+rev = "v0.14.2"
 branch = "main"
 event = ["InsertEnter", "CmdlineEnter"]
 
