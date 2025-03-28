@@ -67,11 +67,6 @@ version = "3.1.1"
 config = { input = { border = "none" } }
 event = "UIEnter"
 
-[plugins."tiny-inline-diagnostic.nvim"]
-git = "rachartier/tiny-inline-diagnostic.nvim"
-config = true
-event = "BufEnter"
-
 [plugins.neogit]
 version = "scm"
 cmd = "Neogit"
