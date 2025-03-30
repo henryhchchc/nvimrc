@@ -1,4 +1,4 @@
-local language_server_ignore = { "null-ls", "copilot", "typos_lsp" }
+local language_server_ignore = { "null-ls", "copilot", "typos" }
 
 local function get_attached_lsps()
   local clients = vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() })

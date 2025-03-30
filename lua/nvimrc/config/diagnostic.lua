@@ -6,7 +6,9 @@ local diag_icons = {
 }
 
 vim.diagnostic.config({
-  virtual_lines = true,
+  virtual_lines = {
+    current_line = true,
+  },
   signs = { text = diag_icons },
   underline = true,
   update_in_insert = false,

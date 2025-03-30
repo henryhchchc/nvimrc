@@ -1,19 +1,19 @@
 vim.opt.autowrite = true
 
 vim.opt.clipboard = "unnamedplus"
-if vim.env.SSH_TTY and (not vim.env.TMUX) then
-  vim.g.clipboard = {
-    name = "OSC 52",
-    copy = {
-      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-    },
-    paste = {
-      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
-    },
-  }
-end
+-- if vim.env.SSH_TTY and (not vim.env.TMUX) then
+--   vim.g.clipboard = {
+--     name = "OSC 52",
+--     copy = {
+--       ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+--       ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+--     },
+--     paste = {
+--       ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+--       ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+--     },
+--   }
+-- end
 
 vim.opt.colorcolumn = "+1"
 vim.opt.completeopt = { "menu", "menuone", "noselect" }

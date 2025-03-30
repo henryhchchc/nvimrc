@@ -23,4 +23,10 @@ if vim.fn.executable("displayline") == 1 then
   }
 end
 
-return settings
+---@type vim.lsp.Config
+return {
+  cmd = { "texlab" },
+  filetypes = { "tex" },
+  root_markers = { ".git/", ".latexmkrc" },
+  settings = settings,
+}

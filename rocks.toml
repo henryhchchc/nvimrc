@@ -31,7 +31,6 @@ auto_setup = false
 "which-key.nvim" = { version = "3.17.0", config = true, event = "UIEnter" }
 "lazydev.nvim" = { version = "1.9.0", config = true, ft = "lua" }
 
-nvim-lspconfig = { version = "1.7.0" }
 nvim-surround = { version = "3.1.0", config = true, event = "BufEnter" }
 rustaceanvim = { version = "5.25.1", config = true, ft = "rust" }
 
