@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { "vscode-html-languageserver", "--stdio" },
+  cmd = { "vscode-html-language-server", "--stdio" },
   filetypes = { "html" },
   settings = {
     html = {
