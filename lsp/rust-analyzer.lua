@@ -1,18 +1,6 @@
-local lsp_server_opts = require("nvimrc.lsp").lsp_default_opts()
-local rustacean_cfg = require("rustaceanvim.config.server")
-lsp_server_opts.capabilities = vim.tbl_deep_extend(
-  "force",
-  lsp_server_opts.capabilities,
-  rustacean_cfg.create_client_capabilities()
-)
-
-local default_on_attach = lsp_server_opts.on_attach
-
 local function lsp_on_attach(client, bufnr)
-  if default_on_attach then
-    default_on_attach(client, bufnr)
-  end
-
+  local on_attach = vim.lsp.config["*"].on_attach or function (_, _) end
+  on_attach(client, bufnr)
   local function rustLsp(args)
     return function ()
       vim.cmd.RustLsp(args)
@@ -25,26 +13,33 @@ local function lsp_on_attach(client, bufnr)
   vim.keymap.set("n", "J", rustLsp("joinLines"), { desc = "Rust Join Lines", buffer = bufnr })
 end
 
-lsp_server_opts.on_attach = lsp_on_attach
-
-lsp_server_opts.init_options = {
-  check = {
-    command = "clippy",
-    extraArgs = { "--no-deps" },
-  },
-  diagnostics = {
-    experimental = {
-      enabled = true,
-    },
-  },
-}
+local rustacean_cfg = require("rustaceanvim.config.server")
 
 local executors = require("rustaceanvim.executors")
---- @type RustaceanConfig
+--- @type rustaceanvim.Opts
 local rust_config = {
-  server = lsp_server_opts,
   tools = {
     executor = executors.toggleterm,
   },
 }
 vim.g.rustaceanvim = rust_config
+
+---@type vim.lsp.Config
+return {
+  cmd = { "rust-analyzer" },
+  root_markers = { ".git/", "Cargo.toml" },
+  filetypes = { "rust" },
+  on_attach = lsp_on_attach,
+  capabilities = rustacean_cfg.create_client_capabilities(),
+  init_options = {
+    check = {
+      command = "clippy",
+      extraArgs = { "--no-deps" },
+    },
+    diagnostics = {
+      experimental = {
+        enabled = true,
+      },
+    },
+  },
+}

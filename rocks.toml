@@ -32,7 +32,7 @@ auto_setup = false
 "lazydev.nvim" = { version = "1.9.0", config = true, ft = "lua" }
 
 nvim-surround = { version = "3.1.0", config = true, event = "BufEnter" }
-rustaceanvim = { version = "5.26.0", config = true, ft = "rust" }
+rustaceanvim = { version = "5.26.0" }
 
 # Color themes
 [plugins."catppuccin.nvim"]
