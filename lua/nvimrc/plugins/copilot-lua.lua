@@ -1,14 +1,13 @@
 require("copilot").setup({
   suggestion = {
     enabled = true,
-    auto_trigger = true,
+    auto_trigger = false,
     keymap = {
-      accept = "<Tab>",
+      accept = "<M-Tab>",
       accept_word = "<C-l>",
       accept_line = "<C-f>",
-      next = "<C-n>",
-      prev = "<C-p>",
-      dismiss = "<C-]>",
+      next = "<M-n>",
+      prev = "<M-p>",
     },
   },
   panel = {
@@ -25,4 +24,5 @@ require("copilot").setup({
     cvs = true,
     ["."] = true,
   },
+  copilot_model = "gpt-4o-copilot",
 })
