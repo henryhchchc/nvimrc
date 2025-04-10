@@ -32,7 +32,7 @@ auto_setup = false
 "lazydev.nvim" = { version = "1.9.0", config = true, ft = "lua" }
 
 nvim-surround = { version = "3.1.0", config = true, event = "BufEnter" }
-rustaceanvim = { version = "6.0.1" }
+rustaceanvim = { version = "6.0.2" }
 
 [plugins."catppuccin.nvim"]
 git = "catppuccin/nvim"
