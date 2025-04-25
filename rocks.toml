@@ -31,8 +31,8 @@ auto_setup = false
 "which-key.nvim" = { version = "3.17.0", config = true, event = "UIEnter" }
 "lazydev.nvim" = { version = "1.9.0", config = true, ft = "lua" }
 
-nvim-surround = { version = "3.1.0", config = true, event = "BufEnter" }
-rustaceanvim = { version = "6.0.2" }
+nvim-surround = { version = "3.1.1", config = true, event = "BufEnter" }
+rustaceanvim = { version = "6.0.3" }
 
 [plugins."catppuccin.nvim"]
 git = "catppuccin/nvim"
@@ -58,7 +58,7 @@ branch = "main"
 
 [plugins.neotree]
 git = "nvim-neo-tree/neo-tree.nvim"
-rev = "3.31.1"
+rev = "3.32"
 
 [plugins."dressing.nvim"]
 version = "3.1.1"
