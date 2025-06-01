@@ -12,7 +12,7 @@ auto_setup = false
 [plugins]
 
 # Core rocks plugins
-"rocks.nvim" = "2.44.0"
+"rocks.nvim" = "2.45.0"
 "rocks-config.nvim" = "3.1.1"
 "rocks-git.nvim" = "2.5.3"
 "rocks-lazy.nvim" = "1.2.0"
@@ -31,8 +31,8 @@ auto_setup = false
 "which-key.nvim" = { version = "3.17.0", config = true, event = "UIEnter" }
 "lazydev.nvim" = { version = "1.9.0", config = true, ft = "lua" }
 
-nvim-surround = { version = "3.1.1", config = true, event = "BufEnter" }
-rustaceanvim = { version = "6.1.0" }
+nvim-surround = { version = "3.1.2", config = true, event = "BufEnter" }
+rustaceanvim = { version = "6.3.0" }
 
 [plugins."catppuccin.nvim"]
 git = "catppuccin/nvim"
@@ -80,9 +80,7 @@ popup = { kind = "vsplit" }
 
 [plugins."crates.nvim"]
 git = "saecki/crates.nvim"
-rev = "v0.6.0"
-config = true
-event = "BufRead Cargo.toml"
+rev = "v0.7.1"
 
 [plugins.nvim-treesitter-context]
 version = "scm"
@@ -91,7 +89,7 @@ config.multiline_threshold = 5
 
 [plugins."blink.cmp"]
 git = "saghen/blink.cmp"
-rev = "v1.2.0"
+rev = "v1.3.1"
 branch = "main"
 event = ["InsertEnter", "CmdlineEnter"]
 
