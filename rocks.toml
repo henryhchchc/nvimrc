@@ -32,7 +32,7 @@ auto_setup = false
 "lazydev.nvim" = { version = "1.9.0", config = true, ft = "lua" }
 
 nvim-surround = { version = "3.1.2", config = true, event = "BufEnter" }
-rustaceanvim = { version = "6.3.0" }
+rustaceanvim = { version = "6.3.1" }
 
 [plugins."catppuccin.nvim"]
 git = "catppuccin/nvim"
@@ -89,7 +89,7 @@ config.multiline_threshold = 5
 
 [plugins."blink.cmp"]
 git = "saghen/blink.cmp"
-rev = "v1.3.1"
+rev = "v1.4.0"
 branch = "main"
 event = ["InsertEnter", "CmdlineEnter"]
 
