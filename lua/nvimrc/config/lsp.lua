@@ -22,7 +22,7 @@ vim.lsp.enable({
   "html",
   "jdtls",
   "jsonls",
-  "kotlin_ls",
+  "kotlin_lsp",
   "lua_ls",
   "neocmake",
   "pyrefly",
