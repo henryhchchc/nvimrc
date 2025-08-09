@@ -26,6 +26,7 @@ vim.lsp.enable({
   "lua_ls",
   "neocmake",
   "pyrefly",
+  "ruff",
   "sourcekit",
   "taplo",
   "texlab",
