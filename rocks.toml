@@ -33,6 +33,7 @@ auto_setup = false
 
 nvim-surround = { version = "3.1.3", config = true, event = "BufEnter" }
 rustaceanvim = { version = "6.7.0" }
+nvim-lspconfig = "2.4.0"
 
 [plugins."catppuccin.nvim"]
 git = "catppuccin/nvim"

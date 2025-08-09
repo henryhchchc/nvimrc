@@ -47,6 +47,7 @@ return {
   },
   init_options = {
     workspace = config_dir,
+    jvm_args = { "-XX:+UseZGC" },
     extendedClientCapabilities = {
       progressReportProvider = true,
     },

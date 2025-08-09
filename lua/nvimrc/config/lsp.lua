@@ -31,6 +31,6 @@ vim.lsp.enable({
   "texlab",
   "tinymist",
   "ts_ls",
-  "typos",
+  "typos_lsp",
   "yamlls",
 })

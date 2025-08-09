@@ -27,10 +27,10 @@ vim.g.rustaceanvim = rust_config
 ---@type vim.lsp.Config
 return {
   cmd = { "rust-analyzer" },
-  root_markers = { ".git/", "Cargo.toml" },
   filetypes = { "rust" },
   on_attach = lsp_on_attach,
   capabilities = rustacean_cfg.create_client_capabilities(),
+  before_init = nil,
   init_options = {
     check = {
       command = "clippy",
