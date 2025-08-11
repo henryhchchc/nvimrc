@@ -7,7 +7,6 @@ local capabilities = require("blink.cmp").get_lsp_capabilities(
 
 
 vim.lsp.config("*", {
-  root_markers = { ".git/" },
   on_attach = lsp.lsp_on_attach,
   capabilities = capabilities,
 })
@@ -25,6 +24,7 @@ vim.lsp.enable({
   "kotlin_lsp",
   "lua_ls",
   "neocmake",
+  "nil_ls",
   "pyrefly",
   "ruff",
   "sourcekit",
