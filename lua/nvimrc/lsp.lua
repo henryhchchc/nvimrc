@@ -41,7 +41,8 @@ function M.lsp_on_attach(client, bufnr)
   end
 
   if client:supports_method(lsp_methods.textDocument_foldingRange) then
-    vim.cmd [[setlocal formatexpr=v:lua.vim.lsp.formatexpr()]];
+    local win = vim.api.nvim_get_current_win()
+    vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
   end
 
   vim.lsp.inlay_hint.enable(true, {})
