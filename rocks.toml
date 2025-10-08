@@ -59,7 +59,7 @@ branch = "main"
 
 [plugins.neotree]
 git = "nvim-neo-tree/neo-tree.nvim"
-rev = "3.35.1"
+rev = "3.37.0"
 
 [plugins."dressing.nvim"]
 version = "3.1.1"
