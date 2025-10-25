@@ -33,6 +33,7 @@ local options = {
   },
   cmdline = {
     completion = { ghost_text = { enabled = true } },
+    sources = { "cmdline", "buffer", "omni" },
     keymap = {
       preset = "cmdline",
 
