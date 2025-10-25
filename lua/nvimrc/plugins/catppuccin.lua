@@ -90,5 +90,16 @@ local catppuccin_opts = {
   integrations = catppuccin_integrations,
 }
 
-require("catppuccin").setup(catppuccin_opts)
-vim.cmd.colorscheme("catppuccin-mocha")
+--- @type LazyPluginSpec
+return {
+  "catppuccin/nvim",
+  main = "catppuccin",
+  name = "catppuccin",
+  version = "1.11.0",
+  priority = 1000,
+  opts = catppuccin_opts,
+  config = function (self, opts)
+    require("catppuccin").setup(opts)
+    vim.cmd.colorscheme("catppuccin-mocha")
+  end,
+}

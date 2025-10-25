@@ -6,20 +6,15 @@ if vim.fn.argc() > 0 then
   if stat ~= nil and stat.type == "directory" then vim.cmd.cd(arg0) end
 end
 
-local rocksrc = require("nvimrc.rocksrc")
-rocksrc.configure()
-if not pcall(require, "rocks") then
-  if vim.fn.executable("luarocks") ~= 1 then
-    vim.notify("Luarocks not found. Please install luarocks and restart nvim.")
-    return
-  end
-  rocksrc.install_rocks_nvim()
-end
-
-
 require("nvimrc.config.options")
-require("nvimrc.config.theme")
+require("nvimrc.lazy")
+
+require("lazy").setup({
+  spec = {
+    { import = "nvimrc.plugins" },
+  },
+})
+
 require("nvimrc.config.autocmds")
 require("nvimrc.config.diagnostic")
 require("nvimrc.config.keymap")
-require("nvimrc.config.lsp")

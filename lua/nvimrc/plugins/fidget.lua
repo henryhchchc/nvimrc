@@ -1,9 +1,17 @@
-require("fidget").setup({
-  notification = {
-    window = {
-      winblend = 0,
+--- @type LazyPluginSpec
+return {
+  "j-hui/fidget.nvim",
+  opts = {
+    notification = {
+      window = {
+        winblend = 0,
+      },
     },
   },
-})
-
-vim.notify = require("fidget.notification").notify
+  config = function (self, opts)
+    require("fidget").setup(opts)
+    vim.notify = require("fidget.notification").notify
+  end,
+  event = "VeryLazy",
+  version = "1.6.0",
+}

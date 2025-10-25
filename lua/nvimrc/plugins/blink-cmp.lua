@@ -1,5 +1,5 @@
 ---@type blink.cmp.Config
-local config = {
+local options = {
   completion = {
     list = {
       selection = {
@@ -46,22 +46,30 @@ local config = {
 }
 
 
-require("blink.cmp").setup(config)
+--- @type LazyPluginSpec
+return {
+  "saghen/blink.cmp",
+  event = { "InsertEnter", "CmdlineEnter" },
+  version = "1.7.0",
+  opts = options,
+  config = function (self, opts)
+    require("blink.cmp").setup(opts)
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "BlinkCmpMenuOpen",
+      callback = function ()
+        local copilot = package.loaded["copilot.suggestion"]
+        if copilot then
+          copilot.dismiss()
+        end
+        vim.b.copilot_suggestion_hidden = true
+      end,
+    })
 
-vim.api.nvim_create_autocmd("User", {
-  pattern = "BlinkCmpMenuOpen",
-  callback = function ()
-    local copilot = package.loaded["copilot.suggestion"]
-    if copilot then
-      copilot.dismiss()
-    end
-    vim.b.copilot_suggestion_hidden = true
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "BlinkCmpMenuClose",
+      callback = function ()
+        vim.b.copilot_suggestion_hidden = false
+      end,
+    })
   end,
-})
-
-vim.api.nvim_create_autocmd("User", {
-  pattern = "BlinkCmpMenuClose",
-  callback = function ()
-    vim.b.copilot_suggestion_hidden = false
-  end,
-})
+}

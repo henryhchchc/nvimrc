@@ -58,4 +58,9 @@ local lualine_options = {
   },
 }
 
-require("lualine").setup(lualine_options)
+--- @type LazyPluginSpec
+return {
+  "nvim-lualine/lualine.nvim",
+  version = "*",
+  opts = lualine_options,
+}

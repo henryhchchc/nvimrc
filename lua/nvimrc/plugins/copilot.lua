@@ -1,4 +1,4 @@
-require("copilot").setup({
+local copilot_opts = {
   suggestion = {
     enabled = true,
     auto_trigger = false,
@@ -24,5 +24,15 @@ require("copilot").setup({
     cvs = true,
     ["."] = true,
   },
-  copilot_model = "gpt-4o-copilot",
-})
+};
+
+
+--- @type LazyPluginSpec[]
+return {
+  {
+    "zbirenbaum/copilot.lua",
+    opts = copilot_opts,
+    config = true,
+  },
+  { "AndreM222/copilot-lualine" },
+}
