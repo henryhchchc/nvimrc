@@ -1,3 +1,4 @@
+--- @type TSConfig
 local options = {
   ensure_installed = {
     "bash",
@@ -66,6 +67,9 @@ return {
     lazy = false,
     build = ":TSUpdate",
     opts = options,
+    config = function (self, opts)
+      require("nvim-treesitter.configs").setup(opts)
+    end,
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
