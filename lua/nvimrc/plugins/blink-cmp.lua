@@ -51,6 +51,7 @@ local options = {
 return {
   "saghen/blink.cmp",
   event = { "InsertEnter", "CmdlineEnter" },
+  version = "1.*",
   opts = options,
   config = function (self, opts)
     require("blink.cmp").setup(opts)
