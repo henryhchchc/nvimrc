@@ -95,7 +95,6 @@ return {
   "catppuccin/nvim",
   main = "catppuccin",
   name = "catppuccin",
-  version = "1.11.0",
   priority = 1000,
   opts = catppuccin_opts,
   config = function (self, opts)

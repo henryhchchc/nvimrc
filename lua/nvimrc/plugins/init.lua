@@ -17,17 +17,15 @@ return {
   { "stevearc/oil.nvim", cmd = "Oil", config = true },
   {
     "lukas-reineke/indent-blankline.nvim",
-    version = "3.9.0",
     event = "BufEnter",
   },
-  { "nvimtools/none-ls.nvim", version = "scm", event = "VimEnter" },
-  { "MunifTanjim/nui.nvim", version = "0.4.0" },
-  { "b0o/schemastore.nvim", version = "0.2.0" },
-  { "folke/which-key.nvim", version = "3.17.0", config = true, event = "UIEnter" },
-  { "kylechui/nvim-surround", version = "3.1.6", config = true, event = "VeryLazy" },
+  { "nvimtools/none-ls.nvim", event = "VimEnter" },
+  { "MunifTanjim/nui.nvim" },
+  { "b0o/schemastore.nvim" },
+  { "folke/which-key.nvim", config = true, event = "UIEnter" },
+  { "kylechui/nvim-surround", config = true, event = "VeryLazy" },
   {
     "HiPhish/rainbow-delimiters.nvim",
-    version = "0.9.1",
     event = "BufEnter",
     config = function (self, opts)
       require("rainbow-delimiters.setup").setup(opts)

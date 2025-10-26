@@ -114,7 +114,6 @@ end
 --- @type LazyPluginSpec
 return {
   "nvim-telescope/telescope.nvim",
-  version = "*",
   event = "UIEnter",
   config = config_telescope,
 }

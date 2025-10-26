@@ -134,5 +134,4 @@ return {
     },
   },
   opts = opts,
-  version = "3.37.3",
 }

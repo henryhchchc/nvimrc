@@ -13,5 +13,4 @@ return {
     vim.notify = require("fidget.notification").notify
   end,
   event = "VeryLazy",
-  version = "1.6.0",
 }
