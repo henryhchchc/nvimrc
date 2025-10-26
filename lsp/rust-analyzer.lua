@@ -1,10 +1,8 @@
 local function lsp_on_attach(client, bufnr)
-  local on_attach = vim.lsp.config["*"].on_attach or function (_, _) end
+  local on_attach = vim.lsp.config["*"].on_attach or function(_, _) end
   on_attach(client, bufnr)
   local function rustLsp(args)
-    return function ()
-      vim.cmd.RustLsp(args)
-    end
+    return function() vim.cmd.RustLsp(args) end
   end
 
   vim.keymap.set("n", "g.", rustLsp("codeAction"), { desc = "LSP Code Actions", buffer = bufnr })

@@ -45,7 +45,6 @@ local catppuccin_integrations = {
   treesitter_context = true,
 }
 
-
 --- @param colors CtpColors<string>
 local function mocha_overrides(colors)
   return {
@@ -97,7 +96,7 @@ return {
   name = "catppuccin",
   priority = 1000,
   opts = catppuccin_opts,
-  config = function (self, opts)
+  config = function(self, opts)
     require("catppuccin").setup(opts)
     vim.cmd.colorscheme("catppuccin-mocha")
   end,

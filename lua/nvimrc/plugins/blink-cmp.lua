@@ -3,7 +3,7 @@ local options = {
   completion = {
     list = {
       selection = {
-        preselect = function (ctx) return ctx.mode ~= "cmdline" end,
+        preselect = function(ctx) return ctx.mode ~= "cmdline" end,
       },
     },
     documentation = {
@@ -29,7 +29,6 @@ local options = {
 
     ["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
     ["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
-
   },
   cmdline = {
     completion = { ghost_text = { enabled = true } },
@@ -46,31 +45,26 @@ local options = {
   },
 }
 
-
 --- @type LazyPluginSpec
 return {
   "saghen/blink.cmp",
   event = { "InsertEnter", "CmdlineEnter" },
   version = "1.*",
   opts = options,
-  config = function (self, opts)
+  config = function(self, opts)
     require("blink.cmp").setup(opts)
     vim.api.nvim_create_autocmd("User", {
       pattern = "BlinkCmpMenuOpen",
-      callback = function ()
+      callback = function()
         local copilot = package.loaded["copilot.suggestion"]
-        if copilot then
-          copilot.dismiss()
-        end
+        if copilot then copilot.dismiss() end
         vim.b.copilot_suggestion_hidden = true
       end,
     })
 
     vim.api.nvim_create_autocmd("User", {
       pattern = "BlinkCmpMenuClose",
-      callback = function ()
-        vim.b.copilot_suggestion_hidden = false
-      end,
+      callback = function() vim.b.copilot_suggestion_hidden = false end,
     })
   end,
 }

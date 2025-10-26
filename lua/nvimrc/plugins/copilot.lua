@@ -24,8 +24,7 @@ local copilot_opts = {
     cvs = true,
     ["."] = true,
   },
-};
-
+}
 
 --- @type LazyPluginSpec[]
 return {

@@ -15,9 +15,7 @@ local function jdtls_progress_report(_, result, ctx)
   end
 
   local percentage = 0
-  if result.totalWork > 0 and result.workDone >= 0 then
-    percentage = result.workDone / result.totalWork * 100
-  end
+  if result.totalWork > 0 and result.workDone >= 0 then percentage = result.workDone / result.totalWork * 100 end
 
   local msg = {
     token = result.id,

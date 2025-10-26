@@ -14,7 +14,7 @@ local function config_telescope(self, opts)
     ["<C-u>"] = actions.preview_scrolling_up,
     ["<C-d>"] = actions.preview_scrolling_down,
     ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-    ["<C-w>"] = function () vim.cmd("normal! bcw") end,
+    ["<C-w>"] = function() vim.cmd("normal! bcw") end,
   }
 
   local find_files_command = {
@@ -37,7 +37,6 @@ local function config_telescope(self, opts)
       height = 0.8,
     },
   })
-
 
   telescope.setup({
     pickers = {
@@ -95,9 +94,7 @@ local function config_telescope(self, opts)
 
   telescope.builtin = require("telescope.builtin")
 
-  local function find_files()
-    telescope.builtin.find_files(find_files_theme)
-  end
+  local function find_files() telescope.builtin.find_files(find_files_theme) end
   vim.keymap.set("n", "<leader>ff", find_files, { desc = "Telescope Find Files" })
   vim.keymap.set("n", "<leader>fg", telescope.builtin.live_grep, { desc = "Telescope Live grep" })
   vim.keymap.set("n", "<leader>fb", telescope.builtin.buffers, { desc = "Telescope Find Buffer" })
