@@ -19,6 +19,7 @@ local function config_lsp(self, opts)
     "jsonls",
     "kotlin_lsp",
     "lua_ls",
+    "markdown_oxide",
     "neocmake",
     "nil_ls",
     "pyrefly",
