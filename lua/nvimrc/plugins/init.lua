@@ -14,14 +14,6 @@ return {
       popup = { kind = "vsplit" },
     },
   },
-  {
-    "stevearc/dressing.nvim",
-    opts = {
-      input = { border = "none" },
-      select = { border = "none" },
-    },
-    event = "UIEnter",
-  },
   { "stevearc/oil.nvim", cmd = "Oil", config = true },
   {
     "lukas-reineke/indent-blankline.nvim",
