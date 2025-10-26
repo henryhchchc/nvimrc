@@ -2,6 +2,14 @@ vim.opt.autowrite = true
 
 vim.opt.clipboard = "unnamedplus"
 
+if vim.env.SSH then
+  if vim.env.TMUX then
+    vim.g.clipboard = "tmux"
+  else
+    vim.g.clipboard = "osc52"
+  end
+end
+
 vim.opt.colorcolumn = "+1"
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.concealcursor = "nc"
