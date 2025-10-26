@@ -33,6 +33,7 @@ return {
     "zbirenbaum/copilot.lua",
     opts = copilot_opts,
     config = true,
+    event = "InsertEnter",
   },
   { "AndreM222/copilot-lualine" },
 }

@@ -40,8 +40,5 @@ end
 --- @type LazyPluginSpec
 return {
   "neovim/nvim-lspconfig",
-  -- dependencies = {
-  --   "saghen/blink.cmp",
-  -- },
   config = config_lsp,
 }

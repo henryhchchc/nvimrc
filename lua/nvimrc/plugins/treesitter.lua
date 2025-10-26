@@ -64,7 +64,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     branch = "master",
-    lazy = false,
+    event = "BufEnter",
     build = ":TSUpdate",
     opts = options,
     config = function (self, opts)

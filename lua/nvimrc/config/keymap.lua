@@ -73,8 +73,9 @@ vim.keymap.set(
   { desc = "Toggle Inlay hints" }
 )
 
-vim.keymap.set("n", "]d", function () vim.diagnostic.goto_next() end, { desc = "Jump to next diagnostic" })
-vim.keymap.set("n", "[d", function () vim.diagnostic.goto_prev() end,
+vim.keymap.set("n", "]d", function () vim.diagnostic.jump({ count = 1, float = true }) end,
+  { desc = "Jump to next diagnostic" })
+vim.keymap.set("n", "[d", function () vim.diagnostic.jump({ count = -1, float = true }) end,
   { desc = "Jump to previous diagnostic" })
 
 -- Clear search highlight with <esc>
