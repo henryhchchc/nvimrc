@@ -2,7 +2,7 @@ vim.opt.autowrite = true
 
 vim.opt.clipboard = "unnamedplus"
 
-if vim.env.SSH then
+if vim.env.SSH_CONNECTION then
   if vim.env.TMUX then
     vim.g.clipboard = "tmux"
   else
