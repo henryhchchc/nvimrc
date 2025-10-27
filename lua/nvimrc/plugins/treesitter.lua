@@ -66,7 +66,7 @@ return {
     event = "BufEnter",
     build = ":TSUpdate",
     opts = options,
-    config = function(self, opts) require("nvim-treesitter.configs").setup(opts) end,
+    config = function(_plugin, opts) require("nvim-treesitter.configs").setup(opts) end,
   },
   {
     "nvim-treesitter/nvim-treesitter-context",

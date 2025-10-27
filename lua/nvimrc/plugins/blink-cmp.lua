@@ -51,7 +51,7 @@ return {
   event = { "InsertEnter", "CmdlineEnter" },
   version = "1.*",
   opts = options,
-  config = function(self, opts)
+  config = function(_plugin, opts)
     require("blink.cmp").setup(opts)
     vim.api.nvim_create_autocmd("User", {
       pattern = "BlinkCmpMenuOpen",

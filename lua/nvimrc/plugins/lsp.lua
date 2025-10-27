@@ -1,4 +1,4 @@
-local function config_lsp(self, opts)
+local function config_lsp(_plugin, _opts)
   local lsp = require("nvimrc.lsp")
 
   local capabilities = require("blink.cmp").get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
