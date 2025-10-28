@@ -26,6 +26,9 @@ local lazy_options = {
   spec = {
     { import = "nvimrc.plugins" },
   },
+  rocks = {
+    enabled = false,
+  },
 }
 
 require("lazy").setup(lazy_options)
