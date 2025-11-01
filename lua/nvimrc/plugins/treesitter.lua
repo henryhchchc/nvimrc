@@ -5,6 +5,7 @@ local options = {
     "bibtex",
     "c",
     "cmake",
+    "comment",
     "cpp",
     "css",
     "diff",
