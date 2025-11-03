@@ -63,7 +63,7 @@ local options = {
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master",
+    branch = "main",
     event = "BufEnter",
     build = ":TSUpdate",
     opts = options,
