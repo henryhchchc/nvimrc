@@ -47,6 +47,19 @@ function M.lsp_on_attach(client, bufnr)
   end
 
   vim.lsp.inlay_hint.enable(true, {})
+
+  if client:supports_method(lsp_methods.textDocument_documentHighlight) then
+    -- Show LSP document highlight on cursor hold
+    local document_hl_group = vim.api.nvim_create_augroup("lsp_document_highlight", {})
+    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+      group = document_hl_group,
+      callback = vim.lsp.buf.document_highlight,
+    })
+    vim.api.nvim_create_autocmd("CursorMoved", {
+      group = document_hl_group,
+      callback = vim.lsp.buf.clear_references,
+    })
+  end
 end
 
 return M
