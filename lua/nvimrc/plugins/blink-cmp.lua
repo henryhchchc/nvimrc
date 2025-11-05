@@ -3,7 +3,7 @@ local options = {
   completion = {
     list = {
       selection = {
-        preselect = function(ctx) return ctx.mode ~= "cmdline" end,
+        preselect = function (ctx) return ctx.mode ~= "cmdline" end,
       },
     },
     documentation = {
@@ -51,11 +51,11 @@ return {
   event = { "InsertEnter", "CmdlineEnter" },
   version = "1.*",
   opts = options,
-  config = function(_plugin, opts)
+  config = function (_plugin, opts)
     require("blink.cmp").setup(opts)
     vim.api.nvim_create_autocmd("User", {
       pattern = "BlinkCmpMenuOpen",
-      callback = function()
+      callback = function ()
         local copilot = package.loaded["copilot.suggestion"]
         if copilot then copilot.dismiss() end
         vim.b.copilot_suggestion_hidden = true
@@ -64,7 +64,7 @@ return {
 
     vim.api.nvim_create_autocmd("User", {
       pattern = "BlinkCmpMenuClose",
-      callback = function() vim.b.copilot_suggestion_hidden = false end,
+      callback = function () vim.b.copilot_suggestion_hidden = false end,
     })
   end,
 }

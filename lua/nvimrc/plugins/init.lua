@@ -27,7 +27,7 @@ return {
   {
     "HiPhish/rainbow-delimiters.nvim",
     event = "BufEnter",
-    config = function(_plugin, opts) require("rainbow-delimiters.setup").setup(opts) end,
+    config = function (_plugin, opts) require("rainbow-delimiters.setup").setup(opts) end,
     submodules = false,
   },
 }

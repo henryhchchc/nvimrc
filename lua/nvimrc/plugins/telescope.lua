@@ -14,7 +14,7 @@ local function config_telescope(_plugin, _opts)
     ["<C-u>"] = actions.preview_scrolling_up,
     ["<C-d>"] = actions.preview_scrolling_down,
     ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-    ["<C-w>"] = function() vim.cmd("normal! bcw") end,
+    ["<C-w>"] = function () vim.cmd("normal! bcw") end,
   }
 
   local find_files_command = {

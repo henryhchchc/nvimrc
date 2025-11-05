@@ -26,7 +26,7 @@ function M.lsp_on_attach(client, bufnr)
     vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "InsertLeave", "LspTokenUpdate" }, {
       buffer = bufnr,
       group = codelen_group,
-      callback = function(_event) vim.lsp.codelens.refresh({ bufnr = bufnr }) end,
+      callback = function (_event) vim.lsp.codelens.refresh({ bufnr = bufnr }) end,
     })
   end
 
@@ -35,7 +35,7 @@ function M.lsp_on_attach(client, bufnr)
     vim.keymap.set(
       "n",
       "<leader>uf",
-      function() utils.toggle_buf_var("autoformat") end,
+      function () utils.toggle_buf_var("autoformat") end,
       { desc = "Toggle autoformat", buffer = bufnr }
     )
     vim.bo[bufnr].formatexpr = "v:lua.vim.lsp.formatexpr(#{timeout_ms:250})"

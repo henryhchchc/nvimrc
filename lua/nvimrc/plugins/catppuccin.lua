@@ -96,7 +96,7 @@ return {
   name = "catppuccin",
   priority = 1000,
   opts = catppuccin_opts,
-  config = function(_plugin, opts)
+  config = function (_plugin, opts)
     require("catppuccin").setup(opts)
     vim.cmd.colorscheme("catppuccin-mocha")
   end,

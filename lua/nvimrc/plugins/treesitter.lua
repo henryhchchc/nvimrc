@@ -54,15 +54,15 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
-    build = function(_self) require("nvim-treesitter").update(languages, { max_jobs = 1 }) end,
-    config = function(_self, _opts)
+    build = function (_self) require("nvim-treesitter").update(nil, { max_jobs = 1 }) end,
+    config = function (_self, _opts)
       require("nvim-treesitter").install(languages, {
         max_jobs = 1,
         generate = true,
       })
       vim.api.nvim_create_autocmd("FileType", {
         pattern = languages,
-        callback = function()
+        callback = function ()
           vim.treesitter.start()
           vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
           vim.bo.indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"

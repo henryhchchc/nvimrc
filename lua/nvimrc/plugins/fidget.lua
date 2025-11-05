@@ -8,7 +8,7 @@ return {
       },
     },
   },
-  config = function(_plugin, opts)
+  config = function (_plugin, opts)
     require("fidget").setup(opts)
     vim.notify = require("fidget.notification").notify
   end,
