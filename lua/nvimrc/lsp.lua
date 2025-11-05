@@ -52,10 +52,12 @@ function M.lsp_on_attach(client, bufnr)
     -- Show LSP document highlight on cursor hold
     local document_hl_group = vim.api.nvim_create_augroup("lsp_document_highlight", {})
     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+      buffer = bufnr,
       group = document_hl_group,
       callback = vim.lsp.buf.document_highlight,
     })
     vim.api.nvim_create_autocmd("CursorMoved", {
+      buffer = bufnr,
       group = document_hl_group,
       callback = vim.lsp.buf.clear_references,
     })
