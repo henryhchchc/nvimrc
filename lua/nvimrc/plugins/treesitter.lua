@@ -54,7 +54,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
-    build = function (_self) require("nvim-treesitter").update(nil, { max_jobs = 1 }) end,
+    build = ":TSUpdate",
     config = function (_self, _opts)
       require("nvim-treesitter").install(languages, {
         max_jobs = 1,
