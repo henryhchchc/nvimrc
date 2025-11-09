@@ -6,7 +6,6 @@ local terminal = {
 
 --- @type CtpIntegrations
 local catppuccin_integrations = {
-  bufferline = true,
   blink_cmp = true,
   fidget = true,
   gitsigns = true,
@@ -43,6 +42,7 @@ local catppuccin_integrations = {
   telescope = { enabled = true },
   treesitter = true,
   treesitter_context = true,
+  which_key = true,
 }
 
 --- @param colors CtpColors<string>

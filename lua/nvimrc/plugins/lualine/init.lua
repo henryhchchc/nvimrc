@@ -62,4 +62,5 @@ local lualine_options = {
 return {
   "nvim-lualine/lualine.nvim",
   opts = lualine_options,
+  event = "UIEnter",
 }

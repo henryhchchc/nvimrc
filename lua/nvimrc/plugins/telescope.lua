@@ -29,14 +29,6 @@ local function config_telescope(_plugin, _opts)
     ".git",
   }
 
-  local find_files_theme = themes.get_dropdown({
-    previewer = false,
-    prompt_title = "Search Project Files",
-    layout_config = {
-      width = 0.75,
-      height = 0.8,
-    },
-  })
 
   telescope.setup({
     pickers = {
@@ -90,27 +82,35 @@ local function config_telescope(_plugin, _opts)
       },
     },
   })
-  -- telescope.load_extension("fzf")
+end
 
-  telescope.builtin = require("telescope.builtin")
-
-  local function find_files() telescope.builtin.find_files(find_files_theme) end
-  vim.keymap.set("n", "<leader>ff", find_files, { desc = "Telescope Find Files" })
-  vim.keymap.set("n", "<leader>fg", telescope.builtin.live_grep, { desc = "Telescope Live grep" })
-  vim.keymap.set("n", "<leader>fb", telescope.builtin.buffers, { desc = "Telescope Find Buffer" })
-  vim.keymap.set("n", "<leader>fh", telescope.builtin.help_tags, { desc = "Telescope Find Help" })
-  vim.keymap.set("n", "<leader>fd", telescope.builtin.diagnostics, { desc = "Telescope List Diagnostics" })
-  vim.keymap.set("n", "<leader>fm", telescope.builtin.man_pages, { desc = "Telescope Find Man Pages" })
-
-  vim.keymap.set("n", "<leader>gS", telescope.builtin.lsp_document_symbols, { desc = "Document Symbols" })
-  vim.keymap.set("n", "<leader>gw", telescope.builtin.lsp_workspace_symbols, { desc = "Workspace Symbols" })
-
-  vim.keymap.set("n", "z=", telescope.builtin.spell_suggest, { desc = "Telescope Spell Suggestions" })
+local function find_files()
+  local telescope = require("telescope")
+  local themes = require("telescope.themes")
+  local find_files_theme = themes.get_dropdown({
+    previewer = false,
+    prompt_title = "Search Project Files",
+    layout_config = {
+      width = 0.75,
+      height = 0.8,
+    },
+  })
+  telescope.builtin.find_files(find_files_theme)
 end
 
 --- @type LazyPluginSpec
 return {
   "nvim-telescope/telescope.nvim",
-  event = "UIEnter",
   config = config_telescope,
+  keys = {
+    { "<leader>ff", find_files, desc = "Telescope Find Files" },
+    { "<leader>fg", function () require("telescope.builtin").live_grep() end, desc = "Telescope Live grep" },
+    { "<leader>fb", function () require("telescope.builtin").buffers() end, desc = "Telescope Find Buffer" },
+    { "<leader>fh", function () require("telescope.builtin").help_tags() end, desc = "Telescope Find Help" },
+    { "<leader>fd", function () require("telescope.builtin").diagnostics() end, desc = "Telescope List Diagnostics" },
+    { "<leader>fm", function () require("telescope.builtin").man_pages() end, desc = "Telescope Find Man Pages" },
+    { "<leader>gS", function () require("telescope.builtin").lsp_document_symbols() end, desc = "Document Symbols" },
+    { "<leader>gw", function () require("telescope.builtin").lsp_workspace_symbols() end, desc = "Workspace Symbols" },
+    { "z=", function () require("telescope.builtin").spell_suggest() end, desc = "Telescope Spell Suggestions" },
+  },
 }
