@@ -85,7 +85,6 @@ local function config_telescope(_plugin, _opts)
 end
 
 local function find_files()
-  local telescope = require("telescope")
   local themes = require("telescope.themes")
   local find_files_theme = themes.get_dropdown({
     previewer = false,
@@ -95,7 +94,7 @@ local function find_files()
       height = 0.8,
     },
   })
-  telescope.builtin.find_files(find_files_theme)
+  require("telescope.builtin").find_files(find_files_theme)
 end
 
 --- @type LazyPluginSpec
