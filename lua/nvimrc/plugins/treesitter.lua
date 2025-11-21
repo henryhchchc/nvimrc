@@ -38,6 +38,7 @@ local languages = {
   "rust",
   "ssh_config",
   "starlark",
+  "sql",
   "swift",
   "tmux",
   "toml",
@@ -47,6 +48,7 @@ local languages = {
   "xml",
   "yaml",
   "zig",
+  "zsh",
 }
 
 --- @type LazyPluginSpec[]
