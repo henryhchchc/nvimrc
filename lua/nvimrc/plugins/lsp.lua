@@ -25,7 +25,7 @@ local function config_lsp(_plugin, _opts)
     "pyrefly",
     "ruff",
     "sourcekit",
-    "taplo",
+    "tombi",
     "texlab",
     "tinymist",
     "ts_ls",
