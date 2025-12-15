@@ -38,6 +38,7 @@ local languages = {
   "rust",
   "ssh_config",
   "starlark",
+  "strace",
   "sql",
   "swift",
   "tmux",
