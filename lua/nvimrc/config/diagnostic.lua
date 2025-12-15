@@ -6,13 +6,13 @@ local diag_icons = {
 }
 
 vim.diagnostic.config({
-  virtual_lines = {
-    current_line = true,
-  },
   signs = { text = diag_icons },
   underline = true,
   update_in_insert = false,
   severity_sort = true,
+  virtual_text = {
+    severity = vim.diagnostic.severity.INFO,
+  },
   float = {
     severity_sort = true,
     format = function (diag)
