@@ -76,5 +76,12 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = "BufEnter",
+    config = true,
+    --- @type TSContext.UserConfig
+    opts = {
+      enable = true,
+      max_lines = 6,
+      min_window_height = 20,
+    },
   },
 }
