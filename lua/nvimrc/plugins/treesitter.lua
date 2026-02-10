@@ -58,9 +58,10 @@ return {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
     build = ":TSUpdate",
+    lazy = false,
     config = function (_self, _opts)
+      require("nvim-treesitter").setup()
       require("nvim-treesitter").install(languages, {
-        max_jobs = 1,
         generate = true,
       })
       vim.api.nvim_create_autocmd("FileType", {
