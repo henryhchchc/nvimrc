@@ -8,10 +8,15 @@ local options = {
     },
     documentation = {
       auto_show = true,
-      auto_show_delay_ms = 500,
+      auto_show_delay_ms = 1000,
     },
   },
-  signature = { enabled = true },
+  signature = {
+    enabled = true,
+    window = {
+      show_documentation = true,
+    },
+  },
   keymap = {
     preset = "none",
 
