@@ -1,9 +1,4 @@
 local exts = require("nvimrc.plugins.lualine.extensions")
-local format = {
-  "fileformat",
-  icons_enabled = true,
-  symbols = { unix = "LF", dos = "CRLF", mac = "CR" },
-}
 
 local lualine_options = {
   options = {
@@ -21,7 +16,7 @@ local lualine_options = {
         "filename",
         file_status = true,
         new_file_status = true,
-        path = 1,
+        path = 4,
         shorting_target = 40,
         symbols = {
           modified = "•",
@@ -40,8 +35,6 @@ local lualine_options = {
       exts.word_count,
       "filesize",
       "filetype",
-      "encoding",
-      format,
     },
     lualine_z = { exts.lsp, "copilot" },
   },
