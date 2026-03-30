@@ -1,9 +1,11 @@
 vim.loader.enable()
 
 if vim.fn.argc() > 0 then
-  local arg0 = vim.fn.argv(0)
-  local stat = type(arg0) == "string" and vim.uv.fs_stat(arg0)
-  if stat and stat.type == "directory" then vim.cmd.cd(arg0) end
+  if vim.fn.len(vim.v.argf) > 0 then
+    local file_arg = vim.v.argf[1]
+    local stat = type(file_arg) == "string" and vim.uv.fs_stat(file_arg)
+    if stat and stat.type == "directory" then vim.cmd.cd(file_arg) end
+  end
 end
 
 require("nvimrc.config.options")

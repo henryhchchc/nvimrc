@@ -18,7 +18,8 @@ function M.lsp_on_attach(client, bufnr)
   setup_keymaps(bufnr)
 
   vim.lsp.codelens.enable(true)
-  vim.lsp.inlay_hint.enable(true, {})
+  vim.lsp.inlay_hint.enable(true)
+  vim.lsp.semantic_tokens.enable(true)
 
   local lsp_methods = vim.lsp.protocol.Methods
   if client:supports_method(lsp_methods.textDocument_formatting) then
