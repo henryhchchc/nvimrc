@@ -17,19 +17,10 @@ end
 function M.lsp_on_attach(client, bufnr)
   setup_keymaps(bufnr)
 
+  vim.lsp.codelens.enable(true)
+  vim.lsp.inlay_hint.enable(true, {})
+
   local lsp_methods = vim.lsp.protocol.Methods
-
-  if client:supports_method(lsp_methods.textDocument_codeLens) then
-    local group_name = string.format("lsp_codelens_%d", bufnr)
-    local codelen_group = vim.api.nvim_create_augroup(group_name, {})
-    vim.lsp.codelens.refresh({ bufnr = bufnr })
-    vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "InsertLeave", "LspTokenUpdate" }, {
-      buffer = bufnr,
-      group = codelen_group,
-      callback = function (_event) vim.lsp.codelens.refresh({ bufnr = bufnr }) end,
-    })
-  end
-
   if client:supports_method(lsp_methods.textDocument_formatting) then
     vim.b["autoformat"] = true
     vim.keymap.set(
@@ -46,7 +37,6 @@ function M.lsp_on_attach(client, bufnr)
     vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
   end
 
-  vim.lsp.inlay_hint.enable(true, {})
 
   if client:supports_method(lsp_methods.textDocument_documentHighlight) then
     -- Show LSP document highlight on cursor hold
