@@ -21,7 +21,6 @@ local function config_lsp(_plugin, _opts)
     "lua_ls",
     "neocmake",
     "nil_ls",
-    "pyrefly",
     "ruff",
     "rumdl",
     "sourcekit",
@@ -29,6 +28,7 @@ local function config_lsp(_plugin, _opts)
     "tinymist",
     "tombi",
     "ts_ls",
+    "ty",
     "typos_lsp",
     "yamlls",
   })
