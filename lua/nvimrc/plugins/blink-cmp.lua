@@ -3,7 +3,9 @@ local options = {
   completion = {
     list = {
       selection = {
-        preselect = function (ctx) return ctx.mode ~= "cmdline" end,
+        preselect = function (ctx)
+          return ctx.mode ~= "cmdline"
+        end,
       },
     },
     documentation = {
@@ -80,14 +82,18 @@ return {
       pattern = "BlinkCmpMenuOpen",
       callback = function ()
         local copilot = package.loaded["copilot.suggestion"]
-        if copilot then copilot.dismiss() end
+        if copilot then
+          copilot.dismiss()
+        end
         vim.b.copilot_suggestion_hidden = true
       end,
     })
 
     vim.api.nvim_create_autocmd("User", {
       pattern = "BlinkCmpMenuClose",
-      callback = function () vim.b.copilot_suggestion_hidden = false end,
+      callback = function ()
+        vim.b.copilot_suggestion_hidden = false
+      end,
     })
   end,
 }

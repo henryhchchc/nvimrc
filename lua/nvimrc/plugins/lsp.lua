@@ -1,37 +1,12 @@
 local function config_lsp(_plugin, _opts)
   local lsp = require("nvimrc.lsp")
 
-  local capabilities = require("blink.cmp").get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
-
   vim.lsp.config("*", {
-    on_attach = lsp.lsp_on_attach,
-    capabilities = capabilities,
+    on_attach = lsp.on_attach,
+    capabilities = lsp.capabilities.create(),
   })
 
-  vim.lsp.enable({
-    "bashls",
-    "clangd",
-    "cssls",
-    "dockerls",
-    "gopls",
-    "html",
-    "jdtls",
-    "jsonls",
-    "kotlin_lsp",
-    "lua_ls",
-    "neocmake",
-    "nil_ls",
-    "ruff",
-    "rumdl",
-    "sourcekit",
-    "texlab",
-    "tinymist",
-    "tombi",
-    "ts_ls",
-    "ty",
-    "typos_lsp",
-    "yamlls",
-  })
+  vim.lsp.enable(lsp.servers)
 end
 
 --- @type LazyPluginSpec

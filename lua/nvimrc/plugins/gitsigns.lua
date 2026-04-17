@@ -1,6 +1,8 @@
 local function git_signs_on_attach(bufnr)
   local gs = package.loaded.gitsigns
-  local function bufnmap(key, func, desc) vim.keymap.set("n", key, func, { buffer = bufnr, desc = desc }) end
+  local function bufnmap(key, func, desc)
+    vim.keymap.set("n", key, func, { buffer = bufnr, desc = desc })
+  end
 
   bufnmap("<leader>ghs", gs.stage_hunk, "Git Stage Hunk")
   bufnmap("dp", gs.reset_hunk, "Git Reset Hunk")

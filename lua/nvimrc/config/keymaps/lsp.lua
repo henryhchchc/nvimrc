@@ -1,0 +1,15 @@
+vim.keymap.set("n", "<leader>dq", vim.diagnostic.setqflist, { desc = "Send diagnostics to quickfix list" })
+
+vim.keymap.set({ "n", "v" }, "g.", function()
+  vim.lsp.buf.code_action()
+end, { desc = "LSP Code Actions" })
+vim.keymap.set({ "n", "v" }, "<leader>lf", function()
+  vim.lsp.buf.format({ async = true })
+end, { desc = "LSP Format" })
+
+vim.keymap.set("n", "]d", function()
+  vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "Jump to next diagnostic" })
+vim.keymap.set("n", "[d", function()
+  vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "Jump to previous diagnostic" })
