@@ -41,6 +41,7 @@ return {
   "strace",
   "sql",
   "swift",
+  "svelte",
   "tmux",
   "toml",
   "typst",
