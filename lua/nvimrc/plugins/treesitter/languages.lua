@@ -42,7 +42,6 @@ return {
   "sql",
   "swift",
   "svelte",
-  "tmux",
   "toml",
   "typst",
   "vim",
