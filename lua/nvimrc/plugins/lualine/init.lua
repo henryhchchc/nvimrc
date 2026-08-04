@@ -36,7 +36,7 @@ local lualine_options = {
       "filesize",
       "filetype",
     },
-    lualine_z = { exts.lsp, "copilot" },
+    lualine_z = { exts.lsp },
   },
   extensions = {
     "man",
