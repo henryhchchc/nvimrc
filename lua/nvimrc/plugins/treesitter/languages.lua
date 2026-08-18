@@ -43,6 +43,7 @@ return {
   "swift",
   "svelte",
   "toml",
+  "typescript",
   "typst",
   "vim",
   "vimdoc",
