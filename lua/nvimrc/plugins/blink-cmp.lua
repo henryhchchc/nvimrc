@@ -54,7 +54,6 @@ local options = {
   },
   cmdline = {
     completion = { ghost_text = { enabled = true } },
-    sources = { "cmdline", "buffer", "omni" },
     keymap = {
       preset = "cmdline",
 
@@ -71,10 +70,14 @@ local options = {
 return {
   "saghen/blink.cmp",
   event = { "InsertEnter", "CmdlineEnter" },
-  version = "1.*",
+  branch = "main",
   dependencies = {
+    { "saghen/blink.lib" },
     { "xzbdmw/colorful-menu.nvim" },
   },
+  build = function ()
+    require("blink.cmp").build():pwait()
+  end,
   opts = options,
   config = function (_plugin, opts)
     require("blink.cmp").setup(opts)
