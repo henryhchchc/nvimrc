@@ -3,7 +3,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   group = auto_format_group,
   callback = function ()
     if vim.b.autoformat then
-      vim.lsp.buf.format({ async = false })
+      vim.lsp.buf.format()
     end
   end,
 })

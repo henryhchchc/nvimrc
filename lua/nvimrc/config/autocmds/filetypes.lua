@@ -25,8 +25,8 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = close_window_filetypes,
   callback = function (event)
     vim.bo[event.buf].buflisted = false
-    vim.keymap.set("n", "q", vim.cmd.close, { desc = "Close window", buffer = event.buf })
-    vim.keymap.set("n", "<C-c>", vim.cmd.close, { desc = "Close window", buffer = event.buf })
+    vim.keymap.set("n", "q", vim.cmd.close, { desc = "Close window", buf = event.buf })
+    vim.keymap.set("n", "<C-c>", vim.cmd.close, { desc = "Close window", buf = event.buf })
   end,
 })
 

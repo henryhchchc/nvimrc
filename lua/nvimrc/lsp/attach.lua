@@ -13,7 +13,7 @@ local function setup_autoformat(client, bufnr)
 
   vim.keymap.set("n", "<leader>uf", function ()
     utils.toggle_buf_var("autoformat")
-  end, { desc = "Toggle autoformat", buffer = bufnr })
+  end, { desc = "Toggle autoformat", buf = bufnr })
 end
 
 local function setup_folding(client)
@@ -32,21 +32,21 @@ local function setup_document_highlight(client, bufnr)
 
   local group = vim.api.nvim_create_augroup(("lsp_document_highlight_%d"):format(bufnr), { clear = true })
   vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-    buffer = bufnr,
+    buf = bufnr,
     group = group,
     callback = vim.lsp.buf.document_highlight,
   })
   vim.api.nvim_create_autocmd("CursorMoved", {
-    buffer = bufnr,
+    buf = bufnr,
     group = group,
     callback = vim.lsp.buf.clear_references,
   })
   vim.api.nvim_create_autocmd("LspDetach", {
-    buffer = bufnr,
+    buf = bufnr,
     group = group,
     callback = function ()
       vim.lsp.buf.clear_references()
-      vim.api.nvim_clear_autocmds({ group = group, buffer = bufnr })
+      vim.api.nvim_clear_autocmds({ group = group, buf = bufnr })
     end,
   })
 end

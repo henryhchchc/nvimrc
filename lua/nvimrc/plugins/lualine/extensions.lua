@@ -57,7 +57,7 @@ M.word_count = {
     end
   end,
   cond = function ()
-    return vim.tbl_contains(wordcount_fts, vim.bo.filetype)
+    return vim.list_contains(wordcount_fts, vim.bo.filetype)
   end,
 }
 

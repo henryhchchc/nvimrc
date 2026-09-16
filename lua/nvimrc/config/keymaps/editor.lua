@@ -22,7 +22,7 @@ local function open_cfile()
   if vim.env.SSH_TTY then
     vim.notify("Cannot open file over SSH.\nThe link is copied via OSC 52.", vim.log.levels.INFO)
     local osc52_seq = string.format("\x1b]52;c;%s\a", vim.base64.encode(file_name))
-    vim.fn.chansend(vim.v.stderr, osc52_seq)
+    vim.api.nvim_ui_send(osc52_seq)
   else
     vim.ui.open(file_name)
   end

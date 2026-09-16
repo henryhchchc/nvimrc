@@ -8,10 +8,10 @@ local function on_attach(client, bufnr)
     end
   end
 
-  vim.keymap.set("n", "g.", rustLsp("codeAction"), { desc = "LSP Code Actions", buffer = bufnr })
-  vim.keymap.set("n", "gX", rustLsp("openDocs"), { desc = "Open docs.rs", buffer = bufnr })
-  vim.keymap.set("n", "K", rustLsp({ "hover", "actions" }), { desc = "LSP Hover", buffer = bufnr })
-  vim.keymap.set("n", "J", rustLsp("joinLines"), { desc = "Rust Join Lines", buffer = bufnr })
+  vim.keymap.set("n", "g.", rustLsp("codeAction"), { desc = "LSP Code Actions", buf = bufnr })
+  vim.keymap.set("n", "gX", rustLsp("openDocs"), { desc = "Open docs.rs", buf = bufnr })
+  vim.keymap.set("n", "K", rustLsp({ "hover", "actions" }), { desc = "LSP Hover", buf = bufnr })
+  vim.keymap.set("n", "J", rustLsp("joinLines"), { desc = "Rust Join Lines", buf = bufnr })
 end
 
 local rustacean_cfg = require("rustaceanvim.config.server")

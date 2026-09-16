@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   callback = function (event)
     local exclude = { "gitcommit" }
     local buf = event.buf
-    if vim.tbl_contains(exclude, vim.bo[buf].filetype) then
+    if vim.list_contains(exclude, vim.bo[buf].filetype) then
       return
     end
 

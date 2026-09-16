@@ -22,7 +22,7 @@ local highlight_yanked = vim.api.nvim_create_augroup("highlight_yanked", {})
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = highlight_yanked,
   callback = function ()
-    vim.highlight.on_yank({ timeout = 200 })
+    vim.hl.on_yank({ timeout = 200 })
   end,
 })
 
