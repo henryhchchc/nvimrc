@@ -10,7 +10,4 @@ local function config_lsp(_plugin, _opts)
 end
 
 --- @type LazyPluginSpec
-return {
-  "neovim/nvim-lspconfig",
-  config = config_lsp,
-}
+return { "neovim/nvim-lspconfig", config = config_lsp }

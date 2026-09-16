@@ -8,4 +8,5 @@ return {
     setup.setup()
   end,
   keys = keys,
+  cmd = "Telescope",
 }

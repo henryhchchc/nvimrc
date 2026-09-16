@@ -15,10 +15,7 @@ return {
     },
   },
   { "stevearc/oil.nvim", cmd = "Oil", config = true },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "BufEnter",
-  },
+  { "lukas-reineke/indent-blankline.nvim", event = "BufEnter" },
   { "nvimtools/none-ls.nvim", event = "VimEnter" },
   { "MunifTanjim/nui.nvim" },
   { "b0o/schemastore.nvim" },

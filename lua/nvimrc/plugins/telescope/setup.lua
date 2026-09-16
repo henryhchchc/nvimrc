@@ -12,23 +12,9 @@ local function shared_mappings(actions)
     ["<C-u>"] = actions.preview_scrolling_up,
     ["<C-d>"] = actions.preview_scrolling_down,
     ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-    ["<C-w>"] = function()
+    ["<C-w>"] = function ()
       vim.cmd("normal! bcw")
     end,
-  }
-end
-
-local function find_files_command()
-  return {
-    "fd",
-    "--type",
-    "f",
-    "--strip-cwd-prefix",
-    "--hidden",
-    "--exclude",
-    ".git/",
-    "--exclude",
-    ".git",
   }
 end
 
@@ -40,15 +26,13 @@ function M.setup()
   telescope.setup({
     pickers = {
       spell_suggest = { theme = "cursor" },
-      find_files = {
-        find_command = find_files_command(),
-        theme = "dropdown",
-      },
+      find_files = { theme = "dropdown" },
       help_tags = {
         mappings = { i = { ["<CR>"] = actions.select_vertical } },
       },
     },
     defaults = {
+      file_ignore_patterns = { "^.git/?" },
       sorting_strategy = "ascending",
       layout_strategy = "flex",
       layout_config = {
@@ -63,29 +47,6 @@ function M.setup()
           ["j"] = actions.move_selection_next,
           ["k"] = actions.move_selection_previous,
         }),
-      },
-      vimgrep_arguments = {
-        "rg",
-        "--color=never",
-        "--no-heading",
-        "--with-filename",
-        "--line-number",
-        "--column",
-        "--smart-case",
-        "--trim",
-      },
-    },
-    extensions = {
-      fzf = {
-        fuzzy = true,
-        override_generic_sorter = true,
-        override_file_sorter = true,
-        case_mode = "smart_case",
-      },
-      ast_grep = {
-        command = { "sg", "--json=stream" },
-        grep_open_files = false,
-        lang = nil,
       },
     },
   })
