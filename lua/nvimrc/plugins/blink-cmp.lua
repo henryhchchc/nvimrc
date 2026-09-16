@@ -69,7 +69,6 @@ local options = {
 --- @type LazyPluginSpec
 return {
   "saghen/blink.cmp",
-  event = { "InsertEnter", "CmdlineEnter" },
   branch = "main",
   dependencies = {
     { "saghen/blink.lib" },

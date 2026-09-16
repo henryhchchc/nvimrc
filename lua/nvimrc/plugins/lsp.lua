@@ -3,7 +3,6 @@ local function config_lsp(_plugin, _opts)
 
   vim.lsp.config("*", {
     on_attach = lsp.on_attach,
-    capabilities = lsp.capabilities.create(),
   })
 
   vim.lsp.enable(lsp.servers)

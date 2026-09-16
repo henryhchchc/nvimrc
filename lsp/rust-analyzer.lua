@@ -30,11 +30,7 @@ return {
   cmd = { "rust-analyzer" },
   filetypes = { "rust" },
   on_attach = on_attach,
-  capabilities = vim.tbl_deep_extend(
-    "force",
-    shared_lsp.capabilities.create(),
-    rustacean_cfg.create_client_capabilities()
-  ),
+  capabilities = rustacean_cfg.create_client_capabilities(),
   before_init = nil,
   init_options = {
     check = {
