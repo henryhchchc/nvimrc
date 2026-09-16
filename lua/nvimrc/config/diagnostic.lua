@@ -5,8 +5,15 @@ local diag_icons = {
   [vim.diagnostic.severity.HINT] = "",
 }
 
+--- @param _ vim.Diagnostic?
+--- @param bufnr integer
+local function on_jump(_, bufnr)
+  vim.diagnostic.open_float({ bufnr = bufnr })
+end
+
 vim.diagnostic.config({
   signs = { text = diag_icons },
+  jump = { on_jump = on_jump },
   underline = true,
   update_in_insert = false,
   severity_sort = true,

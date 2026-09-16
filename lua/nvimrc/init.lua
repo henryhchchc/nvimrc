@@ -1,4 +1,5 @@
 vim.loader.enable()
+require("vim._core.ui2").enable()
 
 if vim.fn.argc() > 0 then
   if vim.fn.len(vim.v.argf) > 0 then
@@ -10,7 +11,6 @@ if vim.fn.argc() > 0 then
   end
 end
 
-require("vim._core.ui2").enable({ enable = true })
 
 require("nvimrc.config.options")
 require("nvimrc.lazy")
