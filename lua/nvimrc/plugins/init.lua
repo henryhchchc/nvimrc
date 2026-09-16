@@ -15,7 +15,7 @@ return {
     },
   },
   { "stevearc/oil.nvim", cmd = "Oil", config = true },
-  { "lukas-reineke/indent-blankline.nvim", event = "BufEnter" },
+  { "lukas-reineke/indent-blankline.nvim", event = { "BufReadPre", "BufNewFile" } },
   { "nvimtools/none-ls.nvim", event = "VimEnter" },
   { "MunifTanjim/nui.nvim" },
   { "b0o/schemastore.nvim" },
@@ -23,7 +23,7 @@ return {
   { "kylechui/nvim-surround", config = true, event = "VeryLazy" },
   {
     "HiPhish/rainbow-delimiters.nvim",
-    event = "BufEnter",
+    event = { "BufReadPre", "BufNewFile" },
     config = function (_plugin, opts)
       require("rainbow-delimiters.setup").setup(opts)
     end,

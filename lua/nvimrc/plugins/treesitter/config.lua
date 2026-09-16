@@ -6,7 +6,6 @@ function M.setup()
   local treesitter = require("nvim-treesitter")
 
   treesitter.setup()
-  treesitter.install(languages, { max_jobs = 1 })
 
   vim.api.nvim_create_autocmd("FileType", {
     pattern = languages,
@@ -16,6 +15,10 @@ function M.setup()
       vim.bo.indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
     end,
   })
+
+  vim.schedule(function ()
+    treesitter.install(languages, { max_jobs = 1 })
+  end)
 end
 
 return M

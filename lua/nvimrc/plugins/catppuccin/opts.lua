@@ -19,6 +19,6 @@ return {
       base = terminal.background,
     },
   },
-  default_integrations = false,
+  auto_integrations = false,
   integrations = require("nvimrc.plugins.catppuccin.integrations"),
 }

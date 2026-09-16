@@ -11,7 +11,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
-    event = "BufEnter",
+    event = { "BufReadPre", "BufNewFile" },
     config = true,
     --- @type TSContext.UserConfig
     opts = {
