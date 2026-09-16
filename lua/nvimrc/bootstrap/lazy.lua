@@ -42,30 +42,11 @@ local function clone_lazy(lazy_path)
     fail_bootstrap("git is not available in PATH")
   end
 
-  echo({
-    { "Downloading and installing lazy.nvim" },
-  }, false)
-
-  if vim.system then
-    local result = vim
-        .system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazy_repo, lazy_path }, { text = true })
-        :wait()
-    if result.code ~= 0 then
-      fail_bootstrap(result.stderr ~= "" and result.stderr or result.stdout)
-    end
-    return
-  end
-
-  local output = vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "--branch=stable",
-    lazy_repo,
-    lazy_path,
-  })
-  if vim.v.shell_error ~= 0 then
-    fail_bootstrap(output)
+  echo({ { "Downloading and installing lazy.nvim" } }, false)
+  local git_clone_cmd = { "git", "clone", "--filter=blob:none", "--branch=stable", lazy_repo, lazy_path }
+  local result = vim.system(git_clone_cmd, { text = true }):wait()
+  if result.code ~= 0 then
+    fail_bootstrap(result.stderr ~= "" and result.stderr or result.stdout)
   end
 end
 
