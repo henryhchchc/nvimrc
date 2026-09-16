@@ -66,10 +66,18 @@ local options = {
   },
 }
 
+-- Defer until after startup when a UI is present. VeryLazy is emitted on
+-- UIEnter, which never happens headless, so fall back to reading a buffer.
+-- Keep this in sync with nvim-lspconfig, which depends on blink.cmp.
+local event = require("lazy.core.config").headless()
+    and { "BufReadPre", "BufNewFile" }
+  or "VeryLazy"
+
 --- @type LazyPluginSpec
 return {
   "saghen/blink.cmp",
   branch = "main",
+  event = event,
   dependencies = {
     { "saghen/blink.lib" },
     { "xzbdmw/colorful-menu.nvim" },
