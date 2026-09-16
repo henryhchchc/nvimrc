@@ -16,6 +16,4 @@ require("nvimrc.config.options")
 require("nvimrc.lazy")
 
 require("nvimrc.config.autocmds")
-require("nvimrc.config.diagnostic")
 require("nvimrc.config.keymap")
-require("nvimrc.config.ft")

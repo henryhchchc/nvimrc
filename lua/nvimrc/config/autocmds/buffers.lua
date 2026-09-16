@@ -18,7 +18,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
       return
     end
 
-    vim.b[buf].lazyvim_last_loc = true
     local mark = vim.api.nvim_buf_get_mark(buf, '"')
     local line_count = vim.api.nvim_buf_line_count(buf)
     if mark[1] > 0 and mark[1] <= line_count then
@@ -30,5 +29,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 -- Stop snippet completion when leaving insert mode
 vim.api.nvim_create_autocmd("InsertLeave", {
   group = vim.api.nvim_create_augroup("stop_snippet", {}),
-  callback = vim.snippet.stop,
+  callback = function ()
+    vim.snippet.stop()
+  end,
 })

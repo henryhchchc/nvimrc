@@ -1,5 +1,3 @@
-local opts = require("nvimrc.plugins.neotree.opts")
-
 --- @type LazyPluginSpec
 return {
   "nvim-neo-tree/neo-tree.nvim",
@@ -18,5 +16,7 @@ return {
       desc = "Explorer NeoTree (root dir)",
     },
   },
-  opts = opts,
+  opts = function ()
+    return require("nvimrc.plugins.neotree.opts")
+  end,
 }

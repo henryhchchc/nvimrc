@@ -1,6 +1,8 @@
 local function config_lsp(_plugin, _opts)
   local lsp = require("nvimrc.lsp")
 
+  require("nvimrc.config.diagnostic")
+
   vim.lsp.config("*", {
     on_attach = lsp.on_attach,
   })

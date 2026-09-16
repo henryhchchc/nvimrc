@@ -1,4 +1,6 @@
-vim.keymap.set("n", "<leader>dq", vim.diagnostic.setqflist, { desc = "Send diagnostics to quickfix list" })
+vim.keymap.set("n", "<leader>dq", function ()
+  vim.diagnostic.setqflist()
+end, { desc = "Send diagnostics to quickfix list" })
 
 vim.keymap.set({ "n", "v" }, "g.", function () vim.lsp.buf.code_action() end, { desc = "LSP Code Actions" })
 vim.keymap.set({ "n", "v" }, "<leader>lf", function () vim.lsp.buf.format({ async = true }) end, { desc = "LSP Format" })
