@@ -27,7 +27,7 @@ vim.diagnostic.config({
       if source and source:find("%.$") then
         source = source:gsub("%.", "")
       end
-      return string.format("%s [%s] %s", diag_icons[diag.severity], source, diag.message)
+      return string.format("%s [%s] %s", diag_icons[diag.severity], source or "", diag.message)
     end,
   },
 })

@@ -26,13 +26,12 @@ function M.setup()
   telescope.setup({
     pickers = {
       spell_suggest = { theme = "cursor" },
-      find_files = { theme = "dropdown" },
       help_tags = {
         mappings = { i = { ["<CR>"] = actions.select_vertical } },
       },
     },
     defaults = {
-      file_ignore_patterns = { "^.git/?" },
+      file_ignore_patterns = { "%.git/" },
       sorting_strategy = "ascending",
       layout_strategy = "flex",
       layout_config = {
@@ -41,7 +40,7 @@ function M.setup()
       winblend = 10,
       scroll_strategy = "limit",
       default_mappings = {
-        i = vim.tbl_deep_extend("force", mappings, {}),
+        i = mappings,
         n = vim.tbl_deep_extend("force", mappings, {
           ["<esc>"] = actions.close,
           ["j"] = actions.move_selection_next,
