@@ -51,18 +51,32 @@ local function setup_document_highlight(client, bufnr)
   })
 end
 
---- @param client vim.lsp.Client
---- @param bufnr number
-function M.on_attach(client, bufnr)
-  keymaps.setup(bufnr)
+--- Attach behaviour is wired through LspAttach rather than
+--- vim.lsp.config("*").on_attach, because a server config's on_attach replaces
+--- the "*" one instead of composing with it: nvim-lspconfig's configs for
+--- clangd, rust_analyzer, texlab, tinymist and ts_ls define their own (to
+--- create buffer-local commands), which silently disabled everything below,
+--- including autoformat on save.
+function M.setup()
+  vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("nvimrc_lsp_attach", { clear = true }),
+    callback = function (event)
+      local client = vim.lsp.get_client_by_id(event.data.client_id)
+      if not client then
+        return
+      end
 
-  vim.lsp.codelens.enable(true)
-  vim.lsp.inlay_hint.enable(true)
-  vim.lsp.semantic_tokens.enable(true)
+      keymaps.setup(event.buf)
 
-  setup_autoformat(client, bufnr)
-  setup_folding(client)
-  setup_document_highlight(client, bufnr)
+      vim.lsp.codelens.enable(true)
+      vim.lsp.inlay_hint.enable(true)
+      vim.lsp.semantic_tokens.enable(true)
+
+      setup_autoformat(client, event.buf)
+      setup_folding(client)
+      setup_document_highlight(client, event.buf)
+    end,
+  })
 end
 
 return M

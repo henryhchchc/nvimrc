@@ -3,8 +3,9 @@ local function config_lsp(_plugin, _opts)
 
   require("nvimrc.config.diagnostic")
 
+  attach.setup()
+
   vim.lsp.config("*", {
-    on_attach = attach.on_attach,
     capabilities = require("blink.cmp").get_lsp_capabilities(),
   })
 
