@@ -10,6 +10,7 @@ return {
   "neocmake",
   "ruff",
   "rumdl",
+  "rust_analyzer",
   "sourcekit",
   "texlab",
   "tinymist",
