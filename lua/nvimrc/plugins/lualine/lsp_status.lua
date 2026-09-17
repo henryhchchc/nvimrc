@@ -1,12 +1,12 @@
-local language_server_ignore = { "null-ls", "copilot", "typos_lsp" }
+local language_server_ignore = { "copilot", "typos_lsp" }
 
 local function get_attached_lsps()
   local bufnr = vim.api.nvim_get_current_buf()
   return vim.iter(vim.lsp.get_clients({ bufnr = bufnr }))
-    :filter(function (client)
-      return not vim.list_contains(language_server_ignore, client.name)
-    end)
-    :totable()
+      :filter(function (client)
+        return not vim.list_contains(language_server_ignore, client.name)
+      end)
+      :totable()
 end
 
 local function lsp_name()

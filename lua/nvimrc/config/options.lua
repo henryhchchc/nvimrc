@@ -20,7 +20,7 @@ vim.opt.grepformat = "%f:%l:%c:%m"
 vim.opt.grepprg = "rg --vimgrep"
 vim.opt.ignorecase = true
 vim.opt.inccommand = "nosplit"
-vim.opt.laststatus = 0
+vim.opt.laststatus = 3
 vim.opt.list = true
 vim.opt.listchars:append("tab:> ,trail:⋅,nbsp:⋅,multispace:⋅,conceal:?")
 vim.opt.mouse = "ar"

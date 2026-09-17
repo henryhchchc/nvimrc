@@ -16,15 +16,6 @@ end
 
 local rustacean_cfg = require("rustaceanvim.config.server")
 
-local executors = require("rustaceanvim.executors")
---- @type rustaceanvim.Opts
-local rust_config = {
-  tools = {
-    executor = executors.toggleterm,
-  },
-}
-vim.g.rustaceanvim = rust_config
-
 ---@type vim.lsp.Config
 return {
   cmd = { "rust-analyzer" },
