@@ -1,7 +1,7 @@
 local M = {}
 
 local function builtin(method)
-  return function()
+  return function ()
     require("telescope.builtin")[method]()
   end
 end
