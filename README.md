@@ -2,13 +2,11 @@
 
 ## Usage
 
-Create a symbolic link in the Neovim configuration directory to this repository as follows.
-Let's assume that `pwd` is the directory where you clone this repository.
+Symlink the repository itself into place as the Neovim config directory.
+Run this from the repository root, and make sure `~/.config/nvim` does not already exist as a real directory (move it aside first): `ln -sfn` into an existing directory would create the link *inside* it rather than replacing it.
 
 ```bash
-mkdir -p ~/.config/nvim
-ln -sf "$(pwd)/init.lua" ~/.config/nvim/init.lua
-ln -sf "$(pwd)/lua" ~/.config/nvim/lua
+ln -sfn "$(pwd)" ~/.config/nvim
 ```
 
 Start `nvim` and follow the on-screen instructions.
