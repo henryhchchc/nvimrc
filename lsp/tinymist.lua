@@ -1,8 +1,12 @@
 ---@type vim.lsp.Config
 return {
-  init_options = {
-    exportPdf = "onDocumentHasTitle",
-    outputPath = "$root/$name",
+  settings = {
+    exportPdf = "onSave",
     formatterMode = "typstyle",
+    lint = {
+      enabled = true,
+    },
+    outputPath = "$root/$name",
+    syntaxOnly = "disable",
   },
 }
