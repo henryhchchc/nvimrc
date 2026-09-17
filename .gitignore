@@ -1,9 +1,1 @@
-# OS noise
-.DS_Store
-._*
-*.icloud
-
-# Editor noise
-*~
-*.swp
-*.swo
+nvim.log
