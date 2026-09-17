@@ -1,3 +1,5 @@
+; extends
+
 ((tag
   (name) @comment.warning @nospell
   ("(" @punctuation.bracket
@@ -5,4 +7,3 @@
     ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
   (#any-of? @comment.warning "SAFETY"))
-
