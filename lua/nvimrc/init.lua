@@ -16,4 +16,4 @@ require("nvimrc.config.options")
 require("nvimrc.lazy")
 
 require("nvimrc.config.autocmds")
-require("nvimrc.config.keymap")
+require("nvimrc.config.keymaps")

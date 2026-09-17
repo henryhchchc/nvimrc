@@ -1,4 +1,4 @@
-local shared_lsp = require("nvimrc.lsp")
+local shared_lsp = require("nvimrc.lsp.attach")
 
 local function on_attach(client, bufnr)
   shared_lsp.on_attach(client, bufnr)

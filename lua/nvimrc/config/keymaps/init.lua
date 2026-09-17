@@ -1,5 +1,5 @@
 require("nvimrc.config.keymaps.editor")
 require("nvimrc.config.keymaps.input")
-require("nvimrc.config.keymaps.lsp")
+require("nvimrc.config.keymaps.lsp_global")
 require("nvimrc.config.keymaps.toggles")
 require("nvimrc.config.keymaps.terminal")

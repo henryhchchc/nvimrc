@@ -16,8 +16,6 @@ return {
   },
   { "stevearc/oil.nvim", cmd = "Oil", config = true },
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {}, event = { "BufReadPre", "BufNewFile" } },
-  { "MunifTanjim/nui.nvim" },
-  { "b0o/schemastore.nvim" },
   { "folke/which-key.nvim", config = true, event = "UIEnter" },
   { "kylechui/nvim-surround", config = true, event = "VeryLazy" },
   {

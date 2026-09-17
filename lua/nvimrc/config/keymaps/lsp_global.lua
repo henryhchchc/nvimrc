@@ -1,3 +1,4 @@
+-- Global LSP mappings: usable without a client attached to the current buffer.
 vim.keymap.set("n", "<leader>dq", function ()
   vim.diagnostic.setqflist()
 end, { desc = "Send diagnostics to quickfix list" })

@@ -8,16 +8,15 @@ function M.setup()
   treesitter.setup()
 
   vim.api.nvim_create_autocmd("FileType", {
-    pattern = languages,
+    pattern = languages.filetypes,
     callback = function ()
       vim.treesitter.start()
-      vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
       vim.bo.indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
     end,
   })
 
   vim.schedule(function ()
-    treesitter.install(languages, { max_jobs = 1 })
+    treesitter.install(languages.parsers, { max_jobs = 1 })
   end)
 end
 

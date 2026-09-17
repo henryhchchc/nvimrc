@@ -1,5 +1,5 @@
---- @type TSConfig
-return {
+--- Parsers to install and update.
+local parsers = {
   "bash",
   "bibtex",
   "c",
@@ -51,4 +51,18 @@ return {
   "yaml",
   "zig",
   "zsh",
+}
+
+--- Parsers that are only ever injected into another language's tree. They are
+--- never a filetype, so they must not be used as a FileType pattern.
+local injected_only = {
+  comment = true,
+  markdown_inline = true,
+}
+
+return {
+  parsers = parsers,
+  filetypes = vim.tbl_filter(function (name)
+    return not injected_only[name]
+  end, parsers),
 }

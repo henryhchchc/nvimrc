@@ -1,3 +1,4 @@
+-- Buffer-local mappings applied when a language server attaches.
 local M = {}
 
 function M.setup(bufnr)
