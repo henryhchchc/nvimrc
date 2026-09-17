@@ -33,7 +33,7 @@ return {
   neotree = true,
   rainbow_delimiters = true,
   semantic_tokens = true,
-  telescope = { enabled = true },
+  telescope = true,
   treesitter = true,
   treesitter_context = true,
   which_key = true,
