@@ -1,20 +1,5 @@
 local M = {}
 
-M.neotest = {
-  sections = {
-    lualine_a = {
-      function ()
-        return "NeoTest"
-      end,
-    },
-    lualine_c = {
-      { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-      { "filename", file_status = false },
-    },
-  },
-  filetypes = { "neotest-output-panel", "neotest-output", "neotest-summary" },
-}
-
 M.autoformat = {
   function ()
     return "󰁨 "

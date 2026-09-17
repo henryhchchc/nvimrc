@@ -4,9 +4,6 @@ local close_window_filetypes = {
   "man",
   "notify",
   "qf",
-  "neotest-output",
-  "neotest-summary",
-  "neotest-output-panel",
 }
 
 local natural_language_filetypes = {

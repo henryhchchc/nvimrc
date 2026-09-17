@@ -47,7 +47,6 @@ local lualine_options = {
     "toggleterm",
     "oil",
     exts.help,
-    -- exts.neotest,
   },
 }
 

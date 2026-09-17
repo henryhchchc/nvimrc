@@ -1,4 +1,4 @@
-local language_server_ignore = { "copilot", "typos_lsp" }
+local language_server_ignore = { "typos_lsp" }
 
 local function get_attached_lsps()
   local bufnr = vim.api.nvim_get_current_buf()
@@ -13,7 +13,7 @@ local function lsp_name()
   local clients = get_attached_lsps()
   local lsp_count = #clients
   local prefix = " "
-  local content = "!"
+  local content
   if lsp_count == 1 then
     content = clients[1].name
   elseif lsp_count == 2 then

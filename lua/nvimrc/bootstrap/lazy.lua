@@ -6,29 +6,21 @@ local function is_interactive()
   return #vim.api.nvim_list_uis() > 0
 end
 
-local function echo(chunks, history)
-  vim.api.nvim_echo(chunks, history or false, {})
-end
-
-local function format_failure(output)
+local function fail_bootstrap(output)
   if output == nil or output == "" then
-    return "Unknown error"
+    output = "Unknown error"
   end
 
-  return output
-end
-
-local function fail_bootstrap(output)
   local message = {
     { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-    { format_failure(output), "WarningMsg" },
+    { output, "WarningMsg" },
   }
 
   if is_interactive() then
     table.insert(message, { "\nPress any key to exit..." })
   end
 
-  echo(message, true)
+  vim.api.nvim_echo(message, true, {})
 
   if is_interactive() then
     vim.fn.getchar()
@@ -42,7 +34,7 @@ local function clone_lazy(lazy_path)
     fail_bootstrap("git is not available in PATH")
   end
 
-  echo({ { "Downloading and installing lazy.nvim" } }, false)
+  vim.api.nvim_echo({ { "Downloading and installing lazy.nvim" } }, false, {})
   local git_clone_cmd = { "git", "clone", "--filter=blob:none", "--branch=stable", lazy_repo, lazy_path }
   local result = vim.system(git_clone_cmd, { text = true }):wait()
   if result.code ~= 0 then

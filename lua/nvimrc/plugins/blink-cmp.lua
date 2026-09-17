@@ -71,7 +71,7 @@ local options = {
 -- Keep this in sync with nvim-lspconfig, which depends on blink.cmp.
 local event = require("lazy.core.config").headless()
     and { "BufReadPre", "BufNewFile" }
-  or "VeryLazy"
+    or "VeryLazy"
 
 --- @type LazyPluginSpec
 return {
@@ -88,22 +88,5 @@ return {
   opts = options,
   config = function (_plugin, opts)
     require("blink.cmp").setup(opts)
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "BlinkCmpMenuOpen",
-      callback = function ()
-        local copilot = package.loaded["copilot.suggestion"]
-        if copilot then
-          copilot.dismiss()
-        end
-        vim.b.copilot_suggestion_hidden = true
-      end,
-    })
-
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "BlinkCmpMenuClose",
-      callback = function ()
-        vim.b.copilot_suggestion_hidden = false
-      end,
-    })
   end,
 }

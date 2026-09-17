@@ -9,8 +9,6 @@ return {
     "terminal",
     "qf",
     "Outline",
-    "neotest-summary",
-    "neotest-output-panel",
     "toggleterm",
   },
   use_popups_for_input = false,
@@ -36,12 +34,6 @@ return {
     mappings = mappings.window,
   },
   default_component_configs = components,
-  source_selector = {
-    winbar = false,
-    statusline = false,
-    show_scrolled_off_parent_node = false,
-    sources = sources.selector,
-  },
   document_symbols = {
     kinds = document_symbols,
   },
