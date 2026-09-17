@@ -7,7 +7,7 @@ return {
   { "<leader>fh", pickers.help_tags, desc = "Telescope Find Help" },
   { "<leader>fd", pickers.diagnostics, desc = "Telescope List Diagnostics" },
   { "<leader>fm", pickers.man_pages, desc = "Telescope Find Man Pages" },
-  { "<leader>gS", pickers.document_symbols, desc = "Document Symbols" },
-  { "<leader>gw", pickers.workspace_symbols, desc = "Workspace Symbols" },
+  { "gs", pickers.document_symbols, desc = "Document Symbols" },
+  { "gS", pickers.workspace_symbols, desc = "Workspace Symbols" },
   { "z=", pickers.spell_suggest, desc = "Telescope Spell Suggestions" },
 }
