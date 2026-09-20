@@ -72,9 +72,14 @@ vim.g.mapleader = " "
 vim.g.markdown_recommended_style = 0
 vim.g.tex_flavor = "latex"
 
--- Disable netrw
+-- Disable unused runtime plugins
+vim.g.loaded_gzip = 1
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_remote_plugins = 1
+vim.g.loaded_tarPlugin = 1
+vim.g.loaded_tutor_mode_plugin = 1
+vim.g.loaded_zipPlugin = 1
 
 -- Disable programming language providers
 vim.g.loaded_node_provider = 0
