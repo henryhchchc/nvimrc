@@ -5,11 +5,9 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     cmd = "Neogit",
     opts = {
-      disable_builtin_notifications = true,
-      disable_commit_confirmation = true,
       disable_line_numbers = false,
       graph_style = "unicode",
-      commit_popup = { kind = "vsplit" },
+      commit_editor = { kind = "vsplit" },
       preview_buffer = { kind = "vsplit" },
       popup = { kind = "vsplit" },
     },

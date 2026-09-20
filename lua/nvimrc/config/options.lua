@@ -89,6 +89,4 @@ vim.opt.guicursor = {
   "r-cr-o:hor20",
 }
 
-vim.g.skip_ts_context_commentstring_module = true
-
 vim.cmd.packadd("nvim.undotree")

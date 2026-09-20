@@ -15,14 +15,14 @@ local lualine_options = {
       {
         "filename",
         file_status = true,
-        new_file_status = true,
+        newfile_status = true,
         path = 4,
         shorting_target = 40,
         symbols = {
           modified = "•",
           readonly = "",
           unnamed = " [No Name]",
-          new = " [New File]",
+          newfile = " [New File]",
         },
       },
       { "diagnostics", sources = { "nvim_diagnostic" } },

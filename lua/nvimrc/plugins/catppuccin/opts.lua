@@ -10,7 +10,6 @@ local highlights = require("nvimrc.plugins.catppuccin.highlights")
 return {
   transparent_background = true,
   term_colors = false,
-  show_end_of_buffer = true,
   highlight_overrides = {
     mocha = highlights.mocha_overrides,
   },
