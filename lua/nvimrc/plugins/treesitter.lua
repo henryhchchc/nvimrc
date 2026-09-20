@@ -9,15 +9,4 @@ return {
     lazy = false,
     config = treesitter_config.setup,
   },
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    event = { "BufReadPre", "BufNewFile" },
-    config = true,
-    --- @type TSContext.UserConfig
-    opts = {
-      enable = true,
-      max_lines = 6,
-      min_window_height = 20,
-    },
-  },
 }
