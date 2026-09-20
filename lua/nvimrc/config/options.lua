@@ -2,12 +2,8 @@ vim.opt.autowrite = true
 
 vim.opt.clipboard = "unnamedplus"
 
-if vim.env.SSH_CONNECTION then
-  if vim.env.TMUX then
-    vim.g.clipboard = "tmux"
-  else
-    vim.g.clipboard = "osc52"
-  end
+if vim.env.SSH_CONNECTION and not vim.env.TMUX then
+  vim.g.clipboard = "osc52"
 end
 
 vim.opt.colorcolumn = "+1"
