@@ -3,6 +3,7 @@ return {
   "clangd",
   "cssls",
   "dockerls",
+  "fish_lsp",
   "html",
   "jdtls",
   "jsonls",
