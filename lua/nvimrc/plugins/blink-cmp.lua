@@ -80,7 +80,12 @@ return {
     { "xzbdmw/colorful-menu.nvim" },
   },
   build = function ()
-    require("blink.cmp").build():pwait()
+    local cmp = require("blink.cmp")
+    cmp.build():pwait()
+
+    if not vim.env.CARGO_TARGET_DIR then
+      vim.fn.delete(cmp.get_repo_root() .. "/target", "rf")
+    end
   end,
   opts = options,
   config = function (_plugin, opts)
