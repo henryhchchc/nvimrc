@@ -30,6 +30,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.api.nvim_create_autocmd("VimResized", {
   group = vim.api.nvim_create_augroup("resize_splits", {}),
   callback = function ()
-    vim.cmd("tabdo wincmd =")
+    for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
+      local win = vim.api.nvim_tabpage_get_win(tab)
+      vim.api.nvim_win_call(win, function ()
+        vim.cmd("wincmd =")
+      end)
+    end
   end,
 })
