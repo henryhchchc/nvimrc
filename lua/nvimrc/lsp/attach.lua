@@ -18,13 +18,18 @@ local function setup_autoformat(client, bufnr)
   end, { desc = "Toggle autoformat", buf = bufnr })
 end
 
-local function setup_folding(client)
-  if not client:supports_method(vim.lsp.protocol.Methods.textDocument_foldingRange) then
-    return
+local function setup_folding(bufnr)
+  local clients = vim.lsp.get_clients({
+    bufnr = bufnr,
+    method = vim.lsp.protocol.Methods.textDocument_foldingRange,
+  })
+  for _, win in ipairs(vim.fn.win_findbuf(bufnr)) do
+    if #clients > 0 then
+      vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+    elseif vim.wo[win][0].foldexpr == "v:lua.vim.lsp.foldexpr()" then
+      vim.wo[win][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+    end
   end
-
-  local win = vim.api.nvim_get_current_win()
-  vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
 end
 
 local function setup_document_highlight(client, bufnr)
@@ -60,8 +65,25 @@ end
 --- create buffer-local commands), which silently disabled everything below,
 --- including autoformat on save.
 function M.setup()
+  local group = vim.api.nvim_create_augroup("nvimrc_lsp_attach", { clear = true })
+  vim.api.nvim_create_autocmd("BufWinEnter", {
+    group = group,
+    callback = function (event)
+      setup_folding(event.buf)
+    end,
+  })
+  vim.api.nvim_create_autocmd("LspDetach", {
+    group = group,
+    callback = function (event)
+      vim.schedule(function ()
+        if vim.api.nvim_buf_is_valid(event.buf) then
+          setup_folding(event.buf)
+        end
+      end)
+    end,
+  })
   vim.api.nvim_create_autocmd("LspAttach", {
-    group = vim.api.nvim_create_augroup("nvimrc_lsp_attach", { clear = true }),
+    group = group,
     callback = function (event)
       local client = vim.lsp.get_client_by_id(event.data.client_id)
       if not client then
@@ -79,7 +101,7 @@ function M.setup()
       end
 
       setup_autoformat(client, event.buf)
-      setup_folding(client)
+      setup_folding(event.buf)
       setup_document_highlight(client, event.buf)
     end,
   })
