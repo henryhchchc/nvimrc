@@ -8,7 +8,9 @@ local function setup_autoformat(client, bufnr)
     return
   end
 
-  vim.b[bufnr].autoformat = true
+  if vim.b[bufnr].autoformat == nil then
+    vim.b[bufnr].autoformat = true
+  end
   vim.bo[bufnr].formatexpr = "v:lua.vim.lsp.formatexpr(#{timeout_ms:250})"
 
   vim.keymap.set("n", "<leader>uf", function ()
@@ -68,9 +70,13 @@ function M.setup()
 
       keymaps.setup(event.buf)
 
-      vim.lsp.codelens.enable(true)
-      vim.lsp.inlay_hint.enable(true)
-      vim.lsp.semantic_tokens.enable(true)
+      if not vim.b[event.buf].lsp_features_initialized then
+        local filter = { bufnr = event.buf }
+        vim.lsp.codelens.enable(true, filter)
+        vim.lsp.inlay_hint.enable(true, filter)
+        vim.lsp.semantic_tokens.enable(true, filter)
+        vim.b[event.buf].lsp_features_initialized = true
+      end
 
       setup_autoformat(client, event.buf)
       setup_folding(client)
