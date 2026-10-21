@@ -6,7 +6,7 @@ vim.opt.rtp:prepend(lazy_path)
 --- @type LazyConfig
 local lazy_options = {
   defaults = {
-    versions = "*",
+    version = "*",
   },
   spec = {
     { import = "nvimrc.plugins" },
