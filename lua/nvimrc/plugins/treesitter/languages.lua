@@ -21,6 +21,7 @@ local parsers = {
   "htmldjango",
   "ini",
   "java",
+  "javascript",
   "json",
   "json5",
   "just",
@@ -43,6 +44,7 @@ local parsers = {
   "swift",
   "svelte",
   "toml",
+  "tsx",
   "typescript",
   "typst",
   "vim",
@@ -71,9 +73,12 @@ local filetype_aliases = {
   git_config = { "gitconfig" },
   git_rebase = { "gitrebase" },
   ini = { "dosini" },
+  javascript = { "javascript", "javascriptreact" },
+  json = { "json", "jsonc" },
   latex = { "plaintex", "tex" },
   robots_txt = { "robots" },
   ssh_config = { "sshconfig" },
+  tsx = { "typescriptreact" },
   vimdoc = { "help" },
 }
 
