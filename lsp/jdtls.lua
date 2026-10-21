@@ -31,18 +31,26 @@ end
 
 local jdtls_cache_dir = vim.fs.joinpath(vim.uv.os_homedir(), ".cache", "jdtls")
 local config_dir = vim.fs.joinpath(jdtls_cache_dir, "config")
-local data_dir = vim.fs.joinpath(jdtls_cache_dir, "project_data", vim.fn.sha256(vim.uv.cwd() or ""))
 
 ---@type vim.lsp.Config
 return {
-  cmd = {
-    "jdtls",
-    "-configuration",
-    config_dir,
-    "-data",
-    data_dir,
-    "--jvm-arg=-XX:+UseZGC",
-  },
+  cmd = function (dispatchers, config)
+    local root_dir = assert(config.root_dir, "JDTLS requires a project root")
+    local data_dir = vim.fs.joinpath(jdtls_cache_dir, "project_data", vim.fn.sha256(root_dir))
+    return vim.lsp.rpc.start({
+      "jdtls",
+      "-configuration",
+      config_dir,
+      "-data",
+      data_dir,
+      "--jvm-arg=-XX:+UseZGC",
+    }, dispatchers, {
+      cwd = config.cmd_cwd,
+      env = config.cmd_env,
+      detached = config.detached,
+    })
+  end,
+  workspace_required = true,
   init_options = {
     workspace = config_dir,
     jvm_args = { "-XX:+UseZGC" },
