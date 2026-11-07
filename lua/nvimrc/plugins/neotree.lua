@@ -1,22 +1,10 @@
---- @type LazyPluginSpec
-return {
-  "nvim-neo-tree/neo-tree.nvim",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons",
-    { "MunifTanjim/nui.nvim", lazy = true },
-  },
-  cmd = "Neotree",
-  keys = {
-    {
-      "<leader>e",
-      function ()
-        require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
-      end,
-      desc = "Explorer NeoTree (root dir)",
-    },
-  },
-  opts = function ()
-    return require("nvimrc.plugins.neotree.opts")
-  end,
-}
+local M = {}
+
+function M.setup()
+  require("neo-tree").setup(require("nvimrc.plugins.neotree.opts"))
+  vim.keymap.set("n", "<leader>e", function ()
+    require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
+  end, { desc = "Explorer NeoTree (root dir)" })
+end
+
+return M

@@ -53,12 +53,4 @@ function M.toggle_buf_var(option, silent, values)
   end)
 end
 
---- Event that defers a plugin's load until after startup when a UI is
---- present. VeryLazy is emitted on UIEnter, which never happens headless, so
---- headless falls back to reading a buffer.
---- @return string|string[]
-function M.deferred_event()
-  return require("lazy.core.config").headless() and { "BufReadPre", "BufNewFile" } or "VeryLazy"
-end
-
 return M

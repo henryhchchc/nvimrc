@@ -15,11 +15,10 @@ local function git_signs_on_attach(bufnr)
   bufnmap("do", gs.preview_hunk_inline, "Git Preview Hunk Inline")
 end
 
---- @type LazyPluginSpec
-return {
-  "lewis6991/gitsigns.nvim",
-  event = "BufRead",
-  opts = {
+local M = {}
+
+function M.setup()
+  require("gitsigns").setup({
     signs = {
       add = { text = "▎" },
       change = { text = "▎" },
@@ -32,5 +31,7 @@ return {
     numhl = true,
     word_diff = false,
     on_attach = git_signs_on_attach,
-  },
-}
+  })
+end
+
+return M

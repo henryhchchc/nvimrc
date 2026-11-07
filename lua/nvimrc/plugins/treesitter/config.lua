@@ -5,7 +5,12 @@ local languages = require("nvimrc.plugins.treesitter.languages")
 local function start(bufnr)
   if not vim.api.nvim_buf_is_loaded(bufnr)
       or not vim.list_contains(languages.filetypes, vim.bo[bufnr].filetype)
-      or not vim.treesitter.get_parser(bufnr) then
+  then
+    return
+  end
+
+  local ok, parser = pcall(vim.treesitter.get_parser, bufnr)
+  if not ok or not parser then
     return
   end
 
@@ -31,13 +36,23 @@ function M.setup()
   })
 
   vim.schedule(function ()
-    treesitter.install(languages.parsers, { max_jobs = 1 }):await(vim.schedule_wrap(function (err)
-      if err then
-        vim.notify("Tree-sitter installation failed: " .. tostring(err), vim.log.levels.ERROR)
+    local function installed(err, success)
+      if err or success == false then
+        vim.notify("Tree-sitter installation failed: " .. tostring(err or "see :messages"), vim.log.levels.ERROR)
+        return
       end
       for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
         start(bufnr)
       end
+    end
+
+    -- Update installed parsers to match the plugin revision before adding missing ones.
+    treesitter.update(nil, { max_jobs = 1 }):await(vim.schedule_wrap(function (err, success)
+      if err or success == false then
+        installed(err, success)
+        return
+      end
+      treesitter.install(languages.parsers, { max_jobs = 1 }):await(vim.schedule_wrap(installed))
     end))
   end)
 end

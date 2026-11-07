@@ -11,7 +11,7 @@
   "codeLens.enable": true,
   "hint.enable": true,
   "workspace.library": [
-    "~/.local/share/nvim/lazy",
+    "~/.local/share/nvim/site/pack/core/opt",
     "/opt/homebrew/share/nvim/runtime/lua",
     "~/.homebrew/share/nvim/runtime/lua",
     "/usr/share/nvim/runtime/lua"

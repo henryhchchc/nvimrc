@@ -1,12 +1,10 @@
-local setup = require("nvimrc.plugins.telescope.setup")
-local keys = require("nvimrc.plugins.telescope.keys")
+local M = {}
 
---- @type LazyPluginSpec
-return {
-  "nvim-telescope/telescope.nvim",
-  config = function (_plugin, _opts)
-    setup.setup()
-  end,
-  keys = keys,
-  cmd = "Telescope",
-}
+function M.setup()
+  require("nvimrc.plugins.telescope.setup").setup()
+  for _, key in ipairs(require("nvimrc.plugins.telescope.keys")) do
+    vim.keymap.set("n", key[1], key[2], { desc = key.desc })
+  end
+end
+
+return M

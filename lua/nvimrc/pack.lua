@@ -1,0 +1,25 @@
+vim.pack.add({
+  { src = "https://github.com/saghen/blink.cmp", version = "main" },
+  { src = "https://github.com/saghen/blink.lib" },
+  { src = "https://github.com/catppuccin/nvim", name = "catppuccin", version = vim.version.range("*") },
+  { src = "https://github.com/xzbdmw/colorful-menu.nvim" },
+  { src = "https://github.com/saecki/crates.nvim", version = vim.version.range("*") },
+  { src = "https://github.com/j-hui/fidget.nvim", version = vim.version.range("*") },
+  { src = "https://github.com/lewis6991/gitsigns.nvim", version = vim.version.range("*") },
+  { src = "https://github.com/lukas-reineke/indent-blankline.nvim", version = vim.version.range("*") },
+  { src = "https://github.com/nvim-lualine/lualine.nvim" },
+  { src = "https://github.com/nvim-neo-tree/neo-tree.nvim", version = vim.version.range("*") },
+  { src = "https://github.com/NeogitOrg/neogit", version = vim.version.range("*") },
+  { src = "https://github.com/MunifTanjim/nui.nvim", version = vim.version.range("*") },
+  { src = "https://github.com/neovim/nvim-lspconfig", version = vim.version.range("*") },
+  { src = "https://github.com/kylechui/nvim-surround", version = vim.version.range("*") },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
+  { src = "https://github.com/nvim-tree/nvim-web-devicons" },
+  { src = "https://github.com/stevearc/oil.nvim", version = vim.version.range("*") },
+  { src = "https://github.com/nvim-lua/plenary.nvim", version = vim.version.range("*") },
+  { src = "https://github.com/b0o/schemastore.nvim" },
+  { src = "https://github.com/nvim-telescope/telescope.nvim", version = vim.version.range("*") },
+  { src = "https://github.com/saghen/blink.pairs", version = vim.version.range("*") },
+})
+
+require("nvimrc.plugins").setup()

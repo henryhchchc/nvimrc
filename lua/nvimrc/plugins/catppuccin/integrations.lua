@@ -10,8 +10,7 @@ return {
   nvim_surround = true,
   neogit = true,
   neotree = true,
-  rainbow_delimiters = true,
+  blink_pairs = true,
   telescope = true,
   treesitter_context = true,
-  which_key = true,
 }

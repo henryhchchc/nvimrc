@@ -42,17 +42,16 @@ local lualine_options = {
     "man",
     "neo-tree",
     "quickfix",
-    "lazy",
     "fugitive",
-    "toggleterm",
     "oil",
     exts.help,
   },
 }
 
---- @type LazyPluginSpec
-return {
-  "nvim-lualine/lualine.nvim",
-  opts = lualine_options,
-  event = "UIEnter",
-}
+local M = {}
+
+function M.setup()
+  require("lualine").setup(lualine_options)
+end
+
+return M

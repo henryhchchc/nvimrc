@@ -1,12 +1,8 @@
---- @type LazyPluginSpec
-return {
-  "catppuccin/nvim",
-  main = "catppuccin",
-  name = "catppuccin",
-  priority = 1000,
-  opts = require("nvimrc.plugins.catppuccin.opts"),
-  config = function (_plugin, opts)
-    require("catppuccin").setup(opts)
-    vim.cmd.colorscheme("catppuccin")
-  end,
-}
+local M = {}
+
+function M.setup()
+  require("catppuccin").setup(require("nvimrc.plugins.catppuccin.opts"))
+  vim.cmd.colorscheme("catppuccin")
+end
+
+return M

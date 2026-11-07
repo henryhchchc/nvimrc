@@ -1,4 +1,7 @@
---- @type LazyPluginSpec[]
-return {
-  { "saecki/crates.nvim", event = "BufRead Cargo.toml", config = true },
-}
+local M = {}
+
+function M.setup()
+  require("crates").setup()
+end
+
+return M

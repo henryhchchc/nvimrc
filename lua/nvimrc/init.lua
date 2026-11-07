@@ -1,5 +1,7 @@
 vim.loader.enable()
-require("vim._core.ui2").enable()
+if #vim.api.nvim_list_uis() > 0 then
+  require("vim._core.ui2").enable()
+end
 
 if vim.fn.argc() > 0 then
   if vim.fn.len(vim.v.argf) > 0 then
@@ -13,7 +15,7 @@ end
 
 
 require("nvimrc.config.options")
-require("nvimrc.lazy")
+require("nvimrc.pack")
 
 require("nvimrc.config.autocmds")
 require("nvimrc.config.keymaps")

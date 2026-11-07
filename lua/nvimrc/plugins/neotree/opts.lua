@@ -9,7 +9,6 @@ return {
     "terminal",
     "qf",
     "Outline",
-    "toggleterm",
   },
   use_popups_for_input = false,
   use_default_mappings = false,

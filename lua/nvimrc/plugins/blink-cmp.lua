@@ -66,29 +66,18 @@ local options = {
   },
 }
 
--- Defer until after startup when a UI is present. Keep this in sync with
--- nvim-lspconfig, which depends on blink.cmp and uses the same event.
-local event = require("nvimrc.utils").deferred_event()
+local M = {}
 
---- @type LazyPluginSpec
-return {
-  "saghen/blink.cmp",
-  branch = "main",
-  event = event,
-  dependencies = {
-    { "saghen/blink.lib" },
-    { "xzbdmw/colorful-menu.nvim" },
-  },
-  build = function ()
-    local cmp = require("blink.cmp")
-    cmp.build():pwait()
+function M.setup()
+  local cmp = require("blink.cmp")
+  local ok, err = cmp.build():pwait()
+  if not ok then
+    error(err)
+  end
+  if not vim.env.CARGO_TARGET_DIR then
+    vim.fn.delete(cmp.get_repo_root() .. "/target", "rf")
+  end
+  cmp.setup(options)
+end
 
-    if not vim.env.CARGO_TARGET_DIR then
-      vim.fn.delete(cmp.get_repo_root() .. "/target", "rf")
-    end
-  end,
-  opts = options,
-  config = function (_plugin, opts)
-    require("blink.cmp").setup(opts)
-  end,
-}
+return M
