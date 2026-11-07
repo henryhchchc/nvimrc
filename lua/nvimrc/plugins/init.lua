@@ -11,7 +11,7 @@ function M.setup()
   require("nvimrc.plugins.neotree").setup()
   require("nvimrc.plugins.telescope").setup()
   require("nvimrc.plugins.lualine").setup()
-  require("nvimrc.plugins.rust").setup()
+  require("crates").setup({})
 
   require("neogit").setup({
     disable_line_numbers = false,
