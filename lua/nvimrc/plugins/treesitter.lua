@@ -110,6 +110,8 @@ local function start(bufnr)
   require("nvimrc.config.folding").refresh(bufnr)
 end
 
+-- Bypass CLI cache cleanup, which races when ~/.cache points to ~/Library/Caches.
+vim.env.TREE_SITTER_LIBDIR = vim.fn.tempname()
 local treesitter = require("nvim-treesitter")
 
 for parser, filetypes in pairs(filetype_aliases) do
@@ -138,6 +140,6 @@ vim.schedule(function ()
       installed(err, success)
       return
     end
-    treesitter.install(parsers, { max_jobs = 1 }):await(vim.schedule_wrap(installed))
+    treesitter.install(parsers):await(vim.schedule_wrap(installed))
   end))
 end)
