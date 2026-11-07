@@ -15,7 +15,8 @@ Language servers must be installed separately.
 Start `nvim` and confirm package installation.
 `vim.pack` installs the revisions in `nvim-pack-lock.json`.
 Blink Pairs downloads a prebuilt library for its tagged release; Blink CMP builds its library from source.
-Initial parser installation continues asynchronously.
+Blink jobs run in the background with progress notifications; completion and pairing activate when their libraries are ready.
+Initial parser installation also continues asynchronously.
 Inspect `:messages` if installation fails, then restart to retry.
 Blink Pairs enables automatic pairing in buffers and the command line; rainbow highlighting is limited to buffers because its command-line highlighter can produce redraw errors with UI2.
 

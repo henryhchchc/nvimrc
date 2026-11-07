@@ -65,11 +65,27 @@ local options = {
 }
 
 local cmp = require("blink.cmp")
-local ok, err = cmp.build():pwait()
-if not ok then
-  error(err)
+if cmp.library_available() then
+  cmp.setup(options)
+else
+  local progress = require("fidget.progress").handle.create({
+    title = "Compiling blink.cmp native library",
+    lsp_client = { name = "blink.cmp" },
+    cancellable = false,
+  })
+  cmp.build()
+      :schedule()
+      :map(function ()
+        if not vim.env.CARGO_TARGET_DIR then
+          vim.fn.delete(cmp.get_repo_root() .. "/target", "rf")
+        end
+        cmp.setup(options)
+        progress.message = "Ready"
+        progress:finish()
+      end)
+      :catch(vim.schedule_wrap(function (err)
+        progress.message = "Failed"
+        progress:finish()
+        vim.notify("blink.cmp: " .. tostring(err), vim.log.levels.ERROR)
+      end))
 end
-if not vim.env.CARGO_TARGET_DIR then
-  vim.fn.delete(cmp.get_repo_root() .. "/target", "rf")
-end
-cmp.setup(options)
