@@ -26,6 +26,5 @@ require("gitsigns").setup({
   },
   current_line_blame = true,
   numhl = true,
-  word_diff = false,
   on_attach = git_signs_on_attach,
 })

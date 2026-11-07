@@ -27,16 +27,8 @@ local keys = {
 
 local actions = require("telescope.actions")
 local mappings = {
-  ["<C-x>"] = actions.select_horizontal,
-  ["<C-v>"] = actions.select_vertical,
-  ["<C-t>"] = actions.select_tab,
-  ["<C-c>"] = actions.close,
   ["<C-j>"] = actions.move_selection_next,
   ["<C-k>"] = actions.move_selection_previous,
-  ["<CR>"] = actions.select_default,
-  ["<C-u>"] = actions.preview_scrolling_up,
-  ["<C-d>"] = actions.preview_scrolling_down,
-  ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
   ["<C-w>"] = function ()
     vim.cmd("normal! bcw")
   end,
@@ -59,13 +51,9 @@ telescope.setup({
     },
     winblend = 10,
     scroll_strategy = "limit",
-    default_mappings = {
+    mappings = {
       i = mappings,
-      n = vim.tbl_deep_extend("force", mappings, {
-        ["<esc>"] = actions.close,
-        ["j"] = actions.move_selection_next,
-        ["k"] = actions.move_selection_previous,
-      }),
+      n = vim.tbl_extend("force", mappings, { ["<C-c>"] = actions.close }),
     },
   },
 })

@@ -18,45 +18,25 @@ local function mocha_overrides(colors)
   }
 end
 
-local dark_terminal = {
-  background = "#151515",
-  alt_background = "#1F1F1F",
-  float_background = "#2C2C2C",
-}
 
 
 
 --- @type CatppuccinOptions
 local options = {
-  flavour = "auto",
-  background = {
-    light = "latte",
-    dark = "mocha",
-  },
   transparent_background = true,
-  term_colors = false,
   highlight_overrides = {
     mocha = mocha_overrides,
   },
   color_overrides = {
     mocha = {
-      base = dark_terminal.background,
+      base = "#151515",
     },
   },
-  auto_integrations = false,
+  auto_integrations = true,
   integrations = {
-    blink_cmp = true,
-    fidget = true,
-    gitsigns = true,
     indent_blankline = {
-      enabled = true,
       colored_indent_levels = true,
     },
-    nvim_surround = true,
-    neogit = true,
-    neotree = true,
-    blink_pairs = true,
-    telescope = true,
   },
 }
 

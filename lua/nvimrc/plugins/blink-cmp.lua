@@ -51,10 +51,7 @@ local options = {
     ["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
   },
   cmdline = {
-    completion = { ghost_text = { enabled = true } },
     keymap = {
-      preset = "cmdline",
-
       ["<C-c>"] = { "hide", "fallback" },
       ["<CR>"] = { "accept_and_enter", "fallback" },
 

@@ -1,5 +1,4 @@
 local options = {
-  mappings = { enabled = true },
   highlights = {
     cmdline = false,
     groups = {

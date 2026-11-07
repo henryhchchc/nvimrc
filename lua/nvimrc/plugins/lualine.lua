@@ -58,7 +58,7 @@ exts.help = {
     },
     lualine_b = {
       { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-      { "filename", file_status = false, path = 0 },
+      { "filename", file_status = false },
     },
     lualine_x = { "progress" },
     lualine_z = { "filesize" },
@@ -98,10 +98,8 @@ local lualine_options = {
       { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
       {
         "filename",
-        file_status = true,
         newfile_status = true,
         path = 4,
-        shorting_target = 40,
         symbols = {
           modified = "•",
           readonly = "",
