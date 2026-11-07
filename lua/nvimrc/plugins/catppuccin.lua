@@ -63,11 +63,5 @@ local options = {
   },
 }
 
-local M = {}
-
-function M.setup()
-  require("catppuccin").setup(options)
-  vim.cmd.colorscheme("catppuccin")
-end
-
-return M
+require("catppuccin").setup(options)
+vim.cmd.colorscheme("catppuccin")

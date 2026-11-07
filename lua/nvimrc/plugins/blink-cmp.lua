@@ -1,3 +1,5 @@
+local colorful_menu = require("colorful-menu")
+
 ---@type blink.cmp.Config
 local options = {
   completion = {
@@ -17,12 +19,8 @@ local options = {
         columns = { { "kind_icon" }, { "label", gap = 1 } },
         components = {
           label = {
-            text = function (ctx)
-              return require("colorful-menu").blink_components_text(ctx)
-            end,
-            highlight = function (ctx)
-              return require("colorful-menu").blink_components_highlight(ctx)
-            end,
+            text = colorful_menu.blink_components_text,
+            highlight = colorful_menu.blink_components_highlight,
           },
         },
       },
@@ -66,18 +64,12 @@ local options = {
   },
 }
 
-local M = {}
-
-function M.setup()
-  local cmp = require("blink.cmp")
-  local ok, err = cmp.build():pwait()
-  if not ok then
-    error(err)
-  end
-  if not vim.env.CARGO_TARGET_DIR then
-    vim.fn.delete(cmp.get_repo_root() .. "/target", "rf")
-  end
-  cmp.setup(options)
+local cmp = require("blink.cmp")
+local ok, err = cmp.build():pwait()
+if not ok then
+  error(err)
 end
-
-return M
+if not vim.env.CARGO_TARGET_DIR then
+  vim.fn.delete(cmp.get_repo_root() .. "/target", "rf")
+end
+cmp.setup(options)

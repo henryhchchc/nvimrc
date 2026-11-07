@@ -92,8 +92,6 @@ for _, parser in ipairs(parsers) do
   end
 end
 
-local M = {}
-
 
 local function start(bufnr)
   if not vim.api.nvim_buf_is_loaded(bufnr)
@@ -116,38 +114,34 @@ local function start(bufnr)
   end
 end
 
-function M.setup()
-  local treesitter = require("nvim-treesitter")
+local treesitter = require("nvim-treesitter")
 
-  for parser, filetypes in pairs(filetype_aliases) do
-    vim.treesitter.language.register(parser, filetypes)
-  end
-
-  vim.api.nvim_create_autocmd({ "FileType", "BufWinEnter" }, {
-    group = vim.api.nvim_create_augroup("nvimrc_treesitter", { clear = true }),
-    callback = function (event) start(event.buf) end,
-  })
-
-  vim.schedule(function ()
-    local function installed(err, success)
-      if err or success == false then
-        vim.notify("Tree-sitter installation failed: " .. tostring(err or "see :messages"), vim.log.levels.ERROR)
-        return
-      end
-      for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
-        start(bufnr)
-      end
-    end
-
-    -- Update installed parsers to match the plugin revision before adding missing ones.
-    treesitter.update(nil, { max_jobs = 1 }):await(vim.schedule_wrap(function (err, success)
-      if err or success == false then
-        installed(err, success)
-        return
-      end
-      treesitter.install(parsers, { max_jobs = 1 }):await(vim.schedule_wrap(installed))
-    end))
-  end)
+for parser, filetypes in pairs(filetype_aliases) do
+  vim.treesitter.language.register(parser, filetypes)
 end
 
-return M
+vim.api.nvim_create_autocmd({ "FileType", "BufWinEnter" }, {
+  group = vim.api.nvim_create_augroup("nvimrc_treesitter", { clear = true }),
+  callback = function (event) start(event.buf) end,
+})
+
+vim.schedule(function ()
+  local function installed(err, success)
+    if err or success == false then
+      vim.notify("Tree-sitter installation failed: " .. tostring(err or "see :messages"), vim.log.levels.ERROR)
+      return
+    end
+    for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+      start(bufnr)
+    end
+  end
+
+  -- Update installed parsers to match the plugin revision before adding missing ones.
+  treesitter.update(nil, { max_jobs = 1 }):await(vim.schedule_wrap(function (err, success)
+    if err or success == false then
+      installed(err, success)
+      return
+    end
+    treesitter.install(parsers, { max_jobs = 1 }):await(vim.schedule_wrap(installed))
+  end))
+end)

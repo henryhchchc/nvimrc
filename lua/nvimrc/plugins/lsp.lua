@@ -117,40 +117,34 @@ local function setup_attach()
   })
 end
 
-local M = {}
+require("nvimrc.config.diagnostic")
 
-function M.setup()
-  require("nvimrc.config.diagnostic")
+setup_attach()
 
-  setup_attach()
+vim.lsp.config("*", {
+  capabilities = require("blink.cmp").get_lsp_capabilities(),
+})
 
-  vim.lsp.config("*", {
-    capabilities = require("blink.cmp").get_lsp_capabilities(),
-  })
-
-  vim.lsp.enable({
-    "bashls",
-    "clangd",
-    "cssls",
-    "dockerls",
-    "fish_lsp",
-    "html",
-    "jdtls",
-    "jsonls",
-    "lua_ls",
-    "neocmake",
-    "ruff",
-    "rumdl",
-    "rust_analyzer",
-    "sourcekit",
-    "texlab",
-    "tinymist",
-    "tombi",
-    "ts_ls",
-    "ty",
-    "typos_lsp",
-    "yamlls",
-  })
-end
-
-return M
+vim.lsp.enable({
+  "bashls",
+  "clangd",
+  "cssls",
+  "dockerls",
+  "fish_lsp",
+  "html",
+  "jdtls",
+  "jsonls",
+  "lua_ls",
+  "neocmake",
+  "ruff",
+  "rumdl",
+  "rust_analyzer",
+  "sourcekit",
+  "texlab",
+  "tinymist",
+  "tombi",
+  "ts_ls",
+  "ty",
+  "typos_lsp",
+  "yamlls",
+})

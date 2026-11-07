@@ -15,23 +15,17 @@ local function git_signs_on_attach(bufnr)
   bufnmap("do", gs.preview_hunk_inline, "Git Preview Hunk Inline")
 end
 
-local M = {}
-
-function M.setup()
-  require("gitsigns").setup({
-    signs = {
-      add = { text = "▎" },
-      change = { text = "▎" },
-      delete = { text = "" },
-      topdelete = { text = "" },
-      changedelete = { text = "▎" },
-      untracked = { text = "▎" },
-    },
-    current_line_blame = true,
-    numhl = true,
-    word_diff = false,
-    on_attach = git_signs_on_attach,
-  })
-end
-
-return M
+require("gitsigns").setup({
+  signs = {
+    add = { text = "▎" },
+    change = { text = "▎" },
+    delete = { text = "" },
+    topdelete = { text = "" },
+    changedelete = { text = "▎" },
+    untracked = { text = "▎" },
+  },
+  current_line_blame = true,
+  numhl = true,
+  word_diff = false,
+  on_attach = git_signs_on_attach,
+})

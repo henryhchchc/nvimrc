@@ -1,22 +1,16 @@
-local M = {}
-
-function M.setup()
-  local pairs = require("blink.pairs")
-  local ok, err = pairs.download():pwait(60000)
-  if not ok then
-    error(err)
-  end
-  pairs.setup({
-    mappings = { enabled = true },
-    highlights = {
-      cmdline = false,
-      groups = {
-        "BlinkPairsRed", "BlinkPairsYellow", "BlinkPairsBlue", "BlinkPairsOrange",
-        "BlinkPairsGreen", "BlinkPairsPurple", "BlinkPairsCyan",
-      },
-      matchparen = { enabled = false },
-    },
-  })
+local pairs = require("blink.pairs")
+local ok, err = pairs.download():pwait(60000)
+if not ok then
+  error(err)
 end
-
-return M
+pairs.setup({
+  mappings = { enabled = true },
+  highlights = {
+    cmdline = false,
+    groups = {
+      "BlinkPairsRed", "BlinkPairsYellow", "BlinkPairsBlue", "BlinkPairsOrange",
+      "BlinkPairsGreen", "BlinkPairsPurple", "BlinkPairsCyan",
+    },
+    matchparen = { enabled = false },
+  },
+})

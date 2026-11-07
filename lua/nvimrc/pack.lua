@@ -21,5 +21,3 @@ vim.pack.add({
   { src = "https://github.com/nvim-telescope/telescope.nvim", version = vim.version.range("*") },
   { src = "https://github.com/saghen/blink.pairs", version = vim.version.range("*") },
 })
-
-require("nvimrc.plugins").setup()

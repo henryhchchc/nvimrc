@@ -132,10 +132,4 @@ local lualine_options = {
   },
 }
 
-local M = {}
-
-function M.setup()
-  require("lualine").setup(lualine_options)
-end
-
-return M
+require("lualine").setup(lualine_options)
