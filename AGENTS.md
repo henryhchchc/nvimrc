@@ -43,6 +43,8 @@ Format Markdown with `rumdl fmt README.md AGENTS.md` before finishing documentat
 ## Testing Guidelines
 
 No automated test suite or coverage target is configured.
+Do not add automated tests.
+Validate changes manually in Neovim.
 Restart Neovim, inspect `:messages`, and exercise the affected behavior.
 Run `:checkhealth` when changing dependencies or investigating setup failures.
 For LSP changes, open a representative source file and verify attachment, diagnostics, mappings, and formatting.

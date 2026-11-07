@@ -88,5 +88,3 @@ vim.opt.guicursor = {
   "i-c-ci-ve:ver25-Cursor/iCursor-blinkwait1000-blinkon100-blinkoff100",
   "r-cr-o:hor20",
 }
-
-vim.cmd.packadd("nvim.undotree")

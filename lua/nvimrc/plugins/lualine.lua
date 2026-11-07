@@ -42,7 +42,7 @@ exts.autoformat = {
     return "󰁨 "
   end,
   cond = function ()
-    return vim.b.autoformat
+    return require("nvimrc.config.lsp").can_format(vim.api.nvim_get_current_buf())
   end,
 }
 
@@ -126,7 +126,6 @@ local lualine_options = {
     "man",
     "neo-tree",
     "quickfix",
-    "fugitive",
     "oil",
     exts.help,
   },

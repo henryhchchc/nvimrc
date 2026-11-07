@@ -107,11 +107,7 @@ local function start(bufnr)
 
   vim.treesitter.start(bufnr)
   vim.bo[bufnr].indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
-  for _, win in ipairs(vim.fn.win_findbuf(bufnr)) do
-    if vim.wo[win][0].foldexpr ~= "v:lua.vim.lsp.foldexpr()" then
-      vim.wo[win][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
-    end
-  end
+  require("nvimrc.config.folding").refresh(bufnr)
 end
 
 local treesitter = require("nvim-treesitter")

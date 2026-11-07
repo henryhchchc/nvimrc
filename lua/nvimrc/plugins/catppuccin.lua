@@ -15,8 +15,6 @@ local function mocha_overrides(colors)
     ["@comment.todo"] = { fg = colors.peach, bg = colors.none, style = { "bold" } },
     ["@comment.note"] = { fg = colors.blue, bg = colors.none, style = { "bold" } },
     ["@lsp.mod.mutable"] = { style = { "underline" } },
-    TreesitterContextBottom = { sp = colors.lavender, style = { "underline" } },
-    TreesitterContextLineNumber = { fg = colors.surface1, bg = colors.mantle },
   }
 end
 
@@ -59,7 +57,6 @@ local options = {
     neotree = true,
     blink_pairs = true,
     telescope = true,
-    treesitter_context = true,
   },
 }
 

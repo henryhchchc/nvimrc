@@ -15,6 +15,8 @@ end
 
 
 require("nvimrc.config.options")
+vim.cmd.packadd("nvim.undotree")
+require("nvimrc.config.diagnostic")
 require("nvimrc.pack")
 require("nvimrc.plugins")
 
