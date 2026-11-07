@@ -93,7 +93,18 @@ local lualine_options = {
   },
   sections = {
     lualine_a = { "mode" },
-    lualine_b = { "branch", "diff" },
+    lualine_b = {
+      "branch",
+      {
+        "diff",
+        source = function ()
+          local status = vim.b.gitsigns_status_dict
+          if status then
+            return { added = status.added, modified = status.changed, removed = status.removed }
+          end
+        end,
+      },
+    },
     lualine_c = {
       { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
       {

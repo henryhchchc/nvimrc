@@ -15,9 +15,9 @@
       "version": ">=0.0.0"
     },
     "catppuccin": {
-      "rev": "605b4603797de970e9f3a4238c199c850da03186",
+      "rev": "edefef779ab08ce1a4a404713e3012b0d202bd35",
       "src": "https://github.com/catppuccin/nvim",
-      "version": ">=0.0.0"
+      "version": "'main'"
     },
     "colorful-menu.nvim": {
       "rev": "196ddf16d5f8fec09ba7f20e6b153aa5188e907b",

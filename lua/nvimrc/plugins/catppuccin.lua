@@ -32,7 +32,6 @@ local options = {
       base = "#151515",
     },
   },
-  auto_integrations = true,
   integrations = {
     indent_blankline = {
       colored_indent_levels = true,

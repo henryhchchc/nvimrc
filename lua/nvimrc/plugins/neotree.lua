@@ -46,9 +46,10 @@ local options = {
   },
   use_popups_for_input = false,
   use_default_mappings = false,
+  git_status_scope_to_path = true,
   filesystem = {
     group_empty_dirs = true,
-    scan_mode = "deep",
+    async_directory_scan = "always",
     follow_current_file = {
       enabled = true,
     },
