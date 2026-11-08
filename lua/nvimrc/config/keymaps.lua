@@ -8,6 +8,7 @@ vim.keymap.set("n", "]x", vim.cmd.cnext, { desc = "Go to the next quickfix locat
 vim.keymap.set("n", "[x", vim.cmd.cprev, { desc = "Go to the previous quickfix location." })
 vim.keymap.set("n", "<leader>gq", vim.cmd.copen, { desc = "Open Quickfix Window" })
 vim.keymap.set("n", "<leader>gl", vim.cmd.lopen, { desc = "Open Loclist Window" })
+vim.keymap.set("n", "<leader>gm", vim.cmd.messages, { desc = "Open Messages" })
 
 -- Moving selection
 vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv", { desc = "Move Selection Down" })

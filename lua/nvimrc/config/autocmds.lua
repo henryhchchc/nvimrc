@@ -3,7 +3,7 @@ local number_toggle = vim.api.nvim_create_augroup("number_toggle", {})
 vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
   group = number_toggle,
   callback = function ()
-    if vim.wo.number and vim.api.nvim_get_mode().mode ~= "i" then
+    if vim.wo.number and vim.bo.filetype ~= "pager" and vim.api.nvim_get_mode().mode ~= "i" then
       vim.wo.relativenumber = true
     end
   end,
