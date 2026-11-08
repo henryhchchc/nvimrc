@@ -111,8 +111,8 @@ local function start(bufnr)
   require("nvimrc.config.folding").refresh(bufnr)
 end
 
-for parser, filetypes in pairs(filetype_aliases) do
-  vim.treesitter.language.register(parser, filetypes)
+for parser, aliases in pairs(filetype_aliases) do
+  vim.treesitter.language.register(parser, aliases)
 end
 
 vim.api.nvim_create_autocmd({ "FileType", "BufWinEnter" }, {

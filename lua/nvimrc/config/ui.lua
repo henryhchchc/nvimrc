@@ -1,7 +1,7 @@
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("nvimrc_pager", {}),
   pattern = "pager",
-  callback = function (event)
+  callback = function ()
     vim.opt_local.number = true
     vim.opt_local.relativenumber = false
     vim.opt_local.signcolumn = "no"
