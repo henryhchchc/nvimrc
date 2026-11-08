@@ -72,7 +72,8 @@ local wordcount_fts = {
 
 exts.word_count = {
   function ()
-    if vim.fn.mode() == "v" or vim.fn.mode() == "V" or vim.fn.mode() == "" then
+    local mode = vim.fn.mode()
+    if mode == "v" or mode == "V" or mode == "\22" then
       return string.format(" %d (sel)", vim.fn.wordcount().visual_words)
     else
       return string.format(" %d", vim.fn.wordcount().words)
