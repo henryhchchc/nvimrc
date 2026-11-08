@@ -7,9 +7,10 @@ if vim.env.SSH_CONNECTION and not vim.env.TMUX then
 end
 
 vim.opt.colorcolumn = "+1"
-vim.opt.autocomplete = true
+vim.opt.autocomplete = false
 vim.opt.complete = { "o", ".", "w", "b" }
-vim.opt.completeopt = { "menu", "menuone", "noselect", "popup", "fuzzy" }
+vim.opt.completeitemalign = "kind,abbr,menu"
+vim.opt.completeopt = { "menu", "menuone", "noselect", "popup", "fuzzy", "nosort" }
 vim.opt.concealcursor = "nc"
 vim.opt.cursorline = true
 vim.opt.expandtab = true
@@ -24,6 +25,9 @@ vim.opt.listchars:append("tab:> ,trail:⋅,nbsp:⋅,multispace:⋅,conceal:?")
 vim.opt.mouse = "ar"
 vim.opt.number = true
 vim.opt.pumblend = 5
+vim.opt.pumheight = 10
+vim.opt.pummaxwidth = 60
+vim.opt.pumwidth = 20
 vim.opt.sessionoptions = {
   "buffers",
   "curdir",

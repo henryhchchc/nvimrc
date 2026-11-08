@@ -23,7 +23,8 @@ Run it after updating the Tree-sitter plugin too; parser maintenance never runs 
 
 ## Completion
 
-Native completion suggests LSP results and buffer words automatically.
+Native completion suggests LSP results automatically in buffers with a completion-capable language server.
+Buffer-word completion is manual: use Ctrl-X Ctrl-N, or Ctrl-Space when no completion-capable server is attached.
 Use Ctrl-Space to request completion, Ctrl-J/Ctrl-K to navigate, Enter to accept, and Ctrl-C to dismiss.
 Tab/Shift-Tab jump through snippet placeholders or navigate completion results.
 Use Ctrl-X Ctrl-F for file paths and Ctrl-S for LSP signature help.

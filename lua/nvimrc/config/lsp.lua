@@ -102,7 +102,10 @@ local function setup_attach()
       setup_keymaps(event.buf)
 
       if client:supports_method("textDocument/completion") then
-        vim.lsp.completion.enable(true, client.id, event.buf)
+        vim.lsp.completion.enable(true, client.id, event.buf, {
+          autotrigger = true,
+          convert = require("nvimrc.config.completion").convert,
+        })
       end
 
       if not vim.b[event.buf].lsp_features_initialized then
