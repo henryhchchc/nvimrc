@@ -5,19 +5,11 @@ require("nvimrc.plugins.blink-pairs")
 require("nvimrc.plugins.blink-cmp")
 require("nvimrc.plugins.treesitter")
 require("nvimrc.plugins.lsp")
-require("nvimrc.plugins.gitsigns")
+require("nvimrc.plugins.git")
 require("nvimrc.plugins.neotree")
 require("nvimrc.plugins.telescope")
 require("nvimrc.plugins.lualine")
 require("crates").setup({})
-
-require("neogit").setup({
-  disable_line_numbers = false,
-  graph_style = "unicode",
-  commit_editor = { kind = "vsplit" },
-  preview_buffer = { kind = "vsplit" },
-  popup = { kind = "vsplit" },
-})
 require("oil").setup()
 require("ibl").setup()
 require("nvim-surround").setup()

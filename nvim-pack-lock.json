@@ -43,6 +43,10 @@
       "src": "https://github.com/lukas-reineke/indent-blankline.nvim",
       "version": ">=0.0.0"
     },
+    "lazygit.nvim": {
+      "rev": "9ffc6103926718f7070fb4017694543cd7dc9718",
+      "src": "https://github.com/kdheepak/lazygit.nvim"
+    },
     "lualine.nvim": {
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
@@ -50,11 +54,6 @@
     "neo-tree.nvim": {
       "rev": "f3f3bf73414e400cf9fc13fda50f00404a8f8ab1",
       "src": "https://github.com/nvim-neo-tree/neo-tree.nvim",
-      "version": ">=0.0.0"
-    },
-    "neogit": {
-      "rev": "e106a39a8a37a9420f374545c876f8b52baf1c80",
-      "src": "https://github.com/NeogitOrg/neogit",
       "version": ">=0.0.0"
     },
     "nui.nvim": {
