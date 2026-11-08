@@ -7,7 +7,9 @@ if vim.env.SSH_CONNECTION and not vim.env.TMUX then
 end
 
 vim.opt.colorcolumn = "+1"
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.autocomplete = true
+vim.opt.complete = { "o", ".", "w", "b" }
+vim.opt.completeopt = { "menu", "menuone", "noselect", "popup", "fuzzy" }
 vim.opt.concealcursor = "nc"
 vim.opt.cursorline = true
 vim.opt.expandtab = true
@@ -54,7 +56,8 @@ vim.opt.undofile = true
 vim.opt.undolevels = 10000
 vim.opt.updatetime = 100
 vim.opt.virtualedit = "block"
-vim.opt.wildmode = "longest:full,full"
+vim.opt.wildmode = "noselect:lastused,full"
+vim.opt.wildoptions = { "pum", "fuzzy" }
 vim.opt.winblend = 10
 vim.opt.winminwidth = 5
 vim.opt.wrap = false

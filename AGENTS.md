@@ -17,14 +17,11 @@ There is no separate build step.
 Launch `nvim` with this checkout installed to exercise changes.
 
 `vim.pack` installs revisions from `nvim-pack-lock.json`; keep it under version control and include intentional dependency changes.
-Tree-sitter follows `main`; Blink Pairs follows tagged releases.
-Blink Pairs downloads a prebuilt library; Blink CMP builds from source with Cargo.
-Libraries are prepared asynchronously before plugin setup.
+Tree-sitter follows `main`.
 Run `:TSParsersSync` manually to update and install configured parsers, including after Tree-sitter plugin updates.
 Parser maintenance never runs at startup.
 
 Native packages live under `~/.local/share/nvim/site/pack/core/opt`.
-Keep Blink Pairs command-line rainbow highlighting disabled: it can cause redraw errors with UI2.
 
 When updating dependencies, run `:lua vim.pack.update()`, review the confirmation buffer, and write it to apply changes.
 Restart Neovim, validate affected plugins, and include the resulting lockfile changes in the pull request.

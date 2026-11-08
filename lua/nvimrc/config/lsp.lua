@@ -101,6 +101,10 @@ local function setup_attach()
 
       setup_keymaps(event.buf)
 
+      if client:supports_method("textDocument/completion") then
+        vim.lsp.completion.enable(true, client.id, event.buf)
+      end
+
       if not vim.b[event.buf].lsp_features_initialized then
         local filter = { bufnr = event.buf }
         vim.lsp.codelens.enable(true, filter)
@@ -126,10 +130,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 setup_attach()
-
-vim.lsp.config("*", {
-  capabilities = require("blink.cmp").get_lsp_capabilities(),
-})
 
 vim.lsp.enable({
   "bashls",

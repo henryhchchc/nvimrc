@@ -22,3 +22,4 @@ require("nvimrc.plugins")
 
 require("nvimrc.config.autocmds")
 require("nvimrc.config.keymaps")
+require("nvimrc.config.completion")

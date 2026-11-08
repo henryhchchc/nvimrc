@@ -1,8 +1,5 @@
 vim.pack.add({
-  { src = "https://github.com/saghen/blink.cmp", version = "main" },
-  { src = "https://github.com/saghen/blink.lib" },
   { src = "https://github.com/catppuccin/nvim", name = "catppuccin", version = "main" },
-  { src = "https://github.com/xzbdmw/colorful-menu.nvim" },
   { src = "https://github.com/saecki/crates.nvim", version = vim.version.range("*") },
   { src = "https://github.com/lewis6991/gitsigns.nvim", version = vim.version.range("*") },
   { src = "https://github.com/lukas-reineke/indent-blankline.nvim", version = vim.version.range("*") },
@@ -17,7 +14,6 @@ vim.pack.add({
   { src = "https://github.com/nvim-lua/plenary.nvim", version = vim.version.range("*") },
   { src = "https://github.com/b0o/schemastore.nvim" },
   { src = "https://github.com/nvim-telescope/telescope.nvim", version = vim.version.range("*") },
-  { src = "https://github.com/saghen/blink.pairs", version = vim.version.range("*") },
 })
 
 vim.api.nvim_create_user_command("PackSync", function ()

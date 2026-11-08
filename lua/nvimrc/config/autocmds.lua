@@ -120,11 +120,3 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     end
   end,
 })
-
--- Stop snippet completion when leaving insert mode
-vim.api.nvim_create_autocmd("InsertLeave", {
-  group = vim.api.nvim_create_augroup("stop_snippet", {}),
-  callback = function ()
-    vim.snippet.stop()
-  end,
-})

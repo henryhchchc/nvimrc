@@ -1,7 +1,5 @@
 require("nvimrc.plugins.catppuccin")
 require("nvimrc.config.progress")
-require("nvimrc.plugins.blink-pairs")
-require("nvimrc.plugins.blink-cmp")
 require("nvimrc.plugins.treesitter")
 require("nvimrc.plugins.lsp")
 require("nvimrc.plugins.git")

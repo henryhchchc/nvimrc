@@ -2,7 +2,7 @@
 
 ## Requirements
 
-Neovim 0.12+, Git, Rust/Cargo, a C compiler, `tree-sitter` CLI 0.26.1+, `curl`, and `tar`.
+Neovim 0.12+, Git, a C compiler, `tree-sitter` CLI 0.26.1+, `curl`, and `tar`.
 Install language servers separately.
 
 ## Installation
@@ -15,10 +15,16 @@ ln -sfn "$(pwd)" ~/.config/nvim
 ```
 
 Start `nvim` and confirm package installation.
-Completion and pairing libraries install in the background with progress notifications.
-These features become available as installation finishes.
 Inspect `:messages` if installation fails, then restart to retry.
 Run `:checkhealth` to diagnose missing dependencies.
 
 Run `:TSParsersSync` to update and install the parser list in `lua/nvimrc/plugins/treesitter.lua`.
 Run it after updating the Tree-sitter plugin too; parser maintenance never runs at startup.
+
+## Completion
+
+Native completion suggests LSP results and buffer words automatically.
+Use Ctrl-Space to request completion, Ctrl-J/Ctrl-K to navigate, Enter to accept, and Ctrl-C to dismiss.
+Tab/Shift-Tab jump through snippet placeholders or navigate completion results.
+Use Ctrl-X Ctrl-F for file paths and Ctrl-S for LSP signature help.
+Command and search completion also open automatically; Ctrl-J/Ctrl-K navigate results.
