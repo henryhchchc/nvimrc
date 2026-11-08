@@ -139,7 +139,6 @@ local lualine_options = {
   },
   extensions = {
     "man",
-    "neo-tree",
     "quickfix",
     "oil",
     exts.help,

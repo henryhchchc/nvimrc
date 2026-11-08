@@ -24,16 +24,6 @@
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
-    "neo-tree.nvim": {
-      "rev": "f3f3bf73414e400cf9fc13fda50f00404a8f8ab1",
-      "src": "https://github.com/nvim-neo-tree/neo-tree.nvim",
-      "version": ">=0.0.0"
-    },
-    "nui.nvim": {
-      "rev": "f535005e6ad1016383f24e39559833759453564e",
-      "src": "https://github.com/MunifTanjim/nui.nvim",
-      "version": ">=0.0.0"
-    },
     "nvim-lspconfig": {
       "rev": "4d363f93c3581b9212a24f7a830d7590b3f050af",
       "src": "https://github.com/neovim/nvim-lspconfig",
