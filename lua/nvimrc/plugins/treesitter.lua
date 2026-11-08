@@ -113,19 +113,6 @@ end
 -- Bypass CLI cache cleanup, which races when ~/.cache points to ~/Library/Caches.
 vim.env.TREE_SITTER_LIBDIR = vim.fn.tempname()
 
--- Tree-sitter's logger uses nvim_echo directly and has no configurable notification handler.
-local logger = require("nvim-treesitter.log").Logger
-for method, level in pairs({ info = vim.log.levels.INFO, warn = vim.log.levels.WARN, error = vim.log.levels.ERROR }) do
-  logger[method] = function (self, message, ...)
-    local formatted = message:format(...)
-    local title = self.ctx and "nvim-treesitter/" .. self.ctx or "nvim-treesitter"
-    vim.schedule(function () vim.notify(formatted, level, { title = title }) end)
-    if method == "error" then
-      return formatted
-    end
-  end
-end
-
 local treesitter = require("nvim-treesitter")
 
 for parser, filetypes in pairs(filetype_aliases) do
