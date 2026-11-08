@@ -143,7 +143,7 @@ vim.lsp.enable({
   "sourcekit",
   "texlab",
   "tinymist",
-  "tombi",
+  "taplo",
   "ts_ls",
   "ty",
   "typos_lsp",
