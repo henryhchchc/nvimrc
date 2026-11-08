@@ -3,13 +3,6 @@ local colorful_menu = require("colorful-menu")
 ---@type blink.cmp.Config
 local options = {
   completion = {
-    list = {
-      selection = {
-        preselect = function (ctx)
-          return ctx.mode ~= "cmdline"
-        end,
-      },
-    },
     documentation = {
       auto_show = true,
       auto_show_delay_ms = 1000,
@@ -51,6 +44,11 @@ local options = {
     ["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
   },
   cmdline = {
+    completion = {
+      list = {
+        selection = { preselect = false },
+      },
+    },
     keymap = {
       ["<C-c>"] = { "hide", "fallback" },
       ["<CR>"] = { "accept_and_enter", "fallback" },
