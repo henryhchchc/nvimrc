@@ -1,6 +1,5 @@
 require("nvimrc.plugins.catppuccin")
-require("fidget").setup()
-vim.notify = require("fidget.notification").notify
+require("nvimrc.config.progress")
 require("nvimrc.plugins.blink-pairs")
 require("nvimrc.plugins.blink-cmp")
 require("nvimrc.plugins.treesitter")

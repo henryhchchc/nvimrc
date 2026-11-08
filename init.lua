@@ -1,6 +1,8 @@
 vim.loader.enable()
 if #vim.api.nvim_list_uis() > 0 then
-  require("vim._core.ui2").enable()
+  require("vim._core.ui2").enable({
+    msg = { targets = { default = "cmd", progress = "msg" } },
+  })
 end
 
 if vim.fn.argc() > 0 then

@@ -4,7 +4,6 @@ vim.pack.add({
   { src = "https://github.com/catppuccin/nvim", name = "catppuccin", version = "main" },
   { src = "https://github.com/xzbdmw/colorful-menu.nvim" },
   { src = "https://github.com/saecki/crates.nvim", version = vim.version.range("*") },
-  { src = "https://github.com/j-hui/fidget.nvim", version = vim.version.range("*") },
   { src = "https://github.com/lewis6991/gitsigns.nvim", version = vim.version.range("*") },
   { src = "https://github.com/lukas-reineke/indent-blankline.nvim", version = vim.version.range("*") },
   { src = "https://github.com/nvim-lualine/lualine.nvim" },

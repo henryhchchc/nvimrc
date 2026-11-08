@@ -5,16 +5,15 @@ function M.setup(name, plugin, options, title, prepare)
     plugin.setup(options)
     return
   end
-  local progress = require("fidget.progress").handle.create({
-    title = title, lsp_client = { name = name }, cancellable = false,
-  })
+  local progress = { kind = "progress", source = name, title = title, status = "running" }
+  progress.id = vim.api.nvim_echo({ { "Starting" } }, true, progress)
   require("blink.lib.task").resolve():map(prepare):schedule():map(function ()
     plugin.setup(options)
-    progress.message = "Ready"
-    progress:finish()
+    progress.status = "success"
+    vim.api.nvim_echo({ { "Ready" } }, true, progress)
   end):catch(vim.schedule_wrap(function (err)
-    progress.message = "Failed"
-    progress:finish()
+    progress.status = "failed"
+    vim.api.nvim_echo({ { "Failed" } }, true, progress)
     vim.notify(name .. ": " .. tostring(err), vim.log.levels.ERROR)
   end))
 end
