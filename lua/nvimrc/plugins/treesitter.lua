@@ -1,4 +1,4 @@
---- Parsers to install and update.
+--- Parsers managed by :TSParsersSync and enabled when installed.
 local parsers = {
   "bash",
   "bibtex",
@@ -110,11 +110,6 @@ local function start(bufnr)
   require("nvimrc.config.folding").refresh(bufnr)
 end
 
--- Bypass CLI cache cleanup, which races when ~/.cache points to ~/Library/Caches.
-vim.env.TREE_SITTER_LIBDIR = vim.fn.tempname()
-
-local treesitter = require("nvim-treesitter")
-
 for parser, filetypes in pairs(filetype_aliases) do
   vim.treesitter.language.register(parser, filetypes)
 end
@@ -124,23 +119,34 @@ vim.api.nvim_create_autocmd({ "FileType", "BufWinEnter" }, {
   callback = function (event) start(event.buf) end,
 })
 
-vim.schedule(function ()
-  local function installed(err, success)
+local syncing = false
+vim.api.nvim_create_user_command("TSParsersSync", function ()
+  if syncing then
+    vim.notify("Tree-sitter parser sync is already running", vim.log.levels.INFO)
+    return
+  end
+  syncing = true
+
+  -- Bypass CLI cache cleanup, which races when ~/.cache points to ~/Library/Caches.
+  vim.env.TREE_SITTER_LIBDIR = vim.fn.tempname()
+  local treesitter = require("nvim-treesitter")
+  local function finished(err, success)
+    syncing = false
     if err or success == false then
-      vim.notify("Tree-sitter installation failed: " .. tostring(err or "see :messages"), vim.log.levels.ERROR)
+      vim.notify("Tree-sitter parser sync failed: " .. tostring(err or "see :messages"), vim.log.levels.ERROR)
       return
     end
     for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
       start(bufnr)
     end
+    vim.notify("Tree-sitter parsers are up to date", vim.log.levels.INFO)
   end
 
-  -- Update installed parsers to match the plugin revision before adding missing ones.
-  treesitter.update(nil, { max_jobs = 1 }):await(vim.schedule_wrap(function (err, success)
+  treesitter.update(parsers, { max_jobs = 1 }):await(vim.schedule_wrap(function (err, success)
     if err or success == false then
-      installed(err, success)
+      finished(err, success)
       return
     end
-    treesitter.install(parsers):await(vim.schedule_wrap(installed))
+    treesitter.install(parsers, { max_jobs = 1 }):await(vim.schedule_wrap(finished))
   end))
-end)
+end, { desc = "Update and install configured Tree-sitter parsers" })

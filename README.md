@@ -15,7 +15,10 @@ ln -sfn "$(pwd)" ~/.config/nvim
 ```
 
 Start `nvim` and confirm package installation.
-Completion, pairing, and syntax parsers install in the background with progress notifications.
+Completion and pairing libraries install in the background with progress notifications.
 These features become available as installation finishes.
 Inspect `:messages` if installation fails, then restart to retry.
 Run `:checkhealth` to diagnose missing dependencies.
+
+Run `:TSParsersSync` to update and install the parser list in `lua/nvimrc/plugins/treesitter.lua`.
+Run it after updating the Tree-sitter plugin too; parser maintenance never runs at startup.
