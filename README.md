@@ -20,12 +20,3 @@ Run `:checkhealth` to diagnose missing dependencies.
 
 Run `:TSParsersSync` to update and install the parser list in `lua/nvimrc/plugins/treesitter.lua`.
 Run it after updating the Tree-sitter plugin too; parser maintenance never runs at startup.
-
-## Completion
-
-Native completion suggests LSP results automatically in buffers with a completion-capable language server.
-Buffer-word completion is manual: use Ctrl-X Ctrl-N, or Ctrl-Space when no completion-capable server is attached.
-Use Ctrl-Space to request completion, Ctrl-J/Ctrl-K to navigate, Enter to accept, and Ctrl-C to dismiss.
-Tab/Shift-Tab jump through snippet placeholders or navigate completion results.
-Use Ctrl-X Ctrl-F for file paths and Ctrl-S for LSP signature help.
-Command and search completion also open automatically; Ctrl-J/Ctrl-K navigate results.

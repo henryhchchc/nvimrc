@@ -66,7 +66,7 @@ vim.keymap.set("i", "<CR>", function ()
   if vim.fn.pumvisible() == 0 then
     return "<CR>"
   end
-  return vim.fn.complete_info({ "selected" }).selected == -1 and "<C-n><C-y>" or "<C-y>"
+  return vim.fn.complete_info({ "selected" }).selected == -1 and "<C-e><CR>" or "<C-y>"
 end, { expr = true, desc = "Accept completion" })
 vim.keymap.set("i", "<C-c>", popup_key("<C-e>", "<C-c>"), { expr = true, desc = "Dismiss completion" })
 vim.keymap.set("i", "<C-j>", popup_key("<C-n>", "<Down>"), { expr = true })
@@ -90,6 +90,10 @@ vim.api.nvim_create_autocmd("CmdlineChanged", {
   pattern = { ":", "/", "?" },
   callback = function () vim.fn.wildtrigger() end,
 })
+
+vim.keymap.set("c", "<C-c>", function ()
+  return vim.fn.wildmenumode() == 1 and "<C-e>" or "<C-c>"
+end, { expr = true, desc = "Dismiss completion or cancel command line" })
 
 for key, action in pairs({ ["<C-j>"] = "<C-n>", ["<C-k>"] = "<C-p>" }) do
   local fallback = key == "<C-j>" and "<Down>" or "<Up>"
