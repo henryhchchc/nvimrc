@@ -1,7 +1,6 @@
 require("nvimrc.plugins.catppuccin")
-require("nvimrc.config.progress")
 require("nvimrc.plugins.treesitter")
-require("nvimrc.plugins.lsp")
+require("nvimrc.config.lsp")
 require("nvimrc.plugins.git")
 require("nvimrc.plugins.telescope")
 require("nvimrc.plugins.lualine")

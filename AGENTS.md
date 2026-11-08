@@ -8,6 +8,7 @@ See [README.md](README.md) for requirements and installation.
 - `init.lua` initializes the loader, packages, plugins, and core configuration.
 - `lua/nvimrc/config/` contains options, keymaps, autocommands, and diagnostics.
 - `lua/nvimrc/pack.lua` declares native `vim.pack` dependencies; `lua/nvimrc/plugins/` configures them.
+- `lua/nvimrc/parsers.lua` and `lua/nvimrc/servers.lua` list Tree-sitter parsers and enabled language servers.
 - `lsp/` provides language-server overrides; `ftplugin/` holds filetype-specific settings.
 - `queries/` contains Tree-sitter queries; `nvim-pack-lock.json` records package revisions.
 

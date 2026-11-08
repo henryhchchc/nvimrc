@@ -18,5 +18,5 @@ Start `nvim` and confirm package installation.
 Inspect `:messages` if installation fails, then restart to retry.
 Run `:checkhealth` to diagnose missing dependencies.
 
-Run `:TSParsersSync` to update and install the parser list in `lua/nvimrc/plugins/treesitter.lua`.
+Run `:TSParsersSync` to update and install the parser list in `lua/nvimrc/parsers.lua`.
 Run it after updating the Tree-sitter plugin too; parser maintenance never runs at startup.
