@@ -2,12 +2,14 @@
   "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
   "runtime.version": "LuaJIT",
   "runtime.path": [
-    "?.lua",
-    "?/init.lua",
     "lua/?.lua",
     "lua/?/init.lua"
   ],
-  "runtime.pathStrict": true,
+  "runtime.pathStrict": false,
+  "workspace.library": [
+    "${env:HOME}/.local/share/nvim/site/pack/core/opt",
+    "/opt/homebrew/share/nvim/runtime"
+  ],
   "workspace.checkThirdParty": false,
   "diagnostics.disable": [
     "missing-fields"
