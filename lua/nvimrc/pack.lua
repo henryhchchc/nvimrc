@@ -21,3 +21,21 @@ vim.pack.add({
   { src = "https://github.com/nvim-telescope/telescope.nvim", version = vim.version.range("*") },
   { src = "https://github.com/saghen/blink.pairs", version = vim.version.range("*") },
 })
+
+vim.api.nvim_create_user_command("PackSync", function ()
+  local inactive = vim.iter(vim.pack.get())
+      :filter(function (plugin) return not plugin.active end)
+      :map(function (plugin) return plugin.spec.name end)
+      :totable()
+
+  if #inactive > 0 then
+    table.sort(inactive)
+    local choice = vim.fn.confirm("Remove unused packages?\n" .. table.concat(inactive, "\n"), "&Yes\n&No", 2)
+    if choice ~= 1 then
+      return
+    end
+    vim.pack.del(inactive)
+  end
+
+  vim.pack.update()
+end, { desc = "Remove unused packages and review updates; restart after editing pack.lua first" })
