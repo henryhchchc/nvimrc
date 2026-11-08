@@ -7,7 +7,6 @@ vim.pack.add({
   { src = "https://github.com/lewis6991/gitsigns.nvim", version = vim.version.range("*") },
   { src = "https://github.com/lukas-reineke/indent-blankline.nvim", version = vim.version.range("*") },
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
-  { src = "https://github.com/kdheepak/lazygit.nvim" },
   { src = "https://github.com/nvim-neo-tree/neo-tree.nvim", version = vim.version.range("*") },
   { src = "https://github.com/MunifTanjim/nui.nvim", version = vim.version.range("*") },
   { src = "https://github.com/neovim/nvim-lspconfig", version = vim.version.range("*") },

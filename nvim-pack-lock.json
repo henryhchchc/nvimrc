@@ -38,10 +38,6 @@
       "src": "https://github.com/lukas-reineke/indent-blankline.nvim",
       "version": ">=0.0.0"
     },
-    "lazygit.nvim": {
-      "rev": "9ffc6103926718f7070fb4017694543cd7dc9718",
-      "src": "https://github.com/kdheepak/lazygit.nvim"
-    },
     "lualine.nvim": {
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
