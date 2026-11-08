@@ -1,5 +1,9 @@
+---@param bufnr integer
 local function git_signs_on_attach(bufnr)
-  local gs = package.loaded.gitsigns
+  local gs = require("gitsigns")
+  ---@param key string
+  ---@param func function
+  ---@param desc string
   local function bufnmap(key, func, desc)
     vim.keymap.set("n", key, func, { buf = bufnr, desc = desc })
   end

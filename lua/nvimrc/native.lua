@@ -1,5 +1,16 @@
+---@class nvimrc.NativePlugin<Options>
+---@field library_available fun(): boolean
+---@field setup fun(options: Options)
+
+---@class nvimrc.Native
 local M = {}
 
+---@generic Options, Result
+---@param name string
+---@param plugin nvimrc.NativePlugin<Options>
+---@param options Options
+---@param title string
+---@param prepare fun(): blink.lib.Task<Result>
 function M.setup(name, plugin, options, title, prepare)
   if plugin.library_available() then
     plugin.setup(options)

@@ -1,13 +1,17 @@
 local language_server_ignore = { "typos_lsp" }
 
+---@return vim.lsp.Client[]
 local function get_attached_lsps()
   local bufnr = vim.api.nvim_get_current_buf()
+  ---@param client vim.lsp.Client
+  ---@return boolean
   local function is_not_ignored(client)
     return not vim.list_contains(language_server_ignore, client.name)
   end
   return vim.iter(vim.lsp.get_clients({ bufnr = bufnr })):filter(is_not_ignored):totable()
 end
 
+---@return string
 local function lsp_name()
   local clients = get_attached_lsps()
   local lsp_count = #clients
@@ -23,6 +27,7 @@ local function lsp_name()
   return prefix .. content
 end
 
+---@return boolean
 local function has_lsp_attached()
   return #get_attached_lsps() > 0
 end

@@ -93,6 +93,7 @@ for _, parser in ipairs(parsers) do
 end
 
 
+---@param bufnr integer
 local function start(bufnr)
   if not vim.api.nvim_buf_is_loaded(bufnr)
       or not vim.list_contains(filetypes, vim.bo[bufnr].filetype)
@@ -130,6 +131,8 @@ vim.api.nvim_create_user_command("TSParsersSync", function ()
   -- Bypass CLI cache cleanup, which races when ~/.cache points to ~/Library/Caches.
   vim.env.TREE_SITTER_LIBDIR = vim.fn.tempname()
   local treesitter = require("nvim-treesitter")
+  ---@param err any
+  ---@param success boolean?
   local function finished(err, success)
     syncing = false
     if err or success == false then

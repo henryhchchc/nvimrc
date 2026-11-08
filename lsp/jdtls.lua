@@ -1,3 +1,13 @@
+---@class nvimrc.JdtlsProgress
+---@field id string
+---@field subTask string
+---@field complete boolean
+---@field workDone number
+---@field totalWork number
+
+---@param _ lsp.ResponseError?
+---@param result nvimrc.JdtlsProgress
+---@param ctx lsp.HandlerContext
 local function jdtls_progress_report(_, result, ctx)
   local info = { client_id = ctx.client_id }
 

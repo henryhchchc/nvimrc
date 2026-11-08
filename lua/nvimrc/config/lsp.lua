@@ -1,5 +1,6 @@
 -- Buffer-local mappings applied when a language server attaches.
 
+---@param bufnr integer
 local function setup_keymaps(bufnr)
   vim.keymap.set("n", "rn", vim.lsp.buf.rename, { desc = "LSP Rename", buf = bufnr })
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP Definitions", buf = bufnr })
@@ -13,6 +14,8 @@ end
 local utils = require("nvimrc.utils")
 
 
+---@param client vim.lsp.Client
+---@param bufnr integer
 local function setup_autoformat(client, bufnr)
   if not client:supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
     return
@@ -30,6 +33,8 @@ end
 
 local setup_folding = require("nvimrc.config.folding").refresh
 
+---@param client vim.lsp.Client
+---@param bufnr integer
 local function setup_document_highlight(client, bufnr)
   if not client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
     return
@@ -150,7 +155,12 @@ vim.lsp.enable({
   "yamlls",
 })
 
+---@class nvimrc.Lsp
+---@field can_format fun(bufnr: integer): boolean?
+---@type nvimrc.Lsp
 return {
+  ---@param bufnr integer
+  ---@return boolean?
   can_format = function (bufnr)
     return vim.b[bufnr].autoformat and #vim.lsp.get_clients({
       bufnr = bufnr, method = "textDocument/formatting",

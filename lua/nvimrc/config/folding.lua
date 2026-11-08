@@ -1,5 +1,7 @@
+---@class nvimrc.Folding
 local M = {}
 
+---@param bufnr integer
 function M.refresh(bufnr)
   if not vim.api.nvim_buf_is_loaded(bufnr) then return end
   local expression = "0"

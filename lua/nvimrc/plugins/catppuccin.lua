@@ -1,4 +1,5 @@
 --- @param colors CtpColors<string>
+---@return table<string, CtpHighlight>
 local function mocha_overrides(colors)
   return {
     NormalFloat = { bg = colors.surface0 },
