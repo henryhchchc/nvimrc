@@ -90,11 +90,11 @@ vim.api.nvim_create_user_command("TSParsersSync", function ()
     vim.notify("Tree-sitter parsers are up to date", vim.log.levels.INFO)
   end
 
-  treesitter.update(parsers, { max_jobs = 1 }):await(vim.schedule_wrap(function (err, success)
+  treesitter.update(parsers):await(vim.schedule_wrap(function (err, success)
     if err or success == false then
       finished(err, success)
       return
     end
-    treesitter.install(parsers, { max_jobs = 1 }):await(vim.schedule_wrap(finished))
+    treesitter.install(parsers):await(vim.schedule_wrap(finished))
   end))
 end, { desc = "Update and install configured Tree-sitter parsers" })
