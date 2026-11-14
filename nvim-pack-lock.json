@@ -35,7 +35,7 @@
       "version": ">=0.0.0"
     },
     "nvim-treesitter": {
-      "rev": "19bdfc04f40ed2ccb3340591d125f759b0406875",
+      "rev": "60c0f468de3e636fa660a419d537e8033aca4e39",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
@@ -54,7 +54,7 @@
       "version": ">=0.0.0"
     },
     "schemastore.nvim": {
-      "rev": "92e7b3b2dbd1505fcbcb20f1fdd987b35e9cd34b",
+      "rev": "e8c3d2225d6bf5e2cbe414952c247d7a3411849b",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "telescope.nvim": {
