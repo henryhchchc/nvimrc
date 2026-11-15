@@ -98,7 +98,8 @@ vim.api.nvim_create_user_command("TSParsersSync", function ()
     vim.env.CXX = cxx
     syncing = false
     if err or success == false then
-      vim.notify("Tree-sitter parser sync failed: " .. tostring(err or "see :messages"), vim.log.levels.ERROR)
+      vim.notify("Tree-sitter parser sync failed: " .. tostring(err or "see :messages"),
+        vim.log.levels.ERROR)
       return
     end
     for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
@@ -112,6 +113,22 @@ vim.api.nvim_create_user_command("TSParsersSync", function ()
       finished(err, success)
       return
     end
-    treesitter.install(parsers):await(vim.schedule_wrap(finished))
+    treesitter.install(parsers):await(vim.schedule_wrap(function (install_err, install_success)
+      if install_err or install_success == false then
+        finished(install_err, install_success)
+        return
+      end
+
+      local configured = require("nvim-treesitter.config").norm_languages(parsers)
+      -- Only inspect managed parsers; Neovim's bundled parsers live in $VIMRUNTIME.
+      local unlisted = vim.tbl_filter(function (parser)
+        return not vim.list_contains(configured, parser)
+      end, treesitter.get_installed())
+      if #unlisted == 0 then
+        finished()
+        return
+      end
+      treesitter.uninstall(unlisted):await(vim.schedule_wrap(finished))
+    end))
   end))
-end, { desc = "Update and install configured Tree-sitter parsers" })
+end, { desc = "Update configured Tree-sitter parsers and uninstall unlisted ones" })
