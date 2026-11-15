@@ -16,7 +16,7 @@ return {
   "sourcekit",
   "texlab",
   "tinymist",
-  "taplo",
+  "tombi",
   "ts_ls",
   "ty",
   "typos_lsp",
