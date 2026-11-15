@@ -20,9 +20,9 @@
       "src": "https://github.com/lukas-reineke/indent-blankline.nvim",
       "version": ">=0.0.0"
     },
-    "lualine.nvim": {
-      "rev": "221ce6b2d999187044529f49da6554a92f740a96",
-      "src": "https://github.com/nvim-lualine/lualine.nvim"
+    "mini.statusline": {
+      "rev": "591b9d553dc3604b114577bc0f6e289ea3783fc2",
+      "src": "https://github.com/nvim-mini/mini.statusline"
     },
     "nvim-lspconfig": {
       "rev": "4d363f93c3581b9212a24f7a830d7590b3f050af",
