@@ -73,12 +73,29 @@ vim.api.nvim_create_user_command("TSParsersSync", function ()
   end
   syncing = true
 
+  local cflags = vim.env.CFLAGS
+  local cc = vim.env.CC
+  local cxx = vim.env.CXX
+  vim.env.CFLAGS = (cflags and cflags .. " " or "") .. "-O3 -flto=full"
+  if vim.fn.executable("mold") == 1 then
+    vim.env.CFLAGS = vim.env.CFLAGS .. " -fuse-ld=mold"
+  end
+  if vim.fn.executable("clang") == 1 then
+    vim.env.CC = "clang"
+  end
+  if vim.fn.executable("clang++") == 1 then
+    vim.env.CXX = "clang++"
+  end
+
   -- Bypass CLI cache cleanup, which races when ~/.cache points to ~/Library/Caches.
   vim.env.TREE_SITTER_LIBDIR = vim.fn.tempname()
   local treesitter = require("nvim-treesitter")
   ---@param err any
   ---@param success boolean?
   local function finished(err, success)
+    vim.env.CFLAGS = cflags
+    vim.env.CC = cc
+    vim.env.CXX = cxx
     syncing = false
     if err or success == false then
       vim.notify("Tree-sitter parser sync failed: " .. tostring(err or "see :messages"), vim.log.levels.ERROR)
