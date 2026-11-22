@@ -38,6 +38,18 @@ for _, parser in ipairs(parsers) do
 end
 
 
+vim.api.nvim_create_autocmd("User", {
+  pattern = "TSUpdate",
+  callback = function ()
+    require("nvim-treesitter.parsers").lean = {
+      install_info = {
+        url = "https://github.com/Julian/tree-sitter-lean",
+        queries = "queries",
+      },
+    }
+  end,
+})
+
 ---@param bufnr integer
 local function start(bufnr)
   if not vim.api.nvim_buf_is_loaded(bufnr)

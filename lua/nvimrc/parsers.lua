@@ -26,6 +26,7 @@ return {
   "just",
   "kotlin",
   "latex",
+  "lean",
   "make",
   "nix",
   "perl",
