@@ -21,11 +21,11 @@
       "version": ">=0.0.0"
     },
     "mini.statusline": {
-      "rev": "591b9d553dc3604b114577bc0f6e289ea3783fc2",
+      "rev": "5b71f198cf3a2039d1786362274316841379b665",
       "src": "https://github.com/nvim-mini/mini.statusline"
     },
     "nvim-lspconfig": {
-      "rev": "4d363f93c3581b9212a24f7a830d7590b3f050af",
+      "rev": "4648fd8ba5c678d7e2db75ae44ffac269bb589d8",
       "src": "https://github.com/neovim/nvim-lspconfig",
       "version": ">=0.0.0"
     },
@@ -35,7 +35,7 @@
       "version": ">=0.0.0"
     },
     "nvim-treesitter": {
-      "rev": "37e52c733ada9d8d544d53a763140ef1ba404353",
+      "rev": "52773f0d13a0c11d0c3ef33c14ab6ecc1c17148b",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
@@ -54,7 +54,7 @@
       "version": ">=0.0.0"
     },
     "schemastore.nvim": {
-      "rev": "a0479e8a6d5d3471899d2be630fd207f4804dc7d",
+      "rev": "ffbe34a31de0cf696f688e7d9e226dc5b86b4323",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "telescope.nvim": {
